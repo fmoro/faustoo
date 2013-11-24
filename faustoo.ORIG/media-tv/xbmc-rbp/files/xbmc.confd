@@ -1,0 +1,8 @@
+# Username to run XBMC (via irexec) under
+runas="root"
+
+# PID file
+pidfile="/var/run/xbmc.pid"
+
+# Path to lircrc for irexec
+irexec_lircrc=/root/.xbmc/irexec_lircrc

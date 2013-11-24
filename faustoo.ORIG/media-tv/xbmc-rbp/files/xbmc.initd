@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-tv/freevo/files/freevo.rc6,v 1.6 2004/07/14 22:52:05 agriffis Exp $
+
+IREXEC=/usr/bin/irexec
+
+depend() {
+	use net lirc vdr
+}
+
+start() {
+	ebegin "Starting XBMC media center (backgrounding with irexec)"
+	test -f "${irexec_lircrc}" || (echo -n " Please create a working lircrc for irexec" ; eend 1)
+        start-stop-daemon --start --user "${runas}" --background \
+		--pidfile "${pidfile}" --make-pidfile \
+		--exec "${IREXEC}" "${irexec_lircrc}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping XBMC media center"
+        start-stop-daemon --stop --quiet --pidfile "${pidfile}"
+	eend $?
+}

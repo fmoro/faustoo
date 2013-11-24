@@ -1,0 +1,11 @@
+--- config.mk.orig      2010-11-13 05:52:37.287976885 +0100
++++ config.mk   2010-11-13 05:53:09.779912473 +0100
+@@ -282,6 +282,8 @@
+ powerpc:
+        @$(MAKE) i386
+ 
++x86_64:
++	@$(MAKE) i386
+ 
+ i386-sco:
+        @$(MAKE) CC="CC" CFLAGS="-b elf -DUSE_RANDOM -DUSE_SELECT_H -DMATH_H_IS_CC" \

@@ -1,0 +1,167 @@
+--- gxmms2-0.7.0.orig/gmedialib/gmlsearch.c
++++ gxmms2-0.7.0/gmedialib/gmlsearch.c
+@@ -2,7 +2,7 @@
+  * File: gmlsearch.c
+  *
+  * Medialib search and playlist editor
+- * Copyright (c) 2005-2007 Johannes Heimansberg
++ * Copyright (c) 2005-2008 Johannes Heimansberg
+  *
+  * requires GTK+ 2.6 or better and XMMS2
+  *
+@@ -539,21 +539,21 @@
+ 
+ 	xmmsc_result_get_dict_entry_int(res,    "id",      &id);
+ 	xmmsc_result_get_dict_entry_int(res,    "tracknr", &tracknr);
+-	xmmsc_result_get_dict_entry_string(res, "title",   &title);
++	xmmsc_result_get_dict_entry_string(res, "title",   (const gchar **)&title);
+ 	xmmsc_result_get_dict_entry_int(res,    "rating",  &rating);
+ 	rating--;
+ 	if (title) {
+-		xmmsc_result_get_dict_entry_string(res, "artist", &artist);
++		xmmsc_result_get_dict_entry_string(res, "artist", (const gchar **)&artist);
+ 		if (!artist)
+ 			artist = "[Unknown Artist]";
+ 
+-		xmmsc_result_get_dict_entry_string(res, "album", &album);
++		xmmsc_result_get_dict_entry_string(res, "album", (const gchar **)&album);
+ 		if (!album)
+ 			album = "[Unknown Album]";
+ 	} else {
+ 		gchar       *url, *url_utf8;
+ 		const gchar *url_tmp;
+-		xmmsc_result_get_dict_entry_string(res, "url", &url);
++		xmmsc_result_get_dict_entry_string(res, "url", (const gchar **)&url);
+ 		if (url) {
+ 			url_tmp = xmmsc_result_decode_url(res, url);
+ 			url_utf8 = get_valid_utf8_str_alloc(url_tmp);
+--- gxmms2-0.7.0.orig/gmedialib/gmlbrowser.c
++++ gxmms2-0.7.0/gmedialib/gmlbrowser.c
+@@ -174,8 +174,8 @@
+ 	gtk_tree_view_set_model(GTK_TREE_VIEW(gml->browser.list), NULL);
+ 
+ 	for (; xmmsc_result_list_valid(res); xmmsc_result_list_next(res)) {
+-		xmmsc_result_get_dict_entry_string(res, "artist", &artist);
+-		xmmsc_result_get_dict_entry_string(res, "album",  &album);
++		xmmsc_result_get_dict_entry_string(res, "artist", (const gchar **)&artist);
++		xmmsc_result_get_dict_entry_string(res, "album",  (const gchar **)&album);
+ 		xmmsc_result_get_dict_entry_int(res, "id", &id);
+ 		if (!artist)
+ 			artist = "Unknown";
+--- gxmms2-0.7.0.orig/gmedialib/gmlplaylist.c
++++ gxmms2-0.7.0/gmedialib/gmlplaylist.c
+@@ -2,7 +2,7 @@
+  * File: gmlplaylist.c
+  *
+  * Medialib search and playlist editor
+- * Copyright (c) 2005-2007 Johannes Heimansberg
++ * Copyright (c) 2005-2008 Johannes Heimansberg
+  *
+  * requires GTK+ 2.6 or better and XMMS2
+  *
+@@ -38,10 +38,9 @@
+ 	gint32        id;
+ 	static gint32 last_pos = -2;
+ 	GMedialib    *gml = (GMedialib *)gmlptr;
+-	gchar        *url, *filename = "", *artist_tmp = "", *title_tmp = "";
+-	gchar        *album, *artist = NULL, *title = NULL, *channel = NULL;
+-	gchar        *prefix = "", *url_utf8;
+-	const gchar  *url_tmp;
++	const gchar  *url, *artist_tmp, *title_tmp, *url_tmp, *album, *channel;
++	gchar        *filename;
++	gchar        *artist = NULL, *title = NULL, *prefix = "", *url_utf8;
+ 	gchar         album_with_tracknr[256];
+ 	gint          tracknr = -1, rating = -1;
+ 	static gchar  last_title[256] = "", last_artist[256] = "";
+@@ -199,7 +198,7 @@
+ 	guint      pos = 0;
+ 	GMedialib *gml = (GMedialib *)arg;
+ 
+-	xmmsc_result_get_uint(res, &pos);
++	xmmsc_result_get_dict_entry_uint(res, "position", &pos);
+ 	gml->playlist.current_pos = pos;
+ 	if (gml->playlist.move_finished)
+ 		gml_playlist_update_entry(gml, gml->playlist.current_pos);
+@@ -864,7 +863,7 @@
+ 	guint          pos = 0, p = 0;
+ 	GtkTreePath   *path;
+ 
+-	xmmsc_result_get_uint(res, &pos);
++	xmmsc_result_get_dict_entry_uint(res, "position", &pos);
+ 	xmmsc_result_unref(res);
+ 	pm->gml->playlist.current_pos = pos;
+ 
+--- gxmms2-0.7.0.orig/gmedialib/gmlplaylists.c
++++ gxmms2-0.7.0/gmedialib/gmlplaylists.c
+@@ -91,8 +91,8 @@
+ 		if (gml->playlists.ls != NULL)
+ 			gtk_list_store_clear(gml->playlists.ls);
+ 		for (; xmmsc_result_list_valid(res); xmmsc_result_list_next(res)) {
+-			gchar          *name;
+-			xmmsc_result_t 		*res2;
++			const gchar    *name;
++			xmmsc_result_t *res2;
+ 
+ 			xmmsc_result_get_string(res, &name);
+ 
+--- gxmms2-0.7.0.orig/gtrackinfo/trackinfo.c
++++ gxmms2-0.7.0/gtrackinfo/trackinfo.c
+@@ -1,7 +1,7 @@
+ /* 
+  * File: trackinfo.c
+  *
+- * Copyright (c) 2005-2006 Johannes Heimansberg
++ * Copyright (c) 2005-2008 Johannes Heimansberg
+  *
+  * Released under the GNU General Public License v2
+  */
+@@ -33,27 +33,27 @@
+ 	track->no_samplerate = FALSE;
+ 	track->no_filesize   = FALSE;
+ 
+-	if (!xmmsc_result_get_dict_entry_string(res, "artist", &artist)) {
++	if (!xmmsc_result_get_dict_entry_string(res, "artist", (const gchar **)&artist)) {
+ 		artist = "Unknown";
+ 		track->no_artist = TRUE;
+ 	}
+-	if (!xmmsc_result_get_dict_entry_string(res, "title",  &title)) {
++	if (!xmmsc_result_get_dict_entry_string(res, "title",  (const gchar **)&title)) {
+ 		title = "Unknown";
+ 		track->no_title = TRUE;
+ 	}
+-	if (!xmmsc_result_get_dict_entry_string(res, "album", &album)) {
++	if (!xmmsc_result_get_dict_entry_string(res, "album", (const gchar **)&album)) {
+ 		album = "Unknown";
+ 		track->no_album = TRUE;
+ 	}
+-	if (!xmmsc_result_get_dict_entry_string(res, "comment", &comment))
++	if (!xmmsc_result_get_dict_entry_string(res, "comment", (const gchar **)&comment))
+ 		comment = "";
+ 	if (!xmmsc_result_get_dict_entry_int(res, "duration", &playtime))
+ 		track->no_playtime = TRUE;
+ 	if (!xmmsc_result_get_dict_entry_int(res, "id", &id))
+ 		id = 0;
+-	if (!xmmsc_result_get_dict_entry_string(res, "mime", &mime))
++	if (!xmmsc_result_get_dict_entry_string(res, "mime", (const gchar **)&mime))
+ 		mime = "Unknown";
+-	if (!xmmsc_result_get_dict_entry_string(res, "genre", &genre))
++	if (!xmmsc_result_get_dict_entry_string(res, "genre", (const gchar **)&genre))
+ 		genre = "";
+ 	if (!xmmsc_result_get_dict_entry_int(res, "bitrate", &bitrate))
+ 		track->no_bitrate = TRUE;
+@@ -61,11 +61,11 @@
+ 		track->no_samplerate = TRUE;
+ 	if (!xmmsc_result_get_dict_entry_int(res, "size", &filesize))
+ 		track->no_filesize = TRUE;
+-	if (!xmmsc_result_get_dict_entry_string(res, "url", &url))
++	if (!xmmsc_result_get_dict_entry_string(res, "url", (const gchar **)&url))
+ 		url = "";
+-	if (!xmmsc_result_get_dict_entry_string(res, "date", &date))
++	if (!xmmsc_result_get_dict_entry_string(res, "date", (const gchar **)&date))
+ 		date = "";
+-	if (!xmmsc_result_get_dict_entry_string(res, "channel", &channel))
++	if (!xmmsc_result_get_dict_entry_string(res, "channel", (const gchar **)&channel))
+ 		channel = "";
+ 	else
+ 		track->stream = TRUE;
+

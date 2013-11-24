@@ -1,0 +1,11 @@
+# ChangeLog for x11-misc/stalonetray
+
+*stalonetray-0.8.0 (15 Mar 2010)
+
+  15 Mar 2010; Federico Moro <zayer@frikis.org>
+  +files/stalonetray-0.8.0-fixmain.patch:
+  Fix undefined functions in main.c if debug and native-kde are disabled.
+
+  15 Mar 2010; Federico Moro <zayer@frikis.org>
+  +stalonetray-0.8.0.ebuild:
+  Version bump for terminator

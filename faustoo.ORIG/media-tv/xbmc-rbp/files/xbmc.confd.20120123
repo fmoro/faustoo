@@ -1,0 +1,11 @@
+# Username to run XBMC under
+runas="root"
+
+# X display number
+display=0
+
+# PID file
+pidfile="/var/run/xbmc.pid"
+
+# Other XBMC options (for experts :-)
+xbmc_opts="--debug --lircdev /dev/lircd"

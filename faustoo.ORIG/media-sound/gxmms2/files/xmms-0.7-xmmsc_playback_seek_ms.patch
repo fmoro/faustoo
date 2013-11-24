@@ -1,0 +1,25 @@
+diff -Naur gxmms2.orig/gkrellxmms2/gkrellxmms2.c gxmms2/gkrellxmms2/gkrellxmms2.c
+--- gxmms2.orig/gkrellxmms2/gkrellxmms2.c	2009-06-08 09:20:19.000000000 +0200
++++ gxmms2/gkrellxmms2/gkrellxmms2.c	2010-07-01 00:59:32.778723193 +0200
+@@ -178,7 +178,7 @@
+ 		if (xmms2ctrl_get_error() != ERROR_CONNECTION &&
+ 		    trackinfo_get_playtime(&track) > seek_ms && event->y < yoffset &&
+ 		    seek_in_progress) {
+-			res = xmmsc_playback_seek_ms(connection, seek_ms);
++			res = xmmsc_playback_seek_ms(connection, seek_ms, XMMS_PLAYBACK_SEEK_SET);
+ 			xmmsc_result_unref(res);
+ 		}
+ 		seek_in_progress = FALSE;
+diff -Naur gxmms2.orig/gxmms2src/gxmms2.c gxmms2/gxmms2src/gxmms2.c
+--- gxmms2.orig/gxmms2src/gxmms2.c	2009-06-08 09:20:19.000000000 +0200
++++ gxmms2/gxmms2src/gxmms2.c	2010-07-01 01:07:47.258787518 +0200
+@@ -89,7 +89,8 @@
+ 
+ 	if (xmms2ctrl_get_error() != ERROR_CONNECTION) {
+ 		res = xmmsc_playback_seek_ms(connection, 
+-	          	(guint)gtk_range_get_value(GTK_RANGE(widget)));
++				(guint)gtk_range_get_value(GTK_RANGE(widget)), 
++				XMMS_PLAYBACK_SEEK_SET);
+ 		xmmsc_result_unref(res);
+ 	}
+ 	update_scale = TRUE;

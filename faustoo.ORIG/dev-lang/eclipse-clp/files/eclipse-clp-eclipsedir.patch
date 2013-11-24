@@ -1,0 +1,32 @@
+--- icparc_solvers/Makefile.x86_64_linux.orig	2010-11-28 05:00:13.117913823 +0100
++++ icparc_solvers/Makefile.x86_64_linux	2010-11-28 05:02:13.544910743 +0100
+@@ -35,7 +35,7 @@
+ ARCH = x86_64_linux
+ top_srcdir = ..
+ PREFIX = /var/tmp/portage/dev-lang/eclipse-clp-6.0.163/image
+-ECLIPSEDIR = $(PREFIX)
++ECLIPSEDIR = $(top_srcdir)
+ MAKEFILE = Makefile.$(ARCH)
+ 
+ CC = x86_64-pc-linux-gnu-gcc
+@@ -50,9 +50,9 @@
+ GMP_LD = 
+ FLOAT_ROUND_FLAGS = 
+ 
+-CPPFLAGS  = -I. -I$(ECLIPSEDIR)/include/$(ARCH) -I$(ECLIPSEDIR)/Kernel/src -I- $(OS_INCLUDES)
++CPPFLAGS  = -I. -I$(PREFIX)/include/$(ARCH) -I$(ECLIPSEDIR)/Kernel/src -I- $(OS_INCLUDES)
+ STDCXXLIB = -lstdc++
+-ECLIBS	= -L$(ECLIPSEDIR)/lib/$(ARCH) -leclipse -L.  -lgmp -lnsl -ldl -lm 
++ECLIBS	= -L$(PREFIX)/lib/$(ARCH) -leclipse -L.  -lgmp -lnsl -ldl -lm 
+ 
+ 
+ PERM = a+r,u+w,go-w
+@@ -684,7 +684,7 @@
+ # Installation
+ #----------------------------------------------------------------------
+ 
+-ECLIPSE = $(ECLIPSEDIR)/bin/$(ARCH)/eclipse
++ECLIPSE = $(PREFIX)/bin/$(ARCH)/eclipse
+ 
+ EXAMPLE_FILES =	cbs.ecl lds.ecl wcs.ecl knapsack_ls.ecl
+ ECL_ECO_FILES =	graph_algorithms.ecl heap_array.ecl empty_language.ecl \

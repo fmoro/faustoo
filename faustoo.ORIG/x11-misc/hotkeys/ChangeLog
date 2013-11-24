@@ -1,0 +1,9 @@
+# ChangeLog for x11-misc/hotkeys
+
+*hotkeys-0.5.7.4.0.3
+
+  15 Mar 2010; Federico Moro <zayer@frikis.org>
+  +files/hotkeys-0.5.7.4.0.2-audacious.patch,
+  files/hotkeys-0.5.7.4.0.2-gcc4.patch,
+  +hotkeys-0.5.7.4.0.3.ebuild::
+  Debian's patched version.

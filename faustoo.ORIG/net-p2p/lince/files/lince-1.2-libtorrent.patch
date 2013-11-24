@@ -1,0 +1,61 @@
+--- lib/SessionManager.cc	2012-01-31 02:19:52.537946940 +0100
++++ lib/SessionManager.cc	2012-01-31 02:18:53.296950413 +0100
+@@ -213,8 +213,8 @@ void SessionManager::update_proxy_settin
+ 	{
+ 		proxy_data.type = proxy_settings::none;
+ 	}
+-	set_tracker_proxy(proxy_data);
+-	set_web_seed_proxy(proxy_data);
++	//set_tracker_proxy(proxy_data);
++	//set_web_seed_proxy(proxy_data);
+ 
+ 	if (s->get(SetupManager::CLIENT_USE_PROXY))
+ 	{
+@@ -227,8 +227,9 @@ void SessionManager::update_proxy_settin
+ 	{
+ 		proxy_data.type = proxy_settings::none;
+ 	}
+-	set_peer_proxy(proxy_data);
+-	set_dht_proxy(proxy_data);
++	//set_peer_proxy(proxy_data);
++	//set_dht_proxy(proxy_data);
++	set_proxy(proxy_data);
+ }
+ 
+ void SessionManager::update_upnp()
+@@ -687,10 +688,8 @@ void SessionManager::add_torrent_to_sess
+ 	}
+ 
+ 	if (!tl.file_new_names.empty()){
+-		libtorrent::file_storage &fs = t->files();
+-
+ 		for (int i=0; i < tl.file_new_names.size(); i++)
+-			fs.rename_file(i, tl.file_new_names[i]);
++			t->rename_file(i, tl.file_new_names[i]);
+ 	}
+ 	torrent_handle th;
+ 	add_torrent_params p;
+@@ -700,8 +699,10 @@ void SessionManager::add_torrent_to_sess
+ 	hash_str << t->info_hash();
+ 
+ 	std::vector<char> buf;
++
++	boost::system::error_code ec;
+ 	if (load_file(build_filename(get_resume_data_base_directory(), hash_str.str())\
+-			, buf) == 0)
++			, buf, ec) == 0)
+ 		p.resume_data = &buf;
+ 
+ 	p.ti = t;
+@@ -831,10 +832,8 @@ void SessionManager::add_torrent_to_sess
+ 		throw queue_limit_reached();
+ 
+ 	if (!torrentfilenewnames.empty()){
+-		libtorrent::file_storage &fs = t->files();
+-
+ 		for (int i=0; i < torrentfilenewnames.size(); i++)
+-			fs.rename_file(i, torrentfilenewnames[i]);
++			t->rename_file(i, torrentfilenewnames[i]);
+ 	}
+ 
+ 	p.ti = t;

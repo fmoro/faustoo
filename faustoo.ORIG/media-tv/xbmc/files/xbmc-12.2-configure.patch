@@ -1,0 +1,24 @@
+--- xbmc-12.2/configure.in.orig	2013-09-03 15:39:22.000000000 +0200
++++ xbmc-12.2/configure.in	2013-09-03 15:41:46.000000000 +0200
+@@ -665,7 +665,7 @@
+ case $use_platform in
+   raspberry-pi)
+      target_platform=target_raspberry_pi
+-     use_neon=no
++     use_neon="yes"
+      use_texturepacker=yes
+      use_texturepacker_native=yes
+      use_arch="arm"
+@@ -677,8 +677,10 @@
+      AC_SUBST(ARCH_DEFINES, "-DTARGET_POSIX -DTARGET_LINUX -D_LINUX -D_ARMEL -DTARGET_RASPBERRY_PI")
+      AC_DEFINE(HAS_EGLGLES, [1], [Define if supporting EGL based GLES Framebuffer])
+      USE_OMXLIB=1; AC_DEFINE([HAVE_OMXLIB],[1],["Define to 1 if OMX libs is enabled"])
+-     CFLAGS="$CFLAGS"
+-     CXXFLAGS="$CXXFLAGS"
++     CFLAGS="$CFLAGS  -Wno-deprecated -I/opt/vc/include/interface/vmcs_host/linux"
++     CXXFLAGS="$CXXFLAGS -Wno-deprecated"
++     CPPFLAGS="-I/opt/vc/include -I/opt/vc/include/interface/vmcs_host/linux $CPPFLAGS"
++     LDFLAGS="-L/opt/vc/lib $LDFLAGS"
+      ffmpeg_target_os=linux
+      ;;
+ esac

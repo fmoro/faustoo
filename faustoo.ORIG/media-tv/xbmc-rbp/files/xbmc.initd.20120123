@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-tv/freevo/files/freevo.rc6,v 1.6 2004/07/14 22:52:05 agriffis Exp $
+
+XINIT=/usr/bin/xinit
+XBMC=/usr/bin/xbmc
+
+depend() {
+	use net lirc vdr
+}
+
+start() {
+	ebegin "Starting XBMC media center"
+	test -x "${XINIT}" || eend 1
+	test -x "${XBMC}" || eend 1
+        start-stop-daemon --start --user "${runas}" --background \
+		--pidfile "${pidfile}" --make-pidfile \
+		--exec "${XINIT}" -- "${XBMC}" --standalone ${xbmc_opts} -- :${display}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping XBMC media center"
+        start-stop-daemon --stop --quiet --pidfile "${pidfile}"
+	eend $?
+}

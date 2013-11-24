@@ -1,0 +1,10 @@
+--- data/search_engine/Makefile.am.OLD	2012-04-04 00:32:44.272234138 +0200
++++ data/search_engine/Makefile.am	2012-04-04 00:21:05.735275088 +0200
+@@ -3,6 +3,6 @@ SUBDIRS = engines
+ searchenginedir = $(prefix)/share/lince/search_engine
+ 
+ searchengine_SCRIPTS = nova2.py nova2dl.py
+-searchengine_DATA = helpers.py helpers.pyc __init__.py nova2dl.py nova2.py novaprinter.py novaprinter.pyc socks.py socks.pyc
++searchengine_DATA = helpers.py helpers.pyc __init__.py novaprinter.py novaprinter.pyc socks.py socks.pyc
+ 
+ EXTRA_DIST = $(searchengine_DATA) 

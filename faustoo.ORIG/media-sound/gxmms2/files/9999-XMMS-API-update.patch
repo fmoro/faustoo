@@ -1,0 +1,56 @@
+From 49bdd03ff5ae93d5123bf82d31e840f0a7037233 Mon Sep 17 00:00:00 2001
+From: Constantin Baranov <const@mimas.ru>
+Date: Fri, 22 Jan 2010 23:40:13 +0400
+Subject: [PATCH] XMMS API update
+
+Signed-off-by: Constantin Baranov <const@mimas.ru>
+---
+ gkrellxmms2/gkrellxmms2.c |    3 ++-
+ gmedialib/gmladdfiles.c   |    2 +-
+ gxmms2src/gxmms2.c        |    3 ++-
+ 3 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/gkrellxmms2/gkrellxmms2.c b/gkrellxmms2/gkrellxmms2.c
+index 41f82aa..e76143e 100644
+--- a/gkrellxmms2/gkrellxmms2.c
++++ b/gkrellxmms2/gkrellxmms2.c
+@@ -178,7 +178,8 @@ static void cb_panel_release_event(GtkWidget *widget, GdkEventButton *event,
+ 		if (xmms2ctrl_get_error() != ERROR_CONNECTION &&
+ 		    trackinfo_get_playtime(&track) > seek_ms && event->y < yoffset &&
+ 		    seek_in_progress) {
+-			res = xmmsc_playback_seek_ms(connection, seek_ms);
++			res = xmmsc_playback_seek_ms(connection, seek_ms,
++						XMMS_PLAYBACK_SEEK_SET);
+ 			xmmsc_result_unref(res);
+ 		}
+ 		seek_in_progress = FALSE;
+diff --git a/gmedialib/gmladdfiles.c b/gmedialib/gmladdfiles.c
+index 5385470..203055c 100644
+--- a/gmedialib/gmladdfiles.c
++++ b/gmedialib/gmladdfiles.c
+@@ -76,7 +76,7 @@ static void cb_add_files(GtkWidget *widget, gpointer pt)
+ 			snprintf(url, strlen(fname) + 8, "file://%s", fname);
+ 
+ 			if (g_file_test((fname), G_FILE_TEST_IS_DIR)) { /* directory */
+-				res = xmmsc_medialib_path_import(connection, url);
++				res = xmmsc_medialib_import_path(connection, url);
+ 			} else { /* file */
+ 				if (memcmp(url+(strlen(url)-4), ".pls", 4) == 0 ||
+ 				    memcmp(url+(strlen(url)-4), ".m3u", 4) == 0) {
+diff --git a/gxmms2src/gxmms2.c b/gxmms2src/gxmms2.c
+index a257fc1..a11efe4 100644
+--- a/gxmms2src/gxmms2.c
++++ b/gxmms2src/gxmms2.c
+@@ -89,7 +89,8 @@ static gboolean cb_scale_release_event(GtkWidget      *widget,
+ 
+ 	if (xmms2ctrl_get_error() != ERROR_CONNECTION) {
+ 		res = xmmsc_playback_seek_ms(connection, 
+-	          	(guint)gtk_range_get_value(GTK_RANGE(widget)));
++			(guint)gtk_range_get_value(GTK_RANGE(widget)),
++			XMMS_PLAYBACK_SEEK_SET);
+ 		xmmsc_result_unref(res);
+ 	}
+ 	update_scale = TRUE;
+-- 
+1.6.6.1
+
