@@ -18,7 +18,7 @@ else
 	SRC_URI_FORMAT="http://%s.visual-paradigm.com/visual-paradigm/vpuml$(get_version_component_range 1-2)/sp$(get_version_component_range 3)_$(get_version_component_range 4)/${MY_PN}_Linux_NoInstall_${MY_PV}.tar.gz http://%s.visual-paradigm.com/archives/vpuml$(get_version_component_range 1-2)/sp$(get_version_component_range 3)_$(get_version_component_range 4)/${MY_PN}_Linux_NoInstall_${MY_PV}.tar.gz"
 fi
 
-DESCRIPTION="Visual Paradigm for UML"
+DESCRIPTION="Visual Paradigm for UML Comunity Version"
 HOMEPAGE="http://www.visual-paradigm.com"
 
 SRC_URI=`printf "${SRC_URI_FORMAT} " eu{1..4} usa{5..6}`
