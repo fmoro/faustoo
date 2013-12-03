@@ -2,8 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="1"
+
 EGIT_REPO_URI="git://github.com/jeffdameth/ecomorph-e17.git"
-inherit git libtool flag-o-matic
+inherit git-2 libtool flag-o-matic
 
 DESCRIPTION="e17 window manager with compiz"
 HOMEPAGE="http://code.google.com/p/itask-module/wiki/Stuff

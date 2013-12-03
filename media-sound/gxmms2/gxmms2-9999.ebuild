@@ -4,7 +4,7 @@
 
 EAPI="1"
 
-inherit eutils git multilib
+inherit eutils git-2 multilib
 
 DESCRIPTION="GTK2 based XMMS2 client written in C"
 HOMEPAGE="http://wejp.k.vu/projects/xmms2/"
