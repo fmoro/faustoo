@@ -22,4 +22,3 @@ IUSE=""
 DEPEND=">=dev-lang/php-5.3[threads]"
 RDEPEND="${DEPEND}"
 
-my_conf="--enable-pthreads"

@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="apache apc dev less mongodb mysql nginx"
 
-REQUIRED_USE="^^ ( apache nginx )"
+#REQUIRED_USE="^^ ( apache nginx )"
 RDEPEND="dev-lang/php[intl,cli,ctype,mysql,pdo,session,simplexml,tokenizer,xml]
 		apc? ( dev-php/pecl-apc )
 		apache? ( www-servers/apache )
