@@ -21,7 +21,8 @@ EGIT_REPO_URI="git://github.com/krakjoe/pthreads.git"
 
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~arm ~ppc ~ppc64"
+#KEYWORDS="~x86 ~amd64 ~arm ~ppc ~ppc64"
+KEYWORDS=""
 IUSE=""
 
 DEPEND=">=dev-lang/php-5.3[threads]"
