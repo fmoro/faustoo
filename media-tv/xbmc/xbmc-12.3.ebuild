@@ -153,7 +153,7 @@ src_unpack() {
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-9999-nomythtv.patch
 	epatch "${FILESDIR}"/${PN}-9999-no-arm-flags.patch #400617
-	epatch "${FILESDIR}"/${PN}-12.3-no-sse2.patch
+	epatch "${FILESDIR}"/${PN}-12.3-no-sse2.patch #47526
 	# Backported fixes
 	EPATCH_MULTI_MSG="Applying patches backported from master..." \
 		EPATCH_SUFFIX="patch" \
