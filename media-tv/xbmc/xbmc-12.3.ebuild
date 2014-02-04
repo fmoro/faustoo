@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.150 2013/08/11 22:47:54 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-12.2-r1.ebuild,v 1.6 2013/08/11 22:47:54 aballier Exp $
 
 EAPI=5
 
@@ -9,13 +9,15 @@ EAPI=5
 PYTHON_COMPAT=( python{2_6,2_7} )
 PYTHON_REQ_USE="sqlite"
 
-inherit eutils python-single-r1 multiprocessing autotools
+inherit eutils python-single-r1 multiprocessing autotools flag-o-matic
+
+BACKPORTS_VERSION=1
 
 case ${PV} in
 9999)
 	EGIT_REPO_URI="git://github.com/xbmc/xbmc.git"
 	inherit git-2
-	SRC_URI="!java? ( mirror://gentoo/${P}-20130413-generated-addons.tar.xz )"
+	SRC_URI="!java? ( mirror://gentoo/${P}-20121224-generated-addons.tar.xz )"
 	;;
 *_alpha*|*_beta*|*_rc*)
 	MY_PV="Frodo_${PV#*_}"
@@ -26,7 +28,9 @@ case ${PV} in
 	;;
 *)
 	MY_P=${P/_/-*_}
-	SRC_URI="http://mirrors.xbmc.org/releases/source/${MY_P}.tar.gz"
+	SRC_URI="http://mirrors.xbmc.org/releases/source/${MY_P}.tar.gz
+		mirror://gentoo/${PN}_backports-12-${BACKPORTS_VERSION}.tar.bz2
+		mirror://gentoo/${P}-generated-addons.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 	;;
 esac
@@ -36,10 +40,10 @@ HOMEPAGE="http://xbmc.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="airplay alsa altivec avahi bluetooth bluray caps cec css debug +fishbmc gles goom java joystick midi mysql neon nfs +opengl profile +projectm pulseaudio pvr +rsxs rtmp +samba +sdl sse sse2 sftp udev upnp +usb vaapi vdpau webserver +X +xrandr"
+IUSE="airplay alsa altivec avahi bluetooth bluray caps cec +crystalhd css debug external-ffmpeg gles goom java joystick midi mysql neon nfs non-free -omxplayer opengl +openmax optical-drive optimizations profile +projectm pulseaudio pvr -raspberrypi +rsxs rtmp +samba +sdl sse sse2 sftp udev upnp +usb vaapi +vdadecoder vdpau vtbdecoder webserver +X +xrandr"
+
 REQUIRED_USE="
 	pvr? ( mysql )
-	rsxs? ( X )
 	X? ( sdl )
 	xrandr? ( X )
 "
@@ -59,8 +63,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/tinyxml[stl]
 	dev-libs/yajl
 	dev-python/simplejson[${PYTHON_USEDEP}]
-	media-fonts/corefonts
-	media-fonts/roboto
 	media-libs/alsa-lib
 	media-libs/flac
 	media-libs/fontconfig
@@ -91,7 +93,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/tiff
 	pulseaudio? ( media-sound/pulseaudio )
 	media-sound/wavpack
-	|| ( >=media-video/ffmpeg-1.2.1:0=[encode] ( media-libs/libpostproc >=media-video/libav-10_alpha:=[encode] ) )
+	|| ( media-libs/libpostproc media-video/ffmpeg:0 )
+	>=virtual/ffmpeg-0.6[encode]
 	rtmp? ( media-video/rtmpdump )
 	avahi? ( net-dns/avahi )
 	nfs? ( net-fs/libnfs )
@@ -114,7 +117,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	vaapi? ( x11-libs/libva[opengl] )
 	vdpau? (
 		|| ( x11-libs/libvdpau >=x11-drivers/nvidia-drivers-180.51 )
-		|| ( >=media-video/ffmpeg-1.2.1:0=[vdpau] >=media-video/libav-10_alpha:=[vdpau] )
+		virtual/ffmpeg[vdpau]
 	)
 	X? (
 		x11-apps/xdpyinfo
@@ -132,19 +135,15 @@ DEPEND="${COMMON_DEPEND}
 	X? ( x11-proto/xineramaproto )
 	dev-util/cmake
 	x86? ( dev-lang/nasm )
-	java? ( virtual/jre )"
+	java? ( virtual/jre )
+	raspberrypi? ( media-libs/raspberrypi-userland
+		media-libs/libsdl
+		media-libs/sdl-image )"
 
-S=${WORKDIR}/${MY_P}
+S=${WORKDIR}/${MY_P}-Frodo
 
 pkg_setup() {
 	python-single-r1_pkg_setup
-
-	if has_version 'media-video/libav' ; then
-		ewarn "Building ${PN} against media-video/libav is not supported upstream."
-		ewarn "It requires building a (small) wrapper library with some code"
-		ewarn "from media-video/ffmpeg."
-		ewarn "If you experience issues, please try with media-video/ffmpeg."
-	fi
 }
 
 src_unpack() {
@@ -154,6 +153,11 @@ src_unpack() {
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-9999-nomythtv.patch
 	epatch "${FILESDIR}"/${PN}-9999-no-arm-flags.patch #400617
+	epatch "${FILESDIR}"/${PN}-12.3-no-sse2.patch #47526
+	# Backported fixes
+	EPATCH_MULTI_MSG="Applying patches backported from master..." \
+		EPATCH_SUFFIX="patch" \
+		epatch "${WORKDIR}/${PN}_backports"
 	# The mythtv patch touches configure.ac, so force a regen
 	rm -f configure
 
@@ -195,7 +199,19 @@ src_prepare() {
 	epatch_user #293109
 
 	# Tweak autotool timestamps to avoid regeneration
-	find . -type f -print0 | xargs -0 touch -r configure
+	find . -type f -exec touch -r configure {} +
+
+	if use raspberrypi ; then
+		sed -i -e 's/USE_BUILDROOT=1/USE_BUILDROOT=0/' \
+			-e 's/sudo //g' \
+			-e 's/\/opt\//${S}\/opt\//g' tools/rbp/setup-sdk.sh 
+		sed -i 's/TOOLCHAIN=\/usr\/local\/bcm-gcc/TOOLCHAIN=\/usr/' tools/rbp/setup-sdk.sh
+		sed -i 's/cd $(SOURCE); $(CONFIGURE)/#cd $(SOURCE); $(CONFIGURE)/' tools/rbp/depends/xbmc/Makefile
+		ln -s ${S}/xbmc/guilib ${S}/lib/libsquish ${S}/xbmc/linux/PlatformDefs.h ${S}/xbmc/config.h ${S}/xbmc/utils ${S}/tools/TexturePacker/
+		ln -s ${S}/xbmc/config.h ${S}/xbmc/utils/
+		sh tools/rbp/setup-sdk.sh
+		make -C tools/rbp/depends/xbmc/
+	fi
 }
 
 src_configure() {
@@ -208,21 +224,25 @@ src_configure() {
 	# Requiring java is asine #434662
 	export ac_cv_path_JAVA_EXE=$(which $(usex java java true))
 
+	if use raspberrypi ; then
+		append-ldflags -L/opt/vc/lib
+		append-flags -I/opt/vc/include
+	fi
+
 	econf \
 		--docdir=/usr/share/doc/${PF} \
 		--disable-ccache \
-		--disable-optimizations \
 		--enable-external-libraries \
-		$(has_version 'media-video/libav' && echo "--enable-libav-compat") \
-		--enable-gl \
 		$(use_enable airplay) \
+		$(use_enable alsa) \
 		$(use_enable avahi) \
 		$(use_enable bluray libbluray) \
 		$(use_enable caps libcap) \
 		$(use_enable cec libcec) \
+		$(use_enable crystalhd) \
 		$(use_enable css dvdcss) \
 		$(use_enable debug) \
-		$(use_enable fishbmc) \
+		$(use_enable external-ffmpeg) \
 		$(use_enable gles) \
 		$(use_enable goom) \
 		--disable-hal \
@@ -231,11 +251,17 @@ src_configure() {
 		$(use_enable mysql) \
 		$(use_enable neon) \
 		$(use_enable nfs) \
+		$(use_enable non-free) \
+		$(use_enable omxplayer player omxplayer) \
 		$(use_enable opengl gl) \
+		$(use_enable openmax) \
+		$(use_enable optical-drive) \
+		$(use_enable optimizations) \
 		$(use_enable profile profiling) \
 		$(use_enable projectm) \
 		$(use_enable pulseaudio pulse) \
 		$(use_enable pvr mythtv) \
+		$(use_with raspberrypi platform raspberry-pi) \
 		$(use_enable rsxs) \
 		$(use_enable rtmp) \
 		$(use_enable samba) \
@@ -246,6 +272,8 @@ src_configure() {
 		$(use_enable vaapi) \
 		$(use_enable vdpau) \
 		$(use_enable webserver) \
+		$(use_enable vdadecoder) \
+		$(use_enable vtbdecoder) \
 		$(use_enable X x11) \
 		$(use_enable xrandr)
 }
@@ -256,34 +284,6 @@ src_install() {
 
 	domenu tools/Linux/xbmc.desktop
 	newicon tools/Linux/xbmc-48x48.png xbmc.png
-
-	# Remove optional addons (platform specific and disabled by USE flag).
-	local disabled_addons=(
-		repository.pvr-{android,ios,osx{32,64},win32}.xbmc.org
-		visualization.dxspectrum
-	)
-	use fishbmc  || disabled_addons+=( visualization.fishbmc )
-	use projectm || disabled_addons+=( visualization.{milkdrop,projectm} )
-	use rsxs     || disabled_addons+=( screensaver.rsxs.{euphoria,plasma,solarwinds} )
-	rm -rf "${disabled_addons[@]/#/${ED}/usr/share/xbmc/addons/}"
-
-	# Punt simplejson bundle, we use the system one anyway.
-	rm -rf "${ED}"/usr/share/xbmc/addons/script.module.simplejson/lib
-	# Remove fonconfig settings that are used only on MacOSX.
-	# Can't be patched upstream because they just find all files and install
-	# them into same structure like they have in git.
-	rm -rf "${ED}"/usr/share/xbmc/system/players/dvdplayer/etc
-
-	# Replace bundled fonts with system ones
-	# teletext.ttf: unknown
-	# bold-caps.ttf: unknown
-	# roboto: roboto-bold, roboto-regular
-	# arial.ttf: font mashed from droid/roboto, not removed wrt bug#460514
-	rm -rf "${ED}"/usr/share/xbmc/addons/skin.confluence/fonts/Roboto-*
-	dosym /usr/share/fonts/roboto/Roboto-Regular.ttf \
-		/usr/share/xbmc/addons/skin.confluence/fonts/Roboto-Regular.ttf
-	dosym /usr/share/fonts/roboto/Roboto-Bold.ttf \
-		/usr/share/xbmc/addons/skin.confluence/fonts/Roboto-Bold.ttf
 
 	python_domodule tools/EventClients/lib/python/xbmcclient.py
 	python_newscript "tools/EventClients/Clients/XBMC Send/xbmc-send.py" xbmc-send

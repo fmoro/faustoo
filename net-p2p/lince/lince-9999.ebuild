@@ -6,7 +6,8 @@ EAPI="1"
 
 if [[ ${PV} = 9999 ]] ; then
 	inherit subversion
-	ESVN_REPO_URI=https://lincetorrent.svn.sourceforge.net/svnroot/lincetorrent
+	#ESVN_REPO_URI=https://lincetorrent.svn.sourceforge.net/svnroot/lincetorrent
+	ESVN_REPO_URI=https://svn.code.sf.net/p/lincetorrent/code/
 else
 	MY_P="Lince-${PV}"
 	S=${WORKDIR}/${MY_P}
