@@ -2,9 +2,10 @@ EAPI=4
 
 inherit rpm multilib
 
-DESCRIPTION="Brother DCP-J315W LPR+cupswrapper drivers"
+DESCRIPTION="Brother DCP-7065DN LPR+cupswrapper drivers"
 HOMEPAGE="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html#DCP-7065DN"
-SRC_URI="http://www.brother.com/pub/bsc/linux/dlf/dcp7065dnlpr-2.1.0-1.i386.rpm
+PV=${PV%.*}-${PV##*.} 
+SRC_URI="http://www.brother.com/pub/bsc/linux/dlf/dcp7065dnlpr-${PV}.i386.rpm
 		http://www.brother.com/pub/bsc/linux/dlf/cupswrapperDCP7065DN-2.0.4-2.i386.rpm"
 
 LICENSE="GPL"
@@ -38,19 +39,26 @@ src_install() {
 
 pkg_postinst () {
 	ewarn "You really wanna read this."
-	elog "You need to use brprintconf_dcpj315w to change printer options"
+	echo
+	elog "For add your printer to cups, it is needed to run the wrapper:"
+	elog "      /usr/local/Brother/Printer/DCP7065DN/cupswrapper/cupswrapperDCP7065DN-2.0.4"
+	elog
+	elog "You need to use brprintconflsr3 to change printer options"
 	elog "For example, you should set paper type to A4 right after instalation"
 	elog "or your prints will be misaligned!"
 	elog
 	elog "Set A4 Paper type:"
-	elog "		brprintconf_dcpj315w -pt A4"
+	elog "		brprintconflsr3 -pt A4"
 	elog "Set 'Fast Normal' quality:"
-	elog "		brprintconf_dcpj315w -reso 300x300dpi"
+	elog "		brprintconflsr3 -reso 300x300dpi"
 	elog
 	elog "For more options just execute brprintconf_dcpj315w as root"
 	elog "You can check current settings in:"
-	elog "		/usr/local/Brother/Printer/dcpj315w/inf/brdcpj315wrc"
+	elog "		/usr/local/Brother/Printer/DCP7065DN/inf/brdcpj315wrc"
+	elog "To add printer over WIFI add use LPD or SOCKET protocol, for example:"
+	elog "      lpd://<host_or_ip>/BINARY_P1"
+	elog "            - or -"
+	elog "      socket://<host_or_ip>:9100"
 }
 
 # TODO: Write alternative to filterdcpj315w or patch it for the security manner.
-# TODO: Write something about config printer over WIFI.
