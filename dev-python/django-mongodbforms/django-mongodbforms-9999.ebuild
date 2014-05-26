@@ -11,7 +11,7 @@ DESCRIPTION="A flexible and capable API layer for django utilising serialisers"
 HOMEPAGE="https://github.com/jschrewe/django-mongodbforms"
 #SRC_URI="https://github.com/jschrewe/${PN}/archive/${PV}.tar.gz"
 #EGIT_REPO_URI="https://github.com/jschrewe/django-mongodbforms"
-EGIT_REPO_URI="https://github.com/zayer/django-mongodbforms"
+EGIT_REPO_URI="https://github.com/drzayer/django-mongodbforms"
 
 KEYWORDS="~amd64 ~x86"
 IUSE="bip doc digest xml oauth test yaml"
