@@ -10,19 +10,21 @@ MY_PN="Visual_Paradigm_for_UML"
 MY_P="${MY_PN}_$(get_version_component_range 1-2)"
 if [[ $(get_version_component_count) == 3 ]]; then
 	MY_PV="$(replace_all_version_separators _)"
-	SRC_URI_FORMAT="http://%s.visual-paradigm.com/visual-paradigm/${PN}$(get_version_component_range 1-2)/$(get_version_component_range 3)/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz http://%s.visual-paradigm.com/archives/${PN}$(get_version_component_range 1-2)/$(get_version_component_range 3)/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz"
+	SRC_URI_FORMAT="http://%s.visual-paradigm.com/archives/${PN}$(get_version_component_range 1-2)/$(get_version_component_range 3)/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz"
+	#SRC_URI_FORMAT="http://%s.visual-paradigm.com/visual-paradigm/${PN}$(get_version_component_range 1-2)/$(get_version_component_range 3)/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz http://%s.visual-paradigm.com/archives/${PN}$(get_version_component_range 1-2)/$(get_version_component_range 3)/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz"
 else
 	MY_PV="$(replace_all_version_separators _ $(get_version_component_range 1-2))"
 	MY_PV="${MY_PV}_sp$(get_version_component_range 3)"
 	MY_PV="${MY_PV}_$(get_version_component_range 4)"
-	SRC_URI_FORMAT="http://%s.visual-paradigm.com/visual-paradigm/${PN}$(get_version_component_range 1-2)/sp$(get_version_component_range 3)_$(get_version_component_range 4)/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz http://%s.visual-paradigm.com/archives/${PN}$(get_version_component_range 1-2)/sp$(get_version_component_range 3)_$(get_version_component_range 4)/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz"
+	SRC_URI_FORMAT="http://%s.visual-paradigm.com/archives/${PN}$(get_version_component_range 1-2)/sp$(get_version_component_range 3)_$(get_version_component_range 4)/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz"
+	#SRC_URI_FORMAT="http://%s.visual-paradigm.com/visual-paradigm/${PN}$(get_version_component_range 1-2)/sp$(get_version_component_range 3)_$(get_version_component_range 4)/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz http://%s.visual-paradigm.com/archives/${PN}$(get_version_component_range 1-2)/sp$(get_version_component_range 3)_$(get_version_component_range 4)/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz"
 fi
 
 DESCRIPTION="Visual Paradigm for UML"
 HOMEPAGE="http://www.visual-paradigm.com"
 
-#SRC_URI=`printf "${SRC_URI_FORMAT} " eu{1..4} usa{5..6}`
-SRC_URI="http://www.visual-paradigm.com/downloads/vpuml10.2/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz"
+SRC_URI=`printf "${SRC_URI_FORMAT} " eu{1..4} usa{5..6}`
+#SRC_URI="http://www.visual-paradigm.com/downloads/vpuml10.2/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz"
 
 S="${WORKDIR}/${MY_P}"
 

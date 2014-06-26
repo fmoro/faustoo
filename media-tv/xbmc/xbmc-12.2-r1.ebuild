@@ -126,7 +126,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		x11-libs/libXrender
 	)"
 RDEPEND="${COMMON_DEPEND}
-	udev? (	sys-fs/udisks:0 sys-power/upower )"
+	udev? (	sys-fs/udisks:0 sys-power/upower-pm-utils )"
 DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils
 	dev-lang/swig
