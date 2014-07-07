@@ -8,9 +8,11 @@ inherit eutils
 RESTRICT="strip"
 QA_TEXTRELS="opt/${P}/bin/libbreakgen.so"
 
+PVERSION="0.8.0"
+
 DESCRIPTION="A new Android development environment based on IntelliJ IDEA"
-HOMEPAGE="http://jetbrains.com/idea/"
-SRC_URI="http://dl.google.com/android/studio/${PN}-bundle-${PV}-linux.tgz"
+HOMEPAGE="https://developer.android.com/sdk/installing/studio.html"
+SRC_URI="http://dl.google.com/android/studio/install/${PVERSION}/${PN}-bundle-${PV}-linux.tgz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

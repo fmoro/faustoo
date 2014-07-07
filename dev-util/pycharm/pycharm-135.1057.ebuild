@@ -1,10 +1,10 @@
 EAPI="4"
 inherit eutils
 PVERSION=${PV}
-#PVERSION="2.7.3"
+PVERSION="3.4.1"
 DESCRIPTION="PyCharm"
 HOMEPAGE="www.jetbrains.com/pycharm/"
-SRC_URI="http://download.jetbrains.com/python/pycharm-${PVERSION}.tar.gz"
+SRC_URI="http://download.jetbrains.com/python/pycharm-professional-${PVERSION}.tar.gz"
 KEYWORDS="~x86 ~amd64"
 DEPEND=">=virtual/jre-1.6"
 RDEPEND="${DEPEND}"
