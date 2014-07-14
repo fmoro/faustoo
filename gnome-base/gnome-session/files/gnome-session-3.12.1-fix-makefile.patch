@@ -1,0 +1,21 @@
+diff -urN gnome-session-3.12.1/gnome-session/Makefile gnome-session-3.12.1-patched/gnome-session/Makefile
+--- gnome-session-3.12.1/gnome-session/Makefile	2014-07-09 05:31:51.897935891 -0400
++++ gnome-session-3.12.1-patched/gnome-session/Makefile	2014-07-09 05:29:21.887928505 -0400
+@@ -422,7 +422,7 @@
+ AM_CPPFLAGS = \
+ 	$(GTK3_CFLAGS)				\
+ 	$(GNOME_SESSION_CFLAGS)			\
+-	$(UPOWER_CFLAGS)			\
++	-I/usr/include/libupower-glib	\
+ 	$(DISABLE_DEPRECATED_CFLAGS)
+ 
+ AM_CFLAGS = $(WARN_CFLAGS)
+@@ -465,7 +465,7 @@
+ 	$(XTEST_LIBS)				\
+ 	$(XEXT_LIBS)				\
+ 	$(GNOME_SESSION_LIBS)			\
+-	$(UPOWER_LIBS)				\
++	-lupower-glib				\
+ 	$(GCONF_LIBS)				\
+ 	$(SYSTEMD_LIBS)				\
+ 	$(GIOUNIX_LIBS)				\

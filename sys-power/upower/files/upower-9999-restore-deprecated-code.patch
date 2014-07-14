@@ -1,0 +1,3542 @@
+diff -urN git/upower-9999/Makefile git/upower-9999-patched/Makefile
+--- git/upower-9999/Makefile	2014-07-13 21:16:30.621320866 -0400
++++ git/upower-9999-patched/Makefile	2014-07-13 21:18:51.297309290 -0400
+@@ -199,7 +199,7 @@
+ ETAGS = etags
+ CTAGS = ctags
+ CSCOPE = cscope
+-DIST_SUBDIRS = etc libupower-glib src doc tools po rules
++DIST_SUBDIRS = etc libupower-glib src doc tools policy po rules
+ DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+ distdir = $(PACKAGE)-$(VERSION)
+ top_distdir = $(distdir)
+@@ -439,7 +439,7 @@
+ top_srcdir = .
+ udevrulesdir = /lib/udev/rules.d
+ ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+-SUBDIRS = etc libupower-glib src doc tools po $(am__append_1)
++SUBDIRS = etc libupower-glib src doc tools policy po $(am__append_1)
+ EXTRA_DIST = \
+ 	HACKING 			\
+ 	ChangeLog
+diff -urN git/upower-9999/Makefile.am git/upower-9999-patched/Makefile.am
+--- git/upower-9999/Makefile.am	2014-07-01 02:42:33.078331000 -0400
++++ git/upower-9999-patched/Makefile.am	2014-07-13 20:47:22.836464000 -0400
+@@ -2,7 +2,7 @@
+ 
+ ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+ 
+-SUBDIRS = etc libupower-glib src doc tools po
++SUBDIRS = etc libupower-glib src doc tools policy po
+ 
+ if BACKEND_TYPE_LINUX
+ SUBDIRS += rules
+diff -urN git/upower-9999/Makefile.in git/upower-9999-patched/Makefile.in
+--- git/upower-9999/Makefile.in	2014-07-13 21:16:28.124321071 -0400
++++ git/upower-9999-patched/Makefile.in	2014-07-13 21:18:48.735309501 -0400
+@@ -199,7 +199,7 @@
+ ETAGS = etags
+ CTAGS = ctags
+ CSCOPE = cscope
+-DIST_SUBDIRS = etc libupower-glib src doc tools po rules
++DIST_SUBDIRS = etc libupower-glib src doc tools policy po rules
+ DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+ distdir = $(PACKAGE)-$(VERSION)
+ top_distdir = $(distdir)
+@@ -439,7 +439,7 @@
+ top_srcdir = @top_srcdir@
+ udevrulesdir = @udevrulesdir@
+ ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+-SUBDIRS = etc libupower-glib src doc tools po $(am__append_1)
++SUBDIRS = etc libupower-glib src doc tools policy po $(am__append_1)
+ EXTRA_DIST = \
+ 	HACKING 			\
+ 	ChangeLog
+diff -urN git/upower-9999/configure git/upower-9999-patched/configure
+--- git/upower-9999/configure	2014-07-13 21:16:27.515321121 -0400
++++ git/upower-9999-patched/configure	2014-07-13 21:18:48.094309554 -0400
+@@ -16323,7 +16323,7 @@
+ 
+ 
+ 
+-ac_config_files="$ac_config_files Makefile upower-glib.pc etc/Makefile src/Makefile src/dummy/Makefile src/freebsd/Makefile src/openbsd/Makefile src/linux/Makefile tools/Makefile doc/Makefile doc/version.xml doc/man/Makefile doc/dbus/Makefile rules/Makefile libupower-glib/Makefile libupower-glib/up-version.h po/Makefile.in"
++ac_config_files="$ac_config_files Makefile upower-glib.pc etc/Makefile src/Makefile src/dummy/Makefile src/freebsd/Makefile src/openbsd/Makefile src/linux/Makefile tools/Makefile doc/Makefile doc/version.xml doc/man/Makefile doc/dbus/Makefile policy/Makefile rules/Makefile libupower-glib/Makefile libupower-glib/up-version.h po/Makefile.in"
+ 
+ cat >confcache <<\_ACEOF
+ # This file is a shell script that caches the results of configure
+@@ -17428,6 +17428,7 @@
+     "doc/version.xml") CONFIG_FILES="$CONFIG_FILES doc/version.xml" ;;
+     "doc/man/Makefile") CONFIG_FILES="$CONFIG_FILES doc/man/Makefile" ;;
+     "doc/dbus/Makefile") CONFIG_FILES="$CONFIG_FILES doc/dbus/Makefile" ;;
++    "policy/Makefile") CONFIG_FILES="$CONFIG_FILES policy/Makefile" ;;
+     "rules/Makefile") CONFIG_FILES="$CONFIG_FILES rules/Makefile" ;;
+     "libupower-glib/Makefile") CONFIG_FILES="$CONFIG_FILES libupower-glib/Makefile" ;;
+     "libupower-glib/up-version.h") CONFIG_FILES="$CONFIG_FILES libupower-glib/up-version.h" ;;
+diff -urN git/upower-9999/configure.ac git/upower-9999-patched/configure.ac
+--- git/upower-9999/configure.ac	2014-07-01 02:42:33.078331000 -0400
++++ git/upower-9999-patched/configure.ac	2014-07-13 20:47:36.929463000 -0400
+@@ -255,6 +255,7 @@
+ doc/version.xml
+ doc/man/Makefile
+ doc/dbus/Makefile
++policy/Makefile
+ rules/Makefile
+ libupower-glib/Makefile
+ libupower-glib/up-version.h
+diff -urN git/upower-9999/etc/UPower.conf git/upower-9999-patched/etc/UPower.conf
+--- git/upower-9999/etc/UPower.conf	2014-07-01 02:42:33.079331000 -0400
++++ git/upower-9999-patched/etc/UPower.conf	2014-07-13 20:36:43.740517000 -0400
+@@ -3,6 +3,29 @@
+ 
+ [UPower]
+ 
++# This is the smallest amount of time that UPower gives to session and system
++# processes after the suspend or hibernate request is given.
++# If the session power management component uses AboutToSuspend() then the
++# session process can only make this time larger than the value below, never
++# smaller.
++#
++# Reducing this time means the suspend happens quicker, but might also not give
++# some processes enough time to save state.
++#
++# default=1000
++SleepTimeout=1000
++
++# This controls whether hibernate is allowed when using encrypted swap.
++#
++# default=true
++AllowHibernateEncryptedSwap=true
++
++# This controls whether we want the powersave commands to be run when running
++# on battery or plugging AC.
++#
++# default=true
++RunPowersaveCommand=true
++
+ # Enable the Watts Up Pro device.
+ #
+ # The Watts Up Pro contains a generic FTDI USB device without a specific
+diff -urN git/upower-9999/libupower-glib/Makefile git/upower-9999-patched/libupower-glib/Makefile
+--- git/upower-9999/libupower-glib/Makefile	2014-07-13 21:16:30.856320846 -0400
++++ git/upower-9999-patched/libupower-glib/Makefile	2014-07-13 21:18:51.549309270 -0400
+@@ -137,7 +137,8 @@
+ LTLIBRARIES = $(lib_LTLIBRARIES)
+ am__DEPENDENCIES_1 =
+ libupower_glib_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+-	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
++	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
++	$(am__DEPENDENCIES_1)
+ am__objects_1 = libupower_glib_la-up-client-glue.lo
+ am__objects_2 = libupower_glib_la-up-device-glue.lo
+ am__objects_3 = libupower_glib_la-up-wakeups-glue.lo
+@@ -418,6 +419,7 @@
+ udevrulesdir = /lib/udev/rules.d
+ AM_CPPFLAGS = \
+ 	$(GLIB_CFLAGS)						\
++	$(DBUS_GLIB_CFLAGS)					\
+ 	$(GIO_UNIX_CFLAGS)					\
+ 	-I$(top_builddir)					\
+ 	-I$(top_srcdir)						\
+@@ -466,6 +468,7 @@
+ libupower_glib_la_LIBADD = \
+ 	$(INTLLIBS)						\
+ 	$(GLIB_LIBS)						\
++	$(DBUS_GLIB_LIBS)					\
+ 	$(GIO_UNIX_LIBS)
+ 
+ libupower_glib_la_LDFLAGS = \
+diff -urN git/upower-9999/libupower-glib/Makefile.am git/upower-9999-patched/libupower-glib/Makefile.am
+--- git/upower-9999/libupower-glib/Makefile.am	2014-07-01 02:42:33.079331000 -0400
++++ git/upower-9999-patched/libupower-glib/Makefile.am	2014-07-13 20:37:49.638511000 -0400
+@@ -1,5 +1,6 @@
+ AM_CPPFLAGS = \
+ 	$(GLIB_CFLAGS)						\
++	$(DBUS_GLIB_CFLAGS)					\
+ 	$(GIO_UNIX_CFLAGS)					\
+ 	-I$(top_builddir)					\
+ 	-I$(top_srcdir)						\
+@@ -82,6 +83,7 @@
+ libupower_glib_la_LIBADD =					\
+ 	$(INTLLIBS)						\
+ 	$(GLIB_LIBS)						\
++	$(DBUS_GLIB_LIBS)					\
+ 	$(GIO_UNIX_LIBS)
+ 
+ libupower_glib_la_LDFLAGS =					\
+diff -urN git/upower-9999/libupower-glib/Makefile.in git/upower-9999-patched/libupower-glib/Makefile.in
+--- git/upower-9999/libupower-glib/Makefile.in	2014-07-13 21:16:28.255321060 -0400
++++ git/upower-9999-patched/libupower-glib/Makefile.in	2014-07-13 21:18:48.868309490 -0400
+@@ -137,7 +137,8 @@
+ LTLIBRARIES = $(lib_LTLIBRARIES)
+ am__DEPENDENCIES_1 =
+ libupower_glib_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+-	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
++	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
++	$(am__DEPENDENCIES_1)
+ am__objects_1 = libupower_glib_la-up-client-glue.lo
+ am__objects_2 = libupower_glib_la-up-device-glue.lo
+ am__objects_3 = libupower_glib_la-up-wakeups-glue.lo
+@@ -418,6 +419,7 @@
+ udevrulesdir = @udevrulesdir@
+ AM_CPPFLAGS = \
+ 	$(GLIB_CFLAGS)						\
++	$(DBUS_GLIB_CFLAGS)					\
+ 	$(GIO_UNIX_CFLAGS)					\
+ 	-I$(top_builddir)					\
+ 	-I$(top_srcdir)						\
+@@ -466,6 +468,7 @@
+ libupower_glib_la_LIBADD = \
+ 	$(INTLLIBS)						\
+ 	$(GLIB_LIBS)						\
++	$(DBUS_GLIB_LIBS)					\
+ 	$(GIO_UNIX_LIBS)
+ 
+ libupower_glib_la_LDFLAGS = \
+diff -urN git/upower-9999/libupower-glib/up-client.c git/upower-9999-patched/libupower-glib/up-client.c
+--- git/upower-9999/libupower-glib/up-client.c	2014-07-01 02:42:33.079331000 -0400
++++ git/upower-9999-patched/libupower-glib/up-client.c	2014-07-13 20:51:19.214445000 -0400
+@@ -35,6 +35,11 @@
+ #include <stdio.h>
+ #include <glib-object.h>
+ 
++#ifdef ENABLE_DEPRECATED
++#include <glib.h>
++#include <dbus/dbus-glib.h>
++#endif /* ENABLE_DEPRECATED */
++
+ #include "up-client.h"
+ #include "up-client-glue.h"
+ #include "up-device.h"
+@@ -53,20 +58,40 @@
+ struct _UpClientPrivate
+ {
+ 	UpClientGlue		*proxy;
++#ifdef ENABLE_DEPRECATED
++	DBusGConnection		*bus;
++	DBusGProxy		*old_proxy;
++	DBusGProxy		*prop_proxy;
++	gboolean		 have_properties;
++	gboolean		 can_suspend;
++	gboolean		 can_hibernate;
++	gboolean		 lid_force_sleep;
++#endif /* ENABLE_DEPRECATED */
+ };
+ 
+ enum {
+ 	UP_CLIENT_DEVICE_ADDED,
+ 	UP_CLIENT_DEVICE_REMOVED,
++#ifdef ENABLE_DEPRECATED
++	UP_CLIENT_NOTIFY_SLEEP,
++	UP_CLIENT_NOTIFY_RESUME,
++#endif /* ENABLE_DEPRECATED */
+ 	UP_CLIENT_LAST_SIGNAL
+ };
+ 
+ enum {
+ 	PROP_0,
+ 	PROP_DAEMON_VERSION,
++#ifdef ENABLE_DEPRECATED
++	PROP_CAN_SUSPEND,
++	PROP_CAN_HIBERNATE,
++#endif /* ENABLE_DEPRECATED */
+ 	PROP_ON_BATTERY,
+ 	PROP_LID_IS_CLOSED,
+ 	PROP_LID_IS_PRESENT,
++#ifdef ENABLE_DEPRECATED
++	PROP_LID_FORCE_SLEEP,
++#endif /* ENABLE_DEPRECATED */
+ 	PROP_LAST
+ };
+ 
+@@ -174,6 +199,233 @@
+ 	return action;
+ }
+ 
++#ifdef ENABLE_DEPRECATED
++/**
++ * up_client_suspend_sync:
++ * @client: a #UpClient instance.
++ * @cancellable: a #GCancellable or %NULL
++ * @error: a #GError, or %NULL.
++ *
++ * Puts the computer into a low power state, but state is not preserved if the
++ * power is lost.
++ *
++ * NOTE: The system is still consuming a small amount of power
++ *
++ * Return value: TRUE if system suspended okay, FALSE other wise.
++ *
++ * Since: 0.9.0
++ **/
++gboolean
++up_client_suspend_sync (UpClient *client, GCancellable *cancellable, GError **error)
++{
++	gboolean ret;
++	GError *error_local = NULL;
++
++	g_return_val_if_fail (UP_IS_CLIENT (client), FALSE);
++	g_return_val_if_fail (client->priv->old_proxy != NULL, FALSE);
++
++	ret = dbus_g_proxy_call (client->priv->old_proxy, "Suspend", &error_local,
++				 G_TYPE_INVALID, G_TYPE_INVALID);
++	if (!ret) {
++		/* DBus might time out, which is okay */
++		if (g_error_matches (error_local, DBUS_GERROR, DBUS_GERROR_NO_REPLY)) {
++			g_debug ("DBUS timed out, but recovering");
++			ret = TRUE;
++			goto out;
++		}
++
++		/* an actual error */
++		g_warning ("Couldn't suspend: %s", error_local->message);
++		g_set_error (error, 1, 0, "%s", error_local->message);
++	}
++out:
++	if (error_local != NULL)
++		g_error_free (error_local);
++	return ret;
++}
++
++/**
++ * up_client_hibernate_sync:
++ * @client: a #UpClient instance.
++ * @cancellable: a #GCancellable or %NULL
++ * @error: a #GError.
++ *
++ * Puts the computer into a low power state, where state is preserved if the
++ * power is lost.
++ *
++ * Return value: TRUE if system suspended okay, FALSE other wise.
++ *
++ * Since: 0.9.0
++ **/
++gboolean
++up_client_hibernate_sync (UpClient *client, GCancellable *cancellable, GError **error)
++{
++	gboolean ret;
++	GError *error_local = NULL;
++
++	g_return_val_if_fail (UP_IS_CLIENT (client), FALSE);
++	g_return_val_if_fail (client->priv->old_proxy != NULL, FALSE);
++
++	ret = dbus_g_proxy_call (client->priv->old_proxy, "Hibernate", &error_local,
++				 G_TYPE_INVALID, G_TYPE_INVALID);
++	if (!ret) {
++		/* DBus might time out, which is okay */
++		if (g_error_matches (error_local, DBUS_GERROR, DBUS_GERROR_NO_REPLY)) {
++			g_debug ("DBUS timed out, but recovering");
++			ret = TRUE;
++			goto out;
++		}
++
++		/* an actual error */
++		g_warning ("Couldn't hibernate: %s", error_local->message);
++		g_set_error (error, 1, 0, "%s", error_local->message);
++	}
++out:
++	if (error_local != NULL)
++		g_error_free (error_local);
++	return ret;
++}
++
++/**
++ * up_client_about_to_sleep_sync:
++ * @client: a #UpClient instance.
++ * @sleep_kind: a sleep type, e.g. %UP_SLEEP_KIND_SUSPEND
++ * @cancellable: a #GCancellable or %NULL
++ * @error: a #GError, or %NULL.
++ *
++ * Tells UPower that we are soon to reqest either Suspend() or Hibernate()
++ * and that session and system components should be notified of this.
++ *
++ * Return value: TRUE if system suspended okay, FALSE other wise.
++ *
++ * Since: 0.9.11
++ **/
++gboolean
++up_client_about_to_sleep_sync (UpClient *client,
++			       UpSleepKind sleep_kind,
++			       GCancellable *cancellable,
++			       GError **error)
++{
++	gboolean ret;
++	GError *error_local = NULL;
++
++	g_return_val_if_fail (UP_IS_CLIENT (client), FALSE);
++	g_return_val_if_fail (client->priv->old_proxy != NULL, FALSE);
++
++	ret = dbus_g_proxy_call (client->priv->old_proxy, "AboutToSleep", &error_local,
++				 G_TYPE_STRING, up_sleep_kind_to_string (sleep_kind),
++				 G_TYPE_INVALID,
++				 G_TYPE_INVALID);
++	if (!ret) {
++		/* DBus might time out, which is okay */
++		if (g_error_matches (error_local, DBUS_GERROR, DBUS_GERROR_NO_REPLY)) {
++			g_debug ("DBUS timed out, but recovering");
++			ret = TRUE;
++			goto out;
++		}
++
++		/* an actual error */
++		g_warning ("Couldn't sent that we were about to sleep: %s", error_local->message);
++		g_set_error (error, 1, 0, "%s", error_local->message);
++	}
++out:
++	if (error_local != NULL)
++		g_error_free (error_local);
++	return ret;
++}
++
++/**
++ * up_client_get_properties_sync:
++ * @client: a #UpClient instance.
++ * @cancellable: a #GCancellable or %NULL
++ * @error: a #GError, or %NULL.
++ *
++ * Get all the properties from UPower daemon.
++ *
++ * Return value: %TRUE for success, else %FALSE.
++ *
++ * Since: 0.9.0
++ **/
++gboolean
++up_client_get_properties_sync (UpClient *client, GCancellable *cancellable, GError **error)
++{
++	gboolean ret = TRUE;
++	gboolean prop_val;
++	GHashTable *props;
++	GValue *value;
++	gboolean allowed = FALSE;
++
++	props = NULL;
++
++	if (client->priv->have_properties)
++		goto out;
++	if (!client->priv->prop_proxy)
++		goto out;
++
++	if (error != NULL)
++		*error = NULL;
++	ret = dbus_g_proxy_call (client->priv->prop_proxy, "GetAll", error,
++				 G_TYPE_STRING, "org.freedesktop.UPower",
++				 G_TYPE_INVALID,
++				 dbus_g_type_get_map ("GHashTable", G_TYPE_STRING, G_TYPE_VALUE), &props,
++				 G_TYPE_INVALID);
++	if (!ret)
++		goto out;
++
++	value = g_hash_table_lookup (props, "CanSuspend");
++	if (value == NULL) {
++		g_warning ("No 'CanSuspend' property");
++		goto out;
++	}
++
++	ret = dbus_g_proxy_call (client->priv->old_proxy, "SuspendAllowed", error,
++		G_TYPE_INVALID, G_TYPE_BOOLEAN, &allowed, G_TYPE_INVALID);
++	if (!ret)
++		goto out;
++
++	prop_val = g_value_get_boolean (value) && allowed;
++	if (prop_val != client->priv->can_suspend) {
++		client->priv->can_suspend = prop_val;
++		g_object_notify (G_OBJECT(client), "can-suspend");
++	}
++
++	value = g_hash_table_lookup (props, "CanHibernate");
++	if (value == NULL) {
++		g_warning ("No 'CanHibernate' property");
++		goto out;
++	}
++	ret = dbus_g_proxy_call (client->priv->old_proxy, "HibernateAllowed", error,
++		G_TYPE_INVALID, G_TYPE_BOOLEAN, &allowed, G_TYPE_INVALID);
++	if (!ret)
++		goto out;
++
++	prop_val = g_value_get_boolean (value) && allowed;
++	if (prop_val != client->priv->can_hibernate) {
++		client->priv->can_hibernate = prop_val;
++		g_object_notify (G_OBJECT(client), "can-hibernate");
++	}
++
++	value = g_hash_table_lookup (props, "LidForceSleep");
++	if (value == NULL) {
++		g_warning ("No 'LidForceSleep' property");
++		goto out;
++	}
++	prop_val = g_value_get_boolean (value);
++	if (prop_val != client->priv->lid_force_sleep) {
++		client->priv->lid_force_sleep = prop_val;
++		g_object_notify (G_OBJECT(client), "lid-force-sleep");
++	}
++
++	/* cached */
++	client->priv->have_properties = TRUE;
++
++out:
++	if (props != NULL)
++		g_hash_table_unref (props);
++	return ret;
++}
++#endif /* ENABLE_DEPRECATED */
++
+ /**
+  * up_client_get_daemon_version:
+  * @client: a #UpClient instance.
+@@ -191,6 +443,26 @@
+ 	return up_client_glue_get_daemon_version (client->priv->proxy);
+ }
+ 
++#ifdef ENABLE_DEPRECATED
++/**
++ * up_client_get_can_hibernate:
++ * @client: a #UpClient instance.
++ *
++ * Get whether the system is able to hibernate.
++ *
++ * Return value: TRUE if system can hibernate, FALSE other wise.
++ *
++ * Since: 0.9.0
++ **/
++gboolean
++up_client_get_can_hibernate (UpClient *client)
++{
++	g_return_val_if_fail (UP_IS_CLIENT (client), FALSE);
++	up_client_get_properties_sync (client, NULL, NULL);
++	return client->priv->can_hibernate;
++}
++#endif /* ENABLE_DEPRECATED */
++
+ /**
+  * up_client_get_lid_is_closed:
+  * @client: a #UpClient instance.
+@@ -225,6 +497,44 @@
+ 	return up_client_glue_get_lid_is_present (client->priv->proxy);
+ }
+ 
++#ifdef ENABLE_DEPRECATED
++/**
++ * up_client_get_lid_force_sleep:
++ * @client: a #UpClient instance.
++ *
++ * Get whether the laptop has to sleep when the lid is closed.
++ *
++ * Return value: %TRUE if the session has to suspend
++ *
++ * Since: 0.9.9
++ */
++gboolean
++up_client_get_lid_force_sleep (UpClient *client)
++{
++	g_return_val_if_fail (UP_IS_CLIENT (client), FALSE);
++	up_client_get_properties_sync (client, NULL, NULL);
++	return client->priv->lid_force_sleep;
++}
++
++/**
++ * up_client_get_can_suspend:
++ * @client: a #UpClient instance.
++ *
++ * Get whether the system is able to suspend.
++ *
++ * Return value: TRUE if system can suspend, FALSE other wise.
++ *
++ * Since: 0.9.0
++ **/
++gboolean
++up_client_get_can_suspend (UpClient *client)
++{
++	g_return_val_if_fail (UP_IS_CLIENT (client), FALSE);
++	up_client_get_properties_sync (client, NULL, NULL);
++	return client->priv->can_suspend;
++}
++#endif /* ENABLE_DEPRECATED */
++
+ /**
+  * up_client_get_on_battery:
+  * @client: a #UpClient instance.
+@@ -286,6 +596,28 @@
+ 	up_client_add (client, object_path);
+ }
+ 
++#ifdef ENABLE_DEPRECATED
++/*
++ * up_client_notify_sleep_cb:
++ */
++static void
++up_client_notify_sleep_cb (DBusGProxy *old_proxy, const gchar *sleep_kind, UpClient *client)
++{
++	g_signal_emit (client, signals [UP_CLIENT_NOTIFY_SLEEP], 0,
++		       up_sleep_kind_from_string (sleep_kind));
++}
++
++/*
++ * up_client_notify_resume_cb:
++ */
++static void
++up_client_notify_resume_cb (DBusGProxy *old_proxy, const gchar *sleep_kind, UpClient *client)
++{
++	g_signal_emit (client, signals [UP_CLIENT_NOTIFY_RESUME], 0,
++		       up_sleep_kind_from_string (sleep_kind));
++}
++#endif /* ENABLE_DEPRECATED */
++
+ /*
+  * up_client_removed_cb:
+  */
+@@ -307,10 +639,22 @@
+ 	if (client->priv->proxy == NULL)
+                 return;
+ 
++#ifdef ENABLE_DEPRECATED
++	up_client_get_properties_sync (client, NULL, NULL);
++#endif /* ENABLE_DEPRECATED */
++
+ 	switch (prop_id) {
+ 	case PROP_DAEMON_VERSION:
+ 		g_value_set_string (value, up_client_glue_get_daemon_version (client->priv->proxy));
+ 		break;
++#ifdef ENABLE_DEPRECATED
++	case PROP_CAN_SUSPEND:
++		g_value_set_boolean (value, client->priv->can_suspend);
++		break;
++	case PROP_CAN_HIBERNATE:
++		g_value_set_boolean (value, client->priv->can_hibernate);
++		break;
++#endif /* ENABLE_DEPRECATED */
+ 	case PROP_ON_BATTERY:
+ 		g_value_set_boolean (value, up_client_glue_get_on_battery (client->priv->proxy));
+ 		break;
+@@ -320,6 +664,11 @@
+ 	case PROP_LID_IS_PRESENT:
+ 		g_value_set_boolean (value, up_client_glue_get_lid_is_present (client->priv->proxy));
+ 		break;
++#ifdef ENABLE_DEPRECATED
++	case PROP_LID_FORCE_SLEEP:
++		g_value_set_boolean (value, client->priv->lid_force_sleep);
++		break;
++#endif /* ENABLE_DEPRECATED */
+ 	default:
+ 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+ 		break;
+@@ -352,6 +701,38 @@
+ 							      NULL,
+ 							      NULL,
+ 							      G_PARAM_READABLE));
++
++#ifdef ENABLE_DEPRECATED
++	/**
++	 * UpClient:can-suspend:
++	 *
++	 * If the computer can suspend.
++	 *
++	 * Since: 0.9.0
++	 */
++	g_object_class_install_property (object_class,
++					 PROP_CAN_SUSPEND,
++					 g_param_spec_boolean ("can-suspend",
++							       "If the computer can suspend",
++							       NULL,
++							       FALSE,
++							       G_PARAM_READABLE));
++	/**
++	 * UpClient:can-hibernate:
++	 *
++	 * If the computer can hibernate.
++	 *
++	 * Since: 0.9.0
++	 */
++	g_object_class_install_property (object_class,
++					 PROP_CAN_HIBERNATE,
++					 g_param_spec_boolean ("can-hibernate",
++							       "If the computer can hibernate",
++							       NULL,
++							       FALSE,
++							       G_PARAM_READABLE));
++#endif /* ENABLE_DEPRECATED */
++
+ 	/**
+ 	 * UpClient:on-battery:
+ 	 *
+@@ -395,6 +776,23 @@
+ 							       FALSE,
+ 							       G_PARAM_READABLE));
+ 
++#ifdef ENABLE_DEPRECATED
++	/**
++	 * UpClient:lid-force-sleep:
++	 *
++	 * If a laptop has to sleep if the lid is closed.
++	 *
++	 * Since: 0.9.9
++	 */
++	g_object_class_install_property (object_class,
++					 PROP_LID_FORCE_SLEEP,
++					 g_param_spec_boolean ("lid-force-sleep",
++							       "If a laptop has to sleep on lid close",
++							       NULL,
++							       FALSE,
++							       G_PARAM_READABLE));
++#endif /* ENABLE_DEPRECATED */
++
+ 	/**
+ 	 * UpClient::device-added:
+ 	 * @client: the #UpClient instance that emitted the signal
+@@ -427,6 +825,44 @@
+ 			      NULL, NULL, g_cclosure_marshal_VOID__STRING,
+ 			      G_TYPE_NONE, 1, G_TYPE_STRING);
+ 
++#ifdef ENABLE_DEPRECATED
++	/**
++	 * UpClient::notify-sleep:
++	 * @client: the #UpClient instance that emitted the signal
++	 * @sleep_kind: the #UpSleepKind
++	 *
++	 * The ::notify-sleep signal is emitted when system sleep is
++	 * about to occur. Applications have about 1 second to do
++	 * anything they need to do. There is no way to stop the sleep
++	 * process.
++	 *
++	 * Since: 0.9.11
++	 **/
++	signals [UP_CLIENT_NOTIFY_SLEEP] =
++		g_signal_new ("notify-sleep",
++			      G_TYPE_FROM_CLASS (object_class), G_SIGNAL_RUN_LAST,
++			      G_STRUCT_OFFSET (UpClientClass, notify_sleep),
++			      NULL, NULL, g_cclosure_marshal_VOID__UINT,
++			      G_TYPE_NONE, 1, G_TYPE_UINT);
++
++	/**
++	 * UpClient::notify-resume:
++	 * @client: the #UpClient instance that emitted the signal
++	 * @sleep_kind: the #UpSleepKind
++	 *
++	 * The ::notify-resume signal is emitted when the system has
++	 * resumed.
++	 *
++	 * Since: 0.9.11
++	 **/
++	signals [UP_CLIENT_NOTIFY_RESUME] =
++		g_signal_new ("notify-resume",
++			      G_TYPE_FROM_CLASS (object_class), G_SIGNAL_RUN_LAST,
++			      G_STRUCT_OFFSET (UpClientClass, notify_resume),
++			      NULL, NULL, g_cclosure_marshal_VOID__UINT,
++			      G_TYPE_NONE, 1, G_TYPE_UINT);
++#endif /* ENABLE_DEPRECATED */
++
+ 	g_type_class_add_private (klass, sizeof (UpClientPrivate));
+ }
+ 
+@@ -454,6 +890,41 @@
+ 		return;
+ 	}
+ 
++#ifdef ENABLE_DEPRECATED
++	/* get on the bus */
++	client->priv->bus = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);
++	if (client->priv->bus == NULL) {
++		g_warning ("Couldn't connect to system bus: %s", error->message);
++		g_error_free (error);
++		return;
++	}
++
++	/* connect to old main interface */
++	client->priv->old_proxy = dbus_g_proxy_new_for_name (client->priv->bus,
++							 "org.freedesktop.UPower",
++							 "/org/freedesktop/UPower",
++							 "org.freedesktop.UPower");
++	if (client->priv->old_proxy == NULL) {
++		g_warning ("Couldn't connect to proxy: %s", error->message);
++		g_error_free (error);
++		return;
++	}
++
++	/* connect to properties interface */
++	client->priv->prop_proxy = dbus_g_proxy_new_for_name (client->priv->bus,
++							      "org.freedesktop.UPower",
++							      "/org/freedesktop/UPower",
++							      "org.freedesktop.DBus.Properties");
++	if (client->priv->prop_proxy == NULL) {
++		g_warning ("Couldn't connect to proxy: %s", error->message);
++		g_error_free (error);
++		return;
++	}
++
++	dbus_g_proxy_add_signal (client->priv->old_proxy, "NotifySleep", G_TYPE_STRING, G_TYPE_INVALID);
++	dbus_g_proxy_add_signal (client->priv->old_proxy, "NotifyResume", G_TYPE_STRING, G_TYPE_INVALID);
++#endif /* ENABLE_DEPRECATED */
++
+ 	/* all callbacks */
+ 	g_signal_connect (client->priv->proxy, "device-added",
+ 			  G_CALLBACK (up_device_added_cb), client);
+@@ -461,6 +932,12 @@
+ 			  G_CALLBACK (up_device_removed_cb), client);
+ 	g_signal_connect (client->priv->proxy, "notify",
+ 			  G_CALLBACK (up_client_notify_cb), client);
++#ifdef ENABLE_DEPRECATED
++	dbus_g_proxy_connect_signal (client->priv->old_proxy, "NotifySleep",
++				     G_CALLBACK (up_client_notify_sleep_cb), client, NULL);
++	dbus_g_proxy_connect_signal (client->priv->old_proxy, "NotifyResume",
++				     G_CALLBACK (up_client_notify_resume_cb), client, NULL);
++#endif /* ENABLE_DEPRECATED */
+ }
+ 
+ /*
+@@ -478,6 +955,17 @@
+ 	if (client->priv->proxy != NULL)
+ 		g_object_unref (client->priv->proxy);
+ 
++#ifdef ENABLE_DEPRECATED
++	if (client->priv->bus)
++		dbus_g_connection_unref (client->priv->bus);
++
++	if (client->priv->old_proxy != NULL)
++		g_object_unref (client->priv->old_proxy);
++
++	if (client->priv->prop_proxy != NULL)
++		g_object_unref (client->priv->prop_proxy);
++#endif /* ENABLE_DEPRECATED */
++
+ 	G_OBJECT_CLASS (up_client_parent_class)->finalize (object);
+ }
+ 
+diff -urN git/upower-9999/libupower-glib/up-client.h git/upower-9999-patched/libupower-glib/up-client.h
+--- git/upower-9999/libupower-glib/up-client.h	2014-07-01 02:42:33.079331000 -0400
++++ git/upower-9999-patched/libupower-glib/up-client.h	2014-07-13 20:51:39.320443000 -0400
+@@ -57,6 +57,12 @@
+ 							 UpDevice		*device);
+ 	void			(*device_removed)	(UpClient		*client,
+ 							 const gchar		*object_path);
++	/* FIXME: remove when we next break API */
++	void			(*notify_sleep)		(UpClient		*client,
++							 UpSleepKind		 sleep_kind);
++	/* FIXME: remove when we next break API */
++	void			(*notify_resume)	(UpClient		*client,
++							 UpSleepKind		 sleep_kind);
+ 	/*< private >*/
+ 	/* Padding for future expansion */
+ 	void (*_up_client_reserved1) (void);
+@@ -76,12 +82,28 @@
+ /* sync versions */
+ UpDevice *	 up_client_get_display_device		(UpClient *client);
+ char *		 up_client_get_critical_action		(UpClient *client);
++gboolean	 up_client_get_properties_sync		(UpClient		*client,
++							 GCancellable		*cancellable,
++							 GError			**error);
++gboolean	 up_client_suspend_sync			(UpClient		*client,
++							 GCancellable		*cancellable,
++							 GError			**error);
++gboolean	 up_client_about_to_sleep_sync		(UpClient		*client,
++							 UpSleepKind		 sleep_kind,
++							 GCancellable		*cancellable,
++							 GError			**error);
++gboolean	 up_client_hibernate_sync		(UpClient		*client,
++							 GCancellable		*cancellable,
++							 GError			**error);
+ 
+ /* accessors */
+ GPtrArray	*up_client_get_devices			(UpClient		*client);
+ const gchar	*up_client_get_daemon_version		(UpClient		*client);
++gboolean	 up_client_get_can_hibernate		(UpClient		*client);
+ gboolean	 up_client_get_lid_is_closed		(UpClient		*client);
+ gboolean	 up_client_get_lid_is_present		(UpClient		*client);
++gboolean	 up_client_get_lid_force_sleep		(UpClient		*client);
++gboolean	 up_client_get_can_suspend		(UpClient		*client);
+ gboolean	 up_client_get_on_battery		(UpClient		*client);
+ 
+ G_END_DECLS
+diff -urN git/upower-9999/libupower-glib/up-types.c git/upower-9999-patched/libupower-glib/up-types.c
+--- git/upower-9999/libupower-glib/up-types.c	2014-07-01 02:42:33.086331000 -0400
++++ git/upower-9999-patched/libupower-glib/up-types.c	2014-07-13 20:39:45.486502000 -0400
+@@ -292,3 +292,58 @@
+ 		return UP_DEVICE_LEVEL_ACTION;
+ 	return UP_DEVICE_LEVEL_UNKNOWN;
+ }
++
++#ifdef ENABLE_DEPRECATED
++/**
++ * up_sleep_kind_to_string:
++ *
++ * Converts a #UpSleepKind to a string.
++ *
++ * Return value: identifier string
++ *
++ * Since: 0.9.10
++ **/
++const gchar *
++up_sleep_kind_to_string (UpSleepKind sleep_kind_enum)
++{
++	const gchar *sleep_kind = NULL;
++	switch (sleep_kind_enum) {
++	case UP_SLEEP_KIND_SUSPEND:
++		sleep_kind = "suspend";
++		break;
++	case UP_SLEEP_KIND_HIBERNATE:
++		sleep_kind = "hibernate";
++		break;
++	case UP_SLEEP_KIND_HYBRID:
++		sleep_kind = "hybrid";
++		break;
++	default:
++		sleep_kind = "unknown";
++		break;
++	}
++	return sleep_kind;
++}
++
++/**
++ * up_sleep_kind_from_string:
++ *
++ * Converts a string to a #UpSleepKind.
++ *
++ * Return value: enumerated value
++ *
++ * Since: 0.9.10
++ **/
++UpSleepKind
++up_sleep_kind_from_string (const gchar *sleep_kind)
++{
++	if (sleep_kind == NULL)
++		return UP_SLEEP_KIND_UNKNOWN;
++	if (g_strcmp0 (sleep_kind, "suspend") == 0)
++		return UP_SLEEP_KIND_SUSPEND;
++	if (g_strcmp0 (sleep_kind, "hibernate") == 0)
++		return UP_SLEEP_KIND_HIBERNATE;
++	if (g_strcmp0 (sleep_kind, "hybrid") == 0)
++		return UP_SLEEP_KIND_HYBRID;
++	return UP_SLEEP_KIND_UNKNOWN;
++}
++#endif /* ENABLE_DEPRECATED */
+diff -urN git/upower-9999/libupower-glib/up-types.h git/upower-9999-patched/libupower-glib/up-types.h
+--- git/upower-9999/libupower-glib/up-types.h	2014-07-01 02:42:33.086331000 -0400
++++ git/upower-9999-patched/libupower-glib/up-types.h	2014-07-13 20:39:54.575501000 -0400
+@@ -98,6 +98,19 @@
+ 	UP_DEVICE_LEVEL_LAST
+ } UpDeviceLevel;
+ 
++/**
++ * UpSleepKind:
++ *
++ * The type of QOS request.
++ **/
++typedef enum {
++	UP_SLEEP_KIND_UNKNOWN,
++	UP_SLEEP_KIND_SUSPEND,
++	UP_SLEEP_KIND_HIBERNATE,
++	UP_SLEEP_KIND_HYBRID,
++	UP_SLEEP_KIND_LAST
++} UpSleepKind;
++
+ const gchar	*up_device_kind_to_string		(UpDeviceKind		 type_enum);
+ const gchar	*up_device_state_to_string		(UpDeviceState		 state_enum);
+ const gchar	*up_device_technology_to_string		(UpDeviceTechnology	 technology_enum);
+@@ -106,6 +119,8 @@
+ UpDeviceState	 up_device_state_from_string		(const gchar		*state);
+ UpDeviceTechnology up_device_technology_from_string	(const gchar		*technology);
+ UpDeviceLevel	 up_device_level_from_string		(const gchar		*level);
++const gchar	*up_sleep_kind_to_string		(UpSleepKind		 sleep_kind_enum);
++UpSleepKind	 up_sleep_kind_from_string		(const gchar		*sleep_kind);
+ 
+ G_END_DECLS
+ 
+diff -urN git/upower-9999/policy/Makefile.am git/upower-9999-patched/policy/Makefile.am
+--- git/upower-9999/policy/Makefile.am	1969-12-31 19:00:00.000000000 -0500
++++ git/upower-9999-patched/policy/Makefile.am	2014-07-06 04:27:57.415544000 -0400
+@@ -0,0 +1,18 @@
++polkit_policydir = $(datadir)/polkit-1/actions
++polkit_policy_DATA =					\
++	org.freedesktop.upower.policy
++
++# You will need a recent intltool or the patch from this bug
++# http://bugzilla.gnome.org/show_bug.cgi?id=462312
++@INTLTOOL_POLICY_RULE@
++
++EXTRA_DIST =						\
++	org.freedesktop.upower.policy.in
++
++DISTCLEANFILES =					\
++	org.freedesktop.upower.policy
++
++clean-local :
++	rm -f *~
++
++-include $(top_srcdir)/git.mk
+diff -urN git/upower-9999/policy/Makefile.in git/upower-9999-patched/policy/Makefile.in
+--- git/upower-9999/policy/Makefile.in	1969-12-31 19:00:00.000000000 -0500
++++ git/upower-9999-patched/policy/Makefile.in	2014-07-13 21:18:48.888309489 -0400
+@@ -0,0 +1,585 @@
++# Makefile.in generated by automake 1.13.4 from Makefile.am.
++# @configure_input@
++
++# Copyright (C) 1994-2013 Free Software Foundation, Inc.
++
++# This Makefile.in is free software; the Free Software Foundation
++# gives unlimited permission to copy and/or distribute it,
++# with or without modifications, as long as this notice is preserved.
++
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY, to the extent permitted by law; without
++# even the implied warranty of MERCHANTABILITY or FITNESS FOR A
++# PARTICULAR PURPOSE.
++
++@SET_MAKE@
++
++VPATH = @srcdir@
++am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'
++am__make_running_with_option = \
++  case $${target_option-} in \
++      ?) ;; \
++      *) echo "am__make_running_with_option: internal error: invalid" \
++              "target option '$${target_option-}' specified" >&2; \
++         exit 1;; \
++  esac; \
++  has_opt=no; \
++  sane_makeflags=$$MAKEFLAGS; \
++  if $(am__is_gnu_make); then \
++    sane_makeflags=$$MFLAGS; \
++  else \
++    case $$MAKEFLAGS in \
++      *\\[\ \	]*) \
++        bs=\\; \
++        sane_makeflags=`printf '%s\n' "$$MAKEFLAGS" \
++          | sed "s/$$bs$$bs[$$bs $$bs	]*//g"`;; \
++    esac; \
++  fi; \
++  skip_next=no; \
++  strip_trailopt () \
++  { \
++    flg=`printf '%s\n' "$$flg" | sed "s/$$1.*$$//"`; \
++  }; \
++  for flg in $$sane_makeflags; do \
++    test $$skip_next = yes && { skip_next=no; continue; }; \
++    case $$flg in \
++      *=*|--*) continue;; \
++        -*I) strip_trailopt 'I'; skip_next=yes;; \
++      -*I?*) strip_trailopt 'I';; \
++        -*O) strip_trailopt 'O'; skip_next=yes;; \
++      -*O?*) strip_trailopt 'O';; \
++        -*l) strip_trailopt 'l'; skip_next=yes;; \
++      -*l?*) strip_trailopt 'l';; \
++      -[dEDm]) skip_next=yes;; \
++      -[JT]) skip_next=yes;; \
++    esac; \
++    case $$flg in \
++      *$$target_option*) has_opt=yes; break;; \
++    esac; \
++  done; \
++  test $$has_opt = yes
++am__make_dryrun = (target_option=n; $(am__make_running_with_option))
++am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
++pkgdatadir = $(datadir)/@PACKAGE@
++pkgincludedir = $(includedir)/@PACKAGE@
++pkglibdir = $(libdir)/@PACKAGE@
++pkglibexecdir = $(libexecdir)/@PACKAGE@
++am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
++install_sh_DATA = $(install_sh) -c -m 644
++install_sh_PROGRAM = $(install_sh) -c
++install_sh_SCRIPT = $(install_sh) -c
++INSTALL_HEADER = $(INSTALL_DATA)
++transform = $(program_transform_name)
++NORMAL_INSTALL = :
++PRE_INSTALL = :
++POST_INSTALL = :
++NORMAL_UNINSTALL = :
++PRE_UNINSTALL = :
++POST_UNINSTALL = :
++build_triplet = @build@
++host_triplet = @host@
++subdir = policy
++DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am
++ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
++am__aclocal_m4_deps = $(top_srcdir)/m4/ax_check_compile_flag.m4 \
++	$(top_srcdir)/m4/ax_check_link_flag.m4 \
++	$(top_srcdir)/m4/gettext.m4 $(top_srcdir)/m4/gtk-doc.m4 \
++	$(top_srcdir)/m4/iconv.m4 $(top_srcdir)/m4/intlmacosx.m4 \
++	$(top_srcdir)/m4/intltool.m4 $(top_srcdir)/m4/lib-ld.m4 \
++	$(top_srcdir)/m4/lib-link.m4 $(top_srcdir)/m4/lib-prefix.m4 \
++	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/ltoptions.m4 \
++	$(top_srcdir)/m4/ltsugar.m4 $(top_srcdir)/m4/ltversion.m4 \
++	$(top_srcdir)/m4/lt~obsolete.m4 $(top_srcdir)/m4/nls.m4 \
++	$(top_srcdir)/m4/po.m4 $(top_srcdir)/m4/progtest.m4 \
++	$(top_srcdir)/configure.ac
++am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
++	$(ACLOCAL_M4)
++mkinstalldirs = $(install_sh) -d
++CONFIG_HEADER = $(top_builddir)/config.h
++CONFIG_CLEAN_FILES =
++CONFIG_CLEAN_VPATH_FILES =
++AM_V_P = $(am__v_P_@AM_V@)
++am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
++am__v_P_0 = false
++am__v_P_1 = :
++AM_V_GEN = $(am__v_GEN_@AM_V@)
++am__v_GEN_ = $(am__v_GEN_@AM_DEFAULT_V@)
++am__v_GEN_0 = @echo "  GEN     " $@;
++am__v_GEN_1 = 
++AM_V_at = $(am__v_at_@AM_V@)
++am__v_at_ = $(am__v_at_@AM_DEFAULT_V@)
++am__v_at_0 = @
++am__v_at_1 = 
++SOURCES =
++DIST_SOURCES =
++am__can_run_installinfo = \
++  case $$AM_UPDATE_INFO_DIR in \
++    n|no|NO) false;; \
++    *) (install-info --version) >/dev/null 2>&1;; \
++  esac
++am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
++am__vpath_adj = case $$p in \
++    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
++    *) f=$$p;; \
++  esac;
++am__strip_dir = f=`echo $$p | sed -e 's|^.*/||'`;
++am__install_max = 40
++am__nobase_strip_setup = \
++  srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*|]/\\\\&/g'`
++am__nobase_strip = \
++  for p in $$list; do echo "$$p"; done | sed -e "s|$$srcdirstrip/||"
++am__nobase_list = $(am__nobase_strip_setup); \
++  for p in $$list; do echo "$$p $$p"; done | \
++  sed "s| $$srcdirstrip/| |;"' / .*\//!s/ .*/ ./; s,\( .*\)/[^/]*$$,\1,' | \
++  $(AWK) 'BEGIN { files["."] = "" } { files[$$2] = files[$$2] " " $$1; \
++    if (++n[$$2] == $(am__install_max)) \
++      { print $$2, files[$$2]; n[$$2] = 0; files[$$2] = "" } } \
++    END { for (dir in files) print dir, files[dir] }'
++am__base_list = \
++  sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
++  sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
++am__uninstall_files_from_dir = { \
++  test -z "$$files" \
++    || { test ! -d "$$dir" && test ! -f "$$dir" && test ! -r "$$dir"; } \
++    || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
++         $(am__cd) "$$dir" && rm -f $$files; }; \
++  }
++am__installdirs = "$(DESTDIR)$(polkit_policydir)"
++DATA = $(polkit_policy_DATA)
++am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
++DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
++ACLOCAL = @ACLOCAL@
++ALL_LINGUAS = @ALL_LINGUAS@
++AMTAR = @AMTAR@
++AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
++AR = @AR@
++AUTOCONF = @AUTOCONF@
++AUTOHEADER = @AUTOHEADER@
++AUTOMAKE = @AUTOMAKE@
++AWK = @AWK@
++BACKEND = @BACKEND@
++CC = @CC@
++CCDEPMODE = @CCDEPMODE@
++CFLAGS = @CFLAGS@
++CPP = @CPP@
++CPPFLAGS = @CPPFLAGS@
++CYGPATH_W = @CYGPATH_W@
++DBUS_CFLAGS = @DBUS_CFLAGS@
++DBUS_GLIB_CFLAGS = @DBUS_GLIB_CFLAGS@
++DBUS_GLIB_LIBS = @DBUS_GLIB_LIBS@
++DBUS_LIBS = @DBUS_LIBS@
++DEFS = @DEFS@
++DEPDIR = @DEPDIR@
++DLLTOOL = @DLLTOOL@
++DSYMUTIL = @DSYMUTIL@
++DUMPBIN = @DUMPBIN@
++ECHO_C = @ECHO_C@
++ECHO_N = @ECHO_N@
++ECHO_T = @ECHO_T@
++EGREP = @EGREP@
++EXEEXT = @EXEEXT@
++FGREP = @FGREP@
++GETTEXT_MACRO_VERSION = @GETTEXT_MACRO_VERSION@
++GETTEXT_PACKAGE = @GETTEXT_PACKAGE@
++GIO_CFLAGS = @GIO_CFLAGS@
++GIO_LIBS = @GIO_LIBS@
++GIO_UNIX_CFLAGS = @GIO_UNIX_CFLAGS@
++GIO_UNIX_LIBS = @GIO_UNIX_LIBS@
++GLIB_CFLAGS = @GLIB_CFLAGS@
++GLIB_LIBS = @GLIB_LIBS@
++GMSGFMT = @GMSGFMT@
++GMSGFMT_015 = @GMSGFMT_015@
++GREP = @GREP@
++GTKDOC_CHECK = @GTKDOC_CHECK@
++GTKDOC_CHECK_PATH = @GTKDOC_CHECK_PATH@
++GTKDOC_DEPS_CFLAGS = @GTKDOC_DEPS_CFLAGS@
++GTKDOC_DEPS_LIBS = @GTKDOC_DEPS_LIBS@
++GTKDOC_MKPDF = @GTKDOC_MKPDF@
++GTKDOC_REBASE = @GTKDOC_REBASE@
++GUDEV_CFLAGS = @GUDEV_CFLAGS@
++GUDEV_LIBS = @GUDEV_LIBS@
++HTML_DIR = @HTML_DIR@
++IDEVICE_CFLAGS = @IDEVICE_CFLAGS@
++IDEVICE_LIBS = @IDEVICE_LIBS@
++INSTALL = @INSTALL@
++INSTALL_DATA = @INSTALL_DATA@
++INSTALL_PROGRAM = @INSTALL_PROGRAM@
++INSTALL_SCRIPT = @INSTALL_SCRIPT@
++INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
++INTLLIBS = @INTLLIBS@
++INTLTOOL_EXTRACT = @INTLTOOL_EXTRACT@
++INTLTOOL_MERGE = @INTLTOOL_MERGE@
++INTLTOOL_PERL = @INTLTOOL_PERL@
++INTLTOOL_UPDATE = @INTLTOOL_UPDATE@
++INTLTOOL_V_MERGE = @INTLTOOL_V_MERGE@
++INTLTOOL_V_MERGE_OPTIONS = @INTLTOOL_V_MERGE_OPTIONS@
++INTLTOOL__v_MERGE_ = @INTLTOOL__v_MERGE_@
++INTLTOOL__v_MERGE_0 = @INTLTOOL__v_MERGE_0@
++INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
++INTROSPECTION_CFLAGS = @INTROSPECTION_CFLAGS@
++INTROSPECTION_COMPILER = @INTROSPECTION_COMPILER@
++INTROSPECTION_GENERATE = @INTROSPECTION_GENERATE@
++INTROSPECTION_GIRDIR = @INTROSPECTION_GIRDIR@
++INTROSPECTION_LIBS = @INTROSPECTION_LIBS@
++INTROSPECTION_MAKEFILE = @INTROSPECTION_MAKEFILE@
++INTROSPECTION_SCANNER = @INTROSPECTION_SCANNER@
++INTROSPECTION_TYPELIBDIR = @INTROSPECTION_TYPELIBDIR@
++LD = @LD@
++LDFLAGS = @LDFLAGS@
++LIBICONV = @LIBICONV@
++LIBINTL = @LIBINTL@
++LIBOBJS = @LIBOBJS@
++LIBS = @LIBS@
++LIBTOOL = @LIBTOOL@
++LIPO = @LIPO@
++LN_S = @LN_S@
++LTLIBICONV = @LTLIBICONV@
++LTLIBINTL = @LTLIBINTL@
++LTLIBOBJS = @LTLIBOBJS@
++LT_AGE = @LT_AGE@
++LT_CURRENT = @LT_CURRENT@
++LT_REVISION = @LT_REVISION@
++MAINT = @MAINT@
++MAKEINFO = @MAKEINFO@
++MANIFEST_TOOL = @MANIFEST_TOOL@
++MKDIR_P = @MKDIR_P@
++MSGFMT = @MSGFMT@
++MSGFMT_015 = @MSGFMT_015@
++MSGMERGE = @MSGMERGE@
++NM = @NM@
++NMEDIT = @NMEDIT@
++OBJDUMP = @OBJDUMP@
++OBJEXT = @OBJEXT@
++OTOOL = @OTOOL@
++OTOOL64 = @OTOOL64@
++PACKAGE = @PACKAGE@
++PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
++PACKAGE_NAME = @PACKAGE_NAME@
++PACKAGE_STRING = @PACKAGE_STRING@
++PACKAGE_TARNAME = @PACKAGE_TARNAME@
++PACKAGE_URL = @PACKAGE_URL@
++PACKAGE_VERSION = @PACKAGE_VERSION@
++PATH_SEPARATOR = @PATH_SEPARATOR@
++PIE_CFLAGS = @PIE_CFLAGS@
++PIE_LDFLAGS = @PIE_LDFLAGS@
++PKG_CONFIG = @PKG_CONFIG@
++PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
++PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
++POLKIT_CFLAGS = @POLKIT_CFLAGS@
++POLKIT_LIBS = @POLKIT_LIBS@
++POSUB = @POSUB@
++RANLIB = @RANLIB@
++RELRO_LDFLAGS = @RELRO_LDFLAGS@
++SED = @SED@
++SET_MAKE = @SET_MAKE@
++SHELL = @SHELL@
++STRIP = @STRIP@
++UP_MAJOR_VERSION = @UP_MAJOR_VERSION@
++UP_MICRO_VERSION = @UP_MICRO_VERSION@
++UP_MINOR_VERSION = @UP_MINOR_VERSION@
++USB_CFLAGS = @USB_CFLAGS@
++USB_LIBS = @USB_LIBS@
++USE_NLS = @USE_NLS@
++VERSION = @VERSION@
++WARNINGFLAGS_C = @WARNINGFLAGS_C@
++XGETTEXT = @XGETTEXT@
++XGETTEXT_015 = @XGETTEXT_015@
++XGETTEXT_EXTRA_OPTIONS = @XGETTEXT_EXTRA_OPTIONS@
++XSLTPROC = @XSLTPROC@
++abs_builddir = @abs_builddir@
++abs_srcdir = @abs_srcdir@
++abs_top_builddir = @abs_top_builddir@
++abs_top_srcdir = @abs_top_srcdir@
++ac_ct_AR = @ac_ct_AR@
++ac_ct_CC = @ac_ct_CC@
++ac_ct_DUMPBIN = @ac_ct_DUMPBIN@
++am__include = @am__include@
++am__leading_dot = @am__leading_dot@
++am__quote = @am__quote@
++am__tar = @am__tar@
++am__untar = @am__untar@
++bindir = @bindir@
++build = @build@
++build_alias = @build_alias@
++build_cpu = @build_cpu@
++build_os = @build_os@
++build_vendor = @build_vendor@
++builddir = @builddir@
++datadir = @datadir@
++datarootdir = @datarootdir@
++docdir = @docdir@
++dvidir = @dvidir@
++exec_prefix = @exec_prefix@
++historydir = @historydir@
++host = @host@
++host_alias = @host_alias@
++host_cpu = @host_cpu@
++host_os = @host_os@
++host_vendor = @host_vendor@
++htmldir = @htmldir@
++includedir = @includedir@
++infodir = @infodir@
++install_sh = @install_sh@
++intltool__v_merge_options_ = @intltool__v_merge_options_@
++intltool__v_merge_options_0 = @intltool__v_merge_options_0@
++libdir = @libdir@
++libexecdir = @libexecdir@
++localedir = @localedir@
++localstatedir = @localstatedir@
++mandir = @mandir@
++mkdir_p = @mkdir_p@
++oldincludedir = @oldincludedir@
++pdfdir = @pdfdir@
++prefix = @prefix@
++program_transform_name = @program_transform_name@
++psdir = @psdir@
++sbindir = @sbindir@
++sharedstatedir = @sharedstatedir@
++srcdir = @srcdir@
++sysconfdir = @sysconfdir@
++systemdsystemunitdir = @systemdsystemunitdir@
++systemdutildir = @systemdutildir@
++target_alias = @target_alias@
++top_build_prefix = @top_build_prefix@
++top_builddir = @top_builddir@
++top_srcdir = @top_srcdir@
++udevrulesdir = @udevrulesdir@
++polkit_policydir = $(datadir)/polkit-1/actions
++polkit_policy_DATA = \
++	org.freedesktop.upower.policy
++
++EXTRA_DIST = \
++	org.freedesktop.upower.policy.in
++
++DISTCLEANFILES = \
++	org.freedesktop.upower.policy
++
++all: all-am
++
++.SUFFIXES:
++$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
++	@for dep in $?; do \
++	  case '$(am__configure_deps)' in \
++	    *$$dep*) \
++	      ( cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh ) \
++	        && { if test -f $@; then exit 0; else break; fi; }; \
++	      exit 1;; \
++	  esac; \
++	done; \
++	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu policy/Makefile'; \
++	$(am__cd) $(top_srcdir) && \
++	  $(AUTOMAKE) --gnu policy/Makefile
++.PRECIOUS: Makefile
++Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
++	@case '$?' in \
++	  *config.status*) \
++	    cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh;; \
++	  *) \
++	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe)'; \
++	    cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe);; \
++	esac;
++
++$(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
++	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
++
++$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
++	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
++$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
++	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
++$(am__aclocal_m4_deps):
++
++mostlyclean-libtool:
++	-rm -f *.lo
++
++clean-libtool:
++	-rm -rf .libs _libs
++install-polkit_policyDATA: $(polkit_policy_DATA)
++	@$(NORMAL_INSTALL)
++	@list='$(polkit_policy_DATA)'; test -n "$(polkit_policydir)" || list=; \
++	if test -n "$$list"; then \
++	  echo " $(MKDIR_P) '$(DESTDIR)$(polkit_policydir)'"; \
++	  $(MKDIR_P) "$(DESTDIR)$(polkit_policydir)" || exit 1; \
++	fi; \
++	for p in $$list; do \
++	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
++	  echo "$$d$$p"; \
++	done | $(am__base_list) | \
++	while read files; do \
++	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(polkit_policydir)'"; \
++	  $(INSTALL_DATA) $$files "$(DESTDIR)$(polkit_policydir)" || exit $$?; \
++	done
++
++uninstall-polkit_policyDATA:
++	@$(NORMAL_UNINSTALL)
++	@list='$(polkit_policy_DATA)'; test -n "$(polkit_policydir)" || list=; \
++	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
++	dir='$(DESTDIR)$(polkit_policydir)'; $(am__uninstall_files_from_dir)
++tags TAGS:
++
++ctags CTAGS:
++
++cscope cscopelist:
++
++
++distdir: $(DISTFILES)
++	@srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*]/\\\\&/g'`; \
++	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's/[].[^$$\\*]/\\\\&/g'`; \
++	list='$(DISTFILES)'; \
++	  dist_files=`for file in $$list; do echo $$file; done | \
++	  sed -e "s|^$$srcdirstrip/||;t" \
++	      -e "s|^$$topsrcdirstrip/|$(top_builddir)/|;t"`; \
++	case $$dist_files in \
++	  */*) $(MKDIR_P) `echo "$$dist_files" | \
++			   sed '/\//!d;s|^|$(distdir)/|;s,/[^/]*$$,,' | \
++			   sort -u` ;; \
++	esac; \
++	for file in $$dist_files; do \
++	  if test -f $$file || test -d $$file; then d=.; else d=$(srcdir); fi; \
++	  if test -d $$d/$$file; then \
++	    dir=`echo "/$$file" | sed -e 's,/[^/]*$$,,'`; \
++	    if test -d "$(distdir)/$$file"; then \
++	      find "$(distdir)/$$file" -type d ! -perm -700 -exec chmod u+rwx {} \;; \
++	    fi; \
++	    if test -d $(srcdir)/$$file && test $$d != $(srcdir); then \
++	      cp -fpR $(srcdir)/$$file "$(distdir)$$dir" || exit 1; \
++	      find "$(distdir)/$$file" -type d ! -perm -700 -exec chmod u+rwx {} \;; \
++	    fi; \
++	    cp -fpR $$d/$$file "$(distdir)$$dir" || exit 1; \
++	  else \
++	    test -f "$(distdir)/$$file" \
++	    || cp -p $$d/$$file "$(distdir)/$$file" \
++	    || exit 1; \
++	  fi; \
++	done
++check-am: all-am
++check: check-am
++all-am: Makefile $(DATA)
++installdirs:
++	for dir in "$(DESTDIR)$(polkit_policydir)"; do \
++	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
++	done
++install: install-am
++install-exec: install-exec-am
++install-data: install-data-am
++uninstall: uninstall-am
++
++install-am: all-am
++	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
++
++installcheck: installcheck-am
++install-strip:
++	if test -z '$(STRIP)'; then \
++	  $(MAKE) $(AM_MAKEFLAGS) INSTALL_PROGRAM="$(INSTALL_STRIP_PROGRAM)" \
++	    install_sh_PROGRAM="$(INSTALL_STRIP_PROGRAM)" INSTALL_STRIP_FLAG=-s \
++	      install; \
++	else \
++	  $(MAKE) $(AM_MAKEFLAGS) INSTALL_PROGRAM="$(INSTALL_STRIP_PROGRAM)" \
++	    install_sh_PROGRAM="$(INSTALL_STRIP_PROGRAM)" INSTALL_STRIP_FLAG=-s \
++	    "INSTALL_PROGRAM_ENV=STRIPPROG='$(STRIP)'" install; \
++	fi
++mostlyclean-generic:
++
++clean-generic:
++
++distclean-generic:
++	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
++	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
++	-test -z "$(DISTCLEANFILES)" || rm -f $(DISTCLEANFILES)
++
++maintainer-clean-generic:
++	@echo "This command is intended for maintainers to use"
++	@echo "it deletes files that may require special tools to rebuild."
++clean: clean-am
++
++clean-am: clean-generic clean-libtool clean-local mostlyclean-am
++
++distclean: distclean-am
++	-rm -f Makefile
++distclean-am: clean-am distclean-generic
++
++dvi: dvi-am
++
++dvi-am:
++
++html: html-am
++
++html-am:
++
++info: info-am
++
++info-am:
++
++install-data-am: install-polkit_policyDATA
++
++install-dvi: install-dvi-am
++
++install-dvi-am:
++
++install-exec-am:
++
++install-html: install-html-am
++
++install-html-am:
++
++install-info: install-info-am
++
++install-info-am:
++
++install-man:
++
++install-pdf: install-pdf-am
++
++install-pdf-am:
++
++install-ps: install-ps-am
++
++install-ps-am:
++
++installcheck-am:
++
++maintainer-clean: maintainer-clean-am
++	-rm -f Makefile
++maintainer-clean-am: distclean-am maintainer-clean-generic
++
++mostlyclean: mostlyclean-am
++
++mostlyclean-am: mostlyclean-generic mostlyclean-libtool
++
++pdf: pdf-am
++
++pdf-am:
++
++ps: ps-am
++
++ps-am:
++
++uninstall-am: uninstall-polkit_policyDATA
++
++.MAKE: install-am install-strip
++
++.PHONY: all all-am check check-am clean clean-generic clean-libtool \
++	clean-local cscopelist-am ctags-am distclean distclean-generic \
++	distclean-libtool distdir dvi dvi-am html html-am info info-am \
++	install install-am install-data install-data-am install-dvi \
++	install-dvi-am install-exec install-exec-am install-html \
++	install-html-am install-info install-info-am install-man \
++	install-pdf install-pdf-am install-polkit_policyDATA \
++	install-ps install-ps-am install-strip installcheck \
++	installcheck-am installdirs maintainer-clean \
++	maintainer-clean-generic mostlyclean mostlyclean-generic \
++	mostlyclean-libtool pdf pdf-am ps ps-am tags-am uninstall \
++	uninstall-am uninstall-polkit_policyDATA
++
++
++# You will need a recent intltool or the patch from this bug
++# http://bugzilla.gnome.org/show_bug.cgi?id=462312
++@INTLTOOL_POLICY_RULE@
++
++clean-local :
++	rm -f *~
++
++-include $(top_srcdir)/git.mk
++
++# Tell versions [3.59,3.63) of GNU make to not export all variables.
++# Otherwise a system limit (for SysV at least) may be exceeded.
++.NOEXPORT:
+diff -urN git/upower-9999/policy/org.freedesktop.upower.policy.in git/upower-9999-patched/policy/org.freedesktop.upower.policy.in
+--- git/upower-9999/policy/org.freedesktop.upower.policy.in	1969-12-31 19:00:00.000000000 -0500
++++ git/upower-9999-patched/policy/org.freedesktop.upower.policy.in	2014-07-06 04:27:57.415544000 -0400
+@@ -0,0 +1,41 @@
++<?xml version="1.0" encoding="utf-8"?>
++
++<!DOCTYPE policyconfig PUBLIC
++ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
++ "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
++
++<!--
++Policy definitions for UPower
++
++Copyright (c) 2008 David Zeuthen <david@fubar.dk>
++Copyright (c) 2008-2010 Richard Hughes <richard@hughsie.com>
++
++NOTE: If you make changes to this file, make sure to validate the file
++using the polkit-policy-file-validate(1) tool. Changes made to this
++file are instantly applied.
++-->
++
++<policyconfig>
++  <vendor>The UPower Project</vendor>
++  <vendor_url>http://upower.freedesktop.org/</vendor_url>
++  <icon_name>system-suspend</icon_name>
++
++  <action id="org.freedesktop.upower.suspend">
++    <_description>Suspend the system</_description>
++    <_message>Authentication is required to suspend the system</_message>
++    <defaults>
++      <allow_inactive>no</allow_inactive>
++      <allow_active>yes</allow_active>
++    </defaults>
++  </action>
++
++  <action id="org.freedesktop.upower.hibernate">
++    <_description>Hibernate the system</_description>
++    <_message>Authentication is required to hibernate the system</_message>
++    <defaults>
++      <allow_inactive>no</allow_inactive>
++      <allow_active>yes</allow_active>
++    </defaults>
++  </action>
++
++</policyconfig>
+diff -urN git/upower-9999/src/Makefile git/upower-9999-patched/src/Makefile
+--- git/upower-9999/src/Makefile	2014-07-13 21:16:30.661320862 -0400
++++ git/upower-9999-patched/src/Makefile	2014-07-13 21:18:51.339309287 -0400
+@@ -16,6 +16,7 @@
+ 
+ 
+ 
++
+ am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'
+ am__make_running_with_option = \
+   case $${target_option-} in \
+@@ -121,7 +122,8 @@
+ CONFIG_HEADER = $(top_builddir)/config.h
+ CONFIG_CLEAN_FILES =
+ CONFIG_CLEAN_VPATH_FILES =
+-am__installdirs = "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(dbusconfdir)" \
++am__installdirs = "$(DESTDIR)$(libexecdir)" \
++	"$(DESTDIR)$(systemsleepdir)" "$(DESTDIR)$(dbusconfdir)" \
+ 	"$(DESTDIR)$(dbusifdir)" "$(DESTDIR)$(dbusservicedir)" \
+ 	"$(DESTDIR)$(systemdservicedir)"
+ PROGRAMS = $(libexec_PROGRAMS)
+@@ -178,6 +180,34 @@
+ upowerd_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+ 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(upowerd_CFLAGS) \
+ 	$(CFLAGS) $(upowerd_LDFLAGS) $(LDFLAGS) -o $@
++am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
++am__vpath_adj = case $$p in \
++    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
++    *) f=$$p;; \
++  esac;
++am__strip_dir = f=`echo $$p | sed -e 's|^.*/||'`;
++am__install_max = 40
++am__nobase_strip_setup = \
++  srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*|]/\\\\&/g'`
++am__nobase_strip = \
++  for p in $$list; do echo "$$p"; done | sed -e "s|$$srcdirstrip/||"
++am__nobase_list = $(am__nobase_strip_setup); \
++  for p in $$list; do echo "$$p $$p"; done | \
++  sed "s| $$srcdirstrip/| |;"' / .*\//!s/ .*/ ./; s,\( .*\)/[^/]*$$,\1,' | \
++  $(AWK) 'BEGIN { files["."] = "" } { files[$$2] = files[$$2] " " $$1; \
++    if (++n[$$2] == $(am__install_max)) \
++      { print $$2, files[$$2]; n[$$2] = 0; files[$$2] = "" } } \
++    END { for (dir in files) print dir, files[dir] }'
++am__base_list = \
++  sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
++  sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
++am__uninstall_files_from_dir = { \
++  test -z "$$files" \
++    || { test ! -d "$$dir" && test ! -f "$$dir" && test ! -r "$$dir"; } \
++    || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
++         $(am__cd) "$$dir" && rm -f $$files; }; \
++  }
++SCRIPTS = $(systemsleep_SCRIPTS)
+ AM_V_P = $(am__v_P_$(V))
+ am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
+ am__v_P_0 = false
+@@ -227,33 +257,6 @@
+     n|no|NO) false;; \
+     *) (install-info --version) >/dev/null 2>&1;; \
+   esac
+-am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
+-am__vpath_adj = case $$p in \
+-    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
+-    *) f=$$p;; \
+-  esac;
+-am__strip_dir = f=`echo $$p | sed -e 's|^.*/||'`;
+-am__install_max = 40
+-am__nobase_strip_setup = \
+-  srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*|]/\\\\&/g'`
+-am__nobase_strip = \
+-  for p in $$list; do echo "$$p"; done | sed -e "s|$$srcdirstrip/||"
+-am__nobase_list = $(am__nobase_strip_setup); \
+-  for p in $$list; do echo "$$p $$p"; done | \
+-  sed "s| $$srcdirstrip/| |;"' / .*\//!s/ .*/ ./; s,\( .*\)/[^/]*$$,\1,' | \
+-  $(AWK) 'BEGIN { files["."] = "" } { files[$$2] = files[$$2] " " $$1; \
+-    if (++n[$$2] == $(am__install_max)) \
+-      { print $$2, files[$$2]; n[$$2] = 0; files[$$2] = "" } } \
+-    END { for (dir in files) print dir, files[dir] }'
+-am__base_list = \
+-  sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
+-  sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
+-am__uninstall_files_from_dir = { \
+-  test -z "$$files" \
+-    || { test ! -d "$$dir" && test ! -f "$$dir" && test ! -r "$$dir"; } \
+-    || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
+-         $(am__cd) "$$dir" && rm -f $$files; }; \
+-  }
+ DATA = $(dbusconf_DATA) $(dbusif_DATA) $(dbusservice_DATA) \
+ 	$(systemdservice_DATA)
+ RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
+@@ -754,6 +757,8 @@
+ 	$(PIE_LDFLAGS)						\
+ 	$(RELRO_LDFLAGS)
+ 
++#systemsleepdir = $(systemdutildir)/system-sleep
++#systemsleep_SCRIPTS = notify-upower.sh
+ upowerd_CFLAGS = \
+ 	$(WARNINGFLAGS_C)					\
+ 	$(NULL)
+@@ -810,8 +815,8 @@
+ 	org.freedesktop.UPower.Device.xml \
+ 	org.freedesktop.UPower.KbdBacklight.xml \
+ 	org.freedesktop.UPower.Wakeups.xml up-marshal.list \
+-	$(systemdservice_in_files) $(dbusservice_in_files) \
+-	$(dbusconf_in_files) $(am__append_5)
++	$(systemsleep_SCRIPTS) $(systemdservice_in_files) \
++	$(dbusservice_in_files) $(dbusconf_in_files) $(am__append_5)
+ all: $(BUILT_SOURCES)
+ 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
+ 
+@@ -913,6 +918,41 @@
+ upowerd$(EXEEXT): $(upowerd_OBJECTS) $(upowerd_DEPENDENCIES) $(EXTRA_upowerd_DEPENDENCIES) 
+ 	@rm -f upowerd$(EXEEXT)
+ 	$(AM_V_CCLD)$(upowerd_LINK) $(upowerd_OBJECTS) $(upowerd_LDADD) $(LIBS)
++install-systemsleepSCRIPTS: $(systemsleep_SCRIPTS)
++	@$(NORMAL_INSTALL)
++	@list='$(systemsleep_SCRIPTS)'; test -n "$(systemsleepdir)" || list=; \
++	if test -n "$$list"; then \
++	  echo " $(MKDIR_P) '$(DESTDIR)$(systemsleepdir)'"; \
++	  $(MKDIR_P) "$(DESTDIR)$(systemsleepdir)" || exit 1; \
++	fi; \
++	for p in $$list; do \
++	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
++	  if test -f "$$d$$p"; then echo "$$d$$p"; echo "$$p"; else :; fi; \
++	done | \
++	sed -e 'p;s,.*/,,;n' \
++	    -e 'h;s|.*|.|' \
++	    -e 'p;x;s,.*/,,;$(transform)' | sed 'N;N;N;s,\n, ,g' | \
++	$(AWK) 'BEGIN { files["."] = ""; dirs["."] = 1; } \
++	  { d=$$3; if (dirs[d] != 1) { print "d", d; dirs[d] = 1 } \
++	    if ($$2 == $$4) { files[d] = files[d] " " $$1; \
++	      if (++n[d] == $(am__install_max)) { \
++		print "f", d, files[d]; n[d] = 0; files[d] = "" } } \
++	    else { print "f", d "/" $$4, $$1 } } \
++	  END { for (d in files) print "f", d, files[d] }' | \
++	while read type dir files; do \
++	     if test "$$dir" = .; then dir=; else dir=/$$dir; fi; \
++	     test -z "$$files" || { \
++	       echo " $(INSTALL_SCRIPT) $$files '$(DESTDIR)$(systemsleepdir)$$dir'"; \
++	       $(INSTALL_SCRIPT) $$files "$(DESTDIR)$(systemsleepdir)$$dir" || exit $$?; \
++	     } \
++	; done
++
++uninstall-systemsleepSCRIPTS:
++	@$(NORMAL_UNINSTALL)
++	@list='$(systemsleep_SCRIPTS)'; test -n "$(systemsleepdir)" || exit 0; \
++	files=`for p in $$list; do echo "$$p"; done | \
++	       sed -e 's,.*/,,;$(transform)'`; \
++	dir='$(DESTDIR)$(systemsleepdir)'; $(am__uninstall_files_from_dir)
+ 
+ mostlyclean-compile:
+ 	-rm -f *.$(OBJEXT)
+@@ -1656,10 +1696,10 @@
+ 	$(MAKE) $(AM_MAKEFLAGS) check-TESTS check-local
+ check: $(BUILT_SOURCES)
+ 	$(MAKE) $(AM_MAKEFLAGS) check-recursive
+-all-am: Makefile $(PROGRAMS) $(DATA)
++all-am: Makefile $(PROGRAMS) $(SCRIPTS) $(DATA)
+ installdirs: installdirs-recursive
+ installdirs-am:
+-	for dir in "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(dbusconfdir)" "$(DESTDIR)$(dbusifdir)" "$(DESTDIR)$(dbusservicedir)" "$(DESTDIR)$(systemdservicedir)"; do \
++	for dir in "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(systemsleepdir)" "$(DESTDIR)$(dbusconfdir)" "$(DESTDIR)$(dbusifdir)" "$(DESTDIR)$(dbusservicedir)" "$(DESTDIR)$(systemdservicedir)"; do \
+ 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
+ 	done
+ install: $(BUILT_SOURCES)
+@@ -1723,7 +1763,8 @@
+ info-am:
+ 
+ install-data-am: install-dbusconfDATA install-dbusifDATA \
+-	install-dbusserviceDATA install-systemdserviceDATA
++	install-dbusserviceDATA install-systemdserviceDATA \
++	install-systemsleepSCRIPTS
+ 	@$(NORMAL_INSTALL)
+ 	$(MAKE) $(AM_MAKEFLAGS) install-data-hook
+ install-dvi: install-dvi-recursive
+@@ -1772,7 +1813,7 @@
+ 
+ uninstall-am: uninstall-dbusconfDATA uninstall-dbusifDATA \
+ 	uninstall-dbusserviceDATA uninstall-libexecPROGRAMS \
+-	uninstall-systemdserviceDATA
++	uninstall-systemdserviceDATA uninstall-systemsleepSCRIPTS
+ 
+ .MAKE: $(am__recursive_targets) all check check-am install install-am \
+ 	install-data-am install-strip
+@@ -1790,13 +1831,14 @@
+ 	install-info install-info-am install-libexecPROGRAMS \
+ 	install-man install-pdf install-pdf-am install-ps \
+ 	install-ps-am install-strip install-systemdserviceDATA \
+-	installcheck installcheck-am installdirs installdirs-am \
+-	maintainer-clean maintainer-clean-generic mostlyclean \
+-	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
+-	pdf pdf-am ps ps-am recheck tags tags-am uninstall \
+-	uninstall-am uninstall-dbusconfDATA uninstall-dbusifDATA \
++	install-systemsleepSCRIPTS installcheck installcheck-am \
++	installdirs installdirs-am maintainer-clean \
++	maintainer-clean-generic mostlyclean mostlyclean-compile \
++	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
++	recheck tags tags-am uninstall uninstall-am \
++	uninstall-dbusconfDATA uninstall-dbusifDATA \
+ 	uninstall-dbusserviceDATA uninstall-libexecPROGRAMS \
+-	uninstall-systemdserviceDATA
++	uninstall-systemdserviceDATA uninstall-systemsleepSCRIPTS
+ 
+ 
+ up-marshal.h: up-marshal.list
+diff -urN git/upower-9999/src/Makefile.am git/upower-9999-patched/src/Makefile.am
+--- git/upower-9999/src/Makefile.am	2014-07-01 02:42:33.094331000 -0400
++++ git/upower-9999-patched/src/Makefile.am	2014-07-13 20:43:53.762481000 -0400
+@@ -122,6 +122,11 @@
+ 	$(PIE_LDFLAGS)						\
+ 	$(RELRO_LDFLAGS)
+ 
++if HAVE_SYSTEMDUTILDIR
++systemsleepdir = $(systemdutildir)/system-sleep
++systemsleep_SCRIPTS = notify-upower.sh
++endif
++
+ if UP_BUILD_TESTS
+ check-local: upowerd
+ 	env GI_TYPELIB_PATH=$(top_builddir)/libupower-glib:$(GI_TYPELIB_PATH) LD_LIBRARY_PATH=$(top_builddir)/libupower-glib/.libs:$(LD_LIBRARY_PATH) top_builddir=$(top_builddir) $(srcdir)/linux/integration-test -v
+@@ -217,6 +222,7 @@
+ 	org.freedesktop.UPower.KbdBacklight.xml			\
+ 	org.freedesktop.UPower.Wakeups.xml			\
+ 	up-marshal.list						\
++	$(systemsleep_SCRIPTS)					\
+ 	$(systemdservice_in_files)				\
+ 	$(dbusservice_in_files)					\
+ 	$(dbusconf_in_files)
+diff -urN git/upower-9999/src/Makefile.in git/upower-9999-patched/src/Makefile.in
+--- git/upower-9999/src/Makefile.in	2014-07-13 21:16:28.370321051 -0400
++++ git/upower-9999-patched/src/Makefile.in	2014-07-13 21:18:49.001309479 -0400
+@@ -15,6 +15,7 @@
+ @SET_MAKE@
+ 
+ 
++
+ VPATH = @srcdir@
+ am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'
+ am__make_running_with_option = \
+@@ -121,7 +122,8 @@
+ CONFIG_HEADER = $(top_builddir)/config.h
+ CONFIG_CLEAN_FILES =
+ CONFIG_CLEAN_VPATH_FILES =
+-am__installdirs = "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(dbusconfdir)" \
++am__installdirs = "$(DESTDIR)$(libexecdir)" \
++	"$(DESTDIR)$(systemsleepdir)" "$(DESTDIR)$(dbusconfdir)" \
+ 	"$(DESTDIR)$(dbusifdir)" "$(DESTDIR)$(dbusservicedir)" \
+ 	"$(DESTDIR)$(systemdservicedir)"
+ PROGRAMS = $(libexec_PROGRAMS)
+@@ -178,6 +180,34 @@
+ upowerd_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+ 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(upowerd_CFLAGS) \
+ 	$(CFLAGS) $(upowerd_LDFLAGS) $(LDFLAGS) -o $@
++am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
++am__vpath_adj = case $$p in \
++    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
++    *) f=$$p;; \
++  esac;
++am__strip_dir = f=`echo $$p | sed -e 's|^.*/||'`;
++am__install_max = 40
++am__nobase_strip_setup = \
++  srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*|]/\\\\&/g'`
++am__nobase_strip = \
++  for p in $$list; do echo "$$p"; done | sed -e "s|$$srcdirstrip/||"
++am__nobase_list = $(am__nobase_strip_setup); \
++  for p in $$list; do echo "$$p $$p"; done | \
++  sed "s| $$srcdirstrip/| |;"' / .*\//!s/ .*/ ./; s,\( .*\)/[^/]*$$,\1,' | \
++  $(AWK) 'BEGIN { files["."] = "" } { files[$$2] = files[$$2] " " $$1; \
++    if (++n[$$2] == $(am__install_max)) \
++      { print $$2, files[$$2]; n[$$2] = 0; files[$$2] = "" } } \
++    END { for (dir in files) print dir, files[dir] }'
++am__base_list = \
++  sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
++  sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
++am__uninstall_files_from_dir = { \
++  test -z "$$files" \
++    || { test ! -d "$$dir" && test ! -f "$$dir" && test ! -r "$$dir"; } \
++    || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
++         $(am__cd) "$$dir" && rm -f $$files; }; \
++  }
++SCRIPTS = $(systemsleep_SCRIPTS)
+ AM_V_P = $(am__v_P_@AM_V@)
+ am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
+ am__v_P_0 = false
+@@ -227,33 +257,6 @@
+     n|no|NO) false;; \
+     *) (install-info --version) >/dev/null 2>&1;; \
+   esac
+-am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
+-am__vpath_adj = case $$p in \
+-    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
+-    *) f=$$p;; \
+-  esac;
+-am__strip_dir = f=`echo $$p | sed -e 's|^.*/||'`;
+-am__install_max = 40
+-am__nobase_strip_setup = \
+-  srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*|]/\\\\&/g'`
+-am__nobase_strip = \
+-  for p in $$list; do echo "$$p"; done | sed -e "s|$$srcdirstrip/||"
+-am__nobase_list = $(am__nobase_strip_setup); \
+-  for p in $$list; do echo "$$p $$p"; done | \
+-  sed "s| $$srcdirstrip/| |;"' / .*\//!s/ .*/ ./; s,\( .*\)/[^/]*$$,\1,' | \
+-  $(AWK) 'BEGIN { files["."] = "" } { files[$$2] = files[$$2] " " $$1; \
+-    if (++n[$$2] == $(am__install_max)) \
+-      { print $$2, files[$$2]; n[$$2] = 0; files[$$2] = "" } } \
+-    END { for (dir in files) print dir, files[dir] }'
+-am__base_list = \
+-  sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
+-  sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
+-am__uninstall_files_from_dir = { \
+-  test -z "$$files" \
+-    || { test ! -d "$$dir" && test ! -f "$$dir" && test ! -r "$$dir"; } \
+-    || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
+-         $(am__cd) "$$dir" && rm -f $$files; }; \
+-  }
+ DATA = $(dbusconf_DATA) $(dbusif_DATA) $(dbusservice_DATA) \
+ 	$(systemdservice_DATA)
+ RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
+@@ -754,6 +757,8 @@
+ @BACKEND_TYPE_LINUX_TRUE@	$(PIE_LDFLAGS)						\
+ @BACKEND_TYPE_LINUX_TRUE@	$(RELRO_LDFLAGS)
+ 
++@BACKEND_TYPE_LINUX_TRUE@@HAVE_SYSTEMDUTILDIR_TRUE@systemsleepdir = $(systemdutildir)/system-sleep
++@BACKEND_TYPE_LINUX_TRUE@@HAVE_SYSTEMDUTILDIR_TRUE@systemsleep_SCRIPTS = notify-upower.sh
+ upowerd_CFLAGS = \
+ 	$(WARNINGFLAGS_C)					\
+ 	$(NULL)
+@@ -810,8 +815,8 @@
+ 	org.freedesktop.UPower.Device.xml \
+ 	org.freedesktop.UPower.KbdBacklight.xml \
+ 	org.freedesktop.UPower.Wakeups.xml up-marshal.list \
+-	$(systemdservice_in_files) $(dbusservice_in_files) \
+-	$(dbusconf_in_files) $(am__append_5)
++	$(systemsleep_SCRIPTS) $(systemdservice_in_files) \
++	$(dbusservice_in_files) $(dbusconf_in_files) $(am__append_5)
+ all: $(BUILT_SOURCES)
+ 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
+ 
+@@ -913,6 +918,41 @@
+ upowerd$(EXEEXT): $(upowerd_OBJECTS) $(upowerd_DEPENDENCIES) $(EXTRA_upowerd_DEPENDENCIES) 
+ 	@rm -f upowerd$(EXEEXT)
+ 	$(AM_V_CCLD)$(upowerd_LINK) $(upowerd_OBJECTS) $(upowerd_LDADD) $(LIBS)
++install-systemsleepSCRIPTS: $(systemsleep_SCRIPTS)
++	@$(NORMAL_INSTALL)
++	@list='$(systemsleep_SCRIPTS)'; test -n "$(systemsleepdir)" || list=; \
++	if test -n "$$list"; then \
++	  echo " $(MKDIR_P) '$(DESTDIR)$(systemsleepdir)'"; \
++	  $(MKDIR_P) "$(DESTDIR)$(systemsleepdir)" || exit 1; \
++	fi; \
++	for p in $$list; do \
++	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
++	  if test -f "$$d$$p"; then echo "$$d$$p"; echo "$$p"; else :; fi; \
++	done | \
++	sed -e 'p;s,.*/,,;n' \
++	    -e 'h;s|.*|.|' \
++	    -e 'p;x;s,.*/,,;$(transform)' | sed 'N;N;N;s,\n, ,g' | \
++	$(AWK) 'BEGIN { files["."] = ""; dirs["."] = 1; } \
++	  { d=$$3; if (dirs[d] != 1) { print "d", d; dirs[d] = 1 } \
++	    if ($$2 == $$4) { files[d] = files[d] " " $$1; \
++	      if (++n[d] == $(am__install_max)) { \
++		print "f", d, files[d]; n[d] = 0; files[d] = "" } } \
++	    else { print "f", d "/" $$4, $$1 } } \
++	  END { for (d in files) print "f", d, files[d] }' | \
++	while read type dir files; do \
++	     if test "$$dir" = .; then dir=; else dir=/$$dir; fi; \
++	     test -z "$$files" || { \
++	       echo " $(INSTALL_SCRIPT) $$files '$(DESTDIR)$(systemsleepdir)$$dir'"; \
++	       $(INSTALL_SCRIPT) $$files "$(DESTDIR)$(systemsleepdir)$$dir" || exit $$?; \
++	     } \
++	; done
++
++uninstall-systemsleepSCRIPTS:
++	@$(NORMAL_UNINSTALL)
++	@list='$(systemsleep_SCRIPTS)'; test -n "$(systemsleepdir)" || exit 0; \
++	files=`for p in $$list; do echo "$$p"; done | \
++	       sed -e 's,.*/,,;$(transform)'`; \
++	dir='$(DESTDIR)$(systemsleepdir)'; $(am__uninstall_files_from_dir)
+ 
+ mostlyclean-compile:
+ 	-rm -f *.$(OBJEXT)
+@@ -1656,10 +1696,10 @@
+ 	$(MAKE) $(AM_MAKEFLAGS) check-TESTS check-local
+ check: $(BUILT_SOURCES)
+ 	$(MAKE) $(AM_MAKEFLAGS) check-recursive
+-all-am: Makefile $(PROGRAMS) $(DATA)
++all-am: Makefile $(PROGRAMS) $(SCRIPTS) $(DATA)
+ installdirs: installdirs-recursive
+ installdirs-am:
+-	for dir in "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(dbusconfdir)" "$(DESTDIR)$(dbusifdir)" "$(DESTDIR)$(dbusservicedir)" "$(DESTDIR)$(systemdservicedir)"; do \
++	for dir in "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(systemsleepdir)" "$(DESTDIR)$(dbusconfdir)" "$(DESTDIR)$(dbusifdir)" "$(DESTDIR)$(dbusservicedir)" "$(DESTDIR)$(systemdservicedir)"; do \
+ 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
+ 	done
+ install: $(BUILT_SOURCES)
+@@ -1723,7 +1763,8 @@
+ info-am:
+ 
+ install-data-am: install-dbusconfDATA install-dbusifDATA \
+-	install-dbusserviceDATA install-systemdserviceDATA
++	install-dbusserviceDATA install-systemdserviceDATA \
++	install-systemsleepSCRIPTS
+ 	@$(NORMAL_INSTALL)
+ 	$(MAKE) $(AM_MAKEFLAGS) install-data-hook
+ install-dvi: install-dvi-recursive
+@@ -1772,7 +1813,7 @@
+ 
+ uninstall-am: uninstall-dbusconfDATA uninstall-dbusifDATA \
+ 	uninstall-dbusserviceDATA uninstall-libexecPROGRAMS \
+-	uninstall-systemdserviceDATA
++	uninstall-systemdserviceDATA uninstall-systemsleepSCRIPTS
+ 
+ .MAKE: $(am__recursive_targets) all check check-am install install-am \
+ 	install-data-am install-strip
+@@ -1790,13 +1831,14 @@
+ 	install-info install-info-am install-libexecPROGRAMS \
+ 	install-man install-pdf install-pdf-am install-ps \
+ 	install-ps-am install-strip install-systemdserviceDATA \
+-	installcheck installcheck-am installdirs installdirs-am \
+-	maintainer-clean maintainer-clean-generic mostlyclean \
+-	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
+-	pdf pdf-am ps ps-am recheck tags tags-am uninstall \
+-	uninstall-am uninstall-dbusconfDATA uninstall-dbusifDATA \
++	install-systemsleepSCRIPTS installcheck installcheck-am \
++	installdirs installdirs-am maintainer-clean \
++	maintainer-clean-generic mostlyclean mostlyclean-compile \
++	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
++	recheck tags tags-am uninstall uninstall-am \
++	uninstall-dbusconfDATA uninstall-dbusifDATA \
+ 	uninstall-dbusserviceDATA uninstall-libexecPROGRAMS \
+-	uninstall-systemdserviceDATA
++	uninstall-systemdserviceDATA uninstall-systemsleepSCRIPTS
+ 
+ 
+ up-marshal.h: up-marshal.list
+diff -urN git/upower-9999/src/dummy/up-backend.c git/upower-9999-patched/src/dummy/up-backend.c
+--- git/upower-9999/src/dummy/up-backend.c	2014-07-01 02:42:33.095331000 -0400
++++ git/upower-9999-patched/src/dummy/up-backend.c	2014-07-13 20:40:18.250499000 -0400
+@@ -253,3 +253,76 @@
+ {
+ 	return g_object_new (UP_TYPE_BACKEND, NULL);
+ }
++
++#ifdef ENABLE_DEPRECATED
++/**
++ * up_backend_kernel_can_suspend:
++ **/
++gboolean
++up_backend_kernel_can_suspend (UpBackend *backend)
++{
++	return FALSE;
++}
++
++/**
++ * up_backend_kernel_can_hibernate:
++ **/
++gboolean
++up_backend_kernel_can_hibernate (UpBackend *backend)
++{
++	return FALSE;
++}
++
++/**
++ * up_backend_has_encrypted_swap:
++ **/
++gboolean
++up_backend_has_encrypted_swap (UpBackend *backend)
++{
++	return FALSE;
++}
++
++/**
++ * up_backend_get_used_swap:
++ *
++ * Return value: a percentage value
++ **/
++gfloat
++up_backend_get_used_swap (UpBackend *backend)
++{
++	return 0.0;
++}
++
++/**
++ * up_backend_get_suspend_command:
++ **/
++const gchar *
++up_backend_get_suspend_command (UpBackend *backend)
++{
++	return "/bin/true";
++}
++
++/**
++ * up_backend_get_hibernate_command:
++ **/
++const gchar *
++up_backend_get_hibernate_command (UpBackend *backend)
++{
++	return "/bin/true";
++}
++
++/**
++ * up_backend_get_powersave_command:
++ **/
++const gchar *
++up_backend_get_powersave_command (UpBackend *backend, gboolean powersave)
++{
++	return "/bin/true";
++}
++
++gboolean
++up_backend_emits_resuming (UpBackend *backend)
++{
++	return FALSE;
++}
++#endif /* ENABLE_DEPRECATED */
+diff -urN git/upower-9999/src/freebsd/up-backend.c git/upower-9999-patched/src/freebsd/up-backend.c
+--- git/upower-9999/src/freebsd/up-backend.c	2014-07-01 02:42:33.096331000 -0400
++++ git/upower-9999-patched/src/freebsd/up-backend.c	2014-07-13 20:40:45.953497000 -0400
+@@ -44,6 +44,10 @@
+ #include "up-device.h"
+ 
+ #define UP_BACKEND_REFRESH_TIMEOUT	30	/* seconds */
++#ifdef ENABLE_DEPRECATED
++#define UP_BACKEND_SUSPEND_COMMAND	"/usr/sbin/zzz"
++#define UP_BACKEND_HIBERNATE_COMMAND	"/usr/sbin/acpiconf -s 4"
++#endif /* ENABLE_DEPRECATED */
+ 
+ static void	up_backend_class_init	(UpBackendClass	*klass);
+ static void	up_backend_init	(UpBackend		*backend);
+@@ -53,6 +57,9 @@
+ static gboolean	up_backend_acpi_devd_notify (UpBackend *backend, const gchar *system, const gchar *subsystem, const gchar *type, const gchar *data);
+ static gboolean	up_backend_create_new_device (UpBackend *backend, UpAcpiNative *native);
+ static void	up_backend_lid_coldplug (UpBackend *backend);
++#ifdef ENABLE_DEPRECATED
++static gboolean	up_backend_supports_sleep_state (const gchar *state);
++#endif /* ENABLE_DEPRECATED */
+ 
+ #define UP_BACKEND_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), UP_TYPE_BACKEND, UpBackendPrivate))
+ 
+@@ -318,6 +325,67 @@
+ 	/* FIXME: Implement */
+ }
+ 
++#ifdef ENABLE_DEPRECATED
++/**
++ * up_backend_get_powersave_command:
++ **/
++const gchar *
++up_backend_get_powersave_command (UpBackend *backend, gboolean powersave)
++{
++	/* XXX: Do we want to use powerd here? */
++	return NULL;
++}
++
++/**
++ * up_backend_get_suspend_command:
++ **/
++const gchar *
++up_backend_get_suspend_command (UpBackend *backend)
++{
++	return UP_BACKEND_SUSPEND_COMMAND;
++}
++
++/**
++ * up_backend_get_hibernate_command:
++ **/
++const gchar *
++up_backend_get_hibernate_command (UpBackend *backend)
++{
++	return UP_BACKEND_HIBERNATE_COMMAND;
++}
++
++gboolean
++up_backend_emits_resuming (UpBackend *backend)
++{
++	return FALSE;
++}
++
++/**
++ * up_backend_kernel_can_suspend:
++ **/
++gboolean
++up_backend_kernel_can_suspend (UpBackend *backend)
++{
++	return up_backend_supports_sleep_state ("S3");
++}
++
++/**
++ * up_backend_kernel_can_hibernate:
++ **/
++gboolean
++up_backend_kernel_can_hibernate (UpBackend *backend)
++{
++	return up_backend_supports_sleep_state ("S4");
++}
++
++gboolean
++up_backend_has_encrypted_swap (UpBackend *backend)
++{
++	/* XXX: Add support for GELI? */
++	return FALSE;
++}
++#endif /* ENABLE_DEPRECATED */
++
+ /* Return value: a percentage value */
+ gfloat
+ up_backend_get_used_swap (UpBackend *backend)
+@@ -353,6 +421,28 @@
+ 	return percent;
+ }
+ 
++#ifdef ENABLE_DEPRECATED
++/**
++ * up_backend_supports_sleep_state:
++ **/
++static gboolean
++up_backend_supports_sleep_state (const gchar *state)
++{
++	gchar *sleep_states;
++	gboolean ret = FALSE;
++
++	sleep_states = up_get_string_sysctl (NULL, "hw.acpi.supported_sleep_state");
++	if (sleep_states != NULL) {
++		if (strstr (sleep_states, state) != NULL)
++			ret = TRUE;
++	}
++
++	g_free (sleep_states);
++
++	return ret;
++}
++#endif /* ENABLE_DEPRECATED */
++
+ /**
+  * up_backend_class_init:
+  * @klass: The UpBackendClass
+diff -urN git/upower-9999/src/linux/integration-test git/upower-9999-patched/src/linux/integration-test
+--- git/upower-9999/src/linux/integration-test	2014-07-01 21:52:12.269655000 -0400
++++ git/upower-9999-patched/src/linux/integration-test	2014-07-13 20:41:39.981492000 -0400
+@@ -775,7 +775,10 @@
+ 
+         self.start_daemon()
+         client = UPowerGlib.Client.new()
++        self.assertTrue(client.get_properties_sync(None))
+         self.assertRegex(client.get_daemon_version(), '^[0-9.]+$')
++        self.assertIn(client.get_can_hibernate(), [False, True])
++        self.assertIn(client.get_can_suspend(), [False, True])
+         self.assertIn(client.get_lid_is_present(), [False, True])
+         self.assertIn(client.get_lid_is_closed(), [False, True])
+         self.assertEqual(client.get_on_battery(), False)
+diff -urN git/upower-9999/src/linux/up-backend.c git/upower-9999-patched/src/linux/up-backend.c
+--- git/upower-9999/src/linux/up-backend.c	2014-07-01 02:42:33.099331000 -0400
++++ git/upower-9999-patched/src/linux/up-backend.c	2014-07-13 20:42:18.110489000 -0400
+@@ -48,6 +48,15 @@
+ #include <dbus/dbus-glib.h>
+ #include <dbus/dbus-glib-lowlevel.h>
+ 
++#ifdef ENABLE_DEPRECATED
++
++#define LOGIND_AVAILABLE() (access("/run/systemd/seats/", F_OK) >= 0)
++
++#define SD_HIBERNATE_COMMAND	"gdbus call --system --dest org.freedesktop.login1 --object-path /org/freedesktop/login1 --method org.freedesktop.login1.Manager.Hibernate 'true'"
++#define SD_SUSPEND_COMMAND	"gdbus call --system --dest org.freedesktop.login1 --object-path /org/freedesktop/login1 --method org.freedesktop.login1.Manager.Suspend 'true'"
++
++#endif
++
+ static void	up_backend_class_init	(UpBackendClass	*klass);
+ static void	up_backend_init	(UpBackend		*backend);
+ static void	up_backend_finalize	(GObject		*object);
+@@ -72,6 +81,9 @@
+ enum {
+ 	SIGNAL_DEVICE_ADDED,
+ 	SIGNAL_DEVICE_REMOVED,
++#ifdef ENABLE_DEPRECATED
++	SIGNAL_RESUMING,
++#endif
+ 	SIGNAL_LAST
+ };
+ 
+@@ -82,6 +94,13 @@
+ static gboolean up_backend_device_add (UpBackend *backend, GUdevDevice *native);
+ static void up_backend_device_remove (UpBackend *backend, GUdevDevice *native);
+ 
++#ifdef ENABLE_DEPRECATED
++#define UP_BACKEND_SUSPEND_COMMAND		"/usr/sbin/pm-suspend"
++#define UP_BACKEND_HIBERNATE_COMMAND		"/usr/sbin/pm-hibernate"
++#define UP_BACKEND_POWERSAVE_TRUE_COMMAND	"/usr/sbin/pm-powersave true"
++#define UP_BACKEND_POWERSAVE_FALSE_COMMAND	"/usr/sbin/pm-powersave false"
++#endif
++
+ /**
+  * up_backend_device_new:
+  **/
+@@ -425,6 +444,271 @@
+ 			   NULL);
+ }
+ 
++#ifdef ENABLE_DEPRECATED
++/**
++ * up_backend_supports_sleep_state:
++ *
++ * use pm-is-supported to test for supported sleep states
++ **/
++static gboolean
++up_backend_supports_sleep_state (const gchar *state)
++{
++	gboolean ret = FALSE;
++	gchar *command;
++	GError *error = NULL;
++	gint exit_status;
++
++	/* run script from pm-utils */
++	command = g_strdup_printf ("/usr/bin/pm-is-supported --%s", state);
++	g_debug ("excuting command: %s", command);
++	ret = g_spawn_command_line_sync (command, NULL, NULL, &exit_status, &error);
++	if (!ret) {
++		g_warning ("failed to run script: %s", error->message);
++		g_error_free (error);
++		goto out;
++	}
++	ret = (WIFEXITED(exit_status) && (WEXITSTATUS(exit_status) == EXIT_SUCCESS));
++
++out:
++	g_free (command);
++	return ret;
++}
++
++/**
++ * up_backend_kernel_can_suspend:
++ **/
++gboolean
++up_backend_kernel_can_suspend (UpBackend *backend)
++{
++	return up_backend_supports_sleep_state ("suspend");
++}
++
++/**
++ * up_backend_kernel_can_hibernate:
++ **/
++gboolean
++up_backend_kernel_can_hibernate (UpBackend *backend)
++{
++	return up_backend_supports_sleep_state ("hibernate");
++}
++
++/**
++ * up_backend_has_encrypted_swap:
++ *
++ * user@local:~$ cat /proc/swaps
++ * Filename                                Type            Size    Used    Priority
++ * /dev/mapper/cryptswap1                  partition       4803392 35872   -1
++ *
++ * user@local:~$ cat /etc/crypttab
++ * # <target name> <source device>         <key file>      <options>
++ * cryptswap1 /dev/sda5 /dev/urandom swap,cipher=aes-cbc-essiv:sha256
++ *
++ * Loop over the swap partitions in /proc/swaps, looking for matches in /etc/crypttab
++ **/
++gboolean
++up_backend_has_encrypted_swap (UpBackend *backend)
++{
++	gchar *contents_swaps = NULL;
++	gchar *contents_crypttab = NULL;
++	gchar **lines_swaps = NULL;
++	gchar **lines_crypttab = NULL;
++	GError *error = NULL;
++	gboolean ret;
++	gboolean encrypted_swap = FALSE;
++	const gchar *filename_swaps = "/proc/swaps";
++	const gchar *filename_crypttab = "/etc/crypttab";
++	GPtrArray *devices = NULL;
++	gchar *device;
++	guint i, j;
++
++	/* get swaps data */
++	ret = g_file_get_contents (filename_swaps, &contents_swaps, NULL, &error);
++	if (!ret) {
++		g_warning ("failed to open %s: %s", filename_swaps, error->message);
++		g_error_free (error);
++		goto out;
++	}
++
++	/* get crypttab data */
++	ret = g_file_get_contents (filename_crypttab, &contents_crypttab, NULL, &error);
++	if (!ret) {
++		if (error->code != G_FILE_ERROR_NOENT) {
++			g_warning ("failed to open %s: %s", filename_crypttab, error->message);
++		}
++		g_error_free (error);
++		goto out;
++	}
++
++	/* split both into lines */
++	lines_swaps = g_strsplit (contents_swaps, "\n", -1);
++	lines_crypttab = g_strsplit (contents_crypttab, "\n", -1);
++
++	/* get valid swap devices */
++	devices = g_ptr_array_new_with_free_func (g_free);
++	for (i=0; lines_swaps[i] != NULL; i++) {
++
++		/* is a device? */
++		if (lines_swaps[i][0] != '/')
++			continue;
++
++		/* only look at first parameter */
++		g_strdelimit (lines_swaps[i], "\t ", '\0');
++
++		/* add base device to list */
++		device = g_path_get_basename (lines_swaps[i]);
++		g_debug ("adding swap device: %s", device);
++		g_ptr_array_add (devices, device);
++	}
++
++	/* no swap devices? */
++	if (devices->len == 0) {
++		g_debug ("no swap devices");
++		goto out;
++	}
++
++	/* find matches in crypttab */
++	for (i=0; lines_crypttab[i] != NULL; i++) {
++
++		/* ignore invalid lines */
++		if (lines_crypttab[i][0] == '#' ||
++		    lines_crypttab[i][0] == '\n' ||
++		    lines_crypttab[i][0] == '\t' ||
++		    lines_crypttab[i][0] == '\0')
++			continue;
++
++		/* only look at first parameter */
++		g_strdelimit (lines_crypttab[i], "\t ", '\0');
++
++		/* is a swap device? */
++		for (j=0; j<devices->len; j++) {
++			device = g_ptr_array_index (devices, j);
++			if (g_strcmp0 (device, lines_crypttab[i]) == 0) {
++				g_debug ("swap device %s is encrypted (so cannot hibernate)", device);
++				encrypted_swap = TRUE;
++				goto out;
++			}
++			g_debug ("swap device %s is not encrypted (allows hibernate)", device);
++		}
++	}
++
++out:
++	if (devices != NULL)
++		g_ptr_array_unref (devices);
++	g_free (contents_swaps);
++	g_free (contents_crypttab);
++	g_strfreev (lines_swaps);
++	g_strfreev (lines_crypttab);
++	return encrypted_swap;
++}
++
++/**
++ * up_backend_get_used_swap:
++ *
++ * Return value: a percentage value how much of the available swap memory would
++ * be taken by currently active memory
++ **/
++gfloat
++up_backend_get_used_swap (UpBackend *backend)
++{
++	gchar *contents = NULL;
++	gchar **lines = NULL;
++	GError *error = NULL;
++	gchar **tokens;
++	gboolean ret;
++	guint active = 0;
++	guint swap_free = 0;
++	guint swap_total = 0;
++	guint len;
++	guint i;
++	gfloat percentage = 0.0f;
++	const gchar *filename = "/proc/meminfo";
++
++	/* get memory data */
++	ret = g_file_get_contents (filename, &contents, NULL, &error);
++	if (!ret) {
++		g_warning ("failed to open %s: %s", filename, error->message);
++		g_error_free (error);
++		goto out;
++	}
++
++	/* process each line */
++	lines = g_strsplit (contents, "\n", -1);
++	for (i=1; lines[i] != NULL; i++) {
++		tokens = g_strsplit_set (lines[i], ": ", -1);
++		len = g_strv_length (tokens);
++		if (len > 3) {
++			if (g_strcmp0 (tokens[0], "SwapFree") == 0)
++				swap_free = atoi (tokens[len-2]);
++			if (g_strcmp0 (tokens[0], "SwapTotal") == 0)
++				swap_total = atoi (tokens[len-2]);
++			else if (g_strcmp0 (tokens[0], "Active(anon)") == 0)
++				active = atoi (tokens[len-2]);
++		}
++		g_strfreev (tokens);
++	}
++
++	/* first check if we even have swap, if not consider all swap space used */
++	if (swap_total == 0) {
++		g_debug ("no swap space found");
++		percentage = 100.0f;
++		goto out;
++	}
++
++	/* work out how close to the line we are */
++	if (swap_free > 0 && active > 0)
++		percentage = (active * 100) / swap_free;
++	g_debug ("total swap available %i kb, active memory %i kb (%.1f%%)", swap_free, active, percentage);
++out:
++	g_free (contents);
++	g_strfreev (lines);
++	return percentage;
++}
++
++/**
++ * up_backend_get_suspend_command:
++ **/
++const gchar *
++up_backend_get_suspend_command (UpBackend *backend)
++{
++	if (LOGIND_AVAILABLE())
++		return SD_SUSPEND_COMMAND;
++	else
++		return UP_BACKEND_SUSPEND_COMMAND;
++}
++
++/**
++ * up_backend_get_hibernate_command:
++ **/
++const gchar *
++up_backend_get_hibernate_command (UpBackend *backend)
++{
++	if (LOGIND_AVAILABLE())
++		return SD_HIBERNATE_COMMAND;
++	else
++		return UP_BACKEND_HIBERNATE_COMMAND;
++}
++
++gboolean
++up_backend_emits_resuming (UpBackend *backend)
++{
++	if (LOGIND_AVAILABLE())
++		return TRUE;
++	else
++		return FALSE;
++}
++
++/**
++ * up_backend_get_powersave_command:
++ **/
++const gchar *
++up_backend_get_powersave_command (UpBackend *backend, gboolean powersave)
++{
++	if (powersave)
++		return UP_BACKEND_POWERSAVE_TRUE_COMMAND;
++	return UP_BACKEND_POWERSAVE_FALSE_COMMAND;
++}
++#endif /* ENABLE_DEPRECATED */
++
+ /**
+  * up_backend_class_init:
+  * @klass: The UpBackendClass
+@@ -447,10 +731,35 @@
+ 			      G_STRUCT_OFFSET (UpBackendClass, device_removed),
+ 			      NULL, NULL, up_marshal_VOID__POINTER_POINTER,
+ 			      G_TYPE_NONE, 2, G_TYPE_POINTER, G_TYPE_POINTER);
++#ifdef ENABLE_DEPRECATED
++	signals [SIGNAL_RESUMING] =
++		g_signal_new ("resuming",
++			      G_TYPE_FROM_CLASS (object_class), G_SIGNAL_RUN_LAST,
++			      G_STRUCT_OFFSET (UpBackendClass, resuming),
++			      NULL, NULL, g_cclosure_marshal_VOID__VOID,
++			      G_TYPE_NONE, 0);
++#endif /* ENABLE_DEPRECATED */
+ 
+ 	g_type_class_add_private (klass, sizeof (UpBackendPrivate));
+ }
+ 
++#ifdef ENABLE_DEPRECATED
++static DBusHandlerResult
++message_filter (DBusConnection *connection,
++		DBusMessage *message,
++		void *user_data)
++{
++	UpBackend *backend = user_data;
++
++	if (dbus_message_is_signal (message, "org.freedesktop.UPower", "Resuming")) {
++		g_debug ("received Resuming signal");
++		g_signal_emit (backend, signals[SIGNAL_RESUMING], 0);
++		return DBUS_HANDLER_RESULT_HANDLED;
++	}
++	return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
++}
++#endif /* ENABLE_DEPRECATED */
++
+ /**
+  * up_backend_init:
+  **/
+@@ -468,6 +777,15 @@
+ 								     LOGIND_DBUS_INTERFACE,
+ 								     NULL,
+ 								     NULL);
++
++#ifdef ENABLE_DEPRECATED
++	if (LOGIND_AVAILABLE()) {
++		DBusGConnection *bus;
++		bus = dbus_g_bus_get (DBUS_BUS_SYSTEM, NULL);
++		backend->priv->connection = dbus_g_connection_get_connection (bus);
++		dbus_connection_add_filter (backend->priv->connection, message_filter, backend, NULL);
++	}
++#endif /* ENABLE_DEPRECATED */
+ }
+ 
+ /**
+@@ -493,6 +811,11 @@
+ 
+ 	g_object_unref (backend->priv->managed_devices);
+ 
++#ifdef ENABLE_DEPRECATED
++	if (backend->priv->connection)
++		dbus_connection_remove_filter (backend->priv->connection, message_filter, backend);
++#endif /* ENABLE_DEPRECATED */
++
+ 	G_OBJECT_CLASS (up_backend_parent_class)->finalize (object);
+ }
+ 
+diff -urN git/upower-9999/src/notify-upower.sh git/upower-9999-patched/src/notify-upower.sh
+--- git/upower-9999/src/notify-upower.sh	1969-12-31 19:00:00.000000000 -0500
++++ git/upower-9999-patched/src/notify-upower.sh	2014-07-06 04:27:57.416543000 -0400
+@@ -0,0 +1,7 @@
++#!/bin/bash
++[ "$1" = "post" ] && exec /usr/bin/dbus-send	\
++	--system --type=signal			\
++	--dest=org.freedesktop.UPower		\
++	/org/freedesktop/UPower			\
++	org.freedesktop.UPower.Resuming
++exit 0
+diff -urN git/upower-9999/src/openbsd/up-backend.c git/upower-9999-patched/src/openbsd/up-backend.c
+--- git/upower-9999/src/openbsd/up-backend.c	2014-07-01 02:42:33.102331000 -0400
++++ git/upower-9999-patched/src/openbsd/up-backend.c	2014-07-13 20:42:49.028487000 -0400
+@@ -27,6 +27,12 @@
+ #include "up-device.h"
+ #include <string.h> /* strcmp() */
+ 
++#ifdef ENABLE_DEPRECATED
++#define UP_BACKEND_SUSPEND_COMMAND	"/usr/sbin/zzz"
++#define UP_BACKEND_POWERSAVE_TRUE_COMMAND	"/usr/sbin/apm -C"
++#define UP_BACKEND_POWERSAVE_FALSE_COMMAND	"/usr/sbin/apm -A"
++#endif /* ENABLE_DEPRECATED */
++
+ static void	up_backend_class_init	(UpBackendClass	*klass);
+ static void	up_backend_init	(UpBackend		*backend);
+ static void	up_backend_finalize	(GObject		*object);
+@@ -174,6 +180,74 @@
+ 	/* FIXME: Implement */
+ }
+ 
++#ifdef ENABLE_DEPRECATED
++/**
++ * up_backend_get_powersave_command:
++ **/
++const gchar *
++up_backend_get_powersave_command (UpBackend *backend, gboolean powersave)
++{
++	if (powersave)
++		return UP_BACKEND_POWERSAVE_TRUE_COMMAND;
++	return UP_BACKEND_POWERSAVE_FALSE_COMMAND;
++}
++
++/**
++ * up_backend_get_suspend_command:
++ **/
++const gchar *
++up_backend_get_suspend_command (UpBackend *backend)
++{
++	return UP_BACKEND_SUSPEND_COMMAND;
++}
++
++/**
++ * up_backend_get_hibernate_command:
++ **/
++const gchar *
++up_backend_get_hibernate_command (UpBackend *backend)
++{
++	return NULL;
++}
++
++gboolean
++up_backend_emits_resuming (UpBackend *backend)
++{
++	return FALSE;
++}
++
++/**
++ * up_backend_kernel_can_suspend:
++ **/
++gboolean
++up_backend_kernel_can_suspend (UpBackend *backend)
++{
++	return TRUE;
++}
++
++/**
++ * up_backend_kernel_can_hibernate:
++ **/
++gboolean
++up_backend_kernel_can_hibernate (UpBackend *backend)
++{
++	return FALSE;
++}
++
++gboolean
++up_backend_has_encrypted_swap (UpBackend *backend)
++{
++	return FALSE;
++}
++
++/* Return value: a percentage value */
++gfloat
++up_backend_get_used_swap (UpBackend *backend)
++{
++	return 0;
++}
++#endif /* ENABLE_DEPRECATED */
++
+ /**
+  * OpenBSD specific code
+  **/
+diff -urN git/upower-9999/src/up-backend.h git/upower-9999-patched/src/up-backend.h
+--- git/upower-9999/src/up-backend.h	2014-07-01 02:42:33.103331000 -0400
++++ git/upower-9999-patched/src/up-backend.h	2014-07-13 20:44:24.227479000 -0400
+@@ -61,6 +61,9 @@
+ 	void		(* device_removed)	(UpBackend	*backend,
+ 						 GObject	*native,
+ 						 UpDevice	*device);
++#ifdef ENABLE_DEPRECATED
++	void		(* resuming)		(UpBackend	*backend);
++#endif /* ENABLE_DEPRECATED */
+ } UpBackendClass;
+ 
+ GType		 up_backend_get_type			(void);
+@@ -71,6 +74,16 @@
+ 							 UpDaemon	*daemon);
+ void		 up_backend_take_action			(UpBackend	*backend);
+ const char	*up_backend_get_critical_action		(UpBackend	*backend);
++#ifdef ENABLE_DEPRECATED
++gboolean	 up_backend_kernel_can_suspend		(UpBackend	*backend);
++gboolean	 up_backend_kernel_can_hibernate	(UpBackend	*backend);
++gboolean	 up_backend_has_encrypted_swap		(UpBackend	*backend);
++gfloat		 up_backend_get_used_swap			(UpBackend	*backend);
++const gchar	*up_backend_get_suspend_command		(UpBackend	*backend);
++const gchar	*up_backend_get_hibernate_command	(UpBackend	*backend);
++const gchar	*up_backend_get_powersave_command	(UpBackend	*backend, gboolean	 powersave);
++gboolean	 up_backend_emits_resuming			(UpBackend	*backend);
++#endif /* ENABLE_DEPRECATED */
+ 
+ G_END_DECLS
+ 
+diff -urN git/upower-9999/src/up-daemon.c git/upower-9999-patched/src/up-daemon.c
+--- git/upower-9999/src/up-daemon.c	2014-07-01 02:42:33.104331000 -0400
++++ git/upower-9999-patched/src/up-daemon.c	2014-07-13 20:54:35.213429000 -0400
+@@ -46,9 +46,16 @@
+ {
+ 	PROP_0,
+ 	PROP_DAEMON_VERSION,
++#ifdef ENABLE_DEPRECATED
++	PROP_CAN_SUSPEND,
++	PROP_CAN_HIBERNATE,
++#endif /* ENABLE_DEPRECATED */
+ 	PROP_ON_BATTERY,
+ 	PROP_LID_IS_CLOSED,
+ 	PROP_LID_IS_PRESENT,
++#ifdef ENABLE_DEPRECATED
++	PROP_LID_FORCE_SLEEP,
++#endif /* ENABLE_DEPRECATED */
+ 	PROP_LAST
+ };
+ 
+@@ -56,6 +63,12 @@
+ {
+ 	SIGNAL_DEVICE_ADDED,
+ 	SIGNAL_DEVICE_REMOVED,
++#ifdef ENABLE_DEPRECATED
++	SIGNAL_SLEEPING,
++	SIGNAL_RESUMING,
++	SIGNAL_NOTIFY_SLEEP,
++	SIGNAL_NOTIFY_RESUME,
++#endif /* ENABLE_DEPRECATED */
+ 	SIGNAL_LAST,
+ };
+ 
+@@ -77,6 +90,19 @@
+ 	UpDeviceLevel		 warning_level;
+ 	gboolean		 lid_is_closed;
+ 	gboolean		 lid_is_present;
++#ifdef ENABLE_DEPRECATED
++	gboolean		 lid_force_sleep;
++	gboolean		 kernel_can_suspend;
++	gboolean		 kernel_can_hibernate;
++	gboolean		 hibernate_has_encrypted_swap;
++	gboolean		 sent_sleeping_signal;
++	GTimer			*about_to_sleep_timer;
++	guint			 about_to_sleep_id;
++	guint			 conf_sleep_timeout;
++	gboolean		 conf_allow_hibernate_encrypted_swap;
++	gboolean		 conf_run_powersave_command;
++	const gchar		*sleep_kind;
++#endif /* ENABLE_DEPRECATED */
+ 
+ 	/* PropertiesChanged to be emitted */
+ 	GHashTable		*changed_props;
+@@ -114,6 +140,14 @@
+ 
+ #define UP_DAEMON_ACTION_DELAY				20 /* seconds */
+ 
++#ifdef ENABLE_DEPRECATED
++/* if using more memory compared to usable swap, disable hibernate */
++/* Native Linux suspend-to-disk does not use compression, and needs 2 KB of
++ * page meta information for each MB of active memory. Add some error margin
++ * here, though. */
++#define UP_DAEMON_SWAP_WATERLINE 			98.f /* % */
++#endif /* ENABLE_DEPRECATED */
++
+ /**
+  * up_daemon_get_on_battery_local:
+  *
+@@ -381,6 +415,35 @@
+ 	return result;
+ }
+ 
++#ifdef ENABLE_DEPRECATED
++/**
++ * up_daemon_set_powersave:
++ **/
++static gboolean
++up_daemon_set_powersave (UpDaemon *daemon, gboolean powersave)
++{
++	gboolean ret = FALSE;
++	const gchar *command;
++	GError *error = NULL;
++
++	/* run script */
++	command = up_backend_get_powersave_command (daemon->priv->backend, powersave);
++	if (command == NULL) {
++		g_warning ("no powersave command set");
++		goto out;
++	}
++	g_debug ("excuting command: %s", command);
++	ret = g_spawn_command_line_async (command, &error);
++	if (!ret) {
++		g_warning ("failed to run script: %s", error->message);
++		g_error_free (error);
++		goto out;
++	}
++out:
++	return ret;
++}
++#endif /* ENABLE_DEPRECATED */
++
+ /**
+  * up_daemon_refresh_battery_devices:
+  **/
+@@ -462,6 +525,387 @@
+ 	return TRUE;
+ }
+ 
++#ifdef ENABLE_DEPRECATED
++/**
++ * up_daemon_about_to_sleep:
++ **/
++gboolean
++up_daemon_about_to_sleep (UpDaemon *daemon,
++			  const gchar *sleep_kind,
++			  DBusGMethodInvocation *context)
++{
++	GError *error;
++	PolkitSubject *subject = NULL;
++	UpDaemonPrivate *priv = daemon->priv;
++
++	/* already requested */
++	if (priv->about_to_sleep_id != 0) {
++		error = g_error_new (UP_DAEMON_ERROR,
++				     UP_DAEMON_ERROR_GENERAL,
++				     "Sleep has already been requested and is pending");
++		dbus_g_method_return_error (context, error);
++		g_error_free (error);
++		goto out;
++	}
++
++	subject = up_polkit_get_subject (priv->polkit, context);
++	if (subject == NULL)
++		goto out;
++
++	/* TODO: use another PolicyKit context? */
++	if (!up_polkit_check_auth (priv->polkit, subject, "org.freedesktop.upower.suspend", context))
++		goto out;
++
++	/* we've told the clients we're going down */
++	g_debug ("emitting sleeping");
++	g_signal_emit (daemon, signals[SIGNAL_SLEEPING], 0);
++	g_signal_emit (daemon, signals[SIGNAL_NOTIFY_SLEEP], 0,
++		       sleep_kind);
++	g_timer_start (priv->about_to_sleep_timer);
++	daemon->priv->sent_sleeping_signal = TRUE;
++
++	dbus_g_method_return (context, NULL);
++out:
++	if (subject != NULL)
++		g_object_unref (subject);
++	return TRUE;
++}
++
++/* temp object for deferred callback */
++typedef struct {
++	UpDaemon		*daemon;
++	DBusGMethodInvocation	*context;
++	gchar			*command;
++	gulong			 handler;
++} UpDaemonDeferredSleep;
++
++static void
++emit_resuming (UpDaemonDeferredSleep *sleep)
++{
++	UpDaemon *daemon = sleep->daemon;
++	UpDaemonPrivate *priv = daemon->priv;
++
++	/* emit signal for session components */
++	g_debug ("emitting resuming");
++	g_signal_emit (daemon, signals[SIGNAL_RESUMING], 0);
++	g_signal_emit (daemon, signals[SIGNAL_NOTIFY_RESUME], 0,
++		       priv->sleep_kind);
++
++	/* reset the about-to-sleep logic */
++	g_timer_reset (priv->about_to_sleep_timer);
++	g_timer_stop (priv->about_to_sleep_timer);
++
++	/* actually return from the DBus call now */
++	dbus_g_method_return (sleep->context, NULL);
++
++	/* clear timer */
++	priv->about_to_sleep_id = 0;
++	priv->sent_sleeping_signal = FALSE;
++
++	/* delete temp object */
++	if (sleep->handler)
++		g_signal_handler_disconnect (priv->backend, sleep->handler);
++	g_object_unref (sleep->daemon);
++	g_free (sleep->command);
++	g_free (sleep);
++}
++
++/**
++ * up_daemon_deferred_sleep_cb:
++ **/
++static gboolean
++up_daemon_deferred_sleep_cb (UpDaemonDeferredSleep *sleep)
++{
++	GError *error;
++	GError *error_local = NULL;
++	gchar *stdout = NULL;
++	gchar *stderr = NULL;
++	gboolean ret;
++	UpDaemon *daemon = sleep->daemon;
++	UpDaemonPrivate *priv = daemon->priv;
++
++	if (up_backend_emits_resuming (priv->backend)) {
++		sleep->handler = g_signal_connect_swapped (priv->backend, "resuming",
++							   G_CALLBACK (emit_resuming), sleep);
++	}
++
++	/* run the command */
++	g_debug ("Running %s", sleep->command);
++	ret = g_spawn_command_line_sync (sleep->command, &stdout, &stderr, NULL, &error_local);
++	if (!ret) {
++		error = g_error_new (UP_DAEMON_ERROR,
++				     UP_DAEMON_ERROR_GENERAL,
++				     "Failed to spawn: %s, stdout:%s, stderr:%s", error_local->message, stdout, stderr);
++		g_error_free (error_local);
++		dbus_g_method_return_error (sleep->context, error);
++		g_error_free (error);
++		goto out;
++	}
++
++	if (!up_backend_emits_resuming (priv->backend))
++		emit_resuming (sleep);
++
++out:
++	g_free (stdout);
++	g_free (stderr);
++
++	return FALSE;
++}
++
++/**
++ * up_daemon_deferred_sleep:
++ **/
++static void
++up_daemon_deferred_sleep (UpDaemon *daemon, const gchar *command, DBusGMethodInvocation *context)
++{
++	UpDaemonDeferredSleep *sleep;
++	UpDaemonPrivate *priv = daemon->priv;
++	gfloat elapsed;
++
++	/* create callback object */
++	sleep = g_new0 (UpDaemonDeferredSleep, 1);
++	sleep->daemon = g_object_ref (daemon);
++	sleep->context = context;
++	sleep->command = g_strdup (command);
++
++	/* we didn't use AboutToSleep() so send the signal for clients now */
++	if (!priv->sent_sleeping_signal) {
++		g_debug ("no AboutToSleep(), so emitting ::Sleeping()");
++		g_signal_emit (daemon, signals[SIGNAL_SLEEPING], 0);
++		g_signal_emit (daemon, signals[SIGNAL_NOTIFY_SLEEP], 0,
++			       priv->sleep_kind);
++		priv->about_to_sleep_id = g_timeout_add (priv->conf_sleep_timeout,
++							 (GSourceFunc) up_daemon_deferred_sleep_cb, sleep);
++#if GLIB_CHECK_VERSION(2,25,8)
++		g_source_set_name_by_id (priv->about_to_sleep_id, "[UpDaemon] about-to-sleep no signal");
++#endif
++		return;
++	}
++
++	/* about to sleep */
++	elapsed = 1000.0f * g_timer_elapsed (priv->about_to_sleep_timer, NULL);
++	g_debug ("between AboutToSleep() and %s was %fms", sleep->command, elapsed);
++	if (elapsed < priv->conf_sleep_timeout) {
++		/* we have to wait for the difference in time */
++		priv->about_to_sleep_id = g_timeout_add (priv->conf_sleep_timeout - elapsed,
++							 (GSourceFunc) up_daemon_deferred_sleep_cb, sleep);
++#if GLIB_CHECK_VERSION(2,25,8)
++		g_source_set_name_by_id (priv->about_to_sleep_id, "[UpDaemon] about-to-sleep less");
++#endif
++	} else {
++		/* we can do this straight away */
++		priv->about_to_sleep_id = g_idle_add ((GSourceFunc) up_daemon_deferred_sleep_cb, sleep);
++#if GLIB_CHECK_VERSION(2,25,8)
++		g_source_set_name_by_id (priv->about_to_sleep_id, "[UpDaemon] about-to-sleep more");
++#endif
++	}
++}
++
++/**
++ * up_daemon_suspend:
++ **/
++gboolean
++up_daemon_suspend (UpDaemon *daemon, DBusGMethodInvocation *context)
++{
++	GError *error;
++	PolkitSubject *subject = NULL;
++	const gchar *command;
++	UpDaemonPrivate *priv = daemon->priv;
++
++	/* no kernel support */
++	if (!priv->kernel_can_suspend) {
++		error = g_error_new (UP_DAEMON_ERROR,
++				     UP_DAEMON_ERROR_GENERAL,
++				     "No kernel support");
++		dbus_g_method_return_error (context, error);
++		g_error_free (error);
++		goto out;
++	}
++
++	subject = up_polkit_get_subject (priv->polkit, context);
++	if (subject == NULL)
++		goto out;
++
++	if (!up_polkit_check_auth (priv->polkit, subject, "org.freedesktop.upower.suspend", context))
++		goto out;
++
++	/* already requested */
++	if (priv->about_to_sleep_id != 0) {
++		error = g_error_new (UP_DAEMON_ERROR,
++				     UP_DAEMON_ERROR_GENERAL,
++				     "Sleep has already been requested and is pending");
++		dbus_g_method_return_error (context, error);
++		g_error_free (error);
++		goto out;
++	}
++
++	/* do this deferred action */
++	priv->sleep_kind = "suspend";
++	command = up_backend_get_suspend_command (priv->backend);
++	up_daemon_deferred_sleep (daemon, command, context);
++out:
++	if (subject != NULL)
++		g_object_unref (subject);
++	return TRUE;
++}
++
++/**
++ * up_daemon_suspend_allowed:
++ **/
++gboolean
++up_daemon_suspend_allowed (UpDaemon *daemon, DBusGMethodInvocation *context)
++{
++	GError *error;
++	gboolean ret;
++	PolkitSubject *subject = NULL;
++	UpDaemonPrivate *priv = daemon->priv;
++
++	subject = up_polkit_get_subject (priv->polkit, context);
++	if (subject == NULL)
++		goto out;
++
++	error = NULL;
++	ret = up_polkit_is_allowed (priv->polkit, subject, "org.freedesktop.upower.suspend", &error);
++	if (error) {
++		dbus_g_method_return_error (context, error);
++		g_error_free (error);
++	}
++	else {
++		dbus_g_method_return (context, ret);
++	}
++
++out:
++	if (subject != NULL)
++		g_object_unref (subject);
++	return TRUE;
++}
++
++/**
++ * up_daemon_check_hibernate_swap:
++ *
++ * Check current memory usage whether we have enough swap space for
++ * hibernate.
++ **/
++static gboolean
++up_daemon_check_hibernate_swap (UpDaemon *daemon)
++{
++	gfloat waterline;
++
++	if (daemon->priv->kernel_can_hibernate) {
++		waterline = up_backend_get_used_swap (daemon->priv->backend);
++		if (waterline < UP_DAEMON_SWAP_WATERLINE) {
++			g_debug ("enough swap to for hibernate");
++			return TRUE;
++		} else {
++			g_debug ("not enough swap to hibernate");
++			return FALSE;
++		}
++	}
++
++	return FALSE;
++}
++
++/**
++ * up_daemon_hibernate:
++ **/
++gboolean
++up_daemon_hibernate (UpDaemon *daemon, DBusGMethodInvocation *context)
++{
++	GError *error;
++	PolkitSubject *subject = NULL;
++	const gchar *command;
++	UpDaemonPrivate *priv = daemon->priv;
++
++	/* no kernel support */
++	if (!priv->kernel_can_hibernate) {
++		error = g_error_new (UP_DAEMON_ERROR,
++				     UP_DAEMON_ERROR_GENERAL,
++				     "No kernel support");
++		dbus_g_method_return_error (context, error);
++		g_error_free (error);
++		goto out;
++	}
++
++	/* enough swap? */
++	if (!up_daemon_check_hibernate_swap (daemon)) {
++		error = g_error_new (UP_DAEMON_ERROR,
++				     UP_DAEMON_ERROR_GENERAL,
++				     "Not enough swap space");
++		dbus_g_method_return_error (context, error);
++		g_error_free (error);
++		goto out;
++	}
++
++	/* encrypted swap and no override? */
++	if (priv->hibernate_has_encrypted_swap &&
++	    !priv->conf_allow_hibernate_encrypted_swap) {
++		error = g_error_new (UP_DAEMON_ERROR,
++				     UP_DAEMON_ERROR_GENERAL,
++				     "Swap space is encrypted, use AllowHibernateEncryptedSwap to override");
++		dbus_g_method_return_error (context, error);
++		g_error_free (error);
++		goto out;
++	}
++
++	subject = up_polkit_get_subject (priv->polkit, context);
++	if (subject == NULL)
++		goto out;
++
++	if (!up_polkit_check_auth (priv->polkit, subject, "org.freedesktop.upower.hibernate", context))
++		goto out;
++
++	/* already requested */
++	if (priv->about_to_sleep_id != 0) {
++		error = g_error_new (UP_DAEMON_ERROR,
++				     UP_DAEMON_ERROR_GENERAL,
++				     "Sleep has already been requested and is pending");
++		dbus_g_method_return_error (context, error);
++		g_error_free (error);
++		goto out;
++	}
++
++	/* do this deferred action */
++	priv->sleep_kind = "hibernate";
++	command = up_backend_get_hibernate_command (priv->backend);
++	up_daemon_deferred_sleep (daemon, command, context);
++out:
++	if (subject != NULL)
++		g_object_unref (subject);
++	return TRUE;
++}
++
++/**
++ * up_daemon_hibernate_allowed:
++ **/
++gboolean
++up_daemon_hibernate_allowed (UpDaemon *daemon, DBusGMethodInvocation *context)
++{
++	GError *error;
++	gboolean ret;
++	PolkitSubject *subject = NULL;
++	UpDaemonPrivate *priv = daemon->priv;
++
++	subject = up_polkit_get_subject (priv->polkit, context);
++	if (subject == NULL)
++		goto out;
++
++	error = NULL;
++	ret = up_polkit_is_allowed (priv->polkit, subject, "org.freedesktop.upower.hibernate", &error);
++	if (error) {
++		dbus_g_method_return_error (context, error);
++		g_error_free (error);
++	}
++	else {
++		dbus_g_method_return (context, ret);
++	}
++
++out:
++	if (subject != NULL)
++		g_object_unref (subject);
++	return TRUE;
++}
++#endif /* ENABLE_DEPRECATED */
++
+ /**
+  * up_daemon_register_power_daemon:
+  **/
+@@ -540,6 +984,11 @@
+ 		goto out;
+ 	}
+ 
++#ifdef ENABLE_DEPRECATED
++	/* set power policy */
++	if (priv->conf_run_powersave_command)
++		up_daemon_set_powersave (daemon, priv->on_battery);
++#endif /* ENABLE_DEPRECATED */
+ out:
+ 	return ret;
+ }
+@@ -698,6 +1147,20 @@
+ 	up_daemon_queue_changed_property (daemon, "LidIsClosed", g_variant_new_boolean (lid_is_closed));
+ }
+ 
++#ifdef ENABLE_DEPRECATED
++/**
++ * up_daemon_set_lid_force_sleep:
++ **/
++void
++up_daemon_set_lid_force_sleep (UpDaemon *daemon, gboolean lid_force_sleep)
++{
++	UpDaemonPrivate *priv = daemon->priv;
++	g_debug ("lid_force_sleep = %s", lid_force_sleep ? "yes" : "no");
++	priv->lid_force_sleep = lid_force_sleep;
++	g_object_notify (G_OBJECT (daemon), "lid-enforce-sleep");
++}
++#endif /* ENABLE_DEPRECATED */
++
+ /**
+  * up_daemon_set_lid_is_present:
+  **/
+@@ -855,6 +1318,12 @@
+ 	ret = (up_daemon_get_on_battery_local (daemon) && !up_daemon_get_on_ac_local (daemon));
+ 	if (ret != priv->on_battery) {
+ 		up_daemon_set_on_battery (daemon, ret);
++
++#ifdef ENABLE_DEPRECATED
++		/* set power policy */
++		if (priv->conf_run_powersave_command)
++			up_daemon_set_powersave (daemon, ret);
++#endif /* ENABLE_DEPRECATED */
+ 	}
+ 	warning_level = up_daemon_get_warning_level_local (daemon);
+ 	if (warning_level != priv->warning_level)
+@@ -1107,6 +1576,10 @@
+ 	daemon->priv->config = up_config_new ();
+ 	daemon->priv->power_devices = up_device_list_new ();
+ 	daemon->priv->display_device = up_device_new ();
++#ifdef ENABLE_DEPRECATED
++	daemon->priv->conf_sleep_timeout = 1000;
++	daemon->priv->conf_run_powersave_command = TRUE;
++#endif /* ENABLE_DEPRECATED */
+ 
+ 	daemon->priv->use_percentage_for_policy = up_config_get_boolean (daemon->priv->config, "UsePercentageForPolicy");
+ 	load_percentage_policy (daemon, FALSE);
+@@ -1119,8 +1592,24 @@
+ 	g_signal_connect (daemon->priv->backend, "device-removed",
+ 			  G_CALLBACK (up_daemon_device_removed_cb), daemon);
+ 
++#ifdef ENABLE_DEPRECATED
++	/* use a timer for the about-to-sleep logic */
++	daemon->priv->about_to_sleep_timer = g_timer_new ();
++	g_timer_stop (daemon->priv->about_to_sleep_timer);
++#endif /* ENABLE_DEPRECATED */
++
+ 	daemon->priv->poll_timeouts = g_hash_table_new_full (g_direct_hash, g_direct_equal,
+ 							     NULL, g_free);
++
++#ifdef ENABLE_DEPRECATED
++	/* check if we have support */
++	daemon->priv->kernel_can_suspend = up_backend_kernel_can_suspend (daemon->priv->backend);
++	daemon->priv->kernel_can_hibernate = up_backend_kernel_can_hibernate (daemon->priv->backend);
++
++	/* is the swap usable? */
++	if (daemon->priv->kernel_can_hibernate)
++		daemon->priv->hibernate_has_encrypted_swap = up_backend_has_encrypted_swap (daemon->priv->backend);
++#endif /* ENABLE_DEPRECATED */
+ }
+ 
+ /**
+@@ -1170,6 +1659,17 @@
+ 	case PROP_DAEMON_VERSION:
+ 		g_value_set_string (value, PACKAGE_VERSION);
+ 		break;
++#ifdef ENABLE_DEPRECATED
++	case PROP_CAN_SUSPEND:
++		g_value_set_boolean (value, priv->kernel_can_suspend);
++		break;
++	case PROP_CAN_HIBERNATE:
++		g_value_set_boolean (value, (priv->kernel_can_hibernate &&
++					     up_daemon_check_hibernate_swap (daemon) &&
++					     (!priv->hibernate_has_encrypted_swap ||
++					      priv->conf_allow_hibernate_encrypted_swap)));
++		break;
++#endif /* ENABLE_DEPRECATED */
+ 	case PROP_ON_BATTERY:
+ 		g_value_set_boolean (value, priv->on_battery);
+ 		break;
+@@ -1179,6 +1679,11 @@
+ 	case PROP_LID_IS_PRESENT:
+ 		g_value_set_boolean (value, priv->lid_is_present);
+ 		break;
++#ifdef ENABLE_DEPRECATED
++	case PROP_LID_FORCE_SLEEP:
++		g_value_set_boolean (value, priv->lid_force_sleep);
++		break;
++#endif /* ENABLE_DEPRECATED */
+ 	default:
+ 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+ 		break;
+@@ -1213,6 +1718,40 @@
+ 			      g_cclosure_marshal_generic,
+ 			      G_TYPE_NONE, 1, DBUS_TYPE_G_OBJECT_PATH);
+ 
++#ifdef ENABLE_DEPRECATED
++	signals[SIGNAL_SLEEPING] =
++		g_signal_new ("sleeping",
++			      G_OBJECT_CLASS_TYPE (klass),
++			      G_SIGNAL_RUN_LAST | G_SIGNAL_DETAILED,
++			      0, NULL, NULL,
++			      g_cclosure_marshal_VOID__VOID,
++			      G_TYPE_NONE, 0);
++
++	signals[SIGNAL_NOTIFY_SLEEP] =
++		g_signal_new ("notify-sleep",
++			      G_OBJECT_CLASS_TYPE (klass),
++			      G_SIGNAL_RUN_LAST | G_SIGNAL_DETAILED,
++			      0, NULL, NULL,
++			      g_cclosure_marshal_VOID__STRING,
++			      G_TYPE_NONE, 1, G_TYPE_STRING);
++
++	signals[SIGNAL_RESUMING] =
++		g_signal_new ("resuming",
++			      G_OBJECT_CLASS_TYPE (klass),
++			      G_SIGNAL_RUN_LAST | G_SIGNAL_DETAILED,
++			      0, NULL, NULL,
++			      g_cclosure_marshal_VOID__VOID,
++			      G_TYPE_NONE, 0);
++
++	signals[SIGNAL_NOTIFY_RESUME] =
++		g_signal_new ("notify-resume",
++			      G_OBJECT_CLASS_TYPE (klass),
++			      G_SIGNAL_RUN_LAST | G_SIGNAL_DETAILED,
++			      0, NULL, NULL,
++			      g_cclosure_marshal_VOID__STRING,
++			      G_TYPE_NONE, 1, G_TYPE_STRING);
++#endif /* ENABLE_DEPRECATED */
++
+ 	g_object_class_install_property (object_class,
+ 					 PROP_DAEMON_VERSION,
+ 					 g_param_spec_string ("daemon-version",
+@@ -1229,6 +1768,32 @@
+ 							       FALSE,
+ 							       G_PARAM_READABLE));
+ 
++#ifdef ENABLE_DEPRECATED
++	g_object_class_install_property (object_class,
++					 PROP_LID_FORCE_SLEEP,
++					 g_param_spec_boolean ("lid-force-sleep",
++							       "Enforce sleep on lid close",
++							       "If this computer has to sleep on lid close",
++							       FALSE,
++							       G_PARAM_READABLE));
++
++	g_object_class_install_property (object_class,
++					 PROP_CAN_SUSPEND,
++					 g_param_spec_boolean ("can-suspend",
++							       "Can Suspend",
++							       "Whether the system can suspend",
++							       FALSE,
++							       G_PARAM_READABLE));
++
++	g_object_class_install_property (object_class,
++					 PROP_CAN_HIBERNATE,
++					 g_param_spec_boolean ("can-hibernate",
++							       "Can Hibernate",
++							       "Whether the system can hibernate",
++							       FALSE,
++							       G_PARAM_READABLE));
++#endif /* ENABLE_DEPRECATED */
++
+ 	g_object_class_install_property (object_class,
+ 					 PROP_ON_BATTERY,
+ 					 g_param_spec_boolean ("on-battery",
+@@ -1275,6 +1840,9 @@
+ 	g_object_unref (priv->polkit);
+ 	g_object_unref (priv->config);
+ 	g_object_unref (priv->backend);
++#ifdef ENABLE_DEPRECATED
++	g_timer_destroy (priv->about_to_sleep_timer);
++#endif /* ENABLE_DEPRECATED */
+ 
+ 	G_OBJECT_CLASS (up_daemon_parent_class)->finalize (object);
+ }
+diff -urN git/upower-9999/src/up-daemon.h git/upower-9999-patched/src/up-daemon.h
+--- git/upower-9999/src/up-daemon.h	2014-07-01 02:42:33.104331000 -0400
++++ git/upower-9999-patched/src/up-daemon.h	2014-07-13 20:46:43.367467000 -0400
+@@ -77,6 +77,10 @@
+ 						 gboolean		 lid_is_closed);
+ void		 up_daemon_set_lid_is_present	(UpDaemon		*daemon,
+ 						 gboolean		 lid_is_present);
++#ifdef ENABLE_DEPRECATED
++void		 up_daemon_set_lid_force_sleep	(UpDaemon		*daemon,
++						 gboolean		 lid_force_sleep);
++#endif /* ENABLE_DEPRECATED */
+ void		 up_daemon_set_on_battery	(UpDaemon		*daemon,
+ 						 gboolean		 on_battery);
+ void		 up_daemon_set_warning_level	(UpDaemon		*daemon,
+@@ -103,6 +107,25 @@
+ 						 DBusGMethodInvocation	*context);
+ gboolean	 up_daemon_get_critical_action	(UpDaemon		*daemon,
+ 						 DBusGMethodInvocation	*context);
++#ifdef ENABLE_DEPRECATED
++gboolean	 up_daemon_suspend		(UpDaemon		*daemon,
++						 DBusGMethodInvocation	*context);
++gboolean	 up_daemon_about_to_sleep	(UpDaemon		*daemon,
++						 const gchar		*sleep_kind,
++						 DBusGMethodInvocation	*context);
++gboolean	 up_daemon_suspend_allowed	(UpDaemon		*daemon,
++						 DBusGMethodInvocation	*context);
++gboolean	 up_daemon_hibernate		(UpDaemon		*daemon,
++						 DBusGMethodInvocation	*context);
++gboolean	 up_daemon_hibernate_allowed	(UpDaemon		*daemon,
++						 DBusGMethodInvocation	*context);
++gboolean	 up_daemon_can_suspend		(UpDaemon		*daemon,
++						 gboolean		 interactive,
++						 DBusGMethodInvocation	*context);
++gboolean	 up_daemon_can_hibernate	(UpDaemon		*daemon,
++						 gboolean		 interactive,
++						 DBusGMethodInvocation	*context);
++#endif /* ENABLE_DEPRECATED */
+ 
+ G_END_DECLS
+ 
+diff -urN git/upower-9999/tools/up-tool.c git/upower-9999-patched/tools/up-tool.c
+--- git/upower-9999/tools/up-tool.c	2014-07-01 02:42:33.105331000 -0400
++++ git/upower-9999-patched/tools/up-tool.c	2014-07-13 20:47:10.056465000 -0400
+@@ -119,6 +119,10 @@
+ up_client_print (UpClient *client)
+ {
+ 	gchar *daemon_version;
++#ifdef ENABLE_DEPRECATED
++	gboolean can_suspend;
++	gboolean can_hibernate;
++#endif /* ENABLE_DEPRECATED */
+ 	gboolean on_battery;
+ 	UpDeviceLevel warning_level;
+ 	gboolean lid_is_closed;
+@@ -127,12 +131,20 @@
+ 
+ 	g_object_get (client,
+ 		      "daemon-version", &daemon_version,
++#ifdef ENABLE_DEPRECATED
++		      "can-suspend", &can_suspend,
++		      "can-hibernate", &can_hibernate,
++#endif /* ENABLE_DEPRECATED */
+ 		      "on-battery", &on_battery,
+ 		      "lid-is-closed", &lid_is_closed,
+ 		      "lid-is-present", &lid_is_present,
+ 		      NULL);
+ 
+ 	g_print ("  daemon-version:  %s\n", daemon_version);
++#ifdef ENABLE_DEPRECATED
++	g_print ("  can-suspend:     %s\n", can_suspend ? "yes" : "no");
++	g_print ("  can-hibernate:   %s\n", can_hibernate ? "yes" : "no");
++#endif /* ENABLE_DEPRECATED */
+ 	g_print ("  on-battery:      %s\n", on_battery ? "yes" : "no");
+ 	g_print ("  lid-is-closed:   %s\n", lid_is_closed ? "yes" : "no");
+ 	g_print ("  lid-is-present:  %s\n", lid_is_present ? "yes" : "no");
+diff -urN git/upower-9999/upower-glib.pc git/upower-9999-patched/upower-glib.pc
+--- git/upower-9999/upower-glib.pc	2014-07-13 21:16:30.631320865 -0400
++++ git/upower-9999-patched/upower-glib.pc	2014-07-13 21:18:51.306309290 -0400
+@@ -6,7 +6,7 @@
+ Name: upower-glib
+ Description: UPower is a system daemon for managing power devices
+ Version: 0.99.1
+-Requires.private: gthread-2.0, gio-2.0
++Requires.private: dbus-1, dbus-glib-1, gthread-2.0, gio-2.0
+ Requires: glib-2.0, gobject-2.0
+ Libs: -L${libdir} -lupower-glib
+ Cflags: -I${includedir}/libupower-glib
+diff -urN git/upower-9999/upower-glib.pc.in git/upower-9999-patched/upower-glib.pc.in
+--- git/upower-9999/upower-glib.pc.in	2014-07-01 02:42:33.105331000 -0400
++++ git/upower-9999-patched/upower-glib.pc.in	2014-07-13 20:47:45.011462000 -0400
+@@ -6,7 +6,7 @@
+ Name: upower-glib
+ Description: UPower is a system daemon for managing power devices
+ Version: @VERSION@
+-Requires.private: gthread-2.0, gio-2.0
++Requires.private: dbus-1, dbus-glib-1, gthread-2.0, gio-2.0
+ Requires: glib-2.0, gobject-2.0
+ Libs: -L${libdir} -lupower-glib
+ Cflags: -I${includedir}/libupower-glib

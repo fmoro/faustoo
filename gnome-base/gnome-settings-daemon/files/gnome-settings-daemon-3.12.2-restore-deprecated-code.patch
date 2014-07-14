@@ -1,0 +1,595 @@
+diff -urN gnome-settings-daemon-3.12.2/config.h.in gnome-settings-daemon-3.12.2-patched/config.h.in
+--- gnome-settings-daemon-3.12.2/config.h.in	2014-05-05 10:55:03.000000000 -0400
++++ gnome-settings-daemon-3.12.2-patched/config.h.in	2014-07-13 19:23:29.427878844 -0400
+@@ -1,5 +1,8 @@
+ /* config.h.in.  Generated from configure.ac by autoheader.  */
+ 
++/* Define if we should build deprecated functionalty */
++#undef ENABLE_DEPRECATED
++
+ /* always defined to indicate that i18n is enabled */
+ #undef ENABLE_NLS
+ 
+diff -urN gnome-settings-daemon-3.12.2/configure gnome-settings-daemon-3.12.2-patched/configure
+--- gnome-settings-daemon-3.12.2/configure	2014-05-05 10:54:48.000000000 -0400
++++ gnome-settings-daemon-3.12.2-patched/configure	2014-07-13 19:23:29.446878842 -0400
+@@ -721,6 +721,8 @@
+ GLIB_COMPILE_SCHEMAS
+ gsettingsschemadir
+ GSETTINGS_DISABLE_SCHEMAS_COMPILE
++ENABLE_DEPRECATED_FALSE
++ENABLE_DEPRECATED_TRUE
+ GLIB_MKENUMS
+ GLIB_GENMARSHAL
+ GSD_PLUGIN_LDFLAGS
+@@ -920,6 +922,7 @@
+ enable_nls
+ enable_compile_warnings
+ enable_iso_c
++enable_deprecated
+ enable_schemas_compile
+ enable_gudev
+ enable_ibus
+@@ -1640,6 +1643,7 @@
+   --enable-compile-warnings=[no/minimum/yes/maximum/error]
+                           Turn on compiler warnings
+   --enable-iso-c          Try to warn if code is not ISO C
++  --enable-deprecated     build deprecated functionality
+   --disable-schemas-compile
+                           Disable regeneration of gschemas.compiled on install
+   --disable-gudev         Disable GUdev support (not optional on Linux
+@@ -17744,6 +17748,28 @@
+ 
+ 
+ 
++# Build deprecated functionality
++# Check whether --enable-deprecated was given.
++if test "${enable_deprecated+set}" = set; then :
++  enableval=$enable_deprecated; enable_deprecated=$enableval
++else
++  enable_deprecated=no
++fi
++
++if test "${enable_deprecated}" != no; then
++
++$as_echo "#define ENABLE_DEPRECATED 1" >>confdefs.h
++
++fi
++ if test x$enable_deprecated = xyes; then
++  ENABLE_DEPRECATED_TRUE=
++  ENABLE_DEPRECATED_FALSE='#'
++else
++  ENABLE_DEPRECATED_TRUE='#'
++  ENABLE_DEPRECATED_FALSE=
++fi
++
++
+ 
+ 
+ 
+@@ -21206,6 +21232,10 @@
+   ac_config_commands="$ac_config_commands po/stamp-it"
+ 
+ 
++if test -z "${ENABLE_DEPRECATED_TRUE}" && test -z "${ENABLE_DEPRECATED_FALSE}"; then
++  as_fn_error $? "conditional \"ENABLE_DEPRECATED\" was never defined.
++Usually this means the macro was only invoked conditionally." "$LINENO" 5
++fi
+ if test -z "${HAVE_GUDEV_TRUE}" && test -z "${HAVE_GUDEV_FALSE}"; then
+   as_fn_error $? "conditional \"HAVE_GUDEV\" was never defined.
+ Usually this means the macro was only invoked conditionally." "$LINENO" 5
+@@ -23829,6 +23859,7 @@
+         cflags:                   ${CFLAGS}
+         Maintainer mode:          ${USE_MAINTAINER_MODE}
+ 
++        Enable deprecated stuff:  ${enable_deprecated}
+         Session tracking:         ${SESSION_TRACKING}
+         LCMS DICT support:        ${have_new_lcms}
+         IBus support:             ${enable_ibus}
+diff -urN gnome-settings-daemon-3.12.2/configure.ac gnome-settings-daemon-3.12.2-patched/configure.ac
+--- gnome-settings-daemon-3.12.2/configure.ac	2014-05-05 10:54:35.000000000 -0400
++++ gnome-settings-daemon-3.12.2-patched/configure.ac	2014-07-13 19:23:29.447878842 -0400
+@@ -90,6 +90,15 @@
+ AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
+ AC_PATH_PROG([GLIB_MKENUMS],[glib-mkenums])
+ 
++# Build deprecated functionality
++AC_ARG_ENABLE(deprecated, [  --enable-deprecated     build deprecated functionality],
++             enable_deprecated=$enableval,
++             enable_deprecated=no)
++if test "${enable_deprecated}" != no; then
++  AC_DEFINE(ENABLE_DEPRECATED, 1, [Define if we should build deprecated functionalty])
++fi
++AM_CONDITIONAL(ENABLE_DEPRECATED, test x$enable_deprecated = xyes)
++
+ dnl ================================================================
+ dnl GSettings stuff
+ dnl ================================================================
+@@ -599,6 +608,7 @@
+         cflags:                   ${CFLAGS}
+         Maintainer mode:          ${USE_MAINTAINER_MODE}
+ 
++        Enable deprecated stuff:  ${enable_deprecated}
+         Session tracking:         ${SESSION_TRACKING}
+         LCMS DICT support:        ${have_new_lcms}
+         IBus support:             ${enable_ibus}
+diff -urN gnome-settings-daemon-3.12.2/plugins/common/Makefile.am gnome-settings-daemon-3.12.2-patched/plugins/common/Makefile.am
+--- gnome-settings-daemon-3.12.2/plugins/common/Makefile.am	2014-05-05 09:49:57.000000000 -0400
++++ gnome-settings-daemon-3.12.2-patched/plugins/common/Makefile.am	2014-07-13 19:23:29.486878839 -0400
+@@ -9,6 +9,8 @@
+ 	gsd-keygrab.h		\
+ 	gsd-input-helper.c	\
+ 	gsd-input-helper.h	\
++	gsd-power-helper.c	\
++	gsd-power-helper.h	\
+ 	gsd-shell-helper.c	\
+ 	gsd-shell-helper.h
+ 
+diff -urN gnome-settings-daemon-3.12.2/plugins/common/Makefile.in gnome-settings-daemon-3.12.2-patched/plugins/common/Makefile.in
+--- gnome-settings-daemon-3.12.2/plugins/common/Makefile.in	2014-05-05 10:54:58.000000000 -0400
++++ gnome-settings-daemon-3.12.2-patched/plugins/common/Makefile.in	2014-07-13 19:23:29.495878838 -0400
+@@ -101,6 +101,7 @@
+ 	$(am__DEPENDENCIES_1)
+ am_libcommon_la_OBJECTS = libcommon_la-gsd-device-mapper.lo \
+ 	libcommon_la-gsd-keygrab.lo libcommon_la-gsd-input-helper.lo \
++	libcommon_la-gsd-power-helper.lo \
+ 	libcommon_la-gsd-shell-helper.lo
+ libcommon_la_OBJECTS = $(am_libcommon_la_OBJECTS)
+ AM_V_lt = $(am__v_lt_@AM_V@)
+@@ -456,6 +457,8 @@
+ 	gsd-keygrab.h		\
+ 	gsd-input-helper.c	\
+ 	gsd-input-helper.h	\
++	gsd-power-helper.c	\
++	gsd-power-helper.h	\
+ 	gsd-shell-helper.c	\
+ 	gsd-shell-helper.h
+ 
+@@ -616,6 +619,7 @@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libcommon_la-gsd-device-mapper.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libcommon_la-gsd-input-helper.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libcommon_la-gsd-keygrab.Plo@am__quote@
++@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libcommon_la-gsd-power-helper.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libcommon_la-gsd-shell-helper.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test_egg_key_parsing-test-egg-key-parsing.Po@am__quote@
+ 
+@@ -661,6 +665,13 @@
+ @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+ @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libcommon_la_CPPFLAGS) $(CPPFLAGS) $(libcommon_la_CFLAGS) $(CFLAGS) -c -o libcommon_la-gsd-input-helper.lo `test -f 'gsd-input-helper.c' || echo '$(srcdir)/'`gsd-input-helper.c
+ 
++libcommon_la-gsd-power-helper.lo: gsd-power-helper.c
++@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libcommon_la_CPPFLAGS) $(CPPFLAGS) $(libcommon_la_CFLAGS) $(CFLAGS) -MT libcommon_la-gsd-power-helper.lo -MD -MP -MF $(DEPDIR)/libcommon_la-gsd-power-helper.Tpo -c -o libcommon_la-gsd-power-helper.lo `test -f 'gsd-power-helper.c' || echo '$(srcdir)/'`gsd-power-helper.c
++@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libcommon_la-gsd-power-helper.Tpo $(DEPDIR)/libcommon_la-gsd-power-helper.Plo
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='gsd-power-helper.c' object='libcommon_la-gsd-power-helper.lo' libtool=yes @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
++@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libcommon_la_CPPFLAGS) $(CPPFLAGS) $(libcommon_la_CFLAGS) $(CFLAGS) -c -o libcommon_la-gsd-power-helper.lo `test -f 'gsd-power-helper.c' || echo '$(srcdir)/'`gsd-power-helper.c
++
+ libcommon_la-gsd-shell-helper.lo: gsd-shell-helper.c
+ @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libcommon_la_CPPFLAGS) $(CPPFLAGS) $(libcommon_la_CFLAGS) $(CFLAGS) -MT libcommon_la-gsd-shell-helper.lo -MD -MP -MF $(DEPDIR)/libcommon_la-gsd-shell-helper.Tpo -c -o libcommon_la-gsd-shell-helper.lo `test -f 'gsd-shell-helper.c' || echo '$(srcdir)/'`gsd-shell-helper.c
+ @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libcommon_la-gsd-shell-helper.Tpo $(DEPDIR)/libcommon_la-gsd-shell-helper.Plo
+diff -urN gnome-settings-daemon-3.12.2/plugins/common/gsd-power-helper.c gnome-settings-daemon-3.12.2-patched/plugins/common/gsd-power-helper.c
+--- gnome-settings-daemon-3.12.2/plugins/common/gsd-power-helper.c	1969-12-31 19:00:00.000000000 -0500
++++ gnome-settings-daemon-3.12.2-patched/plugins/common/gsd-power-helper.c	2014-07-13 19:23:29.495878838 -0400
+@@ -0,0 +1,139 @@
++/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
++ *
++ * Copyright (C) 2012 Bastien Nocera <hadess@hadess.net>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++ *
++ */
++
++#include "config.h"
++
++#ifdef ENABLE_DEPRECATED
++#include "gsd-power-helper.h"
++#endif /* ENABLE_DEPRECATED */
++
++#define CONSOLEKIT_DBUS_NAME                    "org.freedesktop.ConsoleKit"
++#define CONSOLEKIT_DBUS_PATH_MANAGER            "/org/freedesktop/ConsoleKit/Manager"
++#define CONSOLEKIT_DBUS_INTERFACE_MANAGER       "org.freedesktop.ConsoleKit.Manager"
++
++#ifdef ENABLE_DEPRECATED
++static void
++consolekit_stop_cb (GObject *source_object,
++                    GAsyncResult *res,
++                    gpointer user_data)
++{
++        GVariant *result;
++        GError *error = NULL;
++
++        result = g_dbus_proxy_call_finish (G_DBUS_PROXY (source_object),
++                                           res,
++                                           &error);
++        if (result == NULL) {
++                g_warning ("couldn't stop using ConsoleKit: %s",
++                           error->message);
++                g_error_free (error);
++        } else {
++                g_variant_unref (result);
++        }
++}
++
++static void
++consolekit_stop (void)
++{
++        GError *error = NULL;
++        GDBusProxy *proxy;
++
++        /* power down the machine in a safe way */
++        proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
++                                               G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
++                                               NULL,
++                                               CONSOLEKIT_DBUS_NAME,
++                                               CONSOLEKIT_DBUS_PATH_MANAGER,
++                                               CONSOLEKIT_DBUS_INTERFACE_MANAGER,
++                                               NULL, &error);
++        if (proxy == NULL) {
++                g_warning ("cannot connect to ConsoleKit: %s",
++                           error->message);
++                g_error_free (error);
++                return;
++        }
++        g_dbus_proxy_call (proxy,
++                           "Stop",
++                           NULL,
++                           G_DBUS_CALL_FLAGS_NONE,
++                           -1, NULL,
++                           consolekit_stop_cb, NULL);
++        g_object_unref (proxy);
++}
++static void
++upower_sleep_cb (GObject *source_object,
++                 GAsyncResult *res,
++                 gpointer user_data)
++{
++        GVariant *result;
++        GError *error = NULL;
++
++        result = g_dbus_proxy_call_finish (G_DBUS_PROXY (source_object),
++                                           res,
++                                           &error);
++        if (result == NULL) {
++                g_warning ("couldn't sleep using UPower: %s",
++                           error->message);
++                g_error_free (error);
++        } else {
++                g_variant_unref (result);
++        }
++}
++
++static void
++upower_suspend (GDBusProxy *upower_proxy)
++{
++        g_dbus_proxy_call (upower_proxy,
++                           "Suspend",
++                           NULL,
++                           G_DBUS_CALL_FLAGS_NONE,
++                           -1, NULL,
++                           upower_sleep_cb, NULL);
++}
++
++static void
++upower_hibernate (GDBusProxy *upower_proxy)
++{
++        g_dbus_proxy_call (upower_proxy,
++                           "Hibernate",
++                           NULL,
++                           G_DBUS_CALL_FLAGS_NONE,
++                           -1, NULL,
++                           upower_sleep_cb, NULL);
++}
++
++void
++gsd_power_suspend (GDBusProxy *upower_proxy)
++{
++	upower_suspend (upower_proxy);
++}
++
++void
++gsd_power_poweroff (void)
++{
++	consolekit_stop ();
++}
++
++void
++gsd_power_hibernate (GDBusProxy *upower_proxy)
++{
++	upower_hibernate (upower_proxy);
++}
++#endif /* ENABLE_DEPRECATED */
+diff -urN gnome-settings-daemon-3.12.2/plugins/common/gsd-power-helper.h gnome-settings-daemon-3.12.2-patched/plugins/common/gsd-power-helper.h
+--- gnome-settings-daemon-3.12.2/plugins/common/gsd-power-helper.h	1969-12-31 19:00:00.000000000 -0500
++++ gnome-settings-daemon-3.12.2-patched/plugins/common/gsd-power-helper.h	2014-07-13 19:23:29.495878838 -0400
+@@ -0,0 +1,35 @@
++/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
++ *
++ * Copyright (C) 2012 Bastien Nocera <hadess@hadess.net>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++ */
++
++#ifndef __GSD_POWER_HELPER_H
++#define __GSD_POWER_HELPER_H
++
++#include <glib.h>
++
++G_BEGIN_DECLS
++
++#include <gio/gio.h>
++
++void gsd_power_suspend   (GDBusProxy *upower_proxy);
++void gsd_power_hibernate (GDBusProxy *upower_proxy);
++void gsd_power_poweroff  (void);
++
++G_END_DECLS
++
++#endif /* __GSD_POWER_HELPER_H */
+diff -urN gnome-settings-daemon-3.12.2/plugins/media-keys/gsd-media-keys-manager.c gnome-settings-daemon-3.12.2-patched/plugins/media-keys/gsd-media-keys-manager.c
+--- gnome-settings-daemon-3.12.2/plugins/media-keys/gsd-media-keys-manager.c	2014-05-05 09:49:57.000000000 -0400
++++ gnome-settings-daemon-3.12.2-patched/plugins/media-keys/gsd-media-keys-manager.c	2014-07-13 19:40:58.659792509 -0400
+@@ -56,6 +56,9 @@
+ #include "shell-key-grabber.h"
+ #include "gsd-screenshot-utils.h"
+ #include "gsd-input-helper.h"
++#ifdef ENABLE_DEPRECATED
++#include "gsd-power-helper.h"
++#endif /* ENABLE_DEPRECATED */
+ #include "gsd-enums.h"
+ #include "gsd-shell-helper.h"
+ 
+@@ -64,6 +67,12 @@
+ #include "gvc-mixer-control.h"
+ #include "gvc-mixer-sink.h"
+ 
++#ifdef ENABLE_DEPRECATED
++#define UPOWER_DBUS_NAME                        "org.freedesktop.UPower"
++#define UPOWER_DBUS_PATH                        "/org/freedesktop/UPower"
++#define UPOWER_DBUS_INTERFACE                   "org.freedesktop.UPower"
++#endif /* ENABLE_DEPRECATED */
++
+ #define GSD_MEDIA_KEYS_DBUS_PATH GSD_DBUS_PATH "/MediaKeys"
+ #define GSD_MEDIA_KEYS_DBUS_NAME GSD_DBUS_NAME ".MediaKeys"
+ 
+@@ -182,6 +191,11 @@
+         GDBusProxy      *logind_proxy;
+         gint             inhibit_keys_fd;
+ 
++#ifdef ENABLE_DEPRECATED
++		/* upower stuff */
++        GDBusProxy      *upower_proxy;
++#endif /* ENABLE_DEPRECATED */
++
+         GList           *media_players;
+ 
+         GDBusNodeInfo   *introspection_data;
+@@ -1810,17 +1824,30 @@
+                                            config_key);
+         switch (action_type) {
+         case GSD_POWER_ACTION_SUSPEND:
++#ifdef ENABLE_DEPRECATED
++                gsd_power_suspend (manager->priv->upower_proxy);
++#else
+                 power_action (manager, "Suspend", !in_lock_screen);
++#endif /* ENABLE_DEPRECATED */
+                 break;
+         case GSD_POWER_ACTION_INTERACTIVE:
+                 if (!in_lock_screen)
+                         gnome_session_shutdown (manager);
+                 break;
+         case GSD_POWER_ACTION_SHUTDOWN:
++#ifdef ENABLE_DEPRECATED
++                if (!in_lock_screen)
++                        gnome_session_shutdown (manager);
++#else
+                 power_action (manager, "PowerOff", !in_lock_screen);
++#endif /* ENABLE_DEPRECATED */
+                 break;
+         case GSD_POWER_ACTION_HIBERNATE:
++#ifdef ENABLE_DEPRECATED
++                gsd_power_hibernate (manager->priv->upower_proxy);
++#else
+                 power_action (manager, "Hibernate", !in_lock_screen);
++#endif /* ENABLE_DEPRECATED */
+                 break;
+         case GSD_POWER_ACTION_BLANK:
+         case GSD_POWER_ACTION_LOGOUT:
+@@ -2448,6 +2475,10 @@
+         g_clear_object (&priv->mpris_controller);
+         g_clear_object (&priv->screencast_proxy);
+ 
++#ifdef ENABLE_DEPRECATED
++        g_clear_object (&manager->priv->upower_proxy);
++#endif /* ENABLE_DEPRECATED */
++
+         if (priv->cancellable != NULL) {
+                 g_cancellable_cancel (priv->cancellable);
+                 g_clear_object (&priv->cancellable);
+@@ -2631,6 +2662,24 @@
+         }
+ }
+ 
++#ifdef ENABLE_DEPRECATED
++static void
++upower_proxy_ready_cb (GObject             *source_object,
++                      GAsyncResult        *res,
++                      gpointer             user_data)
++{
++        GError *error = NULL;
++        GsdMediaKeysManager *manager = GSD_MEDIA_KEYS_MANAGER (user_data);
++
++        manager->priv->upower_proxy = g_dbus_proxy_new_for_bus_finish (res, &error);
++        if (manager->priv->upower_proxy == NULL) {
++                g_warning ("Could not connect to UPower: %s",
++                           error->message);
++                g_error_free (error);
++        }
++}
++#endif /* ENABLE_DEPRECATED */
++
+ static void
+ power_screen_ready_cb (GObject             *source_object,
+                        GAsyncResult        *res,
+@@ -2748,6 +2797,19 @@
+                    manager->priv->bus_cancellable,
+                    (GAsyncReadyCallback) on_bus_gotten,
+                    manager);
++
++#ifdef ENABLE_DEPRECATED
++        /* connect to UPower for async power operations */
++        g_dbus_proxy_new_for_bus (G_BUS_TYPE_SYSTEM,
++                                  G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
++                                  NULL,
++                                  UPOWER_DBUS_NAME,
++                                  UPOWER_DBUS_PATH,
++                                  UPOWER_DBUS_INTERFACE,
++                                  NULL,
++                                  upower_proxy_ready_cb,
++                                  manager);
++#endif /* ENABLE_DEPRECATED */
+ }
+ 
+ GsdMediaKeysManager *
+diff -urN gnome-settings-daemon-3.12.2/plugins/power/gsd-power-manager.c gnome-settings-daemon-3.12.2-patched/plugins/power/gsd-power-manager.c
+--- gnome-settings-daemon-3.12.2/plugins/power/gsd-power-manager.c	2014-05-05 10:50:10.000000000 -0400
++++ gnome-settings-daemon-3.12.2-patched/plugins/power/gsd-power-manager.c	2014-07-13 19:44:11.680776627 -0400
+@@ -48,6 +48,9 @@
+ #include "gnome-settings-bus.h"
+ #include "gsd-enums.h"
+ #include "gsd-power-manager.h"
++#ifdef ENABLE_DEPRECATED
++#include "gsd-power-helper.h"
++#endif /* ENABLE_DEPRECATED */
+ 
+ #define GNOME_SESSION_DBUS_NAME                 "org.gnome.SessionManager"
+ #define GNOME_SESSION_DBUS_PATH_PRESENCE        "/org/gnome/SessionManager/Presence"
+@@ -170,6 +173,11 @@
+         guint                    inhibit_lid_switch_timer_id;
+         gboolean                 is_virtual_machine;
+ 
++#ifdef ENABLE_DEPRECATED
++		/* upower stuff */
++        GDBusProxy              *upower_proxy;
++#endif /* ENABLE_DEPRECATED */
++
+         /* Idles */
+         GnomeIdleMonitor        *idle_monitor;
+         guint                    idle_dim_id;
+@@ -960,19 +968,31 @@
+ {
+         switch (action_type) {
+         case GSD_POWER_ACTION_SUSPEND:
++#ifdef ENABLE_DEPRECATED
++                gsd_power_suspend (manager->priv->upower_proxy);
++#else
+                 action_suspend (manager);
++#endif /* ENABLE_DEPRECATED */
+                 break;
+         case GSD_POWER_ACTION_INTERACTIVE:
+                 gnome_session_shutdown (manager);
+                 break;
+         case GSD_POWER_ACTION_HIBERNATE:
++#ifdef ENABLE_DEPRECATED
++                gsd_power_hibernate (manager->priv->upower_proxy);
++#else
+                 action_hibernate (manager);
++#endif /* ENABLE_DEPRECATED */
+                 break;
+         case GSD_POWER_ACTION_SHUTDOWN:
+                 /* this is only used on critically low battery where
+                  * hibernate is not available and is marginally better
+                  * than just powering down the computer mid-write */
++#ifdef ENABLE_DEPRECATED
++                gsd_power_poweroff ();
++#else
+                 action_poweroff (manager);
++#endif /* ENABLE_DEPRECATED */
+                 break;
+         case GSD_POWER_ACTION_BLANK:
+                 backlight_disable (manager);
+@@ -1842,6 +1862,24 @@
+                 handle_wake_up_screen (GSD_POWER_MANAGER (user_data));
+ }
+ 
++#ifdef ENABLE_DEPRECATED
++static void
++upower_proxy_ready_cb (GObject             *source_object,
++                      GAsyncResult        *res,
++                      gpointer             user_data)
++{
++        GError *error = NULL;
++        GsdPowerManager *manager = GSD_POWER_MANAGER (user_data);
++
++        manager->priv->upower_proxy = g_dbus_proxy_new_for_bus_finish (res, &error);
++        if (manager->priv->upower_proxy == NULL) {
++                g_warning ("Could not connect to UPower: %s",
++                           error->message);
++                g_error_free (error);
++        }
++}
++#endif /* ENABLE_DEPRECATED */
++
+ static void
+ power_keyboard_proxy_ready_cb (GObject             *source_object,
+                                GAsyncResult        *res,
+@@ -2383,6 +2421,18 @@
+         if (manager->priv->lid_is_present)
+                 manager->priv->lid_is_closed = up_client_get_lid_is_closed (manager->priv->up_client);
+ 
++#ifdef ENABLE_DEPRECATED
++        /* connect to UPower for async power operations */
++        g_dbus_proxy_new_for_bus (G_BUS_TYPE_SYSTEM,
++                                  G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
++                                  NULL,
++                                  UPOWER_DBUS_NAME,
++                                  UPOWER_DBUS_PATH,
++                                  UPOWER_DBUS_INTERFACE,
++                                  NULL,
++                                  upower_proxy_ready_cb,
++                                  manager);
++#else
+         /* Set up the logind proxy */
+         manager->priv->logind_proxy =
+                 g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
+@@ -2397,6 +2447,7 @@
+                 g_debug ("No systemd (logind) support, disabling plugin");
+                 return FALSE;
+         }
++#endif /* ENABLE_DEPRECATED */
+ 
+         /* Check for XTEST support */
+         if (supports_xtest () == FALSE) {
+@@ -2464,6 +2515,9 @@
+         manager->priv->devices_array = NULL;
+         g_clear_object (&manager->priv->device_composite);
+ 
++#ifdef ENABLE_DEPRECATED
++        g_clear_object (&manager->priv->upower_proxy);
++#endif /* ENABLE_DEPRECATED */
+         g_clear_object (&manager->priv->session_presence_proxy);
+         g_clear_object (&manager->priv->screensaver_proxy);
+ 

@@ -1,0 +1,41 @@
+diff -ur gnome-shell-3.12.2/js/misc/loginManager.js gnome-shell-3.12.2-patched/js/misc/loginManager.js
+--- gnome-shell-3.12.2/js/misc/loginManager.js	2014-07-06 09:51:12.010500022 -0400
++++ gnome-shell-3.12.2-patched/js/misc/loginManager.js	2014-07-06 09:48:19.058491507 -0400
+@@ -6,6 +6,7 @@
+ const Mainloop = imports.mainloop;
+ const Shell = imports.gi.Shell;
+ const Signals = imports.signals;
++const UPowerGlib = imports.gi.UPowerGlib;
+ 
+ const SystemdLoginManagerIface = '<node> \
+ <interface name="org.freedesktop.login1.Manager"> \
+@@ -213,6 +214,7 @@
+         this._proxy = new ConsoleKitManager(Gio.DBus.system,
+                                             'org.freedesktop.ConsoleKit',
+                                             '/org/freedesktop/ConsoleKit/Manager');
++        this._upClient = new UPowerGlib.Client();
+     },
+ 
+     // Having this function is a bit of a hack since the Systemd and ConsoleKit
+@@ -238,7 +240,10 @@
+     },
+ 
+     canSuspend: function(asyncCallback) {
+-        asyncCallback(false);
++        Mainloop.idle_add(Lang.bind(this, function() {
++            asyncCallback(this._upClient.get_can_suspend());
++            return false;
++        }));
+     },
+ 
+     listSessions: function(asyncCallback) {
+@@ -246,8 +251,7 @@
+     },
+ 
+     suspend: function() {
+-        this.emit('prepare-for-sleep', true);
+-        this.emit('prepare-for-sleep', false);
++        this._upClient.suspend_sync(null);
+     },
+ 
+     inhibit: function(reason, callback) {
