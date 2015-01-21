@@ -59,7 +59,7 @@ src_install() {
 	chmod +x "${D}${INSTDIR}"/Application/bin/*
 	#dodoc -r Samples
 
-	make_desktop_entry "${INSTDIR}"/Application/bin/"${MY_PN}" "Visual Paradigm for UML" "${INSTDIR}"/resources/vpuml.png
+	make_desktop_entry "${INSTDIR}"/Application/bin/"${MY_PN}" "Visual Paradigm for UML" "${INSTDIR}"/Application/resources/vpuml.png
 	#make_desktop_entry "pkexec ${INSTDIR}/bin/VP-UML_Product_Edition_Manager" "VP UML Product Edition Manager" "${INSTDIR}"/resources/vpuml.png
 
 	dodir /etc/env.d
