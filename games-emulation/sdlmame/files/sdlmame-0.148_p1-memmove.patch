@@ -1,0 +1,12 @@
+diff -Naur a/src/emu/cpu/m68000/m68kmake.c b/src/emu/cpu/m68000/m68kmake.c
+--- a/src/emu/cpu/m68000/m68kmake.c	2013-01-11 08:32:48.000000000 +0100
++++ b/src/emu/cpu/m68000/m68kmake.c	2015-03-12 15:52:17.000279204 +0100
+@@ -599,7 +599,7 @@
+ 	if(fgets(buff, nchars, file) == NULL)
+ 		return -1;
+ 	if(buff[0] == '\r')
+-		memcpy(buff, buff + 1, nchars - 1);
++		memmove(buff, buff + 1, nchars - 1);
+ 
+ 	length = strlen(buff);
+ 	while(length && (buff[length-1] == '\r' || buff[length-1] == '\n'))
