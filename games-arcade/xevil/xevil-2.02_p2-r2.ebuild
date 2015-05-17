@@ -17,7 +17,10 @@ SLOT="0"
 KEYWORDS="ppc x86 amd64"
 IUSE=""
 
-RDEPEND="x11-libs/libXpm"
+RDEPEND="x11-libs/libXpm
+	media-fonts/font-adobe-75dpi
+	media-fonts/font-adobe-100dpi"
+
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
