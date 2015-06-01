@@ -3,10 +3,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5-progress"
-PYTHON_BDEPEND="test? ( <<[{*-cpython *-pypy-*}sqlite]>> )"
-PYTHON_DEPEND="<<[{*-cpython *-pypy-*}sqlite?]>>"
-PYTHON_MULTIPLE_ABIS="1"
-PYTHON_RESTRICTED_ABIS="3.1"
+PYTHON_ABI_TYPE="multiple"
+PYTHON_BDEPEND="test? ( <<[{*-cpython *-pypy}sqlite]>> )"
+PYTHON_DEPEND="<<[{*-cpython *-pypy}sqlite?]>>"
+PYTHON_RESTRICTED_ABIS="2.6 3.1"
 PYTHON_TESTS_RESTRICTED_ABIS="*-jython"
 WEBAPP_NO_AUTO_INSTALL="yes"
 
@@ -15,17 +15,16 @@ inherit bash-completion-r1 distutils versionator webapp
 MY_P="Django-${PV}"
 
 DESCRIPTION="High-level Python web framework"
-HOMEPAGE="http://www.djangoproject.com/ https://github.com/django/django https://pypi.python.org/pypi/Django"
+HOMEPAGE="https://www.djangoproject.com/ https://github.com/django/django https://pypi.python.org/pypi/Django"
 SRC_URI="https://www.djangoproject.com/m/releases/$(get_version_component_range 1-2)/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="*"
-IUSE="doc mysql postgres sqlite test"
+IUSE="doc sqlite test"
 
 RDEPEND="$(python_abi_depend -e "*-jython" dev-python/imaging)
-	mysql? ( $(python_abi_depend -e "3.* *-jython" dev-python/mysql-python) )
-	postgres? ( $(python_abi_depend -e "*-jython *-pypy-*" dev-python/psycopg:2) )"
+	$(python_abi_depend dev-python/setuptools)"
 DEPEND="${RDEPEND}
 	doc? ( $(python_abi_depend dev-python/sphinx) )"
 
@@ -44,18 +43,16 @@ src_prepare() {
 	# Disable invalid warning.
 	sed -e "s/overlay_warning = True/overlay_warning = False/" -i setup.py
 
-	# Avoid test failures with unittest2 and Python 3.
-	sed -e "s/from unittest2 import \*/raise ImportError/" -i django/utils/unittest/__init__.py
+	# Fix template_tests.tests.TemplateTests.test_templates() with NumPy >=1.9.
+	# https://code.djangoproject.com/ticket/23489
+	# https://github.com/django/django/commit/12809e160995eb617fe394c75e5b9f3211c056ff
+	sed -e "s/except (TypeError, AttributeError, KeyError, ValueError):$/except (TypeError, AttributeError, KeyError, ValueError, IndexError):/" -i django/template/base.py
 
-	# Fix generation of documentation with Python 3.
-	# https://github.com/django/django/commit/a5733fcd7be7adb8b236825beff4ccda19900f9e
-	sed -e "s/with open(outfilename, 'wb') as fp:/with open(outfilename, 'w') as fp:/" -i docs/_ext/djangodocs.py
-
-	# Disable failing tests.
-	# https://code.djangoproject.com/ticket/21092
-	sed -e "s/test_runner_deprecation_verbosity_zero/_&/" -i tests/regressiontests/test_runner/tests.py
-	# https://code.djangoproject.com/ticket/21093
-	sed -e "s/test_dont_base64_encode/_&/" -i tests/regressiontests/mail/tests.py
+	# Fix bash completion file.
+	sed \
+		-e "/^complete -F _django_completion /s/ manage.py / /" \
+		-e "/^_python_django_completion()$/,/^complete -F _python_django_completion /d" \
+		-i extras/django_bash_completion
 }
 
 src_compile() {
@@ -71,8 +68,7 @@ src_compile() {
 
 src_test() {
 	testing() {
-		# Tests have non-standard assumptions about PYTHONPATH and
-		# don't work with usual "build-${PYTHON_ABI}/lib".
+		# Tests have non-standard assumptions about PYTHONPATH and work not with usual "build-${PYTHON_ABI}/lib".
 		python_execute PYTHONPATH="." "$(PYTHON)" tests/runtests.py --settings=test_sqlite -v1
 	}
 	python_execute_function testing
@@ -81,7 +77,8 @@ src_test() {
 src_install() {
 	distutils_src_install
 
-	newbashcomp extras/django_bash_completion ${PN}
+	newbashcomp extras/django_bash_completion django-admin
+	bashcomp_alias django-admin django-admin.py
 
 	if use doc; then
 		dohtml -r docs/_build/html/
