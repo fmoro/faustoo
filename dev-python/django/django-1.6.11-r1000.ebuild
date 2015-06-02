@@ -3,12 +3,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5-progress"
-PYTHON_BDEPEND="test? ( <<[{*-cpython *-pypy-*}sqlite]>> )"
-PYTHON_DEPEND="<<[{*-cpython *-pypy-*}sqlite?]>>"
-PYTHON_MULTIPLE_ABIS="1"
+PYTHON_ABI_TYPE="multiple"
+PYTHON_BDEPEND="test? ( <<[{*-cpython *-pypy}sqlite]>> )"
+PYTHON_DEPEND="<<[{*-cpython *-pypy}sqlite?]>>"
 PYTHON_RESTRICTED_ABIS="3.1"
 PYTHON_TESTS_RESTRICTED_ABIS="*-jython"
 # 3.[4-9]: https://code.djangoproject.com/ticket/21721
+# 3.[4-9]: https://code.djangoproject.com/ticket/24153
 PYTHON_TESTS_FAILURES_TOLERANT_ABIS="3.[4-9]"
 WEBAPP_NO_AUTO_INSTALL="yes"
 
@@ -17,17 +18,15 @@ inherit bash-completion-r1 distutils versionator webapp
 MY_P="Django-${PV}"
 
 DESCRIPTION="High-level Python web framework"
-HOMEPAGE="http://www.djangoproject.com/ https://github.com/django/django https://pypi.python.org/pypi/Django"
+HOMEPAGE="https://www.djangoproject.com/ https://github.com/django/django https://pypi.python.org/pypi/Django"
 SRC_URI="https://www.djangoproject.com/m/releases/$(get_version_component_range 1-2)/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="*"
-IUSE="doc mysql postgres sqlite test"
+IUSE="doc sqlite test"
 
-RDEPEND="$(python_abi_depend -e "*-jython" dev-python/imaging)
-	mysql? ( $(python_abi_depend -e "3.* *-jython" dev-python/mysql-python) )
-	postgres? ( $(python_abi_depend -e "*-jython *-pypy-*" dev-python/psycopg:2) )"
+RDEPEND="$(python_abi_depend -e "*-jython" dev-python/imaging)"
 DEPEND="${RDEPEND}
 	doc? ( $(python_abi_depend dev-python/sphinx) )"
 
@@ -49,9 +48,20 @@ src_prepare() {
 	# Avoid test failures with unittest2 and Python 3.
 	sed -e "s/from unittest2 import \*/raise ImportError/" -i django/utils/unittest/__init__.py
 
+	# Fix template_tests.tests.TemplateTests.test_templates() with NumPy >=1.9.
+	# https://code.djangoproject.com/ticket/23489
+	# https://github.com/django/django/commit/12809e160995eb617fe394c75e5b9f3211c056ff
+	sed -e "s/except (TypeError, AttributeError, KeyError, ValueError):$/except (TypeError, AttributeError, KeyError, ValueError, IndexError):/" -i django/template/base.py
+
 	# Disable failing test.
 	# https://code.djangoproject.com/ticket/21416
 	sed -e "s/test_app_with_import/_&/" -i tests/admin_scripts/tests.py
+
+	# Fix bash completion file.
+	sed \
+		-e "/^complete -F _django_completion /s/ manage.py / /" \
+		-e "/^_python_django_completion()$/,/^complete -F _python_django_completion /d" \
+		-i extras/django_bash_completion
 }
 
 src_compile() {
@@ -76,7 +86,8 @@ src_test() {
 src_install() {
 	distutils_src_install
 
-	newbashcomp extras/django_bash_completion ${PN}
+	newbashcomp extras/django_bash_completion django-admin
+	bashcomp_alias django-admin django-admin.py
 
 	if use doc; then
 		dohtml -r docs/_build/html/
