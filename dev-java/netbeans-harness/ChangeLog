@@ -1,0 +1,5650 @@
+# ChangeLog for dev-java/netbeans-harness
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*netbeans-harness-9999_p20150810 (10 Aug 2015)
+
+  10 Aug 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150810.ebuild:
+  updated to the latest sources
+
+*netbeans-harness-9999_p20150808 (08 Aug 2015)
+
+  08 Aug 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150808.ebuild:
+  updated to the latest sources
+
+*netbeans-harness-9999_p20150807 (07 Aug 2015)
+
+  07 Aug 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150807.ebuild:
+  updated to the latest sources
+
+*netbeans-harness-9999_p20150805 (05 Aug 2015)
+
+  05 Aug 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150805.ebuild:
+  updated to the latest sources
+
+  05 Aug 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20150615.ebuild,
+  -netbeans-harness-9999_p20150616.ebuild,
+  -netbeans-harness-9999_p20150618.ebuild,
+  -netbeans-harness-9999_p20150619.ebuild,
+  -netbeans-harness-9999_p20150622.ebuild,
+  -netbeans-harness-9999_p20150623.ebuild,
+  -netbeans-harness-9999_p20150624.ebuild,
+  -netbeans-harness-9999_p20150625.ebuild,
+  -netbeans-harness-9999_p20150627.ebuild,
+  -netbeans-harness-9999_p20150629.ebuild,
+  -netbeans-harness-9999_p20150630.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20150804 (04 Aug 2015)
+
+  04 Aug 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150804.ebuild:
+  updated to the latest sources
+
+*netbeans-harness-9999_p20150803 (03 Aug 2015)
+
+  03 Aug 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150803.ebuild:
+  updated to the latest sources
+
+*netbeans-harness-9999_p20150801 (01 Aug 2015)
+
+  01 Aug 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150801.ebuild:
+  updated to the latest sources
+
+*netbeans-harness-9999_p20150731 (31 Jul 2015)
+
+  31 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150731.ebuild:
+  updated to the latest sources
+
+*netbeans-harness-9999_p20150730 (30 Jul 2015)
+
+  30 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150730.ebuild:
+  updated to the latest sources
+
+*netbeans-harness-9999_p20150728 (28 Jul 2015)
+
+  28 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150728.ebuild:
+  updated to the latest sources
+
+*netbeans-harness-9999_p20150727 (27 Jul 2015)
+
+  27 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150727.ebuild:
+  updated to the latest sources
+
+*netbeans-harness-9999_p20150720 (20 Jul 2015)
+
+  20 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150720.ebuild:
+  updated to the latest sources
+
+*netbeans-harness-9999_p20150716 (16 Jul 2015)
+
+  16 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150716.ebuild:
+  updated to the latest sources
+
+  16 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20150601.ebuild,
+  -netbeans-harness-9999_p20150602.ebuild,
+  -netbeans-harness-9999_p20150603.ebuild,
+  -netbeans-harness-9999_p20150604.ebuild,
+  -netbeans-harness-9999_p20150608.ebuild,
+  -netbeans-harness-9999_p20150609.ebuild,
+  -netbeans-harness-9999_p20150610.ebuild,
+  -netbeans-harness-9999_p20150611.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20150715 (15 Jul 2015)
+
+  15 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150715.ebuild:
+  updated to the latest sources
+
+*netbeans-harness-9999_p20150714 (14 Jul 2015)
+
+  14 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150714.ebuild:
+  updated to the latest sources
+
+*netbeans-harness-9999_p20150713 (13 Jul 2015)
+
+  13 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150713.ebuild:
+  updated to the latest sources
+
+  13 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20150518.ebuild,
+  -netbeans-harness-9999_p20150519.ebuild,
+  -netbeans-harness-9999_p20150520.ebuild,
+  -netbeans-harness-9999_p20150521.ebuild,
+  -netbeans-harness-9999_p20150522.ebuild,
+  -netbeans-harness-9999_p20150525.ebuild,
+  -netbeans-harness-9999_p20150526.ebuild,
+  -netbeans-harness-9999_p20150527.ebuild,
+  -netbeans-harness-9999_p20150528.ebuild,
+  -netbeans-harness-9999_p20150529.ebuild,
+  -netbeans-harness-9999_p20150530.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20150710 (10 Jul 2015)
+
+  10 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150710.ebuild:
+  updated to the latest sources
+
+*netbeans-harness-9999_p20150709 (09 Jul 2015)
+
+  09 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150709.ebuild:
+  updated to the latest sources
+
+*netbeans-harness-9999_p20150702 (02 Jul 2015)
+
+  02 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150702.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150701 (01 Jul 2015)
+
+  01 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150701.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150630 (30 Jun 2015)
+
+  30 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150630.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150629 (29 Jun 2015)
+
+  29 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150629.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150627 (26 Jun 2015)
+
+  26 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150627.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150625 (25 Jun 2015)
+
+  25 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150625.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150624 (24 Jun 2015)
+
+  24 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150624.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150623 (23 Jun 2015)
+
+  23 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150623.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150622 (22 Jun 2015)
+
+  22 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150622.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150619 (19 Jun 2015)
+
+  19 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150619.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150618 (18 Jun 2015)
+
+  18 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150618.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150616 (16 Jun 2015)
+
+  16 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150616.ebuild:
+  bumped to the latest sources
+
+  16 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20150512.ebuild,
+  -netbeans-harness-9999_p20150513.ebuild,
+  -netbeans-harness-9999_p20150514.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20150615 (15 Jun 2015)
+
+  15 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150615.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150611 (11 Jun 2015)
+
+  11 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150611.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150610 (10 Jun 2015)
+
+  10 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150610.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150609 (09 Jun 2015)
+
+  09 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150609.ebuild:
+  bumped to the latest sources
+
+  09 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20150504.ebuild,
+  -netbeans-harness-9999_p20150505.ebuild,
+  -netbeans-harness-9999_p20150506.ebuild,
+  -netbeans-harness-9999_p20150507.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20150608 (08 Jun 2015)
+
+  08 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150608.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150604 (04 Jun 2015)
+
+  04 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150604.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150603 (03 Jun 2015)
+
+  03 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150603.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150602 (02 Jun 2015)
+
+  02 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150602.ebuild:
+  bumped to the latest sources
+
+  02 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20150401.ebuild,
+  -netbeans-harness-9999_p20150402.ebuild,
+  -netbeans-harness-9999_p20150403.ebuild,
+  -netbeans-harness-9999_p20150407.ebuild,
+  -netbeans-harness-9999_p20150410.ebuild,
+  -netbeans-harness-9999_p20150413.ebuild,
+  -netbeans-harness-9999_p20150414.ebuild,
+  -netbeans-harness-9999_p20150416.ebuild,
+  -netbeans-harness-9999_p20150417.ebuild,
+  -netbeans-harness-9999_p20150421.ebuild,
+  -netbeans-harness-9999_p20150423.ebuild,
+  -netbeans-harness-9999_p20150427.ebuild,
+  -netbeans-harness-9999_p20150428.ebuild,
+  -netbeans-harness-9999_p20150429.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20150601 (01 Jun 2015)
+
+  01 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150601.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150530 (30 May 2015)
+
+  30 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150530.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150529 (29 May 2015)
+
+  29 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150529.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150528 (28 May 2015)
+
+  28 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150528.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150527 (27 May 2015)
+
+  27 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150527.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150526 (26 May 2015)
+
+  26 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150526.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150525 (25 May 2015)
+
+  25 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150525.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150522 (22 May 2015)
+
+  22 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150522.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150521 (21 May 2015)
+
+  21 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150521.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150520 (20 May 2015)
+
+  20 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150520.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150519 (19 May 2015)
+
+  19 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150519.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150518 (18 May 2015)
+
+  18 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150518.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150514 (14 May 2015)
+
+  14 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150514.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150513 (13 May 2015)
+
+  13 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150513.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150512 (12 May 2015)
+
+  12 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150512.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150507 (07 May 2015)
+
+  07 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150507.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150506 (06 May 2015)
+
+  06 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150506.ebuild:
+  bumped to the latest sources
+
+  06 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20150323.ebuild,
+  -netbeans-harness-9999_p20150324.ebuild,
+  -netbeans-harness-9999_p20150325.ebuild,
+  -netbeans-harness-9999_p20150327.ebuild,
+  -netbeans-harness-9999_p20150331.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20150505 (05 May 2015)
+
+  05 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150505.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150504 (04 May 2015)
+
+  04 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150504.ebuild:
+  bumped to the latest sources
+
+  04 May 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20150314.ebuild,
+  -netbeans-harness-9999_p20150315.ebuild,
+  -netbeans-harness-9999_p20150316.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20150429 (29 Apr 2015)
+
+  29 Apr 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150429.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150428 (28 Apr 2015)
+
+  28 Apr 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150428.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150427 (27 Apr 2015)
+
+  27 Apr 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150427.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150423 (23 Apr 2015)
+
+  23 Apr 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150423.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150421 (21 Apr 2015)
+
+  21 Apr 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150421.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150417 (17 Apr 2015)
+
+  17 Apr 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150417.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150416 (16 Apr 2015)
+
+  16 Apr 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150416.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150414 (14 Apr 2015)
+
+  14 Apr 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150414.ebuild:
+  bumped to the latest sources
+
+  14 Apr 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20150302.ebuild,
+  -netbeans-harness-9999_p20150303.ebuild,
+  -netbeans-harness-9999_p20150304.ebuild,
+  -netbeans-harness-9999_p20150305.ebuild,
+  -netbeans-harness-9999_p20150306.ebuild,
+  -netbeans-harness-9999_p20150309.ebuild,
+  -netbeans-harness-9999_p20150311.ebuild,
+  -netbeans-harness-9999_p20150312.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20150413 (13 Apr 2015)
+
+  13 Apr 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150413.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150410 (10 Apr 2015)
+
+  10 Apr 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150410.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150407 (07 Apr 2015)
+
+  07 Apr 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150407.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150403 (03 Apr 2015)
+
+  03 Apr 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150403.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150402 (02 Apr 2015)
+
+  02 Apr 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150402.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150401 (01 Apr 2015)
+
+  01 Apr 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150401.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150331 (31 Mar 2015)
+
+  31 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150331.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150327 (27 Mar 2015)
+
+  27 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150327.ebuild:
+  bumped to the latest sources
+
+  26 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20150203.ebuild,
+  -netbeans-harness-9999_p20150204.ebuild,
+  -netbeans-harness-9999_p20150205.ebuild,
+  -netbeans-harness-9999_p20150206.ebuild,
+  -netbeans-harness-9999_p20150207.ebuild,
+  -netbeans-harness-9999_p20150208.ebuild,
+  -netbeans-harness-9999_p20150209.ebuild,
+  -netbeans-harness-9999_p20150210.ebuild,
+  -netbeans-harness-9999_p20150211.ebuild,
+  -netbeans-harness-9999_p20150212.ebuild,
+  -netbeans-harness-9999_p20150213.ebuild,
+  -netbeans-harness-9999_p20150216.ebuild,
+  -netbeans-harness-9999_p20150217.ebuild,
+  -netbeans-harness-9999_p20150219.ebuild,
+  -netbeans-harness-9999_p20150220.ebuild,
+  -netbeans-harness-9999_p20150223.ebuild,
+  -netbeans-harness-9999_p20150225.ebuild,
+  -netbeans-harness-9999_p20150226.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20150325 (25 Mar 2015)
+
+  25 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150325.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150324 (24 Mar 2015)
+
+  24 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150324.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150323 (23 Mar 2015)
+
+  23 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150323.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150316 (16 Mar 2015)
+
+  16 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150316.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150315 (15 Mar 2015)
+
+  15 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150315.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150314 (14 Mar 2015)
+
+  14 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150314.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150312 (12 Mar 2015)
+
+  12 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150312.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150311 (11 Mar 2015)
+
+  11 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150311.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150309 (09 Mar 2015)
+
+  09 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150309.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150306 (06 Mar 2015)
+
+  06 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150306.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150305 (05 Mar 2015)
+
+  05 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150305.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150304 (04 Mar 2015)
+
+  04 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150304.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150303 (03 Mar 2015)
+
+  03 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150303.ebuild:
+  bumped to the latest sources
+
+  03 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20150123.ebuild,
+  -netbeans-harness-9999_p20150124.ebuild,
+  -netbeans-harness-9999_p20150125.ebuild,
+  -netbeans-harness-9999_p20150126.ebuild,
+  -netbeans-harness-9999_p20150127.ebuild,
+  -netbeans-harness-9999_p20150128.ebuild,
+  -netbeans-harness-9999_p20150129.ebuild,
+  -netbeans-harness-9999_p20150130.ebuild,
+  -netbeans-harness-9999_p20150201.ebuild,
+  -netbeans-harness-9999_p20150202.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20150302 (02 Mar 2015)
+
+  02 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150302.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150226 (26 Feb 2015)
+
+  26 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150226.ebuild:
+  bumped to the latest sources
+
+  26 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20150118.ebuild,
+  -netbeans-harness-9999_p20150119.ebuild,
+  -netbeans-harness-9999_p20150120.ebuild,
+  -netbeans-harness-9999_p20150121.ebuild,
+  -netbeans-harness-9999_p20150122.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20150225 (25 Feb 2015)
+
+  25 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150225.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150223 (23 Feb 2015)
+
+  23 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150223.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150220 (20 Feb 2015)
+
+  20 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150220.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150219 (19 Feb 2015)
+
+  19 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150219.ebuild:
+  bumped to the latest sources
+
+  18 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20150103.ebuild,
+  -netbeans-harness-9999_p20150104.ebuild,
+  -netbeans-harness-9999_p20150105.ebuild,
+  -netbeans-harness-9999_p20150106.ebuild,
+  -netbeans-harness-9999_p20150107.ebuild,
+  -netbeans-harness-9999_p20150108.ebuild,
+  -netbeans-harness-9999_p20150109.ebuild,
+  -netbeans-harness-9999_p20150111.ebuild,
+  -netbeans-harness-9999_p20150112.ebuild,
+  -netbeans-harness-9999_p20150113.ebuild,
+  -netbeans-harness-9999_p20150114.ebuild,
+  -netbeans-harness-9999_p20150115.ebuild,
+  -netbeans-harness-9999_p20150116.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20150217 (17 Feb 2015)
+
+  17 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150217.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150216 (16 Feb 2015)
+
+  16 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150216.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150213 (13 Feb 2015)
+
+  13 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150213.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150212 (12 Feb 2015)
+
+  12 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150212.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150211 (11 Feb 2015)
+
+  11 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150211.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150210 (10 Feb 2015)
+
+  10 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150210.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150209 (09 Feb 2015)
+
+  09 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150209.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150208 (08 Feb 2015)
+
+  08 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150208.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150207 (07 Feb 2015)
+
+  07 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150207.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150206 (06 Feb 2015)
+
+  06 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150206.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150205 (05 Feb 2015)
+
+  05 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150205.ebuild:
+  bumped to the latest sources
+
+  04 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-harness-8.0.2.ebuild:
+  restricted compilation to jdk7
+
+*netbeans-harness-9999_p20150204 (04 Feb 2015)
+
+  04 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150204.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150203 (03 Feb 2015)
+
+  03 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150203.ebuild:
+  bumped to the latest sources
+
+  03 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20141226.ebuild,
+  -netbeans-harness-9999_p20141227.ebuild,
+  -netbeans-harness-9999_p20141228.ebuild,
+  -netbeans-harness-9999_p20141229.ebuild,
+  -netbeans-harness-9999_p20141230.ebuild,
+  -netbeans-harness-9999_p20141231.ebuild,
+  -netbeans-harness-9999_p20150101.ebuild,
+  -netbeans-harness-9999_p20150102.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20150202 (02 Feb 2015)
+
+  02 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150202.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150201 (01 Feb 2015)
+
+  01 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150201.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150130 (30 Jan 2015)
+
+  30 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150130.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150129 (29 Jan 2015)
+
+  29 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150129.ebuild:
+  bumped to the latest sources
+
+  29 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20141223.ebuild,
+  -netbeans-harness-9999_p20141225.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20150128 (29 Jan 2015)
+
+  29 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150128.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150127 (27 Jan 2015)
+
+  27 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150127.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150126 (26 Jan 2015)
+
+  26 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150126.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150125 (25 Jan 2015)
+
+  25 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150125.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150124 (24 Jan 2015)
+
+  24 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150124.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150123 (23 Jan 2015)
+
+  23 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150123.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150122 (22 Jan 2015)
+
+  22 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150122.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150121 (21 Jan 2015)
+
+  21 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150121.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150120 (20 Jan 2015)
+
+  20 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150120.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150119 (19 Jan 2015)
+
+  19 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150119.ebuild:
+  bumped to the latest sources
+
+  19 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20141210.ebuild,
+  -netbeans-harness-9999_p20141212.ebuild,
+  -netbeans-harness-9999_p20141213.ebuild,
+  -netbeans-harness-9999_p20141214.ebuild,
+  -netbeans-harness-9999_p20141215.ebuild,
+  -netbeans-harness-9999_p20141216.ebuild,
+  -netbeans-harness-9999_p20141217.ebuild,
+  -netbeans-harness-9999_p20141218.ebuild,
+  -netbeans-harness-9999_p20141219.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20150118 (18 Jan 2015)
+
+  18 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150118.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150116 (16 Jan 2015)
+
+  16 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150116.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150115 (15 Jan 2015)
+
+  15 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150115.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150114 (14 Jan 2015)
+
+  14 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150114.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150113 (13 Jan 2015)
+
+  13 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150113.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150112 (12 Jan 2015)
+
+  12 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150112.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150111 (11 Jan 2015)
+
+  11 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150111.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150109 (09 Jan 2015)
+
+  09 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150109.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150108 (08 Jan 2015)
+
+  08 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150108.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150107 (07 Jan 2015)
+
+  07 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150107.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150106 (06 Jan 2015)
+
+  06 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150106.ebuild:
+  bumped to the latest sources
+
+  06 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20141110.ebuild,
+  -netbeans-harness-9999_p20141111.ebuild,
+  -netbeans-harness-9999_p20141112.ebuild,
+  -netbeans-harness-9999_p20141113.ebuild,
+  -netbeans-harness-9999_p20141114.ebuild,
+  -netbeans-harness-9999_p20141115.ebuild,
+  -netbeans-harness-9999_p20141117.ebuild,
+  -netbeans-harness-9999_p20141118.ebuild,
+  -netbeans-harness-9999_p20141119.ebuild,
+  -netbeans-harness-9999_p20141120.ebuild,
+  -netbeans-harness-9999_p20141121.ebuild,
+  -netbeans-harness-9999_p20141123.ebuild,
+  -netbeans-harness-9999_p20141124.ebuild,
+  -netbeans-harness-9999_p20141125.ebuild,
+  -netbeans-harness-9999_p20141126.ebuild,
+  -netbeans-harness-9999_p20141127.ebuild,
+  -netbeans-harness-9999_p20141128.ebuild,
+  -netbeans-harness-9999_p20141129.ebuild,
+  -netbeans-harness-9999_p20141130.ebuild,
+  -netbeans-harness-9999_p20141201.ebuild,
+  -netbeans-harness-9999_p20141202.ebuild,
+  -netbeans-harness-9999_p20141203.ebuild,
+  -netbeans-harness-9999_p20141204.ebuild,
+  -netbeans-harness-9999_p20141207.ebuild,
+  -netbeans-harness-9999_p20141208.ebuild,
+  -netbeans-harness-9999_p20141209.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20150105 (05 Jan 2015)
+
+  05 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150105.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150104 (04 Jan 2015)
+
+  04 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150104.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150103 (03 Jan 2015)
+
+  03 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150103.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150102 (02 Jan 2015)
+
+  02 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150102.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20150101 (01 Jan 2015)
+
+  01 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20150101.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141231 (31 Dec 2014)
+
+  31 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141231.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141230 (30 Dec 2014)
+
+  30 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141230.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141229 (29 Dec 2014)
+*netbeans-harness-9999_p20141228 (29 Dec 2014)
+
+  29 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141228.ebuild,
+  +netbeans-harness-9999_p20141229.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141227 (27 Dec 2014)
+
+  27 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141227.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141226 (26 Dec 2014)
+
+  26 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141226.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141225 (25 Dec 2014)
+
+  25 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141225.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141223 (23 Dec 2014)
+
+  23 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141223.ebuild:
+  bumped to the latest sources
+
+  23 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20141001.ebuild,
+  -netbeans-harness-9999_p20141003.ebuild,
+  -netbeans-harness-9999_p20141006.ebuild,
+  -netbeans-harness-9999_p20141007.ebuild,
+  -netbeans-harness-9999_p20141009.ebuild,
+  -netbeans-harness-9999_p20141010.ebuild,
+  -netbeans-harness-9999_p20141013.ebuild,
+  -netbeans-harness-9999_p20141015.ebuild,
+  -netbeans-harness-9999_p20141016.ebuild,
+  -netbeans-harness-9999_p20141017.ebuild,
+  -netbeans-harness-9999_p20141019.ebuild,
+  -netbeans-harness-9999_p20141030.ebuild,
+  -netbeans-harness-9999_p20141031.ebuild,
+  -netbeans-harness-9999_p20141103.ebuild,
+  -netbeans-harness-9999_p20141105.ebuild,
+  -netbeans-harness-9999_p20141106.ebuild,
+  -netbeans-harness-9999_p20141107.ebuild,
+  -netbeans-harness-9999_p20141108.ebuild,
+  -netbeans-harness-9999_p20141109.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20141219 (19 Dec 2014)
+
+  19 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141219.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141218 (18 Dec 2014)
+
+  18 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141218.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141217 (17 Dec 2014)
+
+  17 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141217.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141216 (16 Dec 2014)
+
+  16 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141216.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141215 (15 Dec 2014)
+
+  15 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141215.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141214 (14 Dec 2014)
+
+  14 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141214.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141213 (13 Dec 2014)
+
+  13 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141213.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141212 (12 Dec 2014)
+
+  12 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141212.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141210 (10 Dec 2014)
+
+  10 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141210.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141209 (09 Dec 2014)
+
+  09 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141209.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141208 (08 Dec 2014)
+
+  08 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141208.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-8.0.2 (07 Dec 2014)
+
+  07 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-8.0.2.ebuild:
+  bumped to version 8.0.2 in 8.0 slot
+
+*netbeans-harness-9999_p20141207 (07 Dec 2014)
+
+  07 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141207.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141204 (04 Dec 2014)
+
+  04 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141204.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141203 (03 Dec 2014)
+
+  03 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141203.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141202 (02 Dec 2014)
+
+  02 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141202.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141201 (01 Dec 2014)
+
+  01 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141201.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141130 (30 Nov 2014)
+
+  30 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141130.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141129 (29 Nov 2014)
+
+  29 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141129.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141128 (28 Nov 2014)
+
+  28 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141128.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141127 (27 Nov 2014)
+
+  27 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141127.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141126 (26 Nov 2014)
+
+  26 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141126.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141125 (25 Nov 2014)
+
+  25 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141125.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141124 (24 Nov 2014)
+
+  24 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141124.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141123 (23 Nov 2014)
+
+  23 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141123.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141121 (21 Nov 2014)
+
+  21 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141121.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141120 (20 Nov 2014)
+
+  20 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141120.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141119 (19 Nov 2014)
+
+  19 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141119.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141118 (18 Nov 2014)
+
+  18 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141118.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141117 (17 Nov 2014)
+
+  17 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141117.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141115 (16 Nov 2014)
+
+  16 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141115.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141114 (14 Nov 2014)
+
+  14 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141114.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141113 (13 Nov 2014)
+
+  13 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141113.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141112 (12 Nov 2014)
+
+  12 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141112.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141111 (11 Nov 2014)
+
+  11 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141111.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141110 (10 Nov 2014)
+
+  10 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141110.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141109 (09 Nov 2014)
+
+  09 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141109.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141108 (09 Nov 2014)
+
+  09 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141108.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141107 (07 Nov 2014)
+
+  07 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141107.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141106 (06 Nov 2014)
+
+  06 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141106.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141105 (05 Nov 2014)
+
+  05 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141105.ebuild:
+  bumped to the latest sources
+
+  05 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20140922.ebuild,
+  -netbeans-harness-9999_p20140925.ebuild,
+  -netbeans-harness-9999_p20140926.ebuild,
+  -netbeans-harness-9999_p20140928.ebuild,
+  -netbeans-harness-9999_p20140930.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20141103 (03 Nov 2014)
+
+  03 Nov 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141103.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141031 (31 Oct 2014)
+
+  31 Oct 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141031.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141030 (30 Oct 2014)
+
+  30 Oct 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141030.ebuild:
+  bumped to the latest sources
+
+  30 Oct 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20140901.ebuild,
+  -netbeans-harness-9999_p20140902.ebuild,
+  -netbeans-harness-9999_p20140903.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20141019 (20 Oct 2014)
+
+  20 Oct 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141019.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141017 (17 Oct 2014)
+
+  17 Oct 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141017.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141016 (16 Oct 2014)
+
+  16 Oct 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141016.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141015 (15 Oct 2014)
+
+  15 Oct 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141015.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141013 (13 Oct 2014)
+
+  13 Oct 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141013.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141010 (10 Oct 2014)
+
+  10 Oct 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141010.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141009 (09 Oct 2014)
+
+  09 Oct 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141009.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141007 (07 Oct 2014)
+
+  07 Oct 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141007.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141006 (06 Oct 2014)
+
+  06 Oct 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141006.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141003 (03 Oct 2014)
+
+  03 Oct 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141003.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20141001 (01 Oct 2014)
+
+  01 Oct 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20141001.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140930 (30 Sep 2014)
+
+  30 Sep 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140930.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140928 (28 Sep 2014)
+
+  28 Sep 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140928.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140926 (26 Sep 2014)
+
+  26 Sep 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140926.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140925 (25 Sep 2014)
+
+  25 Sep 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140925.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140922 (23 Sep 2014)
+
+  23 Sep 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140922.ebuild:
+  bumped to the latest sources
+
+  23 Sep 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20140721.ebuild,
+  -netbeans-harness-9999_p20140722.ebuild,
+  -netbeans-harness-9999_p20140724.ebuild,
+  -netbeans-harness-9999_p20140725.ebuild,
+  -netbeans-harness-9999_p20140726.ebuild,
+  -netbeans-harness-9999_p20140728.ebuild,
+  -netbeans-harness-9999_p20140801.ebuild,
+  -netbeans-harness-9999_p20140803.ebuild,
+  -netbeans-harness-9999_p20140804.ebuild,
+  -netbeans-harness-9999_p20140805.ebuild,
+  -netbeans-harness-9999_p20140806.ebuild,
+  -netbeans-harness-9999_p20140807.ebuild,
+  -netbeans-harness-9999_p20140808.ebuild,
+  -netbeans-harness-9999_p20140810.ebuild,
+  -netbeans-harness-9999_p20140811.ebuild,
+  -netbeans-harness-9999_p20140812.ebuild,
+  -netbeans-harness-9999_p20140813.ebuild,
+  -netbeans-harness-9999_p20140814.ebuild,
+  -netbeans-harness-9999_p20140815.ebuild,
+  -netbeans-harness-9999_p20140816.ebuild,
+  -netbeans-harness-9999_p20140817.ebuild,
+  -netbeans-harness-9999_p20140818.ebuild,
+  -netbeans-harness-9999_p20140819.ebuild,
+  -netbeans-harness-9999_p20140822.ebuild,
+  -netbeans-harness-9999_p20140823.ebuild,
+  -netbeans-harness-9999_p20140824.ebuild,
+  -netbeans-harness-9999_p20140826.ebuild,
+  -netbeans-harness-9999_p20140827.ebuild,
+  -netbeans-harness-9999_p20140828.ebuild,
+  -netbeans-harness-9999_p20140830.ebuild,
+  -netbeans-harness-9999_p20140831.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20140903 (03 Sep 2014)
+
+  03 Sep 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140903.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140902 (02 Sep 2014)
+
+  02 Sep 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140902.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140901 (01 Sep 2014)
+
+  01 Sep 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140901.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140831 (31 Aug 2014)
+
+  31 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140831.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140830 (30 Aug 2014)
+
+  30 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140830.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140828 (28 Aug 2014)
+
+  28 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140828.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140827 (27 Aug 2014)
+
+  27 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140827.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140826 (26 Aug 2014)
+
+  26 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140826.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140824 (24 Aug 2014)
+
+  24 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140824.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140823 (23 Aug 2014)
+
+  23 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140823.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140822 (22 Aug 2014)
+
+  22 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140822.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140819 (19 Aug 2014)
+
+  19 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140819.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140818 (18 Aug 2014)
+
+  18 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140818.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140817 (17 Aug 2014)
+
+  17 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140817.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140816 (16 Aug 2014)
+
+  16 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140816.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140815 (15 Aug 2014)
+
+  15 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140815.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140814 (14 Aug 2014)
+
+  14 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140814.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140813 (13 Aug 2014)
+
+  13 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140813.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140812 (12 Aug 2014)
+
+  12 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140812.ebuild:
+  bumped to the latest sources
+
+  12 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20140613.ebuild,
+  -netbeans-harness-9999_p20140616.ebuild,
+  -netbeans-harness-9999_p20140617.ebuild,
+  -netbeans-harness-9999_p20140618.ebuild,
+  -netbeans-harness-9999_p20140619.ebuild,
+  -netbeans-harness-9999_p20140623.ebuild,
+  -netbeans-harness-9999_p20140624.ebuild,
+  -netbeans-harness-9999_p20140627.ebuild,
+  -netbeans-harness-9999_p20140702.ebuild,
+  -netbeans-harness-9999_p20140707.ebuild,
+  -netbeans-harness-9999_p20140708.ebuild,
+  -netbeans-harness-9999_p20140709.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20140811 (11 Aug 2014)
+
+  11 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140811.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140810 (10 Aug 2014)
+
+  10 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140810.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140808 (08 Aug 2014)
+
+  08 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140808.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140807 (07 Aug 2014)
+
+  07 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140807.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140806 (06 Aug 2014)
+
+  06 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140806.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140805 (05 Aug 2014)
+
+  05 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140805.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140804 (04 Aug 2014)
+
+  04 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140804.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140803 (03 Aug 2014)
+
+  03 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140803.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140801 (01 Aug 2014)
+
+  01 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140801.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140728 (28 Jul 2014)
+
+  28 Jul 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140728.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140726 (26 Jul 2014)
+
+  26 Jul 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140726.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140725 (25 Jul 2014)
+
+  25 Jul 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140725.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140724 (24 Jul 2014)
+
+  24 Jul 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140724.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140722 (22 Jul 2014)
+
+  22 Jul 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140722.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140721 (21 Jul 2014)
+
+  21 Jul 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140721.ebuild:
+  bumped to the latest sources
+
+  21 Jul 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20140520.ebuild,
+  -netbeans-harness-9999_p20140521.ebuild,
+  -netbeans-harness-9999_p20140522.ebuild,
+  -netbeans-harness-9999_p20140526.ebuild,
+  -netbeans-harness-9999_p20140527.ebuild,
+  -netbeans-harness-9999_p20140528.ebuild,
+  -netbeans-harness-9999_p20140529.ebuild,
+  -netbeans-harness-9999_p20140530.ebuild,
+  -netbeans-harness-9999_p20140601.ebuild,
+  -netbeans-harness-9999_p20140602.ebuild,
+  -netbeans-harness-9999_p20140603.ebuild,
+  -netbeans-harness-9999_p20140604.ebuild,
+  -netbeans-harness-9999_p20140605.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20140709 (09 Jul 2014)
+
+  09 Jul 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140709.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140708 (08 Jul 2014)
+
+  08 Jul 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140708.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140707 (07 Jul 2014)
+
+  07 Jul 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140707.ebuild:
+  bumped to the latest sources
+
+*netbeans-harness-9999_p20140702 (02 Jul 2014)
+
+  02 Jul 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140702.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140627 (27 Jun 2014)
+
+  27 Jun 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140627.ebuild:
+  bumped to latest nightly sources
+
+  27 Jun 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20140510.ebuild,
+  -netbeans-harness-9999_p20140511.ebuild,
+  -netbeans-harness-9999_p20140512.ebuild,
+  -netbeans-harness-9999_p20140513.ebuild,
+  -netbeans-harness-9999_p20140514.ebuild,
+  -netbeans-harness-9999_p20140516.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20140624 (24 Jun 2014)
+
+  24 Jun 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140624.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140623 (23 Jun 2014)
+
+  23 Jun 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140623.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140619 (19 Jun 2014)
+
+  19 Jun 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140619.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140618 (18 Jun 2014)
+
+  18 Jun 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140618.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140617 (17 Jun 2014)
+
+  17 Jun 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140617.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140616 (16 Jun 2014)
+
+  16 Jun 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140616.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140613 (13 Jun 2014)
+
+  13 Jun 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140613.ebuild:
+  bumped to latest nightly sources
+
+  13 Jun 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20140501.ebuild,
+  -netbeans-harness-9999_p20140502.ebuild,
+  -netbeans-harness-9999_p20140504.ebuild,
+  -netbeans-harness-9999_p20140505.ebuild,
+  -netbeans-harness-9999_p20140506.ebuild,
+  -netbeans-harness-9999_p20140507.ebuild,
+  -netbeans-harness-9999_p20140509.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20140605 (05 Jun 2014)
+
+  05 Jun 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140605.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140604 (04 Jun 2014)
+
+  04 Jun 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140604.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140603 (03 Jun 2014)
+
+  03 Jun 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140603.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140602 (02 Jun 2014)
+
+  02 Jun 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140602.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140601 (01 Jun 2014)
+
+  01 Jun 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140601.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140530 (30 May 2014)
+
+  30 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140530.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140529 (29 May 2014)
+
+  29 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140529.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140528 (28 May 2014)
+
+  28 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140528.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140527 (27 May 2014)
+
+  27 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140527.ebuild:
+  bumped to latest nightly sources
+
+  26 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20140410.ebuild,
+  -netbeans-harness-9999_p20140411.ebuild,
+  -netbeans-harness-9999_p20140413.ebuild,
+  -netbeans-harness-9999_p20140415.ebuild,
+  -netbeans-harness-9999_p20140416.ebuild,
+  -netbeans-harness-9999_p20140417.ebuild,
+  -netbeans-harness-9999_p20140422.ebuild,
+  -netbeans-harness-9999_p20140423.ebuild,
+  -netbeans-harness-9999_p20140424.ebuild,
+  -netbeans-harness-9999_p20140427.ebuild,
+  -netbeans-harness-9999_p20140429.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20140526 (26 May 2014)
+
+  26 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140526.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140521 (21 May 2014)
+
+  21 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140521.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140520 (20 May 2014)
+
+  20 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140520.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140516 (16 May 2014)
+
+  16 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140516.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140514 (14 May 2014)
+
+  14 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140514.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140513 (13 May 2014)
+
+  13 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140513.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140512 (12 May 2014)
+
+  12 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140512.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140511 (11 May 2014)
+
+  11 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140511.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140510 (10 May 2014)
+
+  10 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140510.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140509 (09 May 2014)
+
+  09 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140509.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140507 (07 May 2014)
+
+  07 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140507.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140506 (06 May 2014)
+
+  06 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140506.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140505 (05 May 2014)
+
+  05 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140505.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140504 (04 May 2014)
+
+  04 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140504.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140502 (02 May 2014)
+
+  02 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140502.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140501 (01 May 2014)
+
+  01 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140501.ebuild:
+  bumped to latest nightly sources
+
+  01 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20140321.ebuild,
+  -netbeans-harness-9999_p20140323.ebuild,
+  -netbeans-harness-9999_p20140324.ebuild,
+  -netbeans-harness-9999_p20140325.ebuild,
+  -netbeans-harness-9999_p20140326.ebuild,
+  -netbeans-harness-9999_p20140327.ebuild,
+  -netbeans-harness-9999_p20140328.ebuild,
+  -netbeans-harness-9999_p20140330.ebuild,
+  -netbeans-harness-9999_p20140331.ebuild,
+  -netbeans-harness-9999_p20140401.ebuild,
+  -netbeans-harness-9999_p20140403.ebuild,
+  -netbeans-harness-9999_p20140404.ebuild,
+  -netbeans-harness-9999_p20140405.ebuild,
+  -netbeans-harness-9999_p20140407.ebuild,
+  -netbeans-harness-9999_p20140408.ebuild,
+  -netbeans-harness-9999_p20140409.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20140429 (29 Apr 2014)
+
+  29 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140429.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140427 (27 Apr 2014)
+
+  27 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140427.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140423 (23 Apr 2014)
+
+  23 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140423.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140422 (22 Apr 2014)
+
+  22 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140422.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140417 (17 Apr 2014)
+
+  17 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140417.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140416 (16 Apr 2014)
+
+  16 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140416.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140415 (15 Apr 2014)
+
+  15 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140415.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140413 (13 Apr 2014)
+
+  13 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140413.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140411 (11 Apr 2014)
+
+  11 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140411.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140410 (10 Apr 2014)
+
+  10 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140410.ebuild:
+  bumped to latest nightly sources
+
+  10 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20140301.ebuild,
+  -netbeans-harness-9999_p20140302.ebuild,
+  -netbeans-harness-9999_p20140303.ebuild,
+  -netbeans-harness-9999_p20140304.ebuild,
+  -netbeans-harness-9999_p20140306.ebuild,
+  -netbeans-harness-9999_p20140307.ebuild,
+  -netbeans-harness-9999_p20140308.ebuild,
+  -netbeans-harness-9999_p20140309.ebuild,
+  -netbeans-harness-9999_p20140311.ebuild,
+  -netbeans-harness-9999_p20140312.ebuild,
+  -netbeans-harness-9999_p20140313.ebuild,
+  -netbeans-harness-9999_p20140314.ebuild,
+  -netbeans-harness-9999_p20140316.ebuild,
+  -netbeans-harness-9999_p20140317.ebuild,
+  -netbeans-harness-9999_p20140318.ebuild,
+  -netbeans-harness-9999_p20140319.ebuild:
+  removed obsolete ebuild
+
+*netbeans-harness-9999_p20140409 (09 Apr 2014)
+
+  09 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140409.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140408 (08 Apr 2014)
+
+  08 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140408.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140407 (07 Apr 2014)
+
+  07 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140407.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140405 (05 Apr 2014)
+
+  05 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140405.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140404 (04 Apr 2014)
+
+  04 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140404.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140403 (03 Apr 2014)
+
+  03 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140403.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140401 (01 Apr 2014)
+
+  01 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140401.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140331 (31 Mar 2014)
+
+  31 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140331.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140330 (30 Mar 2014)
+
+  30 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140330.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140328 (28 Mar 2014)
+
+  28 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140328.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140327 (27 Mar 2014)
+
+  27 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140327.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140326 (26 Mar 2014)
+
+  26 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140326.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140325 (25 Mar 2014)
+
+  25 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140325.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140324 (24 Mar 2014)
+
+  24 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140324.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-8.0 (23 Mar 2014)
+
+  23 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-8.0.ebuild:
+  bumped to version 8.0 in new slot
+
+*netbeans-harness-9999_p20140323 (23 Mar 2014)
+
+  23 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140323.ebuild:
+  bumped to latest nightly sources
+
+  22 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20140220.ebuild,
+  -netbeans-harness-9999_p20140221.ebuild,
+  -netbeans-harness-9999_p20140223.ebuild,
+  -netbeans-harness-9999_p20140224.ebuild,
+  -netbeans-harness-9999_p20140226.ebuild,
+  -netbeans-harness-9999_p20140227.ebuild,
+  -netbeans-harness-9999_p20140228.ebuild:
+  removed obsolete ebuild
+
+*netbeans-harness-9999_p20140321 (21 Mar 2014)
+
+  21 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140321.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140319 (19 Mar 2014)
+
+  19 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140319.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140318 (18 Mar 2014)
+
+  18 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140318.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140317 (17 Mar 2014)
+
+  17 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140317.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140316 (16 Mar 2014)
+
+  16 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140316.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140314 (14 Mar 2014)
+*netbeans-harness-9999_p20140313 (14 Mar 2014)
+
+  14 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140313.ebuild,
+  +netbeans-harness-9999_p20140314.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140312 (12 Mar 2014)
+
+  12 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140312.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140311 (11 Mar 2014)
+
+  11 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140311.ebuild:
+  bumped to latest nightly sources
+
+  10 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20140201.ebuild,
+  -netbeans-harness-9999_p20140203.ebuild,
+  -netbeans-harness-9999_p20140204.ebuild,
+  -netbeans-harness-9999_p20140206.ebuild,
+  -netbeans-harness-9999_p20140208.ebuild,
+  -netbeans-harness-9999_p20140209.ebuild,
+  -netbeans-harness-9999_p20140210.ebuild,
+  -netbeans-harness-9999_p20140211.ebuild,
+  -netbeans-harness-9999_p20140212.ebuild,
+  -netbeans-harness-9999_p20140213.ebuild,
+  -netbeans-harness-9999_p20140214.ebuild,
+  -netbeans-harness-9999_p20140215.ebuild,
+  -netbeans-harness-9999_p20140216.ebuild,
+  -netbeans-harness-9999_p20140218.ebuild,
+  -netbeans-harness-9999_p20140219.ebuild:
+  removed obsolete ebuild
+
+*netbeans-harness-9999_p20140309 (09 Mar 2014)
+
+  09 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140309.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140308 (08 Mar 2014)
+
+  08 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140308.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140307 (07 Mar 2014)
+
+  07 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140307.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140306 (06 Mar 2014)
+
+  06 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140306.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140304 (04 Mar 2014)
+
+  04 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140304.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140303 (03 Mar 2014)
+
+  03 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140303.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140302 (02 Mar 2014)
+
+  02 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140302.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140301 (01 Mar 2014)
+
+  01 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140301.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140228 (28 Feb 2014)
+
+  28 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140228.ebuild:
+  bumped to latest nightly sources
+
+  28 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20140131.ebuild:
+  removed obsolete ebuild
+
+*netbeans-harness-9999_p20140227 (27 Feb 2014)
+
+  27 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140227.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140226 (26 Feb 2014)
+
+  26 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140226.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140224 (24 Feb 2014)
+
+  24 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140224.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140223 (23 Feb 2014)
+
+  23 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140223.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140221 (21 Feb 2014)
+
+  21 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140221.ebuild:
+  bumped to latest nightly sources
+
+  21 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20140120.ebuild,
+  -netbeans-harness-9999_p20140121.ebuild,
+  -netbeans-harness-9999_p20140122.ebuild,
+  -netbeans-harness-9999_p20140123.ebuild,
+  -netbeans-harness-9999_p20140124.ebuild,
+  -netbeans-harness-9999_p20140127.ebuild,
+  -netbeans-harness-9999_p20140128.ebuild,
+  -netbeans-harness-9999_p20140129.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20140220 (20 Feb 2014)
+
+  20 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140220.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140219 (19 Feb 2014)
+
+  19 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140219.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140218 (18 Feb 2014)
+
+  18 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140218.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140216 (16 Feb 2014)
+
+  16 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140216.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140215 (15 Feb 2014)
+
+  15 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140215.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140214 (14 Feb 2014)
+
+  14 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140214.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140213 (13 Feb 2014)
+
+  13 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140213.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140212 (12 Feb 2014)
+
+  12 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140212.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140211 (11 Feb 2014)
+
+  11 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140211.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140210 (10 Feb 2014)
+
+  10 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140210.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140209 (09 Feb 2014)
+
+  09 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140209.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140208 (08 Feb 2014)
+
+  08 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140208.ebuild:
+  bumped to latest nightly sources
+
+  08 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20131231.ebuild,
+  -netbeans-harness-9999_p20140102.ebuild,
+  -netbeans-harness-9999_p20140103.ebuild,
+  -netbeans-harness-9999_p20140106.ebuild,
+  -netbeans-harness-9999_p20140107.ebuild,
+  -netbeans-harness-9999_p20140109.ebuild,
+  -netbeans-harness-9999_p20140110.ebuild,
+  -netbeans-harness-9999_p20140113.ebuild,
+  -netbeans-harness-9999_p20140115.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20140206 (06 Feb 2014)
+
+  06 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140206.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140204 (04 Feb 2014)
+
+  04 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140204.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140203 (03 Feb 2014)
+
+  03 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140203.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140201 (01 Feb 2014)
+
+  01 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140201.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140131 (31 Jan 2014)
+
+  31 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140131.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140129 (29 Jan 2014)
+
+  29 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140129.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140128 (28 Jan 2014)
+
+  28 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140128.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140127 (27 Jan 2014)
+
+  27 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140127.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140124 (24 Jan 2014)
+
+  24 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140124.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140123 (23 Jan 2014)
+
+  23 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140123.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140122 (22 Jan 2014)
+
+  22 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140122.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140121 (21 Jan 2014)
+
+  21 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140121.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140120 (20 Jan 2014)
+
+  20 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140120.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140115 (15 Jan 2014)
+
+  15 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140115.ebuild:
+  bumped to latest nightly sources
+
+  15 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20131126.ebuild,
+  -netbeans-harness-9999_p20131127.ebuild,
+  -netbeans-harness-9999_p20131128.ebuild,
+  -netbeans-harness-9999_p20131129.ebuild,
+  -netbeans-harness-9999_p20131201.ebuild,
+  -netbeans-harness-9999_p20131202.ebuild,
+  -netbeans-harness-9999_p20131203.ebuild,
+  -netbeans-harness-9999_p20131204.ebuild,
+  -netbeans-harness-9999_p20131205.ebuild,
+  -netbeans-harness-9999_p20131206.ebuild,
+  -netbeans-harness-9999_p20131208.ebuild,
+  -netbeans-harness-9999_p20131209.ebuild,
+  -netbeans-harness-9999_p20131210.ebuild,
+  -netbeans-harness-9999_p20131212.ebuild,
+  -netbeans-harness-9999_p20131213.ebuild,
+  -netbeans-harness-9999_p20131215.ebuild,
+  -netbeans-harness-9999_p20131216.ebuild,
+  -netbeans-harness-9999_p20131218.ebuild,
+  -netbeans-harness-9999_p20131219.ebuild,
+  -netbeans-harness-9999_p20131227.ebuild,
+  -netbeans-harness-9999_p20131229.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20140113 (13 Jan 2014)
+
+  13 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140113.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140110 (10 Jan 2014)
+
+  10 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140110.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140109 (09 Jan 2014)
+
+  09 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140109.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140107 (07 Jan 2014)
+
+  07 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140107.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140106 (06 Jan 2014)
+
+  06 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140106.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20140103 (03 Jan 2014)
+
+  03 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140103.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131231 (31 Dec 2013)
+
+  31 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131231.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131229 (30 Dec 2013)
+
+  30 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131229.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131227 (27 Dec 2013)
+
+  27 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131227.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131219 (20 Dec 2013)
+
+  20 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131219.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131218 (20 Dec 2013)
+
+  20 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131218.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131216 (16 Dec 2013)
+
+  16 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131216.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131215 (15 Dec 2013)
+
+  15 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131215.ebuild:
+  bumped to latest nightly sources
+
+  15 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20131112.ebuild,
+  -netbeans-harness-9999_p20131115.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20131213 (13 Dec 2013)
+
+  13 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131213.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131212 (12 Dec 2013)
+
+  12 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131212.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131210 (10 Dec 2013)
+
+  10 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131210.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131209 (09 Dec 2013)
+
+  09 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131209.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131208 (08 Dec 2013)
+
+  08 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131208.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131206 (06 Dec 2013)
+
+  06 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131206.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131205 (05 Dec 2013)
+
+  05 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131205.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131204 (04 Dec 2013)
+
+  04 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131204.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131203 (03 Dec 2013)
+
+  03 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131203.ebuild:
+  bumped to latest nightly sources
+
+  03 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20131030.ebuild,
+  -netbeans-harness-9999_p20131107.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20131202 (02 Dec 2013)
+
+  02 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131202.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131201 (01 Dec 2013)
+
+  01 Dec 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131201.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131129 (29 Nov 2013)
+
+  29 Nov 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131129.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131128 (28 Nov 2013)
+
+  28 Nov 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131128.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131127 (27 Nov 2013)
+
+  27 Nov 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131127.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131126 (26 Nov 2013)
+
+  26 Nov 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131126.ebuild:
+  bumped to latest nightly sources
+
+  26 Nov 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20131024.ebuild:
+  removed obsolete ebuild
+
+*netbeans-harness-9999_p20131115 (16 Nov 2013)
+
+  16 Nov 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131115.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131112 (12 Nov 2013)
+
+  12 Nov 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131112.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131107 (07 Nov 2013)
+
+  07 Nov 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131107.ebuild:
+  bumped to latest nightly sources
+
+  07 Nov 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20131011.ebuild,
+  -netbeans-harness-9999_p20131016.ebuild,
+  -netbeans-harness-9999_p20131017.ebuild,
+  -netbeans-harness-9999_p20131018.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20131030 (30 Oct 2013)
+*netbeans-harness-9999_p20131024 (30 Oct 2013)
+
+  30 Oct 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131024.ebuild,
+  +netbeans-harness-9999_p20131030.ebuild:
+  bumped to latest nightly sources
+
+  24 Oct 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130926.ebuild,
+  -netbeans-harness-9999_p20130929.ebuild,
+  -netbeans-harness-9999_p20131003.ebuild,
+  -netbeans-harness-9999_p20131004.ebuild,
+  -netbeans-harness-9999_p20131007.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20131018 (18 Oct 2013)
+
+  18 Oct 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131018.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131017 (17 Oct 2013)
+
+  17 Oct 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131017.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131016 (16 Oct 2013)
+
+  16 Oct 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131016.ebuild:
+  bumped to latest nightly sources
+
+  16 Oct 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130911.ebuild,
+  -netbeans-harness-9999_p20130916.ebuild,
+  -netbeans-harness-9999_p20130918.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-7.4 (16 Oct 2013)
+
+  16 Oct 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.4.ebuild:
+  version bump to 7.4
+
+*netbeans-harness-9999_p20131011 (11 Oct 2013)
+
+  11 Oct 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131011.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131007 (07 Oct 2013)
+
+  07 Oct 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131007.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131004 (04 Oct 2013)
+
+  04 Oct 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131004.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131003 (04 Oct 2013)
+
+  04 Oct 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131003.ebuild:
+  bumped to latest nightly sources
+
+  03 Oct 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130902.ebuild,
+  -netbeans-harness-9999_p20130906.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130929 (29 Sep 2013)
+
+  29 Sep 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130929.ebuild:
+  bumped to latest nightly sources
+
+  29 Sep 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130811.ebuild,
+  -netbeans-harness-9999_p20130817.ebuild,
+  -netbeans-harness-9999_p20130819.ebuild,
+  -netbeans-harness-9999_p20130820.ebuild,
+  -netbeans-harness-9999_p20130821.ebuild,
+  -netbeans-harness-9999_p20130827.ebuild,
+  -netbeans-harness-9999_p20130828.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130926 (26 Sep 2013)
+
+  26 Sep 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130926.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130918 (19 Sep 2013)
+
+  19 Sep 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130918.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130916 (16 Sep 2013)
+
+  16 Sep 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130916.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130911 (11 Sep 2013)
+
+  11 Sep 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130911.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130906 (06 Sep 2013)
+
+  06 Sep 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130906.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130902 (02 Sep 2013)
+
+  02 Sep 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130902.ebuild:
+  bumped to latest nightly sources
+
+  02 Sep 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130802.ebuild,
+  -netbeans-harness-9999_p20130804.ebuild,
+  -netbeans-harness-9999_p20130805.ebuild,
+  -netbeans-harness-9999_p20130809.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130828 (28 Aug 2013)
+
+  28 Aug 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130828.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130827 (27 Aug 2013)
+
+  27 Aug 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130827.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130821 (22 Aug 2013)
+
+  22 Aug 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130821.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130820 (21 Aug 2013)
+
+  21 Aug 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130820.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130819 (20 Aug 2013)
+
+  20 Aug 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130819.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130817 (18 Aug 2013)
+
+  18 Aug 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130817.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130811 (12 Aug 2013)
+
+  12 Aug 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130811.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130809 (11 Aug 2013)
+
+  11 Aug 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130809.ebuild:
+  bumped to latest nightly sources
+
+  07 Aug 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130702.ebuild,
+  -netbeans-harness-9999_p20130712.ebuild,
+  -netbeans-harness-9999_p20130715.ebuild,
+  -netbeans-harness-9999_p20130718.ebuild,
+  -netbeans-harness-9999_p20130721.ebuild,
+  -netbeans-harness-9999_p20130723.ebuild,
+  -netbeans-harness-9999_p20130726.ebuild,
+  -netbeans-harness-9999_p20130729.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130805 (06 Aug 2013)
+
+  06 Aug 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130805.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130804 (05 Aug 2013)
+
+  05 Aug 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130804.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130802 (03 Aug 2013)
+
+  03 Aug 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130802.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130729 (30 Jul 2013)
+
+  30 Jul 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130729.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130726 (28 Jul 2013)
+
+  28 Jul 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130726.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130723 (24 Jul 2013)
+
+  24 Jul 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130723.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130721 (22 Jul 2013)
+
+  22 Jul 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130721.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130718 (19 Jul 2013)
+
+  19 Jul 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130718.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130715 (16 Jul 2013)
+
+  16 Jul 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130715.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130712 (15 Jul 2013)
+
+  15 Jul 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130712.ebuild:
+  bumped to latest nightly sources
+
+  14 Jul 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130610.ebuild,
+  -netbeans-harness-9999_p20130625.ebuild,
+  -netbeans-harness-9999_p20130627.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130702 (03 Jul 2013)
+
+  03 Jul 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130702.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130627 (29 Jun 2013)
+
+  29 Jun 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130627.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130625 (26 Jun 2013)
+
+  26 Jun 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130625.ebuild:
+  bumped to latest nightly sources
+
+  26 Jun 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130521.ebuild,
+  -netbeans-harness-9999_p20130523.ebuild,
+  -netbeans-harness-9999_p20130525.ebuild,
+  -netbeans-harness-9999_p20130526.ebuild,
+  -netbeans-harness-9999_p20130529.ebuild,
+  -netbeans-harness-9999_p20130530.ebuild,
+  -netbeans-harness-9999_p20130531.ebuild,
+  -netbeans-harness-9999_p20130601.ebuild,
+  -netbeans-harness-9999_p20130602.ebuild,
+  -netbeans-harness-9999_p20130603.ebuild,
+  -netbeans-harness-9999_p20130605.ebuild,
+  -netbeans-harness-9999_p20130607.ebuild,
+  -netbeans-harness-9999_p20130608.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130610 (10 Jun 2013)
+
+  10 Jun 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130610.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130608 (09 Jun 2013)
+
+  09 Jun 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130608.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130607 (08 Jun 2013)
+
+  08 Jun 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130607.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130605 (06 Jun 2013)
+
+  06 Jun 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130605.ebuild:
+  bumped to latest nightly sources
+
+  06 Jun 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130510.ebuild,
+  -netbeans-harness-9999_p20130513.ebuild,
+  -netbeans-harness-9999_p20130515.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130603 (04 Jun 2013)
+
+  04 Jun 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130603.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130602 (03 Jun 2013)
+
+  03 Jun 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130602.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130601 (02 Jun 2013)
+
+  02 Jun 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130601.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130531 (01 Jun 2013)
+
+  01 Jun 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130531.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130530 (31 May 2013)
+
+  31 May 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130530.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130529 (30 May 2013)
+
+  30 May 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130529.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130526 (27 May 2013)
+
+  27 May 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130526.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130525 (26 May 2013)
+
+  26 May 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130525.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130523 (25 May 2013)
+
+  25 May 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130523.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130515 (17 May 2013)
+
+  17 May 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130515.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130513 (14 May 2013)
+
+  14 May 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130513.ebuild:
+  bumped to latest nightly sources
+
+  13 May 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130422.ebuild,
+  -netbeans-harness-9999_p20130423.ebuild,
+  -netbeans-harness-9999_p20130429.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130510 (11 May 2013)
+
+  11 May 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130510.ebuild:
+  bumped to latest nightly sources
+
+  11 May 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130411.ebuild,
+  -netbeans-harness-9999_p20130414.ebuild,
+  -netbeans-harness-9999_p20130415.ebuild,
+  -netbeans-harness-9999_p20130416.ebuild,
+  -netbeans-harness-9999_p20130417.ebuild,
+  -netbeans-harness-9999_p20130418.ebuild,
+  -netbeans-harness-9999_p20130421.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130506 (07 May 2013)
+
+  07 May 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130506.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130504 (06 May 2013)
+
+  06 May 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130504.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130502 (03 May 2013)
+
+  03 May 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130502.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130429 (30 Apr 2013)
+
+  30 Apr 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130429.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130423 (24 Apr 2013)
+
+  24 Apr 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130423.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130422 (23 Apr 2013)
+
+  23 Apr 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130422.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130421 (22 Apr 2013)
+
+  22 Apr 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130421.ebuild:
+  bumped to latest nightly sources
+
+  22 Apr 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130404.ebuild,
+  -netbeans-harness-9999_p20130407.ebuild,
+  -netbeans-harness-9999_p20130408.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130418 (19 Apr 2013)
+
+  19 Apr 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130418.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130417 (18 Apr 2013)
+
+  18 Apr 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130417.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130416 (17 Apr 2013)
+
+  17 Apr 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130416.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130415 (16 Apr 2013)
+
+  16 Apr 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130415.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130414 (15 Apr 2013)
+
+  15 Apr 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130414.ebuild:
+  bumped to latest nightly sources
+
+  14 Apr 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130319.ebuild,
+  -netbeans-harness-9999_p20130320.ebuild,
+  -netbeans-harness-9999_p20130321.ebuild,
+  -netbeans-harness-9999_p20130323.ebuild,
+  -netbeans-harness-9999_p20130326.ebuild,
+  -netbeans-harness-9999_p20130327.ebuild,
+  -netbeans-harness-9999_p20130328.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130411 (12 Apr 2013)
+
+  12 Apr 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130411.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130408 (10 Apr 2013)
+
+  10 Apr 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130408.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130407 (08 Apr 2013)
+
+  08 Apr 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130407.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130404 (05 Apr 2013)
+
+  05 Apr 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130404.ebuild:
+  bumped to latest nightly sources
+
+  03 Apr 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130308.ebuild,
+  -netbeans-harness-9999_p20130309.ebuild,
+  -netbeans-harness-9999_p20130311.ebuild,
+  -netbeans-harness-9999_p20130312.ebuild,
+  -netbeans-harness-9999_p20130313.ebuild,
+  -netbeans-harness-9999_p20130314.ebuild,
+  -netbeans-harness-9999_p20130316.ebuild,
+  -netbeans-harness-9999_p20130318.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130328 (29 Mar 2013)
+
+  29 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130328.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130327 (28 Mar 2013)
+
+  28 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130327.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130326 (27 Mar 2013)
+
+  27 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130326.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130323 (25 Mar 2013)
+
+  25 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130323.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130321 (22 Mar 2013)
+
+  22 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130321.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130320 (21 Mar 2013)
+
+  21 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130320.ebuild:
+  bumped to latest nightly sources
+
+  21 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130223.ebuild,
+  -netbeans-harness-9999_p20130224.ebuild,
+  -netbeans-harness-9999_p20130225.ebuild,
+  -netbeans-harness-9999_p20130303.ebuild,
+  -netbeans-harness-9999_p20130305.ebuild,
+  -netbeans-harness-9999_p20130306.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130319 (20 Mar 2013)
+
+  20 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130319.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130318 (19 Mar 2013)
+
+  19 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130318.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130316 (17 Mar 2013)
+
+  17 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130316.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130314 (15 Mar 2013)
+
+  15 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130314.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130313 (14 Mar 2013)
+
+  14 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130313.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130312 (13 Mar 2013)
+
+  13 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130312.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130311 (12 Mar 2013)
+
+  12 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130311.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130309 (10 Mar 2013)
+
+  10 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130309.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130308 (09 Mar 2013)
+
+  09 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130308.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130306 (07 Mar 2013)
+
+  07 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130306.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130305 (07 Mar 2013)
+
+  07 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130305.ebuild:
+  bumped to latest nightly sources
+
+  06 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130210.ebuild,
+  -netbeans-harness-9999_p20130212.ebuild,
+  -netbeans-harness-9999_p20130213.ebuild,
+  -netbeans-harness-9999_p20130215.ebuild,
+  -netbeans-harness-9999_p20130216.ebuild,
+  -netbeans-harness-9999_p20130217.ebuild,
+  -netbeans-harness-9999_p20130218.ebuild,
+  -netbeans-harness-9999_p20130220.ebuild,
+  -netbeans-harness-9999_p20130222.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130303 (04 Mar 2013)
+
+  04 Mar 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130303.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130225 (26 Feb 2013)
+
+  26 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130225.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130224 (25 Feb 2013)
+
+  25 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130224.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130223 (25 Feb 2013)
+
+  25 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130223.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130222 (23 Feb 2013)
+
+  23 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130222.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130220 (21 Feb 2013)
+
+  21 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130220.ebuild:
+  bumped to latest nightly sources
+
+  21 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.3_beta2.ebuild, -netbeans-harness-7.3_rc1.ebuild,
+  -netbeans-harness-7.3_rc2.ebuild, -netbeans-harness-9999_p20130205.ebuild,
+  -netbeans-harness-9999_p20130207.ebuild,
+  -netbeans-harness-9999_p20130208.ebuild,
+  -netbeans-harness-9999_p20130209.ebuild:
+  removed obsolete ebuilds
+
+  21 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-harness-7.3_beta2.ebuild, netbeans-harness-7.3_rc1.ebuild,
+  netbeans-harness-7.3_rc2.ebuild:
+  bumped to final in slot 7.3
+
+*netbeans-harness-9999_p20130218 (19 Feb 2013)
+
+  19 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130218.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130217 (18 Feb 2013)
+
+  18 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130217.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130216 (17 Feb 2013)
+
+  17 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130216.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130215 (15 Feb 2013)
+
+  15 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130215.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130213 (14 Feb 2013)
+
+  14 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130213.ebuild:
+  bumped to latest nightly sources
+
+  14 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130201.ebuild,
+  -netbeans-harness-9999_p20130203.ebuild,
+  -netbeans-harness-9999_p20130204.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130212 (13 Feb 2013)
+
+  13 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130212.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130210 (11 Feb 2013)
+
+  11 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130210.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130209 (10 Feb 2013)
+
+  10 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130209.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130208 (09 Feb 2013)
+
+  09 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130208.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-7.3_rc2 (08 Feb 2013)
+
+  08 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.3_rc2.ebuild:
+  bumped to rc2 in slot 7.3
+
+  08 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130108.ebuild,
+  -netbeans-harness-9999_p20130109.ebuild,
+  -netbeans-harness-9999_p20130110.ebuild,
+  -netbeans-harness-9999_p20130111.ebuild,
+  -netbeans-harness-9999_p20130112.ebuild,
+  -netbeans-harness-9999_p20130116.ebuild,
+  -netbeans-harness-9999_p20130117.ebuild,
+  -netbeans-harness-9999_p20130119.ebuild,
+  -netbeans-harness-9999_p20130120.ebuild,
+  -netbeans-harness-9999_p20130121.ebuild,
+  -netbeans-harness-9999_p20130122.ebuild,
+  -netbeans-harness-9999_p20130123.ebuild,
+  -netbeans-harness-9999_p20130124.ebuild,
+  -netbeans-harness-9999_p20130125.ebuild,
+  -netbeans-harness-9999_p20130126.ebuild,
+  -netbeans-harness-9999_p20130129.ebuild,
+  -netbeans-harness-9999_p20130131.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130207 (07 Feb 2013)
+
+  07 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130207.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130205 (06 Feb 2013)
+
+  06 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130205.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130204 (04 Feb 2013)
+
+  04 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130204.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130203 (03 Feb 2013)
+
+  03 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130203.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130201 (01 Feb 2013)
+
+  01 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130201.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130131 (31 Jan 2013)
+
+  31 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130131.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130129 (30 Jan 2013)
+
+  30 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130129.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-7.3_rc1 (29 Jan 2013)
+
+  29 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.3_rc1.ebuild:
+  bumped to rc1 in slot 7.3
+
+*netbeans-harness-9999_p20130126 (26 Jan 2013)
+
+  26 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130126.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130125 (25 Jan 2013)
+
+  25 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130125.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130124 (24 Jan 2013)
+
+  24 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130124.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130123 (23 Jan 2013)
+
+  23 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130123.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130122 (22 Jan 2013)
+
+  22 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130122.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130121 (21 Jan 2013)
+
+  21 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130121.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20131220 (20 Jan 2013)
+
+  20 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20131220.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130119 (19 Jan 2013)
+
+  19 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130119.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130117 (17 Jan 2013)
+
+  17 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130117.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130116 (16 Jan 2013)
+
+  16 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130116.ebuild:
+  bumped to latest nightly sources
+
+  16 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20130101.ebuild,
+  -netbeans-harness-9999_p20130103.ebuild,
+  -netbeans-harness-9999_p20130104.ebuild,
+  -netbeans-harness-9999_p20130105.ebuild,
+  -netbeans-harness-9999_p20130106.ebuild,
+  -netbeans-harness-9999_p20130107.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130112 (12 Jan 2013)
+
+  12 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130112.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130111 (11 Jan 2013)
+
+  11 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130111.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130110 (10 Jan 2013)
+
+  10 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130110.ebuild:
+  bumped to latest nightly sources
+
+  09 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20121229.ebuild,
+  -netbeans-harness-9999_p20121230.ebuild,
+  -netbeans-harness-9999_p20121231.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130109 (09 Jan 2013)
+
+  09 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130109.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130108 (08 Jan 2013)
+
+  08 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130108.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130107 (07 Jan 2013)
+
+  07 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130107.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130106 (06 Jan 2013)
+
+  06 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130106.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130105 (05 Jan 2013)
+
+  05 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130105.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130104 (04 Jan 2013)
+
+  04 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130104.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20130103 (03 Jan 2013)
+
+  03 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130103.ebuild:
+  bumped to latest nightly sources
+
+  03 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20121203.ebuild,
+  -netbeans-harness-9999_p20121204.ebuild,
+  -netbeans-harness-9999_p20121205.ebuild,
+  -netbeans-harness-9999_p20121206.ebuild,
+  -netbeans-harness-9999_p20121207.ebuild,
+  -netbeans-harness-9999_p20121208.ebuild,
+  -netbeans-harness-9999_p20121209.ebuild,
+  -netbeans-harness-9999_p20121211.ebuild,
+  -netbeans-harness-9999_p20121212.ebuild,
+  -netbeans-harness-9999_p20121213.ebuild,
+  -netbeans-harness-9999_p20121214.ebuild,
+  -netbeans-harness-9999_p20121218.ebuild,
+  -netbeans-harness-9999_p20121219.ebuild,
+  -netbeans-harness-9999_p20121221.ebuild,
+  -netbeans-harness-9999_p20121222.ebuild,
+  -netbeans-harness-9999_p20121223.ebuild,
+  -netbeans-harness-9999_p20121224.ebuild,
+  -netbeans-harness-9999_p20121226.ebuild,
+  -netbeans-harness-9999_p20121227.ebuild,
+  -netbeans-harness-9999_p20121228.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20130101 (01 Jan 2013)
+
+  01 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20130101.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121231 (31 Dec 2012)
+
+  31 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121231.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121230 (30 Dec 2012)
+
+  30 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121230.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121229 (29 Dec 2012)
+
+  29 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121229.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121228 (28 Dec 2012)
+
+  28 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121228.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121227 (27 Dec 2012)
+
+  27 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121227.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121226 (26 Dec 2012)
+
+  26 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121226.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121224 (24 Dec 2012)
+
+  24 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121224.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121223 (23 Dec 2012)
+
+  23 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121223.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121222 (22 Dec 2012)
+
+  22 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121222.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121221 (21 Dec 2012)
+
+  21 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121221.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121219 (19 Dec 2012)
+
+  19 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121219.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121218 (18 Dec 2012)
+
+  18 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121218.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121214 (14 Dec 2012)
+
+  14 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121214.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121213 (13 Dec 2012)
+
+  13 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121213.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121212 (12 Dec 2012)
+
+  12 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121212.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121211 (11 Dec 2012)
+
+  11 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121211.ebuild:
+  bumped to latest nightly sources
+
+  10 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20121126.ebuild,
+  -netbeans-harness-9999_p20121127.ebuild,
+  -netbeans-harness-9999_p20121128.ebuild,
+  -netbeans-harness-9999_p20121130.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20121209 (09 Dec 2012)
+
+  09 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121209.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121208 (08 Dec 2012)
+
+  08 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121208.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121207 (07 Dec 2012)
+
+  07 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121207.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121206 (06 Dec 2012)
+
+  06 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121206.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121205 (05 Dec 2012)
+
+  05 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121205.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121204 (04 Dec 2012)
+
+  04 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121204.ebuild:
+  bumped to latest nightly sources
+
+  04 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20121116.ebuild,
+  -netbeans-harness-9999_p20121117.ebuild,
+  -netbeans-harness-9999_p20121119.ebuild,
+  -netbeans-harness-9999_p20121120.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20121203 (03 Dec 2012)
+
+  03 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121203.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121130 (30 Nov 2012)
+
+  30 Nov 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121130.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121128 (29 Nov 2012)
+
+  29 Nov 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121128.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121127 (27 Nov 2012)
+
+  27 Nov 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121127.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121126 (26 Nov 2012)
+
+  26 Nov 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121126.ebuild:
+  bumped to latest nightly sources
+
+  26 Nov 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20121108.ebuild,
+  -netbeans-harness-9999_p20121111.ebuild,
+  -netbeans-harness-9999_p20121112.ebuild,
+  -netbeans-harness-9999_p20121113.ebuild,
+  -netbeans-harness-9999_p20121114.ebuild,
+  -netbeans-harness-9999_p20121115.ebuild:
+  removed obsolete ebuilds
+
+  24 Nov 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.3_beta.ebuild:
+  removed 7.3_beta ebuild
+
+*netbeans-harness-9999_p20121120 (20 Nov 2012)
+
+  20 Nov 2012; <fordfrog@gentoo.org> +netbeans-harness-9999_p20121120.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121119 (19 Nov 2012)
+
+  19 Nov 2012; <fordfrog@gentoo.org> +netbeans-harness-9999_p20121119.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121117 (17 Nov 2012)
+
+  17 Nov 2012; <fordfrog@gentoo.org> +netbeans-harness-9999_p20121117.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121116 (16 Nov 2012)
+
+  16 Nov 2012; <fordfrog@gentoo.org> +netbeans-harness-9999_p20121116.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121115 (15 Nov 2012)
+
+  15 Nov 2012; <fordfrog@gentoo.org> +netbeans-harness-9999_p20121115.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121114 (14 Nov 2012)
+
+  14 Nov 2012; <fordfrog@gentoo.org> +netbeans-harness-9999_p20121114.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121113 (13 Nov 2012)
+
+  13 Nov 2012; <fordfrog@gentoo.org> +netbeans-harness-9999_p20121113.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121112 (12 Nov 2012)
+
+  12 Nov 2012; <fordfrog@gentoo.org> +netbeans-harness-9999_p20121112.ebuild:
+  bumped to latest nightly sources
+
+  12 Nov 2012; <fordfrog@gentoo.org> -netbeans-harness-9999_p20121106.ebuild,
+  -netbeans-harness-9999_p20121107.ebuild:
+  removed obsolete versions
+
+*netbeans-harness-7.3_beta2 (08 Nov 2012)
+
+  08 Nov 2012; <fordfrog@gentoo.org> +netbeans-harness-7.3_beta2.ebuild:
+  bumped to 7.3 beta2
+
+*netbeans-harness-9999_p20121108 (08 Nov 2012)
+
+  08 Nov 2012; <fordfrog@gentoo.org> +netbeans-harness-9999_p20121108.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121107 (07 Nov 2012)
+
+  07 Nov 2012; <fordfrog@gentoo.org> +netbeans-harness-9999_p20121107.ebuild:
+  bumped to latest nightly sources
+
+  06 Nov 2012; <fordfrog@gentoo.org> -netbeans-harness-9999_p20121028.ebuild,
+  -netbeans-harness-9999_p20121030.ebuild:
+  removed obsolete versions
+
+*netbeans-harness-9999_p20121106 (06 Nov 2012)
+
+  06 Nov 2012; <fordfrog@gentoo.org> +netbeans-harness-9999_p20121106.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121030 (30 Oct 2012)
+
+  30 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121030.ebuild:
+  bumped to latest nightly sources
+
+  30 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20121016.ebuild,
+  -netbeans-harness-9999_p20121017.ebuild,
+  -netbeans-harness-9999_p20121021.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20121028 (29 Oct 2012)
+
+  29 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121028.ebuild:
+  bumped to latest nightly sources
+
+  23 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20121001.ebuild,
+  -netbeans-harness-9999_p20121002.ebuild,
+  -netbeans-harness-9999_p20121004.ebuild,
+  -netbeans-harness-9999_p20121005.ebuild,
+  -netbeans-harness-9999_p20121007.ebuild,
+  -netbeans-harness-9999_p20121009.ebuild,
+  -netbeans-harness-9999_p20121010.ebuild,
+  -netbeans-harness-9999_p20121011.ebuild,
+  -netbeans-harness-9999_p20121012.ebuild,
+  -netbeans-harness-9999_p20121013.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20121021 (21 Oct 2012)
+
+  21 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121021.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121017 (17 Oct 2012)
+
+  17 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121017.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121016 (16 Oct 2012)
+
+  16 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121016.ebuild:
+  bumped to latest nightly sources
+
+  16 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120914.ebuild,
+  -netbeans-harness-9999_p20120915.ebuild,
+  -netbeans-harness-9999_p20120918.ebuild,
+  -netbeans-harness-9999_p20120919.ebuild,
+  -netbeans-harness-9999_p20120920.ebuild,
+  -netbeans-harness-9999_p20120922.ebuild,
+  -netbeans-harness-9999_p20120924.ebuild,
+  -netbeans-harness-9999_p20120925.ebuild,
+  -netbeans-harness-9999_p20120926.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20121013 (13 Oct 2012)
+
+  13 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121013.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121012 (12 Oct 2012)
+
+  12 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121012.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121011 (11 Oct 2012)
+
+  11 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121011.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121010 (10 Oct 2012)
+
+  10 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121010.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121009 (09 Oct 2012)
+
+  09 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121009.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121007 (07 Oct 2012)
+
+  07 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121007.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121005 (05 Oct 2012)
+
+  05 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121005.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-7.3_beta (04 Oct 2012)
+
+  04 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.3_beta.ebuild:
+  added netbeans 7.3 slot ebuilds
+
+*netbeans-harness-9999_p20121002 (02 Oct 2012)
+
+  02 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121002.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20121001 (01 Oct 2012)
+
+  01 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20121001.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120926 (26 Sep 2012)
+
+  26 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120926.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120925 (25 Sep 2012)
+
+  25 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120925.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120924 (24 Sep 2012)
+
+  24 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120924.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120922 (22 Sep 2012)
+
+  22 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120922.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120920 (20 Sep 2012)
+
+  20 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120920.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120919 (19 Sep 2012)
+
+  19 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120919.ebuild:
+  bumped to latest nightly sources
+
+  19 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120824.ebuild,
+  -netbeans-harness-9999_p20120827.ebuild,
+  -netbeans-harness-9999_p20120828.ebuild,
+  -netbeans-harness-9999_p20120829.ebuild,
+  -netbeans-harness-9999_p20120830.ebuild,
+  -netbeans-harness-9999_p20120831.ebuild,
+  -netbeans-harness-9999_p20120902.ebuild,
+  -netbeans-harness-9999_p20120904.ebuild,
+  -netbeans-harness-9999_p20120905.ebuild,
+  -netbeans-harness-9999_p20120906.ebuild,
+  -netbeans-harness-9999_p20120907.ebuild,
+  -netbeans-harness-9999_p20120908.ebuild,
+  -netbeans-harness-9999_p20120909.ebuild,
+  -netbeans-harness-9999_p20120911.ebuild,
+  -netbeans-harness-9999_p20120912.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20120918 (18 Sep 2012)
+
+  18 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120918.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120915 (15 Sep 2012)
+
+  15 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120915.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120914 (14 Sep 2012)
+
+  14 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120914.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120912 (12 Sep 2012)
+
+  12 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120912.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120911 (11 Sep 2012)
+
+  11 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120911.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120909 (09 Sep 2012)
+
+  09 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120909.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120908 (09 Sep 2012)
+
+  09 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120908.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120907 (07 Sep 2012)
+
+  07 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120907.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120906 (06 Sep 2012)
+
+  06 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120906.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120905 (05 Sep 2012)
+
+  05 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120905.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120904 (04 Sep 2012)
+
+  04 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120904.ebuild:
+  bumped to latest nightly sources
+
+  04 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120807.ebuild:
+  removed obsolete version
+
+*netbeans-harness-9999_p20120902 (02 Sep 2012)
+
+  02 Sep 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120902.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120831 (31 Aug 2012)
+
+  31 Aug 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120831.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120830 (30 Aug 2012)
+
+  30 Aug 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120830.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120829 (29 Aug 2012)
+
+  29 Aug 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120829.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120828 (28 Aug 2012)
+
+  28 Aug 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120828.ebuild:
+  bumped to latest nightly sources
+
+  27 Aug 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120819.ebuild:
+  bumped to latest nightly sources and removed obsolete version
+
+  24 Aug 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120819.ebuild:
+  removed obsolete version
+
+*netbeans-harness-9999_p20120824 (24 Aug 2012)
+
+  24 Aug 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120824.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120819 (20 Aug 2012)
+
+  20 Aug 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120819.ebuild:
+  bumped to latest nightly sources
+
+  09 Aug 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120714.ebuild,
+  -netbeans-harness-9999_p20120716.ebuild,
+  -netbeans-harness-9999_p20120717.ebuild,
+  -netbeans-harness-9999_p20120718.ebuild,
+  -netbeans-harness-9999_p20120719.ebuild,
+  -netbeans-harness-9999_p20120801.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20120807 (09 Aug 2012)
+
+  09 Aug 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120807.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120801 (01 Aug 2012)
+
+  01 Aug 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120801.ebuild:
+  bumped to latest nightly sources
+
+  25 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.2_beta.ebuild, -netbeans-harness-7.2_rc1.ebuild:
+  removed obsolete ebuilds from slot 7.2
+
+*netbeans-harness-7.2 (25 Jul 2012)
+
+  25 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.2.ebuild:
+  bumped to netbeans 7.2
+
+*netbeans-harness-9999_p20120719 (19 Jul 2012)
+
+  19 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120719.ebuild:
+  bumped to latest nightly sources
+
+  19 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120702.ebuild,
+  -netbeans-harness-9999_p20120706.ebuild,
+  -netbeans-harness-9999_p20120711.ebuild:
+  removed obsolete ebuild
+
+*netbeans-harness-9999_p20120718 (18 Jul 2012)
+
+  18 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120718.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120717 (17 Jul 2012)
+
+  17 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120717.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120716 (16 Jul 2012)
+
+  16 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120716.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120714 (16 Jul 2012)
+
+  16 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120714.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120711 (11 Jul 2012)
+
+  11 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120711.ebuild:
+  bumped to latest nightly sources
+
+  09 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120624.ebuild,
+  -netbeans-harness-9999_p20120628.ebuild:
+  removed old ebuilds
+
+*netbeans-harness-9999_p20120706 (06 Jul 2012)
+
+  06 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120706.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120702 (03 Jul 2012)
+
+  03 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120702.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-7.2_rc1 (29 Jun 2012)
+
+  29 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.2_rc1.ebuild:
+  slot 7.2 bumped to rc1
+
+*netbeans-harness-9999_p20120628 (28 Jun 2012)
+
+  28 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120628.ebuild:
+  bumped to latest nightly sources
+
+  28 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120615.ebuild,
+  -netbeans-harness-9999_p20120620.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20120624 (24 Jun 2012)
+
+  24 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120624.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120620 (20 Jun 2012)
+
+  20 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120620.ebuild:
+  bumped to latest nightly sources
+
+  20 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120610.ebuild,
+  -netbeans-harness-9999_p20120612.ebuild,
+  -netbeans-harness-9999_p20120613.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20120615 (15 Jun 2012)
+
+  15 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120615.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120613 (13 Jun 2012)
+
+  13 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120613.ebuild:
+  bumped to latest nightly sources
+
+  13 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120530.ebuild,
+  -netbeans-harness-9999_p20120604.ebuild,
+  -netbeans-harness-9999_p20120606.ebuild,
+  -netbeans-harness-9999_p20120608.ebuild:
+  removed obsolete ebuilds
+
+*netbeans-harness-9999_p20120612 (12 Jun 2012)
+
+  12 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120612.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120610 (10 Jun 2012)
+
+  10 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120610.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120608 (08 Jun 2012)
+
+  08 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120608.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120606 (06 Jun 2012)
+
+  06 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120606.ebuild:
+  bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120604 (04 Jun 2012)
+
+  04 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120604.ebuild:
+  bumped to latest nightly sources
+
+  04 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120524.ebuild,
+  -netbeans-harness-9999_p20120527.ebuild:
+  removed obsolete ebuilds
+
+  02 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-harness-7.2_beta.ebuild, netbeans-harness-9999_p20120530.ebuild:
+  cleanup
+
+  01 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120520.ebuild:
+  removed obsolete version
+
+*netbeans-harness-9999_p20120530 (30 May 2012)
+
+  30 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120530.ebuild:
+  bumped to the latest nightly sources
+
+  27 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120516.ebuild,
+  -netbeans-harness-9999_p20120517.ebuild:
+  removed obsolete versions
+
+  27 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.1.1.ebuild:
+  removed obsolete version
+
+*netbeans-harness-9999_p20120527 (27 May 2012)
+
+  27 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120527.ebuild:
+  bumped to the latest nightly sources
+
+*netbeans-harness-7.2_beta (24 May 2012)
+
+  24 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.2_beta.ebuild:
+  Netbeans 7.2 beta released
+
+*netbeans-harness-9999_p20120524 (24 May 2012)
+
+  24 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120524.ebuild:
+  Bumped to latest nightly sources
+
+  23 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120513.ebuild,
+  -netbeans-harness-9999_p20120515.ebuild:
+  Removed obsolete ebuilds
+
+*netbeans-harness-9999_p20120520 (20 May 2012)
+
+  20 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120520.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120517 (17 May 2012)
+
+  17 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120517.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120516 (17 May 2012)
+
+  17 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120516.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120515 (16 May 2012)
+
+  16 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120515.ebuild:
+  Bumped to latest nightly sources
+
+  15 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120425.ebuild,
+  -netbeans-harness-9999_p20120501.ebuild,
+  -netbeans-harness-9999_p20120504.ebuild,
+  -netbeans-harness-9999_p20120505.ebuild,
+  -netbeans-harness-9999_p20120509.ebuild:
+  Removed obsolete ebuilds
+
+*netbeans-harness-9999_p20120513 (13 May 2012)
+
+  13 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120513.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120509 (10 May 2012)
+
+  10 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120509.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120505 (05 May 2012)
+
+  05 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120505.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120504 (05 May 2012)
+
+  05 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120504.ebuild:
+  Bumped to latest nightly sources
+
+  05 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120420.ebuild,
+  -netbeans-harness-9999_p20120422.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20120501 (02 May 2012)
+
+  02 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120501.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-7.1.2 (26 Apr 2012)
+
+  26 Apr 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.1.2.ebuild:
+  Version bump in 7.1 slot
+
+*netbeans-harness-9999_p20120425 (25 Apr 2012)
+
+  25 Apr 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120425.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120422 (22 Apr 2012)
+
+  22 Apr 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120422.ebuild:
+  Bumped to latest nightly sources
+
+  21 Apr 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120406.ebuild,
+  -netbeans-harness-9999_p20120409.ebuild,
+  -netbeans-harness-9999_p20120413.ebuild,
+  -netbeans-harness-9999_p20120415.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20120420 (21 Apr 2012)
+
+  21 Apr 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120420.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120415 (16 Apr 2012)
+
+  16 Apr 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120415.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120413 (13 Apr 2012)
+
+  13 Apr 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120413.ebuild:
+  Bumped to latest nightly sources
+
+  13 Apr 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120328.ebuild,
+  -netbeans-harness-9999_p20120402.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20120409 (09 Apr 2012)
+
+  09 Apr 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120409.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120406 (06 Apr 2012)
+
+  06 Apr 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120406.ebuild:
+  Bumped to latest nightly sources
+
+  06 Apr 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120325.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20120402 (03 Apr 2012)
+
+  03 Apr 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120402.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120328 (29 Mar 2012)
+
+  29 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120328.ebuild:
+  Bumped to latest nightly sources
+
+  29 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120318.ebuild,
+  -netbeans-harness-9999_p20120321.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20120325 (26 Mar 2012)
+
+  26 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120325.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120321 (22 Mar 2012)
+
+  22 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120321.ebuild:
+  Bumped to latest nightly sources
+
+  22 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120304.ebuild,
+  -netbeans-harness-9999_p20120308.ebuild,
+  -netbeans-harness-9999_p20120315.ebuild:
+  Removed obsolete ebuilds
+
+*netbeans-harness-9999_p20120318 (19 Mar 2012)
+
+  19 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120318.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120315 (15 Mar 2012)
+
+  15 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120315.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120308 (09 Mar 2012)
+
+  09 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120308.ebuild:
+  Bumped to latest nightly sources
+
+  05 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.1.ebuild:
+  Removed NetBeans 7.1
+
+  05 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120219.ebuild,
+  -netbeans-harness-9999_p20120222.ebuild,
+  -netbeans-harness-9999_p20120227.ebuild,
+  -netbeans-harness-9999_p20120301.ebuild,
+  -netbeans-harness-9999_p20120303.ebuild:
+  Removed old versions
+
+*netbeans-harness-7.1.1 (05 Mar 2012)
+
+  05 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.1.1.ebuild:
+  Bumped to version 7.1.1
+
+*netbeans-harness-9999_p20120304 (04 Mar 2012)
+
+  04 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120304.ebuild:
+  Bumped to latest nightly module
+
+*netbeans-harness-9999_p20120303 (03 Mar 2012)
+
+  03 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120303.ebuild:
+  Bumped to latest nightly module
+
+*netbeans-harness-9999_p20120301 (02 Mar 2012)
+
+  02 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120301.ebuild:
+  Bumped to latest nightly module
+
+*netbeans-harness-9999_p20120227 (28 Feb 2012)
+
+  28 Feb 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120227.ebuild:
+  Bumped to latest nightly sources
+
+  28 Feb 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120216.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20120222 (22 Feb 2012)
+
+  22 Feb 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120222.ebuild:
+  Bumped to latest nightly sources
+
+  22 Feb 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120212.ebuild,
+  -netbeans-harness-9999_p20120214.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20120219 (19 Feb 2012)
+
+  19 Feb 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120219.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120216 (17 Feb 2012)
+
+  17 Feb 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120216.ebuild:
+  Bumped to latest nightly sources
+
+  17 Feb 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120208.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20120214 (15 Feb 2012)
+
+  15 Feb 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120214.ebuild:
+  Bumped to latest nightly sources
+
+  14 Feb 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120118.ebuild,
+  -netbeans-harness-9999_p20120125.ebuild,
+  -netbeans-harness-9999_p20120126.ebuild,
+  -netbeans-harness-9999_p20120202.ebuild,
+  -netbeans-harness-9999_p20120205.ebuild,
+  -netbeans-harness-9999_p20120206.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20120212 (12 Feb 2012)
+
+  12 Feb 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120212.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120208 (08 Feb 2012)
+
+  08 Feb 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120208.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120206 (07 Feb 2012)
+
+  07 Feb 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120206.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120205 (06 Feb 2012)
+
+  06 Feb 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120205.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120202 (03 Feb 2012)
+
+  03 Feb 2012; <fordfrog@gentoo.org> +netbeans-harness-9999_p20120202.ebuild:
+  Bumped to latest nightly sources
+
+  01 Feb 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120113.ebuild,
+  -netbeans-harness-9999_p20120115.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20120126 (27 Jan 2012)
+
+  27 Jan 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120126.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120125 (26 Jan 2012)
+
+  26 Jan 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120125.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120118 (19 Jan 2012)
+
+  19 Jan 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120118.ebuild:
+  Bumped to latest nightly sources
+
+  19 Jan 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120111.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20120115 (16 Jan 2012)
+
+  16 Jan 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120115.ebuild:
+  Bumped to latest nightly sources
+
+  16 Jan 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20120108.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20120113 (15 Jan 2012)
+
+  15 Jan 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120113.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20120111 (12 Jan 2012)
+
+  12 Jan 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120111.ebuild:
+  Bumped to latest nightly sources
+
+  12 Jan 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20111225.ebuild,
+  -netbeans-harness-9999_p20120102.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20120108 (08 Jan 2012)
+
+  08 Jan 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120108.ebuild:
+  Bumped to latest nightly sources
+
+  08 Jan 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20111223.ebuild:
+  Removed old version
+
+*netbeans-harness-7.1 (05 Jan 2012)
+
+  05 Jan 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.1_rc2.ebuild, +netbeans-harness-7.1.ebuild:
+  Bumped to 7.1 final
+
+*netbeans-harness-9999_p20120102 (02 Jan 2012)
+
+  02 Jan 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20120102.ebuild:
+  Bumped to latest nightly sources
+
+  02 Jan 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20111218.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20111225 (26 Dec 2011)
+
+  26 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111225.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20111223 (24 Dec 2011)
+
+  24 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111223.ebuild:
+  Bumped to latest nightly sources
+
+  22 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20111211.ebuild,
+  -netbeans-harness-9999_p20111213.ebuild:
+  Removed obsolete versions
+
+  19 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20111205.ebuild,
+  -netbeans-harness-9999_p20111206.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20111218 (19 Dec 2011)
+
+  19 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111218.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20111213 (13 Dec 2011)
+
+  13 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111213.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20111211 (11 Dec 2011)
+
+  11 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111211.ebuild:
+  Bumped to latest nightly sources
+
+  11 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20111129.ebuild,
+  -netbeans-harness-9999_p20111201.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20111206 (06 Dec 2011)
+
+  06 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111206.ebuild:
+  Bumped to latest nightly sources
+
+  06 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.1_rc1.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-7.1_rc2 (06 Dec 2011)
+
+  06 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.1_rc2.ebuild:
+  Version bump in 7.1 slot
+
+*netbeans-harness-9999_p20111205 (05 Dec 2011)
+
+  05 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111205.ebuild:
+  Bumped to latest nightly sources
+
+  05 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20111125.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20111201 (02 Dec 2011)
+
+  02 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111201.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20111129 (30 Nov 2011)
+
+  30 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111129.ebuild:
+  Bumped to latest nightly sources
+
+  28 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.1_beta.ebuild:
+  Removed obsolete ebuild from 7.1 branch
+
+*netbeans-harness-7.1_rc1 (28 Nov 2011)
+
+  28 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.1_rc1.ebuild:
+  Bumped 7.1 branch to rc1
+
+  26 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20111113.ebuild,
+  -netbeans-harness-9999_p20111116.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20111125 (26 Nov 2011)
+
+  26 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111125.ebuild:
+  Bumped to latest nightly sources
+
+  18 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20111109.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20111116 (18 Nov 2011)
+
+  18 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111116.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20111113 (14 Nov 2011)
+
+  14 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111113.ebuild:
+  Bumped to latest nightly sources
+
+  10 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20111025.ebuild,
+  -netbeans-harness-9999_p20111029.ebuild,
+  -netbeans-harness-9999_p20111102.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20111109 (10 Nov 2011)
+
+  10 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111109.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20111102 (02 Nov 2011)
+
+  02 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111102.ebuild:
+  Bumped to latest nightly sources
+
+  01 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20111019.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20111029 (29 Oct 2011)
+
+  29 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111029.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20111025 (26 Oct 2011)
+
+  26 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111025.ebuild:
+  Bumped to latest nightly sources
+
+  24 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-harness-7.0.1.ebuild, netbeans-harness-7.1_beta.ebuild,
+  netbeans-harness-9999_p20111019.ebuild:
+  Filtering ecj compilers as compilation does not work with them
+
+  24 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20111016.ebuild,
+  -netbeans-harness-9999_p20111017.ebuild,
+  -netbeans-harness-9999_p20111018.ebuild:
+  Removed old versions
+
+*netbeans-harness-9999_p20111019 (20 Oct 2011)
+
+  20 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111019.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20111018 (19 Oct 2011)
+
+  19 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111018.ebuild:
+  Bumped to latest nightly sources
+
+  19 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20111005.ebuild,
+  -netbeans-harness-9999_p20111007.ebuild,
+  -netbeans-harness-9999_p20111010.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20111017 (18 Oct 2011)
+
+  18 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111017.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20111016 (16 Oct 2011)
+
+  16 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111016.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20111010 (11 Oct 2011)
+
+  11 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111010.ebuild:
+  Bumped to latest nightly sources
+
+  11 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20111002.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20111007 (08 Oct 2011)
+
+  08 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111007.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20111005 (06 Oct 2011)
+
+  06 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111005.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-7.1_beta (04 Oct 2011)
+
+  04 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.1_beta.ebuild:
+  Added ebuild for NetBeans 7.1 beta
+
+  03 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110925.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20111002 (03 Oct 2011)
+
+  03 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20111002.ebuild:
+  Bumped to latest nightly sources
+
+  29 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110920.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20110925 (26 Sep 2011)
+
+  26 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110925.ebuild:
+  Bumped to latest nightly sources
+
+  21 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110911.ebuild,
+  -netbeans-harness-9999_p20110913.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20110920 (21 Sep 2011)
+
+  21 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110920.ebuild:
+  Bumped to latest nightly sources
+
+  16 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-harness-7.0.1.ebuild, netbeans-harness-9999_p20110911.ebuild,
+  netbeans-harness-9999_p20110913.ebuild:
+  Fixed dependency on jdk
+
+  16 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-harness-7.0.1.ebuild, netbeans-harness-9999_p20110911.ebuild,
+  netbeans-harness-9999_p20110913.ebuild:
+  NetBeans compilation is supported only with JDK 1.6
+
+*netbeans-harness-9999_p20110913 (13 Sep 2011)
+
+  13 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110913.ebuild:
+  Bumped to latest nightly sources
+
+  13 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110904.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20110911 (12 Sep 2011)
+
+  12 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110911.ebuild:
+  Bumped to latest nightly sources
+
+  12 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110902.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20110904 (05 Sep 2011)
+
+  05 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110904.ebuild:
+  Bumped to latest nightly sources
+
+  03 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110821.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20110902 (03 Sep 2011)
+
+  03 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110902.ebuild:
+  Bumped to latest nightly sources
+
+  29 Aug 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110813.ebuild,
+  -netbeans-harness-9999_p20110814.ebuild,
+  -netbeans-harness-9999_p20110817.ebuild:
+  Removed obsolete versions
+
+  22 Aug 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20110821 (22 Aug 2011)
+
+  22 Aug 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110821.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20110817 (18 Aug 2011)
+
+  18 Aug 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110817.ebuild:
+  Bumped to latest nightly sources
+
+  18 Aug 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110807.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20110814 (16 Aug 2011)
+
+  16 Aug 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110814.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20110813 (13 Aug 2011)
+
+  13 Aug 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110813.ebuild:
+  Bumped to latest nightly sources
+
+  13 Aug 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110728.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20110807 (08 Aug 2011)
+
+  08 Aug 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110807.ebuild:
+  Bumped to latest nightly sources
+
+  07 Aug 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110722.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-7.0.1 (02 Aug 2011)
+
+  02 Aug 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.0.1.ebuild:
+  Bumped to version 7.0.1
+
+*netbeans-harness-9999_p20110728 (29 Jul 2011)
+
+  29 Jul 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110728.ebuild:
+  Bumped to latest nightly sources
+
+  29 Jul 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110717.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20110722 (23 Jul 2011)
+
+  23 Jul 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110722.ebuild:
+  Bumped to latest nightly sources
+
+  23 Jul 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110710.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20110717 (18 Jul 2011)
+
+  18 Jul 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110717.ebuild:
+  Bumped to latest nightly sources
+
+  11 Jul 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110626.ebuild,
+  -netbeans-harness-9999_p20110701.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20110710 (11 Jul 2011)
+
+  11 Jul 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110710.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20110701 (01 Jul 2011)
+
+  01 Jul 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110701.ebuild:
+  Bumped to latest nightly sources
+
+  29 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110616.ebuild,
+  -netbeans-harness-9999_p20110620.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20110626 (27 Jun 2011)
+
+  27 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110626.ebuild:
+  Updated to latest nightly sources
+
+*netbeans-harness-9999_p20110620 (20 Jun 2011)
+
+  20 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110620.ebuild:
+  Bumped to latest nightly sources
+
+  20 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110612.ebuild:
+  Removed old versions
+
+*netbeans-harness-9999_p20110616 (17 Jun 2011)
+
+  17 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110616.ebuild:
+  Bumped to latest nightly sources
+
+  15 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110604.ebuild,
+  -netbeans-harness-9999_p20110608.ebuild:
+  Removed old versions
+
+*netbeans-harness-9999_p20110612 (13 Jun 2011)
+
+  13 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110612.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20110608 (09 Jun 2011)
+
+  09 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110608.ebuild:
+  Bumped to latest nightly sources
+
+  09 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110529.ebuild:
+  Removed old version
+
+*netbeans-harness-9999_p20110604 (06 Jun 2011)
+
+  06 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110604.ebuild:
+  Bumped to latest nightly sources
+
+  03 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110526.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20110529 (30 May 2011)
+
+  30 May 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110529.ebuild:
+  Bumped to latest nightly sources
+
+  30 May 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110519.ebuild,
+  -netbeans-harness-9999_p20110522.ebuild:
+  Removed obsolete versions
+
+*netbeans-harness-9999_p20110526 (27 May 2011)
+
+  27 May 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110526.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20110522 (23 May 2011)
+
+  23 May 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110522.ebuild:
+  Bumped to latest nightly sources
+
+  23 May 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110516.ebuild:
+  Removed obsolete version
+
+  21 May 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110512.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20110519 (20 May 2011)
+
+  20 May 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110519.ebuild:
+  Bumped to latest nightly sources
+
+  17 May 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110508.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20110516 (17 May 2011)
+
+  17 May 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110516.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20110512 (13 May 2011)
+
+  13 May 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110512.ebuild:
+  Bumped to latest nightly sources
+
+  08 May 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110426.ebuild:
+  Removed obsolete version
+
+*netbeans-harness-9999_p20110508 (08 May 2011)
+
+  08 May 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110508.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-9999_p20110426 (27 Apr 2011)
+
+  27 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20110426.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-7.0 (21 Apr 2011)
+
+  21 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.0.ebuild:
+  Removed old versions and added version 7.0
+
+  18 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_rc2_p20110409.ebuild,
+  -netbeans-harness-7.0_rc2_p20110411.ebuild:
+  Removed old versions
+
+*netbeans-harness-7.0_rc2_p20110417 (18 Apr 2011)
+
+  18 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.0_rc2_p20110417.ebuild:
+  Bumped to latest nightly sources
+
+  12 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_rc1_p20110406.ebuild:
+  Removed old version
+
+*netbeans-harness-7.0_rc2_p20110411 (12 Apr 2011)
+
+  12 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.0_rc2_p20110411.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-7.0_rc2_p20110409 (10 Apr 2011)
+
+  10 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.0_rc2_p20110409.ebuild:
+  Bumped to latest nightly sources
+
+  08 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_rc1.ebuild:
+  Removed rc1
+
+*netbeans-harness-7.0_rc2 (08 Apr 2011)
+
+  08 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.0_rc2.ebuild:
+  Bumped to rc2
+
+  08 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_rc1_p20110401.ebuild:
+  Removed old version
+
+*netbeans-harness-7.0_rc1_p20110406 (07 Apr 2011)
+
+  07 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.0_rc1_p20110406.ebuild:
+  Bumped to latest nightly sources
+
+  01 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_beta2_p20110324.ebuild:
+  Removed old beta release
+
+*netbeans-harness-7.0_rc1_p20110401 (01 Apr 2011)
+
+  01 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.0_rc1_p20110401.ebuild:
+  Bumped to latest nightly sources
+
+  30 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_beta2.ebuild:
+  Removed old beta release
+
+*netbeans-harness-7.0_rc1 (30 Mar 2011)
+
+  30 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.0_rc1.ebuild:
+  Added ebuild for rc1
+
+  28 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_beta2_p20110318.ebuild:
+  Removed old version
+
+*netbeans-harness-7.0_beta2_p20110324 (24 Mar 2011)
+
+  24 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.0_beta2_p20110324.ebuild:
+  Bumped to latest nightly sources
+
+  21 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_beta2_p20110314.ebuild:
+  Removed old version
+
+*netbeans-harness-7.0_beta2_p20110318 (18 Mar 2011)
+
+  18 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.0_beta2_p20110318.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-7.0_beta2_p20110314 (14 Mar 2011)
+
+  14 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_beta2_p20110311.ebuild,
+  +netbeans-harness-7.0_beta2_p20110314.ebuild:
+  Bumped to latest nightly sources
+
+  14 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_beta2_p20110218.ebuild,
+  -netbeans-harness-7.0_beta2_p20110224.ebuild:
+  Removed old versions
+
+*netbeans-harness-7.0_beta2_p20110311 (12 Mar 2011)
+
+  12 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.0_beta2_p20110311.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-7.0_beta2_p20110224 (24 Feb 2011)
+
+  24 Feb 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_beta_p20110202.ebuild,
+  -netbeans-harness-7.0_beta_p20110216.ebuild,
+  +netbeans-harness-7.0_beta2_p20110224.ebuild:
+  Bumped to latest nightly sources and removed old versions
+
+*netbeans-harness-7.0_beta2_p20110218 (18 Feb 2011)
+
+  18 Feb 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.0_beta2_p20110218.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-7.0_beta2 (18 Feb 2011)
+
+  18 Feb 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.0_beta2.ebuild:
+  Bumped to beta2
+
+*netbeans-harness-7.0_beta_p20110216 (17 Feb 2011)
+
+  17 Feb 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_beta_p20110208.ebuild,
+  +netbeans-harness-7.0_beta_p20110216.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-7.0_beta_p20110208 (08 Feb 2011)
+
+  08 Feb 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-7.0_beta_p20110208.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-7.0_beta_p20110202 (02 Feb 2011)
+
+  02 Feb 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_beta_p20110130.ebuild,
+  +netbeans-harness-7.0_beta_p20110202.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-7.0_beta_p20110130 (30 Jan 2011)
+
+  30 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_beta_p20110129.ebuild,
+  +netbeans-harness-7.0_beta_p20110130.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-7.0_beta_p20110129 (29 Jan 2011)
+
+  29 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_beta_p20110128.ebuild,
+  +netbeans-harness-7.0_beta_p20110129.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-7.0_beta_p20110128 (28 Jan 2011)
+
+  28 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_beta_p20110125.ebuild,
+  +netbeans-harness-7.0_beta_p20110128.ebuild:
+  Bumped to latest nightly sources
+
+*netbeans-harness-7.0_beta_p20110125 (25 Jan 2011)
+
+  25 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_beta_p20110123.ebuild,
+  +netbeans-harness-7.0_beta_p20110125.ebuild:
+  Bumped to latest nightly sources
+
+  24 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-harness-7.0_beta_p20110123.ebuild:
+  Creating symlink to netbeans-nb dir as Netbeans needs all clusters in the
+  same directory, otherwise Netbeans Platform is not detected correctly
+
+*netbeans-harness-7.0_beta_p20110123 (23 Jan 2011)
+
+  23 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_beta_p20110122.ebuild,
+  +netbeans-harness-7.0_beta_p20110123.ebuild:
+  Bumped to latest nightly sources
+
+  22 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-harness-7.0_beta_p20110122.ebuild:
+  Added support for custom patches
+
+  22 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-harness-7.0_beta_p20110122.ebuild, +metadata.xml:
+  Switched to EAPI4
+
