@@ -1,0 +1,12 @@
+--- a/setup.py	2015-09-11 20:57:43.370066808 +0200
++++ b/setup.py	2015-09-11 21:01:16.700070342 +0200
+@@ -42,7 +42,7 @@ setup(
+     zip_safe=False,
+     platforms='any',
+     install_requires=REQUIRES,
+-    packages=find_packages(exclude=('doc', 'docs',)),
++    packages=find_packages(exclude=('doc', 'docs', 'test*')),
+     include_package_data=True,
+     # use python setup.py nosetests to test
+     setup_requires=['nose', 'coverage'],
+
