@@ -13,14 +13,23 @@ HOMEPAGE="https://github.com/MongoEngine/django-mongoengine"
 EGIT_REPO_URI="https://github.com/MongoEngine/django-mongoengine.git"
 
 KEYWORDS="~amd64 ~x86"
-IUSE="bip doc digest xml oauth test yaml"
+IUSE="doc test"
 
 LICENSE="BSD"
 SLOT="0"
 
-RDEPEND=">=dev-python/django-1.4[${PYTHON_USEDEP}]"
+#RDEPEND="$(python_abi_depend ">=dev-python/django-1.5")
+#	$(python_abi_depend ">=dev-python/mongoengine-0.8.3")"
+#DEPEND="${RDEPEND}
+#	$(python_abi_depend dev-python/setuptools)
+#	doc? ( $(python_abi_depend dev-python/sphinx) )
+#	test? ( $(python_abi_depend dev-python/nose)
+#		$(python_abi_depend dev-python/coverage) )"
+RDEPEND=">=dev-python/django-1.5[${PYTHON_USEDEP}]
+	>=dev-python/mongoengine-0.8.3[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}] )"
 
