@@ -42,7 +42,7 @@ DEPEND="${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
 	)"
 
-PATCHES=( "${FILESDIR}"/runtests.patch )
+#PATCHES=( "${FILESDIR}"/runtests.patch )
 
 python_compile_all() {
 	use doc && emake -C docs html
