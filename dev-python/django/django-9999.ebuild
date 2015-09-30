@@ -23,7 +23,8 @@ KEYWORDS=""
 IUSE="doc sqlite test"
 
 RDEPEND="$(python_abi_depend -e "*-jython" dev-python/imaging)
-	$(python_abi_depend dev-python/setuptools)"
+	$(python_abi_depend dev-python/setuptools)
+	$(python_abi_depend dev-python/sqlparse)"
 DEPEND="${RDEPEND}
 	doc? ( $(python_abi_depend dev-python/sphinx) )"
 

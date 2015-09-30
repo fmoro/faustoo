@@ -6,11 +6,8 @@ EAPI="5-progress"
 PYTHON_ABI_TYPE="multiple"
 PYTHON_BDEPEND="test? ( <<[{*-cpython *-pypy}sqlite]>> )"
 PYTHON_DEPEND="<<[{*-cpython *-pypy}sqlite?]>>"
-PYTHON_RESTRICTED_ABIS="3.1"
+PYTHON_RESTRICTED_ABIS="2.6 3.1"
 PYTHON_TESTS_RESTRICTED_ABIS="*-jython"
-# 3.[4-9]: https://code.djangoproject.com/ticket/21721
-# 3.[4-9]: https://code.djangoproject.com/ticket/24153
-PYTHON_TESTS_FAILURES_TOLERANT_ABIS="3.[4-9]"
 WEBAPP_NO_AUTO_INSTALL="yes"
 
 inherit bash-completion-r1 distutils versionator webapp
@@ -27,7 +24,9 @@ SLOT="0"
 KEYWORDS="*"
 IUSE="doc sqlite test"
 
-RDEPEND="$(python_abi_depend -e "*-jython" dev-python/imaging)"
+RDEPEND="$(python_abi_depend -e "*-jython" dev-python/imaging)
+	$(python_abi_depend dev-python/setuptools)
+	$(python_abi_depend dev-python/sqlparse)"
 DEPEND="${RDEPEND}
 	doc? ( $(python_abi_depend dev-python/sphinx) )"
 
@@ -45,18 +44,6 @@ src_prepare() {
 
 	# Disable invalid warning.
 	sed -e "s/overlay_warning = True/overlay_warning = False/" -i setup.py
-
-	# Avoid test failures with unittest2 and Python 3.
-	sed -e "s/from unittest2 import \*/raise ImportError/" -i django/utils/unittest/__init__.py
-
-	# Fix template_tests.tests.TemplateTests.test_templates() with NumPy >=1.9.
-	# https://code.djangoproject.com/ticket/23489
-	# https://github.com/django/django/commit/12809e160995eb617fe394c75e5b9f3211c056ff
-	sed -e "s/except (TypeError, AttributeError, KeyError, ValueError):$/except (TypeError, AttributeError, KeyError, ValueError, IndexError):/" -i django/template/base.py
-
-	# Disable failing test.
-	# https://code.djangoproject.com/ticket/21416
-	sed -e "s/test_app_with_import/_&/" -i tests/admin_scripts/tests.py
 
 	# Fix bash completion file.
 	sed \

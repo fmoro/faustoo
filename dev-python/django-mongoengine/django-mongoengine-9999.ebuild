@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/MongoEngine/django-mongoengine"
 EGIT_REPO_URI="https://github.com/MongoEngine/django-mongoengine.git"
 
 KEYWORDS="~amd64 ~x86"
-IUSE="doc test"
+IUSE="doc +test"
 
 LICENSE="BSD"
 SLOT="0"
@@ -36,7 +36,10 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}"/tests-installation.patch )
 
 python_compile_all() {
-	use doc && emake -C docs html
+	#use doc && emake -C docs html
+	if use doc; then
+		"${PYTHON}" setup.py build_sphinx || die "couldn't build docs"
+	fi
 }
 
 #src_test() {
