@@ -1,0 +1,10 @@
+--- mongoengine-0.10.0.orig/setup.py	2015-10-13 19:24:56.780101689 +0200
++++ mongoengine-0.10.0/setup.py	2015-10-13 19:20:07.410096895 +0200
+@@ -79,6 +79,6 @@
+       classifiers=CLASSIFIERS,
+       install_requires=['pymongo>=2.7.1'],
+       test_suite='nose.collector',
+-      setup_requires=['nose', 'rednose'],  # Allow proper nose usage with setuptols and tox
++      #setup_requires=['nose', 'rednose'],  # Allow proper nose usage with setuptols and tox
+       **extra_opts
+ )

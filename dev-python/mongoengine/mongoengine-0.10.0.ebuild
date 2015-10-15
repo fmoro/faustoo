@@ -16,10 +16,13 @@ SLOT="0"
 KEYWORDS="*"
 IUSE="doc"
 
-RDEPEND="$(python_abi_depend ">=dev-python/pymongo-2.5")"
+RDEPEND=">=dev-python/pymongo-2.7.1
+	dev-python/blinker
+	>=dev-python/pillow-2.0.0
+	>=dev-python/python-dateutil-2.1.0"
 DEPEND="${RDEPEND}
-	$(python_abi_depend dev-python/setuptools)
-	doc? ( $(python_abi_depend dev-python/sphinx) )"
+	dev-python/setuptools
+	doc? ( dev-python/sphinx )"
 
 src_prepare() {
 	distutils_src_prepare

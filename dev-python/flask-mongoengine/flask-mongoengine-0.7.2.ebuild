@@ -11,23 +11,19 @@ RESTRICT="test" # broken
 
 DESCRIPTION="Flask support for MongoDB and with WTF model forms"
 HOMEPAGE="https://pypi.python.org/pypi/flask-mongoengine/"
-#SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
-SRC_URI="https://github.com/MongoEngine/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
-PATCHES=( "${FILESDIR}"/tests-installation.patch )
-
 RDEPEND=">=dev-python/flask-0.8[${PYTHON_USEDEP}]
 		>=dev-python/mongoengine-0.7.10[${PYTHON_USEDEP}]
 		dev-python/flask-wtf[${PYTHON_USEDEP}]
 	"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/coverage[${PYTHON_USEDEP}] )
+	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
 	)"
 
