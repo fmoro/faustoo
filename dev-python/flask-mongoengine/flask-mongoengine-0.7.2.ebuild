@@ -27,6 +27,8 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=( "${FILESDIR}"/tests-installation.patch )
+
 python_compile_all() {
 	use doc && emake -C docs html
 }
