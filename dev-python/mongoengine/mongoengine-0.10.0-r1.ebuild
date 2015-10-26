@@ -21,6 +21,7 @@ IUSE="test"
 RDEPEND=">=dev-python/pillow-2.0.0
 >=dev-python/python-dateutil-2.4.0
 dev-python/blinker"
+
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/pymongo[${PYTHON_USEDEP}]
