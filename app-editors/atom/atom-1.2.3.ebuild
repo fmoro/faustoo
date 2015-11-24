@@ -45,16 +45,19 @@ src_unpack() {
 
 src_prepare(){
 	epatch "${FILESDIR}/${PN}-python.patch"
-	sed -i -e "/exception-reporting/d" \
-      -e "/metrics/d" package.json
+	sed -i  -e "/exception-reporting/d" \
+		-e "/metrics/d" package.json
 	sed -e "s/<%= description %>/$pkgdesc/" \
-    -e "s|<%= executable %>|/usr/bin/atom|"\
-    -e "s|<%= iconName %>|atom|"\
-    resources/linux/atom.desktop.in > resources/linux/Atom.desktop
-    # Fix atom location guessing
+		-e "s|<%= installDir %>/share/<%= appFileName %>/atom|/usr/bin/atom|"\
+		-e "s|<%= iconPath %>|atom|"\
+		-e "s|<%= appName %>|Atom|" \
+		resources/linux/atom.desktop.in > resources/linux/Atom.desktop
+
+    	# Fix atom location guessing
 	sed -i -e 's/ATOM_PATH="$USR_DIRECTORY\/share\/atom/ATOM_PATH="$USR_DIRECTORY\/../g' \
 		./atom.sh \
 		|| die "Fail fixing atom-shell directory"
+
 	# Make bootstrap process more verbose
 	sed -i -e 's@node script/bootstrap@node script/bootstrap --no-quiet@g' \
 		./script/build \
@@ -62,7 +65,6 @@ src_prepare(){
 }
 
 src_compile(){
-	#./script/clean --verbose
 	./script/build --verbose --build-dir "${T}" || die "Failed to compile"
 	"${T}/Atom/resources/app/apm/bin/apm" rebuild || die "Failed to rebuild native module"
 	echo "python = $PYTHON" >> "${T}/Atom/resources/app/apm/.apmrc"
@@ -74,13 +76,12 @@ src_install(){
 	insinto ${EPREFIX}/usr/share/applications
 	newins resources/linux/Atom.desktop atom.desktop
 	insinto ${EPREFIX}/usr/share/pixmaps
-	doins resources/atom.png
+	newins resources/app-icons/stable/png/128.png atom.png
 	insinto ${EPREFIX}/usr/share/licenses/${PN}
 	doins LICENSE.md
 	# Fixes permissions
 	fperms +x ${EPREFIX}/usr/share/${PN}/${PN}
-	fperms +x ${EPREFIX}/usr/share/${PN}/libchromiumcontent.so
-	fperms +x ${EPREFIX}/usr/share/${PN}/libffmpegsumo.so
+	#fperms +x ${EPREFIX}/usr/share/${PN}/libffmpegsumo.so
 	fperms +x ${EPREFIX}/usr/share/${PN}/libgcrypt.so.11
 	fperms +x ${EPREFIX}/usr/share/${PN}/libnotify.so.4
 	fperms +x ${EPREFIX}/usr/share/${PN}/resources/app/atom.sh
