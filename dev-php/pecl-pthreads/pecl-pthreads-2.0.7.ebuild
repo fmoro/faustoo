@@ -14,6 +14,8 @@ inherit php-ext-pecl-r2
 
 DESCRIPTION="PHP front-end to POSIX threads library"
 
+HOMEPAGE="https://pecl.php.net/package/pthreads"
+
 LICENSE="PHP-3.01"
 SLOT="0"
 KEYWORDS="~x86 ~amd64 ~arm ~ppc ~ppc64"

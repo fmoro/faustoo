@@ -4,17 +4,17 @@
 
 inherit eutils
 
-DESCRIPTION="Abraca is a GTK2 client for the XMMS2 music player."
-HOMEPAGE="http://abraca.xmms.se"
-SRC_URI="http://abraca.xmms.se/attachments/download/106/${P}.tar.gz"
+DESCRIPTION="A GTK-based client for the XMMS2 music player which makes managing your music a breeze"
+HOMEPAGE="http://abraca.github.io/Abraca/"
+SRC_URI="https://github.com/Abraca/Abraca/archive/${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc"
 KEYWORDS="~x86 ~amd64"
-RDEPEND="|| (
-		>=media-sound/xmms2-0.2.8_rc2
-		>=media-sound/xmms2-git-20070325 )
-	>=x11-libs/gtk+-2.10.9
+RDEPEND=">=dev-libs/glib-2.40
+	>=x11-libs/gtk+-3.12
+	>=dev-libs/libgee-0.10.5
+	>=media-sound/xmms2-0.8
 	dev-lang/vala"
 DEPEND="${RDEPEND}"
 S="${WORKDIR}/${PN}"

@@ -5,7 +5,7 @@
 EAPI="5"
 inherit eutils
 
-DESCRIPTION="Eclipse IDE for building, editing and debugging HTML/CSS/JavaScript/PHP/Ruby on Rails."
+DESCRIPTION="Aptana Studio IDE"
 HOMEPAGE="http://www.aptana.com"
 SRC_URI="
 	x86? ( https://github.com/aptana/studio3/releases/download/v${PV}/Aptana_Studio_3_Setup_Linux_x86_${PV}.zip )

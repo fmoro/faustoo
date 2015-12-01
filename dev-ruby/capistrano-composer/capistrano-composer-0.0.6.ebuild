@@ -10,8 +10,8 @@ RUBY_FAKEGEM_EXTRADOC=""
 
 inherit ruby-fakegem
 
-DESCRIPTION="A distributed application deployment system"
-HOMEPAGE="http://capify.org/"
+DESCRIPTION="Composer support for Capistrano 3.x"
+HOMEPAGE="https://github.com/capistrano/composer/"
 
 LICENSE="MIT"
 SLOT="0"

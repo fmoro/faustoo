@@ -12,8 +12,8 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A distributed application deployment system"
-HOMEPAGE="http://capify.org/"
+DESCRIPTION="Maintenance tasks for capistrano"
+HOMEPAGE="https://github.com/capistrano/file-permissions"
 
 LICENSE="MIT"
 SLOT="2"

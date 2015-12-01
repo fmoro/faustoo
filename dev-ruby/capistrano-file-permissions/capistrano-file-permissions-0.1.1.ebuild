@@ -10,8 +10,8 @@ RUBY_FAKEGEM_EXTRADOC=""
 
 inherit ruby-fakegem
 
-DESCRIPTION="A distributed application deployment system"
-HOMEPAGE="http://capify.org/"
+DESCRIPTION="File permissions handling for Capistrano v3.*"
+HOMEPAGE="https://github.com/capistrano/file-permissions"
 
 LICENSE="MIT"
 SLOT="0"

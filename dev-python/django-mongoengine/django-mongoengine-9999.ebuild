@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_6,2_7,3_3} )
 
 inherit distutils-r1 git-2
 
-DESCRIPTION="A flexible and capable API layer for django utilising serialisers"
+DESCRIPTION="MongoEngine support for Django framework"
 HOMEPAGE="https://github.com/MongoEngine/django-mongoengine"
 #SRC_URI="https://github.com/MongoEngine/${PN}/archive/${PV}.tar.gz"
 EGIT_REPO_URI="https://github.com/MongoEngine/django-mongoengine.git"

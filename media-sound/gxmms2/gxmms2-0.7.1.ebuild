@@ -7,8 +7,8 @@ IUSE=""
 
 inherit eutils 
 DESCRIPTION="A GTK+ 2.6 based XMMS2 client"
-SRC_URI="http://wejp.k.vu/files/${P}.tar.gz"
-HOMEPAGE="http://wejp.k.vu/projects/xmms2/"
+SRC_URI="http://wej.k.vu/files/${P}.tar.gz"
+HOMEPAGE="http://wej.k.vu/projects/xmms2/"
 LICENSE="GPL-2"
 SLOT="0"
 RESTRICT="nomirror"

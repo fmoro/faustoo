@@ -9,8 +9,8 @@ inherit distutils-r1
 
 RESTRICT="test" # broken
 
-DESCRIPTION="Flask support for MongoDB and with WTF model forms"
-HOMEPAGE="https://pypi.python.org/pypi/mtools/"
+DESCRIPTION="Collection of helper scripts to parse and filter MongoDB log files, visualize log files and quickly set up complex MongoDB test environments on a local machine"
+HOMEPAGE="https://github.com/rueckstiess/mtools/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

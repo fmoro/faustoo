@@ -10,8 +10,8 @@ RUBY_FAKEGEM_EXTRADOC=""
 
 inherit ruby-fakegem
 
-DESCRIPTION="A distributed application deployment system"
-HOMEPAGE="http://capify.org/"
+DESCRIPTION="Symfony 2 (standard edition) specific tasks for Capistrano v3 (inspired by capifony)"
+HOMEPAGE="https://github.com/capistrano/symfony/"
 
 LICENSE="MIT"
 SLOT="0"

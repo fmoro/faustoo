@@ -12,8 +12,8 @@ RUBY_FAKEGEM_EXTRADOC=""
 
 inherit ruby-fakegem
 
-DESCRIPTION="A distributed application deployment system"
-HOMEPAGE="http://capify.org/"
+DESCRIPTION="Handy extensions for Capistrano"
+HOMEPAGE="https://github.com/capistrano/capistrano-ext"
 
 LICENSE="MIT"
 SLOT="2"

@@ -4,7 +4,7 @@
 
 inherit eutils
 
-DESCRIPTION="Abraca is a GTK2 client for the XMMS2 music player."
+DESCRIPTION="A GTK-based client for the XMMS2 music player which makes managing your music a breeze"
 HOMEPAGE="http://abraca.github.io/Abraca/"
 SRC_URI="https://github.com/Abraca/Abraca/archive/${PV}.tar.gz"
 LICENSE="GPL-2"
