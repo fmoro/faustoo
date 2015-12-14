@@ -13,8 +13,8 @@ inherit distutils-r1
 MY_PN="Flask-DebugToolbar"
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="This extension adds a toolbar overlay to Flask applications containing useful information for debugging"
-HOMEPAGE="http://flask-debugtoolbar.readthedocs.org/"
+DESCRIPTION="Toolbar overlay to Flask applications containing useful information for debugging"
+HOMEPAGE="http://flask-debugtoolbar.readthedocs.org"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
