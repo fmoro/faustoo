@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
 inherit distutils-r1
 
@@ -20,8 +20,9 @@ IUSE="doc test"
 
 RDEPEND=">=dev-python/flask-0.8[${PYTHON_USEDEP}]
 		>=dev-python/mongoengine-0.7.10[${PYTHON_USEDEP}]
-		dev-python/flask-wtf[${PYTHON_USEDEP}]
-	"
+		>=dev-python/flask-wtf-0.8.3[${PYTHON_USEDEP}]
+		>=dev-python/flask-debugtoolbar-0.8[${PYTHON_USEDEP}]"
+
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
