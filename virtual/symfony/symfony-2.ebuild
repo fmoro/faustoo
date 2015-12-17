@@ -21,7 +21,7 @@ RDEPEND="dev-lang/php[intl,cli,ctype,mysql,pdo,session,simplexml,tokenizer,xml]
 		mongodb? ( dev-db/mongodb dev-php/pecl-mongo )
 		mysql? ( dev-db/mysql )
 		less? ( net-libs/nodejs )
-		dev? ( dev-ruby/capistrano-symfony dev-php/phpunit )"
+		dev? ( dev-ruby/capistrano-symfony )" #dev-php/phpunit )"
 
 pkg_postinst() {
 	if has_version '=dev-lang/php-5*[-posix]';then
