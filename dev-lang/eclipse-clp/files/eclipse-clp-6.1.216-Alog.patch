@@ -1,0 +1,138 @@
+--- Eclipse_6.1_187/Alog/src/configure
++++ Eclipse_6.1_187/Alog/src/configure
+@@ -531,8 +531,9 @@
+ #
+ # UNIX variants
+ #
+-CC=cc
+-CFLAGS="-O"
++CC=${CC:-cc}
++AR=${AR:-ar}
++CFLAGS=${CFLAGS:-"-O"}
+ case "$ARCH" in
+  sun3)
+     ;;
+@@ -556,7 +557,7 @@
+     ;;
+  i386_sunos5)
+     ;;
+- i386_linux)
++ i386_linux|x86_64_linux)
+     LIBS="-lieee $LIBS"
+     ;;
+  rs_aix32)
+@@ -767,6 +768,7 @@
+ s%@infodir@%$infodir%g
+ s%@mandir@%$mandir%g
+ s%@CC@%$CC%g
++s%@AR@%$AR%g
+ s%@ARCH@%$ARCH%g
+ s%@RANLIB@%$RANLIB%g
+ s%@SYS_DIR@%$SYS_DIR%g
+--- Eclipse_6.1_187/Alog/src/Makefile.in
++++ Eclipse_6.1_187/Alog/src/Makefile.in
+@@ -18,9 +18,7 @@
+ 
+ IPATH = -I$(SYS_DIR)/sys_include
+ 
+-CCFLAGS = $(CFLAGS) $(IPATH)
+-
+-AR = ar ruv
++AR = @AR@ ruv
+ RM = /bin/rm -f
+ CP = /bin/cp
+ 
+@@ -28,10 +26,9 @@
+ .SUFFIXES:	.o .c .f .h
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) -c $*.c 
++	$(CC) $(CFLAGS) $(IPATH) -c $*.c 
+ 
+-all:	
+-	$(MAKE) -f Makefile libalog.a mergelogs
++all: libalog.a mergelogs
+ 	@echo NOT making adjlogs on $(ARCH)
+ 
+ install: all
+@@ -44,12 +41,6 @@
+ #	-$(RM) ../bin/$(ARCH)/adjlogs
+ #	$(CP) adjlogs ../bin/$(ARCH)
+ 
+-alog.o:
+-	$(CC) $(CCFLAGS) -c alog.c 
+-
+-alogf.o:
+-	$(CC) $(CCFLAGS) -c alogf.c 
+-
+ $(ALOG_OBJ):  $(ALOG_SRC) $(ALOG_HDR)
+ 
+ libalog.a:  $(ALOG_OBJ)
+--- Eclipse_6.1_204/Alog/src/alog.h
++++ Eclipse_6.1_204/Alog/src/alog.h
+@@ -11,6 +11,7 @@
+ #define _ALOG_H_
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include "usc.h"
+ 
+ 
+--- Eclipse_6.1_204/Alog/src/mergelogs.c
++++ Eclipse_6.1_204/Alog/src/mergelogs.c
+@@ -357,7 +357,7 @@
+ 
+ 	do
+ 	{	
+-		fscanf(fp,"%d %d %d %d %d %lu",
++		(void) fscanf(fp,"%d %d %d %d %d %lu",
+ 			&(table->event),&(table->proc_id),&(table->task_id),
+ 			&(table->i_data),&(table->time_slot),&(table->time));
+ 
+@@ -367,7 +367,7 @@
+ 
+ 		do
+ 		{
+-			fscanf(fp,"%c",cp);
++			(void) fscanf(fp,"%c",cp);
+ 		}
+ 		while ( *cp == ' ' || *cp == '\t' );
+ 
+@@ -375,7 +375,7 @@
+ 
+ 		while ( *cp != '\n' && i < C_DATA_LEN )
+ 		{
+-			fscanf(fp,"%c",++cp);
++			(void) fscanf(fp,"%c",++cp);
+ 
+ 			i++;
+ 		}
+--- Eclipse_6.1_204/Alog/src/adjlogs.c
++++ Eclipse_6.1_204/Alog/src/adjlogs.c
+@@ -338,7 +338,7 @@
+ 
+ 	do
+ 	{	
+-		fscanf(fp,"%d %d %d %d %d %lu",
++		(void) fscanf(fp,"%d %d %d %d %d %lu",
+ 			&(table->event),&(table->proc_id),&(table->task_id),
+ 			&(table->i_data),&(table->time_slot),&(table->time));
+ 
+@@ -348,7 +348,7 @@
+ 
+ 		do
+ 		{
+-			fscanf(fp,"%c",cp);
++			(void) fscanf(fp,"%c",cp);
+ 		}
+ 		while ( *cp == ' ' || *cp == '\t' );
+ 
+@@ -356,7 +356,7 @@
+ 
+ 		while ( *cp != '\n' && i < C_DATA_LEN )
+ 		{
+-			fscanf(fp,"%c",++cp);
++			(void) fscanf(fp,"%c",++cp);
+ 
+ 			i++;
+ 		}

@@ -1,0 +1,238 @@
+--- Eclipse_6.1_194/configure.ac
++++ Eclipse_6.1_194/configure.ac
+@@ -1498,7 +1498,7 @@
+ 
+ AC_ARG_WITH([osi], [[  --with-osi[=versions]
+ 			Build ECLiPSe interface to COIN-OR Osi.  You can
+-			optionally specify a version list, e.g. "clpcbc symclp".
++			optionally specify a version list, e.g. "clpcbc symclp glpk".
+ 			Default is to build all available versions.
+     ]],
+     [osi_versions_requested="$withval"], [osi_versions_requested=yes])
+@@ -1508,34 +1508,22 @@
+ OSICLP_ADDDEF=""
+ if test "$osi_versions_requested" != "no"; then
+     if test "$osi_versions_requested" = "yes"; then
+-    	osi_versions_requested="clpcbc symclp"
++    	osi_versions_requested="clpcbc symclp glpk"
+     fi
++    OSI_VERSIONS=
++    PKG_CHECK_MODULES(OSI, [osi])
+     for version in $osi_versions_requested; do
+-	found_osi_version=
+-	dnl For backward compatibility, allow ${version}amd as well
+-	OSIDIRS="$OSIBASEDIR${version}amd $OSIBASEDIR$version"
+-	for OSIDIR in $OSIDIRS; do
+-	    if test -d "$OSIDIR/$ARCH/lib"; then
+-		found_osi_version=yes
+-		OSI_VERSIONS="$OSI_VERSIONS $version"
+-		AC_MSG_NOTICE([Using OSI $version in $OSIDIR])
+-		case $version in
+-		clpcbc) CLPCBCDIR="$OSIDIR" ;;
+-		symclp) SYMCLPDIR="$OSIDIR" ;;
+-		glpk)  OSIGLPKDIR="$OSIDIR" ;;
+-		esac
+-		ls -d $OSIDIR/$ARCH/lib/*amd* >/dev/null 2>/dev/null
+-		if test $? -eq 0; then
+-		     AC_MSG_NOTICE([Found AMD support for $version])
+-		     OSICLP_ADDLIB="-lamd"
+-		     OSICLP_ADDDEF="-DUFL_BARRIER"
+-		fi
+-		break
+-	    fi
+-	done
+-	if test -z "$found_osi_version"; then
+-	    AC_MSG_WARN([Could not find $ARCH support for $version in $OSIDIRS])
+-	fi
++	case $version in
++            clpcbc)
++                PKG_CHECK_MODULES(CLPCBC, [osi-cbc], [CLPCBCDIR="yes" ; OSI_VERSIONS="$OSI_VERSIONS $version"])
++		 ;;
++            symclp)
++                PKG_CHECK_MODULES(SYMCLP, [osi-sym], [SYMCLPDIR="yes" ; OSI_VERSIONS="$OSI_VERSIONS $version"])
++		 ;;
++            glpk)
++                PKG_CHECK_MODULES(OSIGLPK, [osi-glpk], [OSIGLPKDIR="yes" ; OSI_VERSIONS="$OSI_VERSIONS $version"])
++		 ;;
++        esac
+     done
+ fi
+ if test -n "$OSI_VERSIONS"; then
+@@ -2115,4 +2103,4 @@
+ AC_SUBST(JHELP_DIR)
+ AC_SUBST(JAVA_PATH_SEP)
+ 
+-AC_OUTPUT
+\ No newline at end of file
++AC_OUTPUT
+--- Eclipse_6.1_194/Eplex/Makefile.in
++++ Eclipse_6.1_194/Eplex/Makefile.in
+@@ -55,7 +55,7 @@
+ GMP_LD = @GMP_LD@
+ FLOAT_ROUND_FLAGS = @FLOAT_ROUND_FLAGS@
+ 
+-CPPFLAGS  = -I. -I$(ECLIPSEDIR)/include/$(ARCH) -I$(ECLIPSEDIR)/Kernel/src $(OS_INCLUDES)
++CPPFLAGS  = -I. -I$(ECLIPSEDIR)/include/$(ARCH) $(OS_INCLUDES)
+ STDCXXLIB = @STDCXXLIB@
+ ECLIBS	= -L$(ECLIPSEDIR)/lib/$(ARCH) -leclipse @LIBS@
+ 
+@@ -96,34 +96,31 @@
+ SYMCLPDIR = @SYMCLPDIR@
+ OSIGLPKDIR = @OSIGLPKDIR@
+ 
+-CLPCBCARCHDIR = $(CLPCBCDIR)/$(ARCH)
+-SYMCLPARCHDIR = $(SYMCLPDIR)/$(ARCH)
+-OSIGLPKARCHDIR = $(OSIGLPKDIR)/$(ARCH)
+-
+-COINOSILIBS = -lOsi -lCoinUtils
+-COINCLPLIBS = -lOsiClp -lCgl -lClp 
+-COINCBCLIBS = -lCbcSolver -lCbc
+-
+-$(ARCH)/seosiclpcbc.$(OBJ_SUFFIX): eplex.c coinplex.cpp eplex_coin.h eplex_coin.c eplex.h coinplex_params.h 
+-	$(CXX) -DCOIN -DCOIN_USE_CLP @OSICLP_ADDDEF@ $(CPPFLAGS) $(CFLAGS) -I$(CLPCBCARCHDIR)/include -c coinplex.cpp
+-	$(CC) -DCOIN -DCOIN_USE_CLP -DC_TO_COIN $(CPPFLAGS) $(CFLAGS) -c eplex.c
+-	$(DYLD) $(DYNLDFLAGS) eplex.o coinplex.o $(CLPCBCARCHDIR)/lib/CbcBranchUser.o $(CLPCBCARCHDIR)/lib/CbcCompareUser.o -L$(CLPCBCARCHDIR)/lib  $(COINCBCLIBS) $(COINCLPLIBS) @OSICLP_ADDLIB@ $(COINOSILIBS) $(STDCXXLIB) $(ECLIBS) $(GMP_LD) -o seosiclpcbc.$(OBJ_SUFFIX)
+-	[ -d $(ARCH) ] || mkdir $(ARCH)
+-	mv seosiclpcbc.$(OBJ_SUFFIX) $(ARCH)/seosiclpcbc.$(OBJ_SUFFIX)
+-
+-$(ARCH)/seosisymclp.$(OBJ_SUFFIX): eplex.c coinplex.cpp eplex_coin.h eplex_coin.c eplex.h 
+-	$(CXX) -DCOIN -DCOIN_USE_SYM $(CPPFLAGS) $(CFLAGS) -I$(SYMCLPARCHDIR)/include -c coinplex.cpp
+-	$(CC) -DCOIN -DC_TO_COIN $(CPPFLAGS) $(CFLAGS) -c eplex.c
+-	$(DYLD) $(DYNLDFLAGS) eplex.o coinplex.o -L$(SYMCLPARCHDIR)/lib -lOsiSym -lSym $(COINCLPLIBS) $(COINOSILIBS) $(STDCXXLIB) $(ECLIBS) $(GMP_LD) -o seosisymclp.$(OBJ_SUFFIX)
+-	[ -d $(ARCH) ] || mkdir $(ARCH)
+-	mv seosisymclp.$(OBJ_SUFFIX) $(ARCH)/seosisymclp.$(OBJ_SUFFIX)
+-
+-$(ARCH)/seosiglpk.$(OBJ_SUFFIX): eplex.c coinplex.cpp eplex_coin.h eplex_coin.c eplex.h 
+-	$(CXX) -DCOIN -DCOIN_USE_GLPK $(CPPFLAGS) $(CFLAGS) -I$(OSIGLPKARCHDIR)/include -c coinplex.cpp
+-	$(CC) -DCOIN -DC_TO_COIN $(CPPFLAGS) $(CFLAGS) -c eplex.c
+-	$(DYLD) $(DYNLDFLAGS) eplex.o coinplex.o -L$(OSIGLPKARCHDIR)/lib -lOsiGlpk -lglpk  $(COINOSILIBS) $(STDCXXLIB) $(ECLIBS) $(GMP_LD) -o seosiglpk.$(OBJ_SUFFIX)
+-	[ -d $(ARCH) ] || mkdir $(ARCH)
+-	mv seosiglpk.$(OBJ_SUFFIX) $(ARCH)/seosiglpk.$(OBJ_SUFFIX)
++CLPCBC_CFLAGS = @CLPCBC_CFLAGS@
++SYMCLP_CFLAGS = @SYMCLP_CFLAGS@
++OSIGLPK_CFLAGS = @OSIGLPK_CFLAGS@
++
++CLPCBC_LIBS = @CLPCBC_LIBS@
++SYMCLP_LIBS = @SYMCLP_LIBS@
++OSIGLPK_LIBS = @OSIGLPK_LIBS@
++
++dir_$(ARCH):
++	mkdir -pv $(ARCH)
++
++$(ARCH)/seosiclpcbc.$(OBJ_SUFFIX): dir_$(ARCH) eplex.c coinplex.cpp eplex_coin.h eplex_coin.c eplex.h coinplex_params.h 
++	$(CXX) -DCOIN -DCOIN_USE_CLP @OSICLP_ADDDEF@ $(CPPFLAGS) $(CFLAGS) $(CLPCBC_CFLAGS) -c coinplex.cpp -o coinplex_cbc.o
++	$(CC) -DCOIN -DCOIN_USE_CLP -DC_TO_COIN $(CPPFLAGS) $(CFLAGS) -c eplex.c -o eplex_cbc.o
++	$(DYLD) $(DYNLDFLAGS) eplex_cbc.o coinplex_cbc.o $(CLPCBC_LIBS) @OSICLP_ADDLIB@ $(STDCXXLIB) $(ECLIBS) $(GMP_LD) -o $(ARCH)/seosiclpcbc.$(OBJ_SUFFIX)
++
++$(ARCH)/seosisymclp.$(OBJ_SUFFIX): dir_$(ARCH) eplex.c coinplex.cpp eplex_coin.h eplex_coin.c eplex.h 
++	$(CXX) -DCOIN -DCOIN_USE_SYM $(CPPFLAGS) $(CFLAGS) $(SYMCLP_CFLAGS) -c coinplex.cpp -o coinplex_sym.o
++	$(CC) -DCOIN -DC_TO_COIN $(CPPFLAGS) $(CFLAGS) -c eplex.c -o eplex_sym.o
++	$(DYLD) $(DYNLDFLAGS) eplex_sym.o coinplex_sym.o $(SYMCLP_LIBS) $(STDCXXLIB) $(ECLIBS) $(GMP_LD) -o $(ARCH)/seosisymclp.$(OBJ_SUFFIX)
++
++$(ARCH)/seosiglpk.$(OBJ_SUFFIX): dir_$(ARCH) eplex.c coinplex.cpp eplex_coin.h eplex_coin.c eplex.h 
++	$(CXX) -DCOIN -DCOIN_USE_GLPK $(CPPFLAGS) $(CFLAGS) $(OSIGLPK_CFLAGS) -c coinplex.cpp -o coinplex_glpk.o
++	$(CC) -DCOIN -DC_TO_COIN $(CPPFLAGS) $(CFLAGS) -c eplex.c -o eplex_glpk.o
++	$(DYLD) $(DYNLDFLAGS) eplex_glpk.o coinplex_glpk.o $(OSIGLPK_LIBS) $(STDCXXLIB) $(ECLIBS) $(GMP_LD) -o $(ARCH)/seosiglpk.$(OBJ_SUFFIX)
+ 
+ #----------------------------------------------------------------------
+ # EPLEX/CPLEX
+@@ -308,47 +305,33 @@
+ 	cp $(CPLEX1251_SUPPORT_x86_64_nt) x86_64_nt/
+ 	cp $(CPLEX1251_SUPPORT_x86_64_nt) ../lib/x86_64_nt/
+ 
+-x86_64_linux/secplex90.so: eplex.c eplex_cplex.h eplex_cplex.c eplex.h
++x86_64_linux/secplex90.so: dir_x86_64_linux eplex.c eplex_cplex.h eplex_cplex.c eplex.h
+ 	$(CC) -DCPLEX=9 -DCPLEXMINOR=0 $(CPPFLAGS) $(CFLAGS) -I$(THIRDPARTY)/cplex90/include/ilcplex -c eplex.c
+-	$(DYLD) $(DYNLDFLAGS) eplex.o $(THIRDPARTY)/cplex90/lib/x86_64_linux/static_pic/libcplex.a $(ECLIBS) -lpthread -o secplex.so
+-	[ -d x86_64_linux ] || mkdir x86_64_linux
+-	mv secplex.so x86_64_linux/secplex90.so
++	$(DYLD) $(DYNLDFLAGS) eplex.o $(THIRDPARTY)/cplex90/lib/x86_64_linux/static_pic/libcplex.a $(ECLIBS) -lpthread -o x86_64_linux/secplex90.so
+ 
+-x86_64_linux/secplex102.so: eplex.c eplex_cplex.h eplex_cplex.c eplex.h
++x86_64_linux/secplex102.so: dir_x86_64_linux eplex.c eplex_cplex.h eplex_cplex.c eplex.h
+ 	$(CC) -DCPLEX=10 -DCPLEXMINOR=2 $(CPPFLAGS) $(CFLAGS) -I$(THIRDPARTY)/cplex102/include/ilcplex -c eplex.c
+-	$(DYLD) $(DYNLDFLAGS) eplex.o $(THIRDPARTY)/cplex102/lib/x86_64_linux/static_pic/libcplex.a $(ECLIBS) -lpthread -o secplex.so
+-	[ -d x86_64_linux ] || mkdir x86_64_linux
+-	mv secplex.so x86_64_linux/secplex102.so
++	$(DYLD) $(DYNLDFLAGS) eplex.o $(THIRDPARTY)/cplex102/lib/x86_64_linux/static_pic/libcplex.a $(ECLIBS) -lpthread -o x86_64_linux/secplex102.so
+ 
+-x86_64_linux/secplex110.so: eplex.c eplex_cplex.h eplex_cplex.c eplex.h
++x86_64_linux/secplex110.so: dir_x86_64_linux eplex.c eplex_cplex.h eplex_cplex.c eplex.h
+ 	$(CC) -DCPLEX=11 -DCPLEXMINOR=0 $(CPPFLAGS) $(CFLAGS) -I$(THIRDPARTY)/cplex110/include/ilcplex -c eplex.c
+-	$(DYLD) $(DYNLDFLAGS)  eplex.o $(THIRDPARTY)/cplex110/lib/x86_64_linux/static_pic/libcplex.a $(ECLIBS) -lpthread -o secplex.so
+-	[ -d x86_64_linux ] || mkdir x86_64_linux
+-	mv secplex.so x86_64_linux/secplex110.so
++	$(DYLD) $(DYNLDFLAGS)  eplex.o $(THIRDPARTY)/cplex110/lib/x86_64_linux/static_pic/libcplex.a $(ECLIBS) -lpthread -o x86_64_linux/secplex110.so
+ 
+-x86_64_linux/secplex121.so: eplex.c eplex_cplex.h eplex_cplex.c eplex.h
++x86_64_linux/secplex121.so: dir_x86_64_linux eplex.c eplex_cplex.h eplex_cplex.c eplex.h
+ 	$(CC) -DCPLEX=12 -DCPLEXMINOR=1 $(CPPFLAGS) $(CFLAGS) -I$(THIRDPARTY)/cplex121/include/ilcplex -c eplex.c
+-	$(DYLD) $(DYNLDFLAGS) eplex.o $(THIRDPARTY)/cplex121/lib/x86_64_linux/static_pic/libcplex.a $(ECLIBS) -lpthread -o secplex.so
+-	[ -d x86_64_linux ] || mkdir x86_64_linux
+-	mv secplex.so x86_64_linux/secplex121.so
++	$(DYLD) $(DYNLDFLAGS) eplex.o $(THIRDPARTY)/cplex121/lib/x86_64_linux/static_pic/libcplex.a $(ECLIBS) -lpthread -o x86_64_linux/secplex121.so
+ 
+-x86_64_linux/secplex122.so: eplex.c eplex_cplex.h eplex_cplex.c eplex.h
++x86_64_linux/secplex122.so: dir_x86_64_linux eplex.c eplex_cplex.h eplex_cplex.c eplex.h
+ 	$(CC) -DCPLEX=12 -DCPLEXMINOR=2 $(CPPFLAGS) $(CFLAGS) -I$(THIRDPARTY)/cplex122/include/ilcplex -c eplex.c
+-	$(DYLD) $(DYNLDFLAGS) eplex.o $(THIRDPARTY)/cplex122/lib/x86_64_linux/static_pic/libcplex.a $(ECLIBS) -lpthread -o secplex.so
+-	[ -d x86_64_linux ] || mkdir x86_64_linux
+-	mv secplex.so x86_64_linux/secplex122.so
++	$(DYLD) $(DYNLDFLAGS) eplex.o $(THIRDPARTY)/cplex122/lib/x86_64_linux/static_pic/libcplex.a $(ECLIBS) -lpthread -o x86_64_linux/secplex122.so
+ 
+-x86_64_linux/secplex124.so: eplex.c eplex_cplex.h eplex_cplex.c eplex.h
++x86_64_linux/secplex124.so: dir_x86_64_linux eplex.c eplex_cplex.h eplex_cplex.c eplex.h
+ 	$(CC) -DCPLEX=12 -DCPLEXMINOR=4 $(CPPFLAGS) $(CFLAGS) -I$(THIRDPARTY)/cplex124/include/ilcplex -c eplex.c
+-	$(CC) -shared eplex.o $(THIRDPARTY)/cplex124/lib/x86_64_linux/static_pic/libcplex.a $(ECLIBS) -lpthread -o secplex.so
+-	[ -d x86_64_linux ] || mkdir x86_64_linux
+-	mv secplex.so x86_64_linux/secplex124.so
++	$(CC) -shared eplex.o $(THIRDPARTY)/cplex124/lib/x86_64_linux/static_pic/libcplex.a $(ECLIBS) -lpthread -o x86_64_linux/secplex124.so
+ 
+-x86_64_linux/secplex126.so: eplex.c eplex_cplex.h eplex_cplex.c eplex.h
++x86_64_linux/secplex126.so: dir_x86_64_linux eplex.c eplex_cplex.h eplex_cplex.c eplex.h
+ 	$(CC) -DCPLEX=12 -DCPLEXMINOR=6 $(CPPFLAGS) $(CFLAGS) -I$(THIRDPARTY)/cplex126/include/ilcplex -c eplex.c
+-	$(CC) -shared eplex.o $(THIRDPARTY)/cplex126/lib/x86_64_linux/static_pic/libcplex.a $(ECLIBS) -lpthread -o secplex.so
+-	[ -d x86_64_linux ] || mkdir x86_64_linux
+-	mv secplex.so x86_64_linux/secplex126.so
++	$(CC) -shared eplex.o $(THIRDPARTY)/cplex126/lib/x86_64_linux/static_pic/libcplex.a $(ECLIBS) -lpthread -o x86_64_linux/secplex126.so
+ 
+ i386_macosx/secplex110.dylib: eplex.c eplex_cplex.h eplex_cplex.c eplex.h
+ 	$(CC) -DCPLEX=11 -DCPLEXMINOR=0 $(CPPFLAGS) $(CFLAGS) -I$(THIRDPARTY)/cplex110/include/ilcplex -c eplex.c
+@@ -682,24 +665,19 @@
+ # - we add . to the library path because some libraries might not yet
+ #   be installed in ECLIPSEDIR/lib at [fi]compile time
+ 
+-objects:	$(OBJ_FILES)
+-
+ $(PREFIX)/doc/examples/tutorial/%.ecl:	%.ecl $(PREFIX)/doc/examples/tutorial/.stamp
+ 	/bin/cp $< $@
+ 	-@/bin/chmod $(PERM) $@
+ 
+-$(PREFIX)/lib/%.eco:	%.pl $(PREFIX)/lib/.stamp
+-	@$(MAKE) -f $(MAKEFILE) objects
++$(PREFIX)/lib/%.eco:	$(OBJ_FILES) %.pl $(PREFIX)/lib/.stamp
+ 	$(ECLIPSE) -e 'get_flag(library_path,P),set_flag(library_path,["."|P]),lib(fcompile), set_flag(variable_names,off), fcompile("$(*F)", [outdir:"$(@D)"])'
+ 	-@/bin/chmod $(PERM) $@
+ 
+-$(PREFIX)/lib/%.eco:	%.ecl $(PREFIX)/lib/.stamp
+-	@$(MAKE) -f $(MAKEFILE) objects
++$(PREFIX)/lib/%.eco:	$(OBJ_FILES) %.ecl $(PREFIX)/lib/.stamp
+ 	LD_LIBRARY_PATH=$(COINARCHDIR)/lib:$(LD_LIBRARY_PATH) $(ECLIPSE) -e 'get_flag(library_path,P),set_flag(library_path,["."|P]),lib(fcompile), set_flag(variable_names,off), fcompile("$(*F)", [outdir:"$(@D)"])'
+ 	-@/bin/chmod $(PERM) $@
+ 
+-$(PREFIX)/lib/%.eci:	%.ecl $(PREFIX)/lib/.stamp
+-	@$(MAKE) -f $(MAKEFILE) objects
++$(PREFIX)/lib/%.eci:	$(OBJ_FILES) %.ecl $(PREFIX)/lib/.stamp
+ 	LD_LIBRARY_PATH=$(COINARCHDIR)/lib:$(LD_LIBRARY_PATH) $(ECLIPSE) -e 'get_flag(library_path,P),set_flag(library_path,["."|P]),lib(document),icompile("$(*F)","$(@D)")'
+ 	-@/bin/chmod $(PERM) $@
+ 
+--- Eclipse_6.1_187/Eplex/coinplex.cpp
++++ Eclipse_6.1_187/Eplex/coinplex.cpp
+@@ -139,6 +139,7 @@
+ #include <stdio.h>
+ #include <exception>
+ #include <string>
++#include <cmath>
+ using std::string;
+ using namespace std;
+ 

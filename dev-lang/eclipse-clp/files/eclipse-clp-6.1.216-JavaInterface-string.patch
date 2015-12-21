@@ -1,0 +1,10 @@
+--- Eclipse_6.1_204/JavaInterface/ec_java.c
++++ Eclipse_6.1_204/JavaInterface/ec_java.c
+@@ -29,6 +29,7 @@
+  */
+ 
+ #include <stdlib.h>
++#include <string.h>
+ #include <eclipse.h>
+ #include "com_parctechnologies_eclipse_NativeEclipse.h"
+ 

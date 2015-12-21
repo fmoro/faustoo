@@ -1,0 +1,10 @@
+--- Shm/src/configure.in
++++ Shm/src/configure.in
+@@ -201,5 +201,7 @@
+ AC_SUBST(ARCH)
+ AC_SUBST(LOCK)
+ AC_SUBST(S_TO_O)
++AC_SUBST(AR)
++AC_SUBST(OPT_FLAGS)
+ 
+ AC_OUTPUT(Makefile)

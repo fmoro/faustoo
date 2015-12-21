@@ -9,7 +9,7 @@ MY_PV=${MY_PV//_pre/-build}
 MY_IPV=${MY_PV//_/}
 
 DESCRIPTION="Sun Java3D API Core"
-HOMEPAGE="https://j3d.java.net/"
+HOMEPAGE="https://java3d.java.net"
 SRC_URI="
 	amd64? (
 		http://download.java.net/media/java3d/builds/release/${PV}/j3d-${MY_PV}-linux-amd64.zip

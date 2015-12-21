@@ -1,0 +1,31 @@
+--- Eclipse_6.1_204/Visualisation/Makefile.in
++++ Eclipse_6.1_204/Visualisation/Makefile.in
+@@ -61,7 +61,7 @@
+ 
+ ECLIPSE = $(ECLIPSEDIR)/$(BINORLIB)/$(ARCH)/eclipse
+ 
+-CLASSPATH = $(ECLIPSEDIR)/lib/eclipse.jar$(PATHSEP)$(GRAPPA_DIR)/$(GRAPPA_JAR)$(PATHSEP)$(JAVA_CLASS_DIR)$(PATHSEP)$(JRE_HOME)/lib/rt.jar
++CLASSPATH = $(ECLIPSEDIR)/lib/eclipse.jar$(PATHSEP)$(GRAPPA_DIR)/$(GRAPPA_JAR)$(PATHSEP)$(JAVACUP_DIR)/$(JAVACUP_JAR)$(PATHSEP)$(JAVA_CLASS_DIR)$(PATHSEP)$(JRE_HOME)/lib/rt.jar
+ 
+ ECL_ECO_FILES = tty_vc.ecl graphviz_license.ecl vc_support.ecl viewable.ecl batch_goals.ecl java_vc.ecl mutable.ecl graphviz.ecl gnuplot.ecl
+ ECL_ECL_FILES =
+@@ -87,7 +87,7 @@
+ ECL_DEST = $(ECL_ECL_FILES:%.ecl=$(DESTDIR)/%.ecl) \
+ 	$(ECL_ECO_FILES:%.ecl=$(DESTDIR)/%.ecl)
+ 
+-JAR_DEST = $(DESTDIR)/$(JAR_FILE) $(DESTDIR)/$(GRAPPA_JAR)
++JAR_DEST = $(DESTDIR)/$(JAR_FILE)
+ 
+ DOCSDIR=./doc/$(JAVADOC_LEVEL)
+ 
+@@ -162,10 +162,6 @@
+ 
+ 
+ 
+-$(DESTDIR)/$(GRAPPA_JAR): $(GRAPPA_DIR)/$(GRAPPA_JAR)
+-	/bin/cp $< $@
+-	-@/bin/chmod $(PERM) $@
+-
+ $(DESTDIR)/$(JAR_FILE): $(JAVA_SRC_FILES) $(TV_JAVA_SRC_FILES)
+ 	mkdir -p $(JAVA_CLASS_DIR)
+ 	$(JAVAC) -classpath $(CLASSPATH) \

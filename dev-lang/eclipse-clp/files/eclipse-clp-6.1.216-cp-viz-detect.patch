@@ -1,0 +1,25 @@
+--- Eclipse_6.1_204/configure.ac
++++ Eclipse_6.1_204/configure.ac
+@@ -1931,12 +1931,16 @@
+ 
+ ALL_CPVIZ=
+ if test "$cpviz_requested" != "no"; then
+-    for f in "$ECLIPSETHIRDPARTY/batik-"* ; do
+-	if test -d "$f"; then BATIK_DIR="$f"; fi
+-    done
+-    for f in "$ECLIPSETHIRDPARTY/jh"[[0-9]]* ; do
+-	if test -d "$f"; then JHELP_DIR="$f"; fi
+-    done
++    if test -z "$BATIK_DIR" ; then
++	for f in "$ECLIPSETHIRDPARTY/batik-"* ; do
++	    if test -d "$f"; then BATIK_DIR="$f"; fi
++	done
++    fi
++    if test -z "JHELP_DIR" ; then
++	for f in "$ECLIPSETHIRDPARTY/jh"[[0-9]]* ; do
++	    if test -d "$f"; then JHELP_DIR="$f"; fi
++	done
++    fi
+     if test -n "$BATIK_DIR" -a -n "$JHELP_DIR" -a -n "$JAVA_HOME"; then
+ 	ALL_CPVIZ=all_cpviz
+     fi

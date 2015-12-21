@@ -1,0 +1,61 @@
+--- Eclipse_6.1_187/Pds/src/configure
++++ Eclipse_6.1_187/Pds/src/configure
+@@ -539,9 +539,10 @@
+ #
+ # UNIX variants
+ #
+-CC=cc
++CC=${CC:-cc}
++AR=${AR:-ar}
+ DFLAGS="-DTRUSTED -DNDEBUG -DINTERRUPT_SAFE -DBMSGLOG -DAMSGLOG -DALOG_TRACE"
+-CFLAGS="-O"
++CFLAGS=${CFLAGS:-"-O"}
+ case "$ARCH" in
+  sun3)
+     ;;
+@@ -569,7 +570,7 @@
+  i386_sunos5)
+     LIBS="-lsocket -lnsl $LIBS"
+     ;;
+- i386_linux)
++ i386_linux|x86_64_linux)
+     LIBS="-lieee $LIBS"
+     ;;
+  rs_aix32)
+@@ -1368,6 +1369,7 @@
+ s%@mandir@%$mandir%g
+ s%@CPP@%$CPP%g
+ s%@CC@%$CC%g
++s%@AR@%$AR%g
+ s%@DFLAGS@%$DFLAGS%g
+ s%@ARCH@%$ARCH%g
+ s%@RANLIB@%$RANLIB%g
+--- Eclipse_6.1_187/Pds/src/Makefile.in
++++ Eclipse_6.1_187/Pds/src/Makefile.in
+@@ -44,7 +44,7 @@
+ 
+ CCFLAGS = $(CFLAGS) $(DFLAGS) $(IPATH)
+ 
+-AR = ar 
++AR = @AR@
+ RM = /bin/rm -f
+ CP = /bin/cp
+ 
+--- Eclipse_6.1_187/Pds/src/pds.types.h
++++ Eclipse_6.1_187/Pds/src/pds.types.h
+@@ -46,15 +46,6 @@
+ typedef float pds_sp_float;
+ typedef double pds_dp_float;
+ 
+-#define INT8_MIN        -0x80
+-#define INT8_MAX         0x7F
+-#define INT16_MIN       -0x8000
+-#define INT16_MAX        0x7FFF
+-#define UINT16_MAX       0xFFFF
+-#define INT32_MIN       -0x80000000
+-#define INT32_MAX        0x7FFFFFFF
+-#define UINT32_MAX       0xFFFFFFFF
+-
+ #if HAVE_NO_VOID_PTR
+ typedef char * void_ptr;
+ #else

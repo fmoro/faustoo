@@ -1,0 +1,29 @@
+--- Eclipse_6.1_204/configure.ac
++++ Eclipse_6.1_204/configure.ac
+@@ -1818,15 +1818,17 @@
+ ALL_VISUALISATION=
+ if test -n "$JAVA_HOME"; then
+ 
+-    GRAPPA_REQUIRED="1.2"
+-    for version in $GRAPPA_REQUIRED; do
+-	GRAPPA_DIR=$ECLIPSETHIRDPARTY/grappa$version
+-	GRAPPA_JAR=grappa`echo $version|tr . _`.jar
+-	if test -r $GRAPPA_DIR/$GRAPPA_JAR; then
+-	    break
+-	fi
+-	GRAPPA_JAR=
+-    done
++    if test -z "$GRAPPA_DIR" && test -z GRAPPA_JAR ; then
++	GRAPPA_REQUIRED="1.2"
++	for version in $GRAPPA_REQUIRED; do
++	    GRAPPA_DIR=$ECLIPSETHIRDPARTY/grappa$version
++	    GRAPPA_JAR=grappa`echo $version|tr . _`.jar
++	    if test -r $GRAPPA_DIR/$GRAPPA_JAR; then
++		break
++	    fi
++	    GRAPPA_JAR=
++        done
++    fi
+     if test -z "$GRAPPA_JAR"; then
+ 	AC_MSG_WARN([Could not find Grappa ($GRAPPA_REQUIRED) in $ECLIPSETHIRDPARTY])
+     else
