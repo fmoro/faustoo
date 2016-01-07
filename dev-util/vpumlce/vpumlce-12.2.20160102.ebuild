@@ -6,25 +6,24 @@ EAPI=4
 
 inherit versionator eutils
 
-MY_PN="Visual_Paradigm_for_UML"
+MY_PN="Visual_Paradigm_CE" #"for_UML_CE"
 MY_P="${MY_PN}_$(get_version_component_range 1-2)"
 if [[ $(get_version_component_count) == 3 ]]; then
 	MY_PV="$(replace_all_version_separators _)"
-	SRC_URI_FORMAT="http://%s.visual-paradigm.com/archives/${PN}$(get_version_component_range 1-2)/$(get_version_component_range 3)/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz"
-	#SRC_URI_FORMAT="http://%s.visual-paradigm.com/visual-paradigm/${PN}$(get_version_component_range 1-2)/$(get_version_component_range 3)/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz http://%s.visual-paradigm.com/archives/${PN}$(get_version_component_range 1-2)/$(get_version_component_range 3)/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz"
+	SRC_URI_FORMAT="http://%s.visual-paradigm.com/visual-paradigm/vpce$(get_version_component_range 1-2)/$(get_version_component_range 3)/${MY_PN}_${MY_PV}_Linux64_InstallFree.tar.gz
+					http://%s.visual-paradigm.com/archives/vpce$(get_version_component_range 1-2)/$(get_version_component_range 3)/${MY_PN}_${MY_PV}_Linux64_InstallFree.tar.gz"
 else
 	MY_PV="$(replace_all_version_separators _ $(get_version_component_range 1-2))"
 	MY_PV="${MY_PV}_sp$(get_version_component_range 3)"
 	MY_PV="${MY_PV}_$(get_version_component_range 4)"
-	SRC_URI_FORMAT="http://%s.visual-paradigm.com/archives/${PN}$(get_version_component_range 1-2)/sp$(get_version_component_range 3)_$(get_version_component_range 4)/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz"
-	#SRC_URI_FORMAT="http://%s.visual-paradigm.com/visual-paradigm/${PN}$(get_version_component_range 1-2)/sp$(get_version_component_range 3)_$(get_version_component_range 4)/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz http://%s.visual-paradigm.com/archives/${PN}$(get_version_component_range 1-2)/sp$(get_version_component_range 3)_$(get_version_component_range 4)/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz"
+	SRC_URI_FORMAT="http://%s.visual-paradigm.com/visual-paradigm/${PN}$(get_version_component_range 1-2)/sp$(get_version_component_range 3)_$(get_version_component_range 4)/${MY_PN}_Linux_NoInstall_${MY_PV}.tar.gz
+					http://%s.visual-paradigm.com/archives/${PN}$(get_version_component_range 1-2)/sp$(get_version_component_range 3)_$(get_version_component_range 4)/${MY_PN}_Linux_NoInstall_${MY_PV}.tar.gz"
 fi
 
-DESCRIPTION="Visual Paradigm for UML"
+DESCRIPTION="Visual Paradigm for UML Comunity Version"
 HOMEPAGE="http://www.visual-paradigm.com"
 
 SRC_URI=`printf "${SRC_URI_FORMAT} " eu{1..4} usa{5..6}`
-#SRC_URI="http://www.visual-paradigm.com/downloads/vpuml10.2/${MY_PN}_Linux_64bit_NoInstall_${MY_PV}.tar.gz"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -60,7 +59,7 @@ src_install() {
 	chmod +x "${D}${INSTDIR}"/bin/*
 	#dodoc -r Samples
 
-	make_desktop_entry "${INSTDIR}"/bin/${MY_PN} "Visual Paradigm for UML" "${INSTDIR}"/resources/vpuml.png
+	make_desktop_entry "${INSTDIR}"/bin/${MY_P} "Visual Paradigm for UML" "${INSTDIR}"/resources/vpuml.png
 	make_desktop_entry "pkexec ${INSTDIR}/bin/VP-UML_Product_Edition_Manager" "VP UML Product Edition Manager" "${INSTDIR}"/resources/vpuml.png
 
 	dodir /etc/env.d
