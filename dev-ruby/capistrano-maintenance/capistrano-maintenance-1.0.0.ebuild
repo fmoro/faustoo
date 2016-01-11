@@ -4,15 +4,16 @@
 
 EAPI=4
 # ruby19 → pending on net/sftp
-USE_RUBY="ruby18"
+#USE_RUBY="ruby18"
+USE_RUBY="ruby18 ruby19"
 
 RUBY_FAKEGEM_TASK_DOC=""
-RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
+RUBY_FAKEGEM_EXTRADOC="README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A distributed application deployment system"
-HOMEPAGE="http://capify.org/"
+DESCRIPTION="Maintenance tasks for capistrano"
+HOMEPAGE="https://github.com/capistrano/file-permissions"
 
 LICENSE="MIT"
 SLOT="2"
@@ -20,9 +21,9 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos 
 IUSE=""
 
 ruby_add_rdepend "
-	dev-ruby/capistrano
-	dev-ruby/colored
-	dev-ruby/inifile"
+	>=dev-ruby/capistrano-2.0.0"
+#	dev-ruby/colored
+#	dev-ruby/inifile"
 #ruby_add_bdepend "
 #	test? (	dev-ruby/mocha )"
 

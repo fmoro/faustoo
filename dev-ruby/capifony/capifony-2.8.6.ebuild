@@ -22,7 +22,7 @@ IUSE="extra"
 
 ruby_add_rdepend "
 	<=dev-ruby/capistrano-2.16.0
-	dev-ruby/capistrano-maintenance
+	<=dev-ruby/capistrano-maintenance-0.0.5
 	>=dev-ruby/colored-1.2
 	>=dev-ruby/inifile-2.0.2
 	>=dev-ruby/ruby-progressbar-1.0.2
