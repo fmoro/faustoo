@@ -10,7 +10,7 @@ DOCS="README.md"
 
 inherit php-ext-pecl-r2
 
-DESCRIPTION="MongoDB database driver for PHP"
+DESCRIPTION="MongoDB driver for PHP"
 
 LICENSE="Apache-2.0"
 SLOT="0"
