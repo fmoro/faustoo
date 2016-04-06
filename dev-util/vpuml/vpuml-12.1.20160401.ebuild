@@ -8,28 +8,32 @@ inherit versionator eutils
 
 MY_PN="Visual_Paradigm" #_for_UML"
 MY_P="${MY_PN}_$(get_version_component_range 1-2)"
+
 if [[ $(get_version_component_count) == 3 ]]; then
 	MY_PV="$(replace_all_version_separators _)"
-	SRC_URI_FORMAT="http://%s.visual-paradigm.com/visual-paradigm/vp$(get_version_component_range 1-2)/$(get_version_component_range 3)/${MY_PN}_${MY_PV}_Linux64_InstallFree.tar.gz
-		http://%s.visual-paradigm.com/archives/vp$(get_version_component_range 1-2)/$(get_version_component_range 3)/${MY_PN}_${MY_PV}_Linux64_InstallFree.tar.gz"
+	SRC_URI_FORMAT="http://%s.visual-paradigm.com/visual-paradigm/vp$(get_version_component_range 1-2)/$(get_version_component_range 3)
+		http://%s.visual-paradigm.com/archives/vp$(get_version_component_range 1-2)/$(get_version_component_range 3)"
 else
 	MY_PV="$(replace_all_version_separators _ $(get_version_component_range 1-2))"
 	MY_PV="${MY_PV}_sp$(get_version_component_range 3)"
 	MY_PV="${MY_PV}_$(get_version_component_range 4)"
-	SRC_URI_FORMAT="http://%s.visual-paradigm.com/downloads/vp$(get_version_component_range 1-2)/$(get_version_component_range 3)/${MY_PN}_${MY_PV}_Linux64_InstallFree.tar.gz"
+	SRC_URI_FORMAT="http://%s.visual-paradigm.com/visual-paradigm/vp$(get_version_component_range 1-2)/$(get_version_component_range 3)
+		http://%s.visual-paradigm.com/archives/vp$(get_version_component_range 1-2)/$(get_version_component_range 3)"
 fi
+
+URIS=`printf "${SRC_URI_FORMAT} " eu{1..4} usa{5..6}`
 
 DESCRIPTION="Visual Paradigm for UML"
 HOMEPAGE="http://www.visual-paradigm.com"
 
-SRC_URI=`printf "${SRC_URI_FORMAT} " eu{1..4} usa{5..6}`
-#SRC_URI="http://www.visual-paradigm.com/downloads/vp$(get_version_component_range 1-2)/${MY_PN}_Linux64_InstallFree.tar.gz"
+SRC_URI="amd64? ( `for URI in $URIS; do printf "${URI}/%s " "${MY_PN}_${MY_PV}_Linux64_InstallFree.tar.gz"; done` )
+		x86? ( `for URI in $URIS; do printf "${URI}/%s " "${MY_PN}_${MY_PV}_Linux32_InstallFree.tar.gz"; done` )"
 
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="as-is" # actually, proprietary
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RESTRICT="mirror"
