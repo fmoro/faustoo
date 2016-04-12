@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools eutils java-utils-2 readme.gentoo versionator
+inherit autotools eutils java-utils-2 readme.gentoo-r1 versionator
 
 DESCRIPTION="OSS system for the cost-effective development and deployment of constraint programming applications"
 HOMEPAGE="http://eclipseclp.org/"
@@ -44,21 +44,15 @@ REQUIRED_USE="coin? ( gmp ) glpk? ( coin ) parallel? ( tcl )"
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${PN}-6.1.204-Shm.patch \
-		"${FILESDIR}"/${PN}-6.1.204-Usc.patch \
-		"${FILESDIR}"/${PN}-6.1.204-Alog.patch \
-		"${FILESDIR}"/${PN}-6.1.204-Pds.patch \
-		"${FILESDIR}"/${PN}-6.1.204-Eplex.patch \
-		"${FILESDIR}"/${PN}-6.1.194-mysql.patch \
-		"${FILESDIR}"/${PN}-6.1.194-tcl8.6.patch \
-		"${FILESDIR}"/${PN}-6.1.194-AR.patch \
-		"${FILESDIR}"/${PN}-6.1.194-icparc_solvers.patch \
-		"${FILESDIR}"/${PN}-6.1.194-Oci-mkdir.patch \
-		"${FILESDIR}"/${PN}-6.1.194-weclipse.patch \
-		"${FILESDIR}"/${PN}-6.1.204-Visualisation-buildsystem.patch \
-		"${FILESDIR}"/${PN}-6.1.204-grappa-detect.patch \
-		"${FILESDIR}"/${PN}-6.1.204-cp-viz-detect.patch \
-		"${FILESDIR}"/${PN}-6.1.204-JavaInterface-string.patch
+		"${FILESDIR}"/${PN}-6.1.216-Shm.patch \
+		"${FILESDIR}"/${PN}-6.1.216-Usc.patch \
+		"${FILESDIR}"/${PN}-6.1.216-Alog.patch \
+		"${FILESDIR}"/${PN}-6.1.216-Pds.patch \
+		"${FILESDIR}"/${PN}-6.1.216-Eplex2.patch \
+		"${FILESDIR}"/${PN}-6.1.216-Visualisation-buildsystem.patch \
+		"${FILESDIR}"/${PN}-6.1.216-grappa-detect.patch \
+		"${FILESDIR}"/${PN}-6.1.216-cp-viz-detect.patch \
+		"${FILESDIR}"/${PN}-6.1.216-JavaInterface-string.patch
 
 	rm -v ARCH RUNME || die
 
@@ -231,5 +225,4 @@ src_install() {
 	echo "ECLIPSEDIR=\"${EROOT}opt/${PN}\"" > "${T}"/90${PN}
 	doenvd "${T}"/90${PN}
 	dodoc README_UNIX
-	readme.gentoo_create_doc
 }
