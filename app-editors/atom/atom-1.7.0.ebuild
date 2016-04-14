@@ -30,6 +30,7 @@ DEPEND="
 	x11-libs/libXtst
 	dev-libs/nss
 	media-libs/alsa-lib
+	net-print/cups
 "
 RDEPEND="${DEPEND}"
 
@@ -83,7 +84,9 @@ src_install(){
 	fperms +x ${EPREFIX}/usr/share/${PN}/${PN}
 	#fperms +x ${EPREFIX}/usr/share/${PN}/libffmpegsumo.so
 	fperms +x ${EPREFIX}/usr/share/${PN}/libgcrypt.so.11
-	fperms +x ${EPREFIX}/usr/share/${PN}/libnotify.so.4
+	#fperms +x ${EPREFIX}/usr/share/${PN}/libnotify.so.4
+	fperms +x ${EPREFIX}/usr/share/${PN}/libffmpeg.so
+	fperms +x ${EPREFIX}/usr/share/${PN}/libnode.so
 	fperms +x ${EPREFIX}/usr/share/${PN}/resources/app/atom.sh
 	fperms +x ${EPREFIX}/usr/share/${PN}/resources/app/apm/bin/apm
 	fperms +x ${EPREFIX}/usr/share/${PN}/resources/app/apm/bin/node
