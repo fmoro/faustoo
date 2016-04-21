@@ -39,7 +39,8 @@ DEPEND="${RDEPEND}
 	coin? ( sci-libs/coinor-cbc[examples]
 		sci-libs/coinor-osi[glpk?]
 		sci-libs/coinor-symphony[glpk?]
-		glpk? ( <sci-mathematics/glpk-4.54 ) )"
+		glpk? ( <sci-mathematics/glpk-4.54 ) )
+	tcl? ( dev-lang/tk:8.5 )"
 
 S=${WORKDIR}/Eclipse_${MY_PV}
 
@@ -55,7 +56,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-6.1.216-Visualisation-buildsystem.patch \
 		"${FILESDIR}"/${PN}-6.1.216-grappa-detect.patch \
 		"${FILESDIR}"/${PN}-6.1.216-cp-viz-detect.patch \
-		"${FILESDIR}"/${PN}-6.1.216-JavaInterface-string.patch
+		"${FILESDIR}"/${PN}-6.1.216-JavaInterface-string.patch \
+		"${FILESDIR}"/${PN}-6.1.219-interp-result.patch
 
 	rm -v ARCH RUNME || die
 

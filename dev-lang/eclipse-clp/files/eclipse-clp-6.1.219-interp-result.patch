@@ -1,0 +1,24 @@
+diff -Naur Eclipse_6.1_219.orig/Kernel/src/tkeclipse.c Eclipse_6.1_219/Kernel/src/tkeclipse.c
+--- Eclipse_6.1_219.orig/Kernel/src/tkeclipse.c	2016-04-21 16:29:22.728133500 +0200
++++ Eclipse_6.1_219/Kernel/src/tkeclipse.c	2016-04-21 16:30:41.158133704 +0200
+@@ -28,6 +28,8 @@
+  *	Code for embedding eclipse into a tcl program
+  */
+ 
++#define USE_INTERP_RESULT 1
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <errno.h>
+diff -Naur Eclipse_6.1_219.orig/Kernel/src/tkexdr.c Eclipse_6.1_219/Kernel/src/tkexdr.c
+--- Eclipse_6.1_219.orig/Kernel/src/tkexdr.c	2016-04-21 16:29:22.738133500 +0200
++++ Eclipse_6.1_219/Kernel/src/tkexdr.c	2016-04-21 16:31:03.408133763 +0200
+@@ -28,6 +28,8 @@
+  *	Code for exdr communications with ECLiPSe in a tcl program
+  */
+ 
++#define USE_INTERP_RESULT 1
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <errno.h>
