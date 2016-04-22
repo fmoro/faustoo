@@ -40,7 +40,7 @@ DEPEND="${RDEPEND}
 		sci-libs/coinor-osi[glpk?]
 		sci-libs/coinor-symphony[glpk?]
 		glpk? ( <sci-mathematics/glpk-4.54 ) )
-	tcl? ( dev-lang/tk:8.5 )"
+	tcl? ( dev-lang/tk:0/8.5 )"
 
 S=${WORKDIR}/Eclipse_${MY_PV}
 
