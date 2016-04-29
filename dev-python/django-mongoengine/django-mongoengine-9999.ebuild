@@ -25,7 +25,7 @@ SLOT="0"
 #	doc? ( $(python_abi_depend dev-python/sphinx) )
 #	test? ( $(python_abi_depend dev-python/nose)
 #		$(python_abi_depend dev-python/coverage) )"
-RDEPEND=">=dev-python/django-1.5[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/django-1.7[${PYTHON_USEDEP}]
 	>=dev-python/mongoengine-0.8.3[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
