@@ -3,7 +3,7 @@
 # $Header: /var/cvsroot/gentoo-x86/dev-python/django-tastypie/django-tastypie-0.9.15.ebuild,v 1.4 2013/06/06 09:32:46 idella4 Exp $
 
 EAPI=5
-PYTHON_COMPAT=( python{2_6,2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_{3,4,5}} )
 
 inherit distutils-r1 git-2
 
@@ -18,20 +18,18 @@ IUSE="doc +test"
 LICENSE="BSD"
 SLOT="0"
 
-#RDEPEND="$(python_abi_depend ">=dev-python/django-1.5")
-#	$(python_abi_depend ">=dev-python/mongoengine-0.8.3")"
-#DEPEND="${RDEPEND}
-#	$(python_abi_depend dev-python/setuptools)
-#	doc? ( $(python_abi_depend dev-python/sphinx) )
-#	test? ( $(python_abi_depend dev-python/nose)
-#		$(python_abi_depend dev-python/coverage) )"
 RDEPEND=">=dev-python/django-1.7[${PYTHON_USEDEP}]
 	>=dev-python/mongoengine-0.8.3[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? ( dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/coverage[${PYTHON_USEDEP}] )"
+	dev-python/nose[${PYTHON_USEDEP}]
+	dev-python/coverage[${PYTHON_USEDEP}]"
+#DEPEND="${RDEPEND}
+#	dev-python/setuptools[${PYTHON_USEDEP}]
+#	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+#	test? ( dev-python/nose[${PYTHON_USEDEP}]
+#		dev-python/coverage[${PYTHON_USEDEP}] )"
 
 PATCHES=( "${FILESDIR}"/tests-installation.patch )
 
