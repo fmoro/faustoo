@@ -14,5 +14,5 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="|| ( dev-java/gradle-bin
-		dev-java/gradle )"
+RDEPEND="|| ( dev-java/gradle
+		dev-java/gradle-bin )"
