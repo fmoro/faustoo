@@ -24,7 +24,7 @@ KEYWORDS="x86 amd64"
 IUSE=""
 
 RDEPEND="
-	>=virtual/jdk-1.6
+	>=virtual/jdk-1.0
 	x11-libs/gtk+:2"
 
 S=${WORKDIR}/eclipse
@@ -49,4 +49,10 @@ src_install() {
 
 	newbin "${T}"/eclipse-bin-${SLOT} eclipse-bin-${SLOT}
 	make_desktop_entry "eclipse-bin-${SLOT}" "Eclipse ${PV} (bin)" "${dest}/icon.xpm"
+}
+
+pkg_postinst() {
+	einfo "Eclipse Neon uses some features like UseStringDeduplication which are only"
+	einfo "present in Java 1.8 and beyond. So you must set your java-vm to version 1.8"
+	einfo "for the user who will execute it."
 }
