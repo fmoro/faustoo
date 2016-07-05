@@ -13,7 +13,7 @@ SRC_URI="https://services.gradle.org/distributions/${MY_PN}-${PV}-src.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND=">=virtual/jdk-1.5

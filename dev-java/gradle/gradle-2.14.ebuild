@@ -11,7 +11,7 @@ SRC_URI="http://services.gradle.org/distributions/${P}-src.zip"
 HOMEPAGE="http://www.gradle.org/"
 LICENSE="Apache-2.0"
 SLOT="${PV}"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 
 DEPEND="
 	app-arch/zip
@@ -24,6 +24,10 @@ src_compile() {
 	local inst_target="install"
 	use doc && inst_target="installAll"
 	cd "${S}";
+
+	#fix Gradle wrapper Tag Mismatch error: Gradle wrapper Tag Mismatch error
+	sed "s@https@http@" -i gradle/wrapper/gradle-wrapper.properties
+
 	./gradlew --gradle-user-home "${WORKDIR}" "${inst_target}" -Pgradle_installPath=dist || die 'Gradle build failed'
 }
 
