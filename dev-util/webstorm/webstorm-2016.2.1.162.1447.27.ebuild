@@ -6,12 +6,12 @@ EAPI=5
 inherit eutils versionator
 
 SLOT="$(get_major_version)"
-MY_PV="$(get_version_component_range 3-5)"
+MY_PV="$(get_version_component_range 4-6)"
 MY_PN="WebStorm"
 
 DESCRIPTION="JavaScript IDE for complex client-side development and server-side development with Node.js"
 HOMEPAGE="http://www.jetbrains.com/webstorm"
-SRC_URI="http://download.jetbrains.com/${PN}/${MY_PN}-$(get_version_component_range 1-2).tar.gz"
+SRC_URI="http://download.jetbrains.com/${PN}/${MY_PN}-$(get_version_component_range 1-3).tar.gz"
 
 LICENSE="WebStorm WebStorm_Academic WebStorm_Classroom WebStorm_OpenSource WebStorm_personal"
 IUSE="-custom-jdk"

@@ -40,8 +40,10 @@ DESCRIPTION="IntelliJ IDEA is an intelligent Java IDE (Community Edition)"
 HOMEPAGE="http://jetbrains.com/idea/"
 SRC_URI="http://download.jetbrains.com/${MY_PN}/${MY_PN}IC-${MY_PV}.tar.gz"
 LICENSE="Apache-2.0"
-IUSE=""
+IUSE="-custom-jdk"
 KEYWORDS="amd64 x86"
+RDEPEND=">=virtual/jdk-1.7"
+
 S="${WORKDIR}/${MY_PN}-IC-${MY_VERSION_STRING}"
 
 src_prepare() {
@@ -58,6 +60,11 @@ src_prepare() {
 	if ! use x86; then
 		rm -rf plugins/tfsIntegration/lib/native/linux/x86
 	fi
+	if ! use custom-jdk; then
+		if [[ -d jre ]]; then
+			rm -r jre || die
+		fi
+	fi
 	rm -rf plugins/tfsIntegration/lib/native/solaris
 	rm -rf plugins/tfsIntegration/lib/native/hpux
 }
@@ -72,6 +79,13 @@ src_install() {
 
 	insinto "${dir}"
 	doins -r *
+
+	if use custom-jdk; then
+		if [[ -d jre ]]; then
+			fperms -R 755 ${dir}/jre/jre/bin
+		fi
+	fi
+
 	fperms 755 "${dir}/bin/${MY_PN}.sh" "${dir}/bin/fsnotifier" "${dir}/bin/fsnotifier64"
 
 	newicon "bin/idea.png" "${PN}.png"
