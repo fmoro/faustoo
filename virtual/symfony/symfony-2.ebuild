@@ -18,7 +18,7 @@ RDEPEND="dev-lang/php[intl,cli,ctype,mysql,pdo,session,simplexml,tokenizer,xml]
 		apc? ( dev-php/pecl-apc )
 		apache? ( www-servers/apache )
 		nginx? ( www-servers/nginx )
-		mongodb? ( dev-db/mongodb dev-php/pecl-mongo )
+		mongodb? ( dev-db/mongodb dev-php/pecl-mongodb )
 		mysql? ( dev-db/mysql )
 		less? ( net-libs/nodejs )
 		dev? ( dev-ruby/capistrano-symfony )" #dev-php/phpunit )"
