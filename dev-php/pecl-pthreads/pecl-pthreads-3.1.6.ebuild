@@ -18,7 +18,7 @@ HOMEPAGE="https://pecl.php.net/package/pthreads"
 
 LICENSE="PHP-3.01"
 SLOT="0"
-#KEYWORDS="~x86 ~amd64 ~arm ~ppc ~ppc64"
+KEYWORDS="~x86 ~amd64 ~arm ~ppc ~ppc64"
 IUSE=""
 
 DEPEND="dev-lang/php:7.0[threads]"
