@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils
+inherit eutils versionator
 
 MY_PN=${PN/-bin}
 MY_P="${MY_PN}-${PV}"
