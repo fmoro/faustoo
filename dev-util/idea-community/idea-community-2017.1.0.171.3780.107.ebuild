@@ -82,7 +82,7 @@ src_install() {
 
 	if use custom-jdk; then
 		if [[ -d jre ]]; then
-			fperms -R 755 ${dir}/jre/jre/bin
+			fperms -R 755 ${dir}/jre/bin
 		fi
 	fi
 
