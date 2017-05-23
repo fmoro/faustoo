@@ -25,8 +25,8 @@ S="${WORKDIR}/${MY_PN}-${MY_BV}"
 
 src_prepare() {
 	if ! use custom-jdk; then
-		if [[ -d jre ]]; then
-			rm -r jre || die
+		if [[ -d jre64 ]]; then
+			rm -r jre64 || die
 		fi
 	fi
 }
@@ -38,7 +38,7 @@ src_install() {
 	doins -r .
 
 	if use custom-jdk; then
-		if [[ -d jre ]]; then
+		if [[ -d jre64 ]]; then
 			fperms 755 -R ${dir}/jre/bin
 		fi
 	fi

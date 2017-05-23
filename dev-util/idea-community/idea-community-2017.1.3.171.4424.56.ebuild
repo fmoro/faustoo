@@ -63,8 +63,8 @@ src_prepare() {
 		rm -rf plugins/tfsIntegration/lib/native/linux/x86
 	fi
 	if ! use custom-jdk; then
-		if [[ -d jre ]]; then
-			rm -r jre || die
+		if [[ -d jre64 ]]; then
+			rm -r jre64 || die
 		fi
 	fi
 	rm -rf plugins/tfsIntegration/lib/native/solaris
