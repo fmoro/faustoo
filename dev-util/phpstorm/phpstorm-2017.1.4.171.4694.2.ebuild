@@ -18,7 +18,9 @@ LICENSE="PhpStorm PhpStorm_Academic PhpStorm_Classroom PhpStorm_OpenSource PhpSt
 IUSE="-custom-jdk"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND=">=virtual/jdk-1.7"
+REQUIRED_USE="!amd64? ( !custom-jdk )"
+
+RDEPEND="!custom-jdk? ( >=virtual/jdk-1.7 )"
 S="${WORKDIR}/${MY_PN}-${MY_BV}"
 
 src_prepare() {

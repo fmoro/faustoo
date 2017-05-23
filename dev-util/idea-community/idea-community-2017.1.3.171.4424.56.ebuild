@@ -6,7 +6,6 @@ EAPI=5
 inherit eutils versionator
 
 SLOT="0"
-RDEPEND=">=virtual/jdk-1.7"
 
 MY_PV="$(get_version_component_range 1-3)"
 MY_BV="$(get_version_component_range 4-6)"
@@ -42,7 +41,10 @@ SRC_URI="http://download.jetbrains.com/${MY_PN}/${MY_PN}IC-${MY_PV}.tar.gz"
 LICENSE="Apache-2.0"
 IUSE="-custom-jdk"
 KEYWORDS="amd64 x86"
-RDEPEND=">=virtual/jdk-1.7"
+
+REQUIRED_USE="!amd64? ( !custom-jdk )"
+
+RDEPEND="!custom-jdk? ( >=virtual/jdk-1.7 )"
 
 S="${WORKDIR}/${MY_PN}-IC-${MY_BV}"
 
@@ -81,8 +83,8 @@ src_install() {
 	doins -r *
 
 	if use custom-jdk; then
-		if [[ -d jre ]]; then
-			fperms -R 755 ${dir}/jre/bin
+		if [[ -d jre64 ]]; then
+			fperms -R 755 ${dir}/jre64/bin
 		fi
 	fi
 
