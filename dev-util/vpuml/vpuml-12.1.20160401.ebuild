@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
 inherit versionator eutils
 
@@ -32,7 +32,7 @@ SRC_URI="amd64? ( `for URI in $URIS; do printf "${URI}/%s " "${MY_PN}_${MY_PV}_L
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="as-is" # actually, proprietary
-SLOT="0"
+SLOT="0/$(get_version_component_range 1-2)"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
