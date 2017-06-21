@@ -2,7 +2,7 @@ EAPI=4
 
 inherit rpm multilib
 
-DESCRIPTION="Brother DCP-7065DN LPR+cupswrapper drivers"
+DESCRIPTION="Brother DCP-8250DN LPR+cupswrapper drivers"
 HOMEPAGE="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html#DCP-7065DN"
 PV=${PV%.*}-${PV##*.} 
 SRC_URI="http://download.brother.com/welcome/dlf005566/dcp8250dnlpr-${PV}.i386.rpm
