@@ -6,10 +6,9 @@ EAPI=5
 inherit eutils versionator
 
 SLOT="0"
-RDEPEND=">=virtual/jdk-1.7"
 
-MY_VERSION_STRING="$(get_version_component_range 4-6)"
-MY_PV="$(get_version_component_range 1-3)"
+MY_PV="$(get_version_component_range 1-2)"
+MY_BV="$(get_version_component_range 4-6)"
 MY_PN="idea"
 
 RESTRICT="strip"
@@ -42,9 +41,12 @@ SRC_URI="http://download.jetbrains.com/${MY_PN}/${MY_PN}IC-${MY_PV}.tar.gz"
 LICENSE="Apache-2.0"
 IUSE="-custom-jdk"
 KEYWORDS="amd64 x86"
-RDEPEND=">=virtual/jdk-1.7"
 
-S="${WORKDIR}/${MY_PN}-IC-${MY_VERSION_STRING}"
+REQUIRED_USE="!amd64? ( !custom-jdk )"
+
+RDEPEND="!custom-jdk? ( >=virtual/jdk-1.7 )"
+
+S="${WORKDIR}/${MY_PN}-IC-${MY_BV}"
 
 src_prepare() {
 	if ! use amd64; then
@@ -61,8 +63,8 @@ src_prepare() {
 		rm -rf plugins/tfsIntegration/lib/native/linux/x86
 	fi
 	if ! use custom-jdk; then
-		if [[ -d jre ]]; then
-			rm -r jre || die
+		if [[ -d jre64 ]]; then
+			rm -r jre64 || die
 		fi
 	fi
 	rm -rf plugins/tfsIntegration/lib/native/solaris
@@ -81,8 +83,8 @@ src_install() {
 	doins -r *
 
 	if use custom-jdk; then
-		if [[ -d jre ]]; then
-			fperms -R 755 ${dir}/jre/jre/bin
+		if [[ -d jre64 ]]; then
+			fperms -R 755 ${dir}/jre64/bin
 		fi
 	fi
 
