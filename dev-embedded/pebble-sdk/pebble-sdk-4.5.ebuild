@@ -72,7 +72,6 @@ src_install() {
 
 	into "/opt/"
 	dobin "${dir}/bin/pebble"
-	#make_wrapper ${PN} ${dir}bin/pebble
 }
 
 pkg_postinst() {
