@@ -1,17 +1,21 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI="6"
 
-inherit java-pkg-2
+inherit java-pkg-2 versionator
+
+MY_MAJOR_PV="$(get_version_component_range 1-2)"
 
 DESCRIPTION="A project automation and build tool with a Groovy based DSL"
-SRC_URI="http://services.gradle.org/distributions/${P}-src.zip"
+SRC_URI="
+	https://services.gradle.org/distributions/${P}-src.zip
+	https://services.gradle.org/distributions/${PN}-${MY_MAJOR_PV}-bin.zip
+"
 HOMEPAGE="http://www.gradle.org/"
 LICENSE="Apache-2.0"
 SLOT="${PV}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	app-arch/zip
@@ -20,35 +24,37 @@ DEPEND="
 RDEPEND=">=virtual/jdk-1.5"
 IUSE="doc"
 
+src_prepare() {
+	default
+	java-pkg-2_src_prepare
+
+	sed -i "s|https\\\\://services.gradle.org/distributions/|file://${DISTDIR}/|" \
+		gradle/wrapper/gradle-wrapper.properties \
+		|| die 'unable to edit source fetch'
+}
+
 src_compile() {
-	local inst_target="install"
-	use doc && inst_target="installAll"
-	cd "${S}";
-
-	#fix Gradle wrapper Tag Mismatch error: Gradle wrapper Tag Mismatch error
-	sed "s@https@http@" -i gradle/wrapper/gradle-wrapper.properties
-
-	./gradlew --gradle-user-home "${WORKDIR}" "${inst_target}" -Pgradle_installPath=dist || die 'Gradle build failed'
+	./gradlew --gradle-user-home "${WORKDIR}" "$(usex doc installAll install)" -Pgradle_installPath=dist || die 'Gradle build failed'
 }
 
 src_install() {
-	cd dist
-	dodoc changelog.txt getting-started.html
-
 	local gradle_dir="${EROOT}usr/share/${PN}-${SLOT}"
+
+	cd dist || die
+	dodoc getting-started.html
 
 	insinto "${gradle_dir}"
 
 	# jars in lib/
 	# Note that we can't strip the version from the gradle jars,
 	# because then gradle won't find them.
-	cd lib
+	cd lib || die "lib/ not found"
 	for jar in *.jar; do
 		java-pkg_newjar ${jar} ${jar}
 	done
 
 	# plugins in lib/plugins
-	cd plugins
+	cd plugins || die
 	java-pkg_jarinto ${JAVA_PKG_JARDEST}/plugins
 	for jar in *.jar; do
 		java-pkg_newjar ${jar} ${jar}
