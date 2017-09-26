@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="mlaunch mplotqueries test"
 
 RDEPEND="mlaunch? ( dev-python/psutil[${PYTHON_USEDEP}]
-					dev-python/pymongo[${PYTHON_USEDEP}] )
+					>=dev-python/pymongo-3.3.0[${PYTHON_USEDEP}] )
 		mplotqueries? ( dev-python/matplotlib[${PYTHON_USEDEP}]
 					dev-python/numpy[${PYTHON_USEDEP}] )"
 DEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
