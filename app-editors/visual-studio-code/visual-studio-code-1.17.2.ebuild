@@ -7,12 +7,12 @@ EAPI=6
 inherit eutils pax-utils
 
 
-RELEASE="27492b6bf3acb0775d82d2f87b25a93490673c6d"
+RELEASE="b813d12980308015bcd2b3a2f6efa5c810c33ba5"
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
 SRC_URI="
-	x86? ( https://az764295.vo.msecnd.net/stable/${RELEASE}/code-stable-code_${PV}-1505406503_i386.tar.gz -> ${P}_i386.tar.gz )
-	amd64? ( https://az764295.vo.msecnd.net/stable/${RELEASE}/code-stable-code_${PV}-1505406497_amd64.tar.gz -> ${P}_amd64.tar.gz )
+	x86? ( https://az764295.vo.msecnd.net/stable/${RELEASE}/code-stable-code_${PV}-1508162326_i386.tar.gz -> ${P}_i386.tar.gz )
+	amd64? ( https://az764295.vo.msecnd.net/stable/${RELEASE}/code-stable-code_${PV}-1508162334_amd64.tar.gz -> ${P}_amd64.tar.gz )
 	"
 RESTRICT="mirror strip"
 
@@ -30,10 +30,18 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-ARCH="$(uname -m)"
+#ARCH="$(uname -m)"
 
-[[ ${ARCH} == "x86_64" ]] && S="${WORKDIR}/VSCode-linux-x64"
-[[ ${ARCH} != "x86_64" ]] && S="${WORKDIR}/VSCode-linux-ia32"
+#[[ ${ARCH} == "x86_64" ]] && S="${WORKDIR}/VSCode-linux-x64"
+#[[ ${ARCH} != "x86_64" ]] && S="${WORKDIR}/VSCode-linux-ia32"
+
+pkg_setup() {
+	if use amd64; then
+		S="${WORKDIR}/VSCode-linux-x64"
+	elif use x86; then
+		S="${WORKDIR}/VSCode-linux-ia32"
+	fi
+}
 
 src_install(){
 	pax-mark m code
