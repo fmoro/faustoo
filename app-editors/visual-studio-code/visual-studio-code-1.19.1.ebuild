@@ -22,18 +22,61 @@ KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND="
-	>=media-libs/libpng-1.2.46
+	sys-libs/glibc
+	sys-devel/gcc
 	>=x11-libs/gtk+-2.24.8-r1:2
 	x11-libs/cairo
+	x11-libs/pango
+	dev-libs/atk
+	x11-libs/gdk-pixbuf
+	dev-libs/glib
+	media-libs/freetype
+	media-libs/fontconfig
+	sys-apps/dbus
+	x11-libs/libX11
+	x11-libs/libxcb
+	x11-libs/libXi
+	x11-libs/libXcursor
+	x11-libs/libXdamage
+	x11-libs/libXrandr
+	x11-libs/libXcomposite
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libXrender
+	x11-libs/libXtst
+	x11-libs/libXScrnSaver
 	gnome-base/gconf
+	dev-libs/nss
+	dev-libs/nspr
+	media-libs/alsa-lib
+	net-print/cups
+	dev-libs/expat
+	x11-libs/libXinerama
+	x11-libs/pixman
+	media-libs/mesa
+	media-libs/libpng
+	sys-libs/zlib
+	dev-libs/libffi
+	app-arch/bzip2
+	x11-libs/libXau
+	x11-libs/libXdmcp
+	dev-libs/dbus-glib
+	dev-libs/libpcre
+	net-libs/gnutls
+	media-libs/harfbuzz
+	x11-libs/libxshmfence
+	x11-libs/libdrm
+	x11-libs/libXxf86vm
+	dev-libs/libbsd
+	dev-libs/libunistring
+	dev-libs/libtasn1
+	dev-libs/nettle
+	dev-libs/gmp
+	net-dns/libidn2
+	media-gfx/graphite2
 "
 
 RDEPEND="${DEPEND}"
-
-#ARCH="$(uname -m)"
-
-#[[ ${ARCH} == "x86_64" ]] && S="${WORKDIR}/VSCode-linux-x64"
-#[[ ${ARCH} != "x86_64" ]] && S="${WORKDIR}/VSCode-linux-ia32"
 
 pkg_setup() {
 	if use amd64; then
