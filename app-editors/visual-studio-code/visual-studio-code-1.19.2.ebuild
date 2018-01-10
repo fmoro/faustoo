@@ -7,12 +7,12 @@ EAPI=6
 inherit eutils pax-utils
 
 
-RELEASE="0759f77bb8d86658bc935a10a64f6182c5a1eeba"
+RELEASE="490ef761b76b3f3b3832eff7a588aac891e5fe80"
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
 SRC_URI="
-	x86? ( https://az764295.vo.msecnd.net/stable/${RELEASE}/code-stable-code_${PV}-1513676574_i386.tar.gz -> ${P}_i386.tar.gz )
-	amd64? ( https://az764295.vo.msecnd.net/stable/${RELEASE}/code-stable-code_${PV}-1513676564_amd64.tar.gz -> ${P}_amd64.tar.gz )
+	x86? ( https://az764295.vo.msecnd.net/stable/${RELEASE}/code-stable-code_${PV}-1515599957_i386.tar.gz -> ${P}_i386.tar.gz )
+	amd64? ( https://az764295.vo.msecnd.net/stable/${RELEASE}/code-stable-code_${PV}-1515599945_amd64.tar.gz -> ${P}_amd64.tar.gz )
 	"
 RESTRICT="mirror strip"
 
@@ -97,6 +97,10 @@ src_install(){
 	fperms +x "/opt/${PN}/code"
 	fperms +x "/opt/${PN}/libnode.so"
 	fperms +x "/opt/${PN}/libffmpeg.so"
+
+	#fix Spawn EACESS bug #25848
+	fperms +x "/opt/${PN}/resources/app/node_modules/vscode-ripgrep/bin/rg"
+
 	insinto "/usr/share/licenses/${PN}"
 	newins "resources/app/LICENSE.txt" "LICENSE"
 }
