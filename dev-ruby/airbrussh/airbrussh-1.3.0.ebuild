@@ -1,24 +1,34 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23"
+EAPI=6
+USE_RUBY="ruby22 ruby23"
 
-RUBY_FAKEGEM_RECIPE_TEST="rspec"
+RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
-RUBY_FAKEGEM_TASK_DOC=""
-RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
+RUBY_FAKEGEM_BINWRAP=""
 
 inherit ruby-fakegem
 
-DESCRIPTION="A replacement log formatter for SSHKit that makes Capistrano output much easier on the eyes"
+DESCRIPTION="A replacement log formatter for SSHKit"
 HOMEPAGE="https://github.com/mattbrictson/airbrussh"
+SRC_URI="https://github.com/mattbrictson/airbrussh/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
-SLOT="0"
+SLOT="1"
+KEYWORDS="~amd64"
 IUSE=""
 
-ruby_add_rdepend "
-	>=dev-ruby/sshkit-1.7.0"
+# Tests appear to be incompatible with recent minitest and mocha leading to errors on the use of stubs.
+RESTRICT="test"
+
+ruby_add_rdepend ">dev-ruby/sshkit-1.7.0"
+
+ruby_add_bdepend "test? ( dev-ruby/mocha )"
+
+all_ruby_prepare() {
+	rm -f test/support/minitest_reporters.rb || die
+
+	# Avoid a test poluting the environment
+	sed -i -e '/test_color_is_can_be_forced_via_env/,/^  end/ s:^:#:' test/airbrussh/console_test.rb || die
+}
