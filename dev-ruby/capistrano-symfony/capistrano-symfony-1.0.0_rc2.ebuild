@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
-USE_RUBY="ruby19 ruby20 ruby21"
+EAPI=6
+USE_RUBY="ruby22 ruby23"
 
 inherit versionator
 
