@@ -99,7 +99,7 @@ src_install(){
 	fperms +x "/opt/${PN}/libffmpeg.so"
 
 	#fix Spawn EACESS bug #25848
-	fperms +x "/opt/${PN}/resources/app/node_modules/vscode-ripgrep/bin/rg"
+	fperms +x "/opt/${PN}/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg"
 
 	insinto "/usr/share/licenses/${PN}"
 	newins "resources/app/LICENSE.txt" "LICENSE"
