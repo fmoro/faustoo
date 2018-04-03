@@ -1,3 +1,4 @@
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -8,7 +9,7 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 DOCS="README.API"
 
-USE_PHP="php5-3 php5-4 php5-5"
+USE_PHP="php5-6"
 
 inherit php-ext-pecl-r2
 
@@ -21,7 +22,7 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64 ~arm ~ppc ~ppc64"
 IUSE=""
 
-DEPEND=">=dev-lang/php-5.3[threads]"
+DEPEND="dev-lang/php:5.6[threads]"
 RDEPEND="${DEPEND}"
 
 my_conf="--enable-pthreads"
