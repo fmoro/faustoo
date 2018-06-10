@@ -38,6 +38,7 @@ src_prepare() {
 		config.mk || die "sed failed"
 	epatch "${FILESDIR}"/${P}-glibc-2.10.patch
 	epatch "${FILESDIR}"/${P}-x86_64.patch
+	epatch "${FILESDIR}"/${P}-gcc7.patch
 }
 
 src_install() {

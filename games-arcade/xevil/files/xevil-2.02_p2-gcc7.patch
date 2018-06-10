@@ -1,0 +1,108 @@
+diff -Naur cmn.old/game.cpp cmn/game.cpp
+--- cmn.old/game.cpp	2018-06-10 16:28:12.188718415 +0200
++++ cmn/game.cpp	2018-06-10 16:27:51.398718578 +0200
+@@ -577,7 +577,7 @@
+       assert(maximums[weapons[n]->classId] == 0);
+ 
+       // Don't allow objectWorldPercent values that are too small.
+-      float objWPercent = (float)max(weapons[n]->objectWorldPercent,
++      float objWPercent = (float)maxcustom(weapons[n]->objectWorldPercent,
+ 			      OBJECT_WORLD_PERCENT_MIN);
+ 
+       maximums[weapons[n]->classId] = (int)ceil(areaFactor * objWPercent);
+@@ -590,7 +590,7 @@
+     for (n = 0; n < oItemsNum; n++) {
+       // Check not already set.
+       assert(maximums[oItems[n]->classId] == 0);
+-      float objWPercent = (float)max(oItems[n]->objectWorldPercent,
++      float objWPercent = (float)maxcustom(oItems[n]->objectWorldPercent,
+ 			      OBJECT_WORLD_PERCENT_MIN);
+ 
+       maximums[oItems[n]->classId] = (int)ceil(areaFactor * objWPercent);
+diff -Naur cmn.old/utils.h cmn/utils.h
+--- cmn.old/utils.h	2018-06-10 16:28:12.208718415 +0200
++++ cmn/utils.h	2018-06-10 16:27:51.398718578 +0200
+@@ -98,11 +98,11 @@
+ #define MSEC_PER_CLOCK (1.0e3 / CLOCKS_PER_SEC) 
+ #endif
+ 
+-#ifndef max
+-#define max(a,b)               (a<b ? b : a)
++#ifndef maxcustom
++#define maxcustom(a,b)               (a<b ? b : a)
+ #endif
+-#ifndef min
+-#define min(a,b)               (a>b ? b : a)
++#ifndef mincustom
++#define mincustom(a,b)               (a>b ? b : a)
+ #endif
+ 
+ #if X11
+diff -Naur win32.old/draw.cpp win32/draw.cpp
+--- win32.old/draw.cpp	2000-01-19 12:54:28.000000000 +0100
++++ win32/draw.cpp	2018-06-10 16:27:51.378718579 +0200
+@@ -205,10 +205,10 @@
+   HRESULT t_result;
+   for(;offsetx < area.get_size().width;) {
+     for(;offsety < area.get_size().height;) {
+-        t_destrect.SetRect(offsetx,offsety,min(offsetx + t_srcrect.Width(),area.get_size().width),
+-                           min(offsety+t_srcrect.Height(),area.get_size().height));
+-        t_srcrect.right = min(backgrounds[backgroundIndex].size.width,t_srcrect.left + t_destrect.Width());
+-        t_srcrect.bottom = min(backgrounds[backgroundIndex].size.height,t_srcrect.top + t_destrect.Height());
++        t_destrect.SetRect(offsetx,offsety,mincustom(offsetx + t_srcrect.Width(),area.get_size().width),
++                           mincustom(offsety+t_srcrect.Height(),area.get_size().height));
++        t_srcrect.right = mincustom(backgrounds[backgroundIndex].size.width,t_srcrect.left + t_destrect.Width());
++        t_srcrect.bottom = mincustom(backgrounds[backgroundIndex].size.height,t_srcrect.top + t_destrect.Height());
+         if (t_srcrect.Width() && t_srcrect.Height()) {
+           // Now, lookup surface in SurfaceManger.  t_surfrect is t_srcrect adjusted for the 
+           // SurfaceManager surface offset.
+diff -Naur win32.old/firepal.cpp win32/firepal.cpp
+--- win32.old/firepal.cpp	2000-01-19 12:54:28.000000000 +0100
++++ win32/firepal.cpp	2018-06-10 16:27:51.378718579 +0200
+@@ -33,7 +33,7 @@
+   m_dir=-1*FIRE_AMOUNT;
+   for (int i=0;i<PALENTRIES;i++)//first 10 and last 10 are reserved
+   {
+-	  m_palette.palentries[i].peRed=p_palette.palentries[i].peRed; //min(255,(unsigned char)(p_palette.palentries[i].peRed*FIRE_MOD+p_palette.palentries[i].peGreen*FIRE_MOD+p_palette.palentries[i].peBlue*FIRE_MOD)/3);
++	  m_palette.palentries[i].peRed=p_palette.palentries[i].peRed; //mincustom(255,(unsigned char)(p_palette.palentries[i].peRed*FIRE_MOD+p_palette.palentries[i].peGreen*FIRE_MOD+p_palette.palentries[i].peBlue*FIRE_MOD)/3);
+ 	  m_palette.palentries[i].peGreen=p_palette.palentries[i].peGreen; //p_palette.palentries[i].peGreen/2;
+ 	  m_palette.palentries[i].peBlue=p_palette.palentries[i].peBlue;//p_palette.palentries[i].peBlue/2;
+   }
+diff -Naur win32.old/fsstatus.cpp win32/fsstatus.cpp
+--- win32.old/fsstatus.cpp	2000-01-19 12:54:26.000000000 +0100
++++ win32/fsstatus.cpp	2018-06-10 16:27:51.378718579 +0200
+@@ -79,7 +79,7 @@
+   t_rect.right=(int)(t_rect.left+((float)m_pos/(float)m_maxpos)*(m_clientpos.Width()-TEXTINDENT));
+   CBrush t_solidbrush;
+   float r=(float)m_pos/(float)m_maxpos;
+-  t_solidbrush.CreateSolidBrush(RGB(255*min(2-2*r,1),255*min(2*r,1),0));
++  t_solidbrush.CreateSolidBrush(RGB(255*mincustom(2-2*r,1),255*mincustom(2*r,1),0));
+   t_dc->SelectObject(&t_solidbrush);
+   t_dc->PatBlt(t_rect.left,t_rect.top,t_rect.Width(),t_rect.Height(),PATCOPY);
+   t_rect.left=t_rect.right+1;
+diff -Naur win32.old/sound.cpp win32/sound.cpp
+--- win32.old/sound.cpp	2000-01-19 12:54:24.000000000 +0100
++++ win32/sound.cpp	2018-06-10 16:27:51.378718579 +0200
+@@ -495,7 +495,7 @@
+ 	int t_distance=m_keypositions[0].distance_2(t_pos);
+ 	for (int i=1;i<m_numkeypositions;i++)
+ 	{
+-		t_distance=min(t_distance,m_keypositions[i].distance_2(t_pos));
++		t_distance=mincustom(t_distance,m_keypositions[i].distance_2(t_pos));
+ 	}
+ 	for (i=0;i<MAX_CHANNELS;i++)
+ 	{
+diff -Naur win32.old/xdata.h win32/xdata.h
+--- win32.old/xdata.h	2000-01-19 12:52:08.000000000 +0100
++++ win32/xdata.h	2018-06-10 16:27:51.378718579 +0200
+@@ -224,8 +224,8 @@
+ 
+   //contain methods
+   CRect contain_rect(const CRect &rect, int maxwidth, int maxheight, int minwidth =0, int minheight =0)
+-    {return CRect(min(max(minwidth,rect.left),maxwidth),min(max(minheight,rect.top),maxheight)
+-    ,min(max(minwidth,rect.right),maxwidth),min(max(minheight,rect.bottom),maxheight));}
++    {return CRect(mincustom(maxcustom(minwidth,rect.left),maxwidth),mincustom(maxcustom(minheight,rect.top),maxheight)
++    ,mincustom(maxcustom(minwidth,rect.right),maxwidth),mincustom(maxcustom(minheight,rect.bottom),maxheight));}
+ 
+   static BOOL color_match_palette(PALETTEENTRY *p_source, PALETTEENTRY *p_dest, int p_numentries);
+ 
