@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_{3,4,5}} )
+PYTHON_COMPAT=( python{2_7,3_{3,4,5,6}} )
 
 # silly captcha test trying to access things over the network
 #RESTRICT="test"

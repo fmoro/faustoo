@@ -3,7 +3,7 @@
 # $Header: /var/cvsroot/gentoo-x86/dev-python/django-tastypie/django-tastypie-0.9.15.ebuild,v 1.4 2013/06/06 09:32:46 idella4 Exp $
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_{3,4,5}} )
+PYTHON_COMPAT=( python{2_7,3_{3,4,5,6}} )
 
 inherit distutils-r1 git-2
 
@@ -11,7 +11,7 @@ DESCRIPTION="A flexible and capable API layer for django utilising serialisers"
 HOMEPAGE="https://github.com/jschrewe/django-mongodbforms"
 #SRC_URI="https://github.com/jschrewe/${PN}/archive/${PV}.tar.gz"
 #EGIT_REPO_URI="https://github.com/jschrewe/django-mongodbforms"
-EGIT_REPO_URI="https://github.com/drzayer/django-mongodbforms"
+EGIT_REPO_URI="https://github.com/fmoro/django-mongodbforms"
 
 KEYWORDS="~amd64 ~x86"
 IUSE="bip doc digest xml oauth test yaml"
