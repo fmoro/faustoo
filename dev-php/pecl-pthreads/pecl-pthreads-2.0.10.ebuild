@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 PHP_EXT_NAME="pthreads"
 PHP_EXT_PECL_PKG="pthreads"
@@ -11,7 +11,7 @@ DOCS="README.API"
 
 USE_PHP="php5-6"
 
-inherit php-ext-pecl-r2
+inherit php-ext-pecl-r3
 
 DESCRIPTION="PHP front-end to POSIX threads library"
 
