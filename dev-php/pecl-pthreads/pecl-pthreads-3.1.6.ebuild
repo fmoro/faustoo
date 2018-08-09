@@ -6,7 +6,7 @@ PHP_EXT_NAME="pthreads"
 PHP_EXT_PECL_PKG="pthreads"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
-DOCS="README.API"
+DOCS="README.md"
 
 USE_PHP="php7-0"
 
