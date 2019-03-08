@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=VIC20
+Type=Application
+Comment=Commodore VIC20 emulator
+Exec=xvic
+TryExec=xvic
+Icon=vice-logo
+Categories=X-Vice
+

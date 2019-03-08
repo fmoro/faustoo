@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=CBM-II (6x0/7x0)
+Type=Application
+Comment=Commodore CBM-II (6x0/7x0) emulator
+Exec=xcbm2
+TryExec=xcbm2
+Icon=vice-logo
+Categories=X-Vice
+

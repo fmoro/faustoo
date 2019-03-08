@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PET
+Type=Application
+Comment=Commodore PET emulator
+Exec=xpet
+TryExec=xpet
+Icon=vice-logo
+Categories=X-Vice
+

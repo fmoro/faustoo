@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=CBM-II (5x0)
+Type=Application
+Comment=Commodore CBM-II (5x0) emulator
+Exec=xcbm5x0
+TryExec=xcbm5x0
+Icon=vice-logo
+Categories=X-Vice
+

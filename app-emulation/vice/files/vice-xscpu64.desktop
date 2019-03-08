@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=SCPU64
+Type=Application
+Comment=SCPU64 emulator
+Exec=xscpu64
+TryExec=xscpu64
+Icon=vice-logo
+Categories=X-Vice
+

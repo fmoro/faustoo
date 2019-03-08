@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=C128
+Type=Application
+Comment=Commodore 128 emulator
+Exec=x128
+TryExec=x128
+Icon=vice-logo
+Categories=X-Vice
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=C64
+Type=Application
+Comment=Commodore 64 emulator
+Exec=x64
+TryExec=x64
+Icon=vice-logo
+Categories=X-Vice
+

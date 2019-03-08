@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Plus4
+Type=Application
+Comment=Commodore Plus4 emulator
+Exec=xplus4
+TryExec=xplus4
+Icon=vice-logo
+Categories=X-Vice
+

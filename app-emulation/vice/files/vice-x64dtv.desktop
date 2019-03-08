@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=C64DTV
+Type=Application
+Comment=C64DTV emulator
+Exec=x64dtv
+TryExec=x64dtv
+Icon=vice-logo
+Categories=X-Vice
+
