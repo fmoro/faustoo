@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="xa is Andre Fachat's open-source 6502 cross assembler"
-HOMEPAGE="xa is Andre Fachat's open-source 6502 cross assembler"
+HOMEPAGE="https://www.floodgap.com/retrotech/xa/"
 SRC_URI="https://www.floodgap.com/retrotech/xa/dists/xa-2.3.9.tar.gz"
 
 LICENSE="GPL-v2"
