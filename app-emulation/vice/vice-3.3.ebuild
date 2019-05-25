@@ -34,8 +34,8 @@ RDEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 	sdlsound? ( media-libs/libsdl[sound] )
 	ethernet? (
-	    >=net-libs/libpcap-0.9.8
-	    >=net-libs/libnet-1.1.2.1:1.1
+		>=net-libs/libpcap-0.9.8
+		>=net-libs/libnet-1.1.2.1:1.1
 	)
 	ffmpeg? (
 		libav? ( media-video/libav:= )
@@ -177,6 +177,7 @@ src_install() {
 	doins "${FILESDIR}/${PN}.directory"
 	domenu ${FILESDIR}/vice-x128.desktop
 	domenu ${FILESDIR}/vice-x64.desktop
+	domenu ${FILESDIR}/vice-x64sc.desktop
 	domenu ${FILESDIR}/vice-x64dtv.desktop
 	domenu ${FILESDIR}/vice-xcbm2.desktop
 	domenu ${FILESDIR}/vice-xcbm5x0.desktop

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=C64 accurate
+Type=Application
+Comment=Commodore 64 accurate emulator
+Exec=x64sc
+TryExec=x64sc
+Icon=vice-logo
+Categories=X-Vice
+
