@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="Libshout-idjc is libshout plus some extensions for IDJC"
-HOMEPAGE="http://sourceforge.net/projects/idjc/files/libshout-idjc/"
+HOMEPAGE="https://sourceforge.net/projects/libshoutidjc.idjc.p/"
 RESTRICT="mirror"
 SRC_URI="mirror://sourceforge/libshoutidjc.idjc.p/${P}.tar.gz"
 
