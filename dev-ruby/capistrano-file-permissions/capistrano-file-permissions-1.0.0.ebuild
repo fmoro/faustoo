@@ -3,7 +3,7 @@
 # $Header: /var/cvsroot/gentoo-x86/dev-ruby/capistrano/capistrano-2.13.4.ebuild,v 1.1 2012/10/04 06:06:34 graaff Exp $
 
 EAPI=6
-USE_RUBY="ruby22 ruby23"
+USE_RUBY="ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC=""

@@ -4,7 +4,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23"
+USE_RUBY="ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 RUBY_FAKEGEM_TASK_DOC=""

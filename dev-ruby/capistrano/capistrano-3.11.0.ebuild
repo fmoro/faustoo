@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby22 ruby23"
+USE_RUBY="ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 
