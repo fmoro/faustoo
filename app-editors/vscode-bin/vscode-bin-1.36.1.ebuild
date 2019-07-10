@@ -96,7 +96,9 @@ src_install(){
 	make_desktop_entry "${PN}" "Visual Studio Code" "${PN}" "Development;IDE"
 	doicon ${FILESDIR}/${PN}.png
 	fperms +x "/opt/${PN}/code"
-	fperms +x "/opt/${PN}/libnode.so"
+	#fperms +x "/opt/${PN}/libnode.so"
+	fperms +x "/opt/${PN}/libEGL.so"
+	fperms +x "/opt/${PN}/libGLESv2.so"
 	fperms +x "/opt/${PN}/libffmpeg.so"
 
 	#fix Spawn EACESS bug #25848
