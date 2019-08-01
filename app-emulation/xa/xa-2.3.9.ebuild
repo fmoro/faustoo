@@ -16,4 +16,8 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-
+src_install() {
+	echo "${D}"
+	emake DESTDIR="${D}/usr" install
+	dodoc README.1st ChangeLog
+}
