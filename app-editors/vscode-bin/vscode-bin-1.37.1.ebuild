@@ -7,19 +7,15 @@ EAPI=6
 inherit eutils pax-utils
 
 
-X86_RELEASE="c7d83e57cd18f18026a8162d042843bda1bcf21f"
-AMD64_RELEASE="2213894ea0415ee8c85c5eea0d0ff81ecc191529"
+RELEASE="f06011ac164ae4dc8e753a3fe7f9549844d15e35"
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
-SRC_URI="
-	x86? ( https://az764295.vo.msecnd.net/stable/${X86_RELEASE}/code-stable-1560349812.tar.gz -> ${P}_i386.tar.gz )
-	amd64? ( https://az764295.vo.msecnd.net/stable/${AMD64_RELEASE}/code-stable-1562627471.tar.gz -> ${P}_amd64.tar.gz )
-	"
+SRC_URI="https://az764295.vo.msecnd.net/stable/${RELEASE}/code-stable-1565886317.tar.gz -> ${P}_amd64.tar.gz"
 RESTRICT="mirror strip"
 
 LICENSE="Microsoft"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="
@@ -78,14 +74,7 @@ DEPEND="
 "
 
 RDEPEND="${DEPEND}"
-
-pkg_setup() {
-	if use amd64; then
-		S="${WORKDIR}/VSCode-linux-x64"
-	elif use x86; then
-		S="${WORKDIR}/VSCode-linux-ia32"
-	fi
-}
+S="${WORKDIR}/VSCode-linux-x64"
 
 src_install(){
 	pax-mark m code
