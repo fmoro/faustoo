@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{3,4,5,6}} )
 inherit distutils-r1 git-2
 
 DESCRIPTION="A flexible and capable API layer for django utilising serialisers"
-HOMEPAGE="https://github.com/jschrewe/django-mongodbforms"
+HOMEPAGE="https://github.com/jschrewe/django-mongogeneric"
 #SRC_URI="https://github.com/jschrewe/${PN}/archive/${PV}.tar.gz"
 EGIT_REPO_URI="https://github.com/jschrewe/django-mongogeneric"
 

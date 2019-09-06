@@ -1,5 +1,7 @@
+app-emulation/c64-debugger
 media-libs/libopenshot
 media-libs/libopenshot-audio
+media-plugins/frei0r-plugins
 media-video
 net-libs
 net-misc
