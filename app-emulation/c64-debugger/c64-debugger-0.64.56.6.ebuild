@@ -29,7 +29,6 @@ src_compile() {
 
 src_install() {
 	dodoc MTEngine/Assets/README.txt
-	dodoc MTEngine/Assets/C64_Debugger_Manual_v0.64.56.pdf
 
 	dobin MTEngine/c64debugger
 	newicon MTEngine/Assets/icons\ C64\ Debugger/Images.xcassets/AppIcon.appiconset/icon128.png c64debugger.png
