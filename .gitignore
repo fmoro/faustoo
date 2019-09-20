@@ -3,6 +3,5 @@ media-libs/libopenshot
 media-libs/libopenshot-audio
 media-plugins/frei0r-plugins
 media-video
-net-libs
 net-misc
 x11-drivers
