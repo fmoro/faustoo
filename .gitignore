@@ -1,7 +1,10 @@
+app-portage
 app-emulation/c64-debugger-bin
+dev-python/PyQt5
 media-libs/libopenshot
 media-libs/libopenshot-audio
-media-plugins/frei0r-plugins
+media-plugins
 media-video
+net-im
 net-misc
 x11-drivers
