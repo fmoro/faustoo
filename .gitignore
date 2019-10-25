@@ -1,6 +1,7 @@
 app-portage
 app-emulation/c64-debugger-bin
 dev-python/PyQt5
+dev-vcs
 media-libs/libopenshot
 media-libs/libopenshot-audio
 media-plugins
