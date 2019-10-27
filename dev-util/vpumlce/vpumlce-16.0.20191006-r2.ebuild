@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
 inherit versionator eutils
 
@@ -45,9 +45,6 @@ RDEPEND=">=virtual/jre-1.5
 INSTDIR="/opt/${MY_PN}"
 
 src_compile() {
-	./jre/bin/unpack200 -r ./jre/lib/javafx-swt.jar.pack ./jre/lib/javafx-swt.jar
-	./jre/bin/unpack200 -r ./jre/lib/jrt-fs.jar.pack ./jre/lib/jrt-fs.jar
-
 	rm Application/bin/Visual_Paradigm_Update || die
 	rm -r Application/bin/vp_windows || die
 	rm -r Application/uninstaller || die
@@ -58,20 +55,14 @@ src_compile() {
 
 src_install() {
 	insinto "${INSTDIR}"
-	doins -r .install4j Application Visual_Paradigm jre
+	doins -r .install4j Application
 
-	chmod +x "${D}${INSTDIR}/Visual_Paradigm"
 	chmod +x "${D}${INSTDIR}"/Application/bin/*
-	chmod +x "${D}${INSTDIR}"/Application/launcher/*
-	chmod +x "${D}${INSTDIR}"/Application/resources/Visual_Paradigm_Patch_Update
-	chmod +x "${D}${INSTDIR}"/Application/updatesynchronizer/*
-	chmod +x "${D}${INSTDIR}"/jre/bin/*
-	chmod +x "${D}${INSTDIR}"/jre/lib/jexec
 
-	make_desktop_entry "${INSTDIR}"/Visual_Paradigm "Visual Paradigm for UML" "${INSTDIR}"/Application/resources/vpuml.png
+	make_desktop_entry "${INSTDIR}"/Application/bin/Visual_Paradigm "Visual Paradigm for UML CE" "${INSTDIR}"/Application/resources/vpuml.png
 
 	dodir /etc/env.d
-	cat - > "${D}"/etc/env.d/99visualparadigm <<EOF
+	cat - > "${D}"/etc/env.d/99vpumlce <<EOF
 CONFIG_PROTECT="${INSTDIR}/resources/product_edition.properties"
 EOF
 }
