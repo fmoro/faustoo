@@ -2,7 +2,7 @@
 Name=Visual Studio Code
 Type=Application
 Comment=Multiplatform Visual Studio Code from Microsoft
-Exec=visual-studio-code %F
-TryExec=visual-studio-code
-Icon=visual-studio-code
+Exec=vscode-bin %F
+TryExec=vscode-bin
+Icon=vscode-bin
 Categories=Development;IDE;

@@ -172,7 +172,7 @@ src_install() {
 	default
 	dodoc FEEDBACK
 	doicon doc/html/images/vice-logo.svg
-	doins "${FILESDIR}/${PN}.menu"
+	# doins "${FILESDIR}/${PN}.menu"
 	insinto /usr/share/desktop-directories
 	doins "${FILESDIR}/${PN}.directory"
 	domenu ${FILESDIR}/vice-x128.desktop

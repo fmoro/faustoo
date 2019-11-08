@@ -5,22 +5,18 @@
 EAPI=6
 
 inherit eutils pax-utils
-
-
-RELEASE="c7d83e57cd18f18026a8162d042843bda1bcf21f"
+HASHID="c7d83e57cd18f18026a8162d042843bda1bcf21f"
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
 SRC_URI="
-	x86? ( https://az764295.vo.msecnd.net/stable/${RELEASE}/code-stable-1560349812.tar.gz -> ${P}_i386.tar.gz )
-	amd64? ( https://az764295.vo.msecnd.net/stable/${RELEASE}/code-stable-1560350233.tar.gz -> ${P}_amd64.tar.gz )
+	x86? ( https://az764295.vo.msecnd.net/stable/${HASHID}/code-stable-1560349812.tar.gz -> ${P}_i386.tar.gz )
+	amd64? ( https://az764295.vo.msecnd.net/stable/${HASHID}/code-stable-1560350233.tar.gz -> ${P}_amd64.tar.gz )
 	"
 RESTRICT="mirror strip"
-
 LICENSE="Microsoft"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
-
 DEPEND="
 	sys-libs/glibc
 	sys-devel/gcc
@@ -90,9 +86,9 @@ src_install(){
 	pax-mark m code
 	insinto "/opt/${PN}"
 	doins -r *
-	dosym "/opt/${PN}/code" "/usr/bin/visual-studio-code"
+	dosym "/opt/${PN}/code" "/usr/bin/vscode"
 	make_wrapper "${PN}" "/opt/${PN}/code"
-	make_desktop_entry "${PN}" "Visual Studio Code" "${PN}" "Development;IDE"
+	domenu ${FILESDIR}/${PN}.desktop
 	doicon ${FILESDIR}/${PN}.png
 	fperms +x "/opt/${PN}/code"
 	fperms +x "/opt/${PN}/libnode.so"
