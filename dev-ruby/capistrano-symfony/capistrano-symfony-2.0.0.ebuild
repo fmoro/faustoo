@@ -26,4 +26,4 @@ IUSE=""
 ruby_add_rdepend "
 	>=dev-ruby/capistrano-3.1
 	>=dev-ruby/capistrano-composer-0.0.3
-	>=dev-ruby/capistrano-file-permissions-0.1.0"
+	>=dev-ruby/capistrano-file-permissions-1.0.0"
