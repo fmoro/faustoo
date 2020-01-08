@@ -7,7 +7,7 @@ inherit git-r3 desktop
 
 DESCRIPTION="Commodore 64 code and memory debugger"
 HOMEPAGE="https://sourceforge.net/projects/c64-debugger/"
-EGIT_REPO_URI="https://git.code.sf.net/p/c64-debugger/code"
+EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/code"
 EGIT_COMMIT="3f63aeb8c70becb18fc0314c8aefeb3c95436729"
 
 LICENSE="GPL-2"
