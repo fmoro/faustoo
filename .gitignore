@@ -1,11 +1,21 @@
 app-portage
 app-emulation/c64-debugger-bin
 dev-python/PyQt5
+dev-qt
 dev-vcs
 media-libs/libopenshot
 media-libs/libopenshot-audio
+media-libs/webvfx
 media-plugins
 media-video
 net-im
 net-misc
 x11-drivers
+
+# mutter
+x11-wm/mutter
+eclass/gnome-games.eclass
+eclass/gnome-meson.eclass
+eclass/gnome2-live.eclass
+eclass/gnome3-utils.eclass
+eclass/gnome3.eclass
