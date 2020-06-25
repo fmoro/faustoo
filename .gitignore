@@ -1,18 +1,10 @@
-app-portage
 app-emulation/c64-debugger-bin
-dev-vcs
 media-libs/libopenshot
 media-libs/libopenshot-audio
 media-libs/webvfx
 media-plugins
 media-video
+net-libs
 net-misc
+net-p2p/deluge
 x11-drivers
-
-# mutter
-x11-wm/mutter
-eclass/gnome-games.eclass
-eclass/gnome-meson.eclass
-eclass/gnome2-live.eclass
-eclass/gnome3-utils.eclass
-eclass/gnome3.eclass
