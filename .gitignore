@@ -4,7 +4,5 @@ media-libs/libopenshot-audio
 media-libs/webvfx
 media-plugins
 media-video
-net-libs
-net-misc
 net-p2p/deluge
 x11-drivers
