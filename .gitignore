@@ -1,8 +1,10 @@
 app-emulation/c64-debugger-bin
 media-libs/libopenshot
 media-libs/libopenshot-audio
+media-libs/mlt
 media-libs/webvfx
 media-plugins
 media-video
+net-libs
 net-p2p/deluge
 x11-drivers
