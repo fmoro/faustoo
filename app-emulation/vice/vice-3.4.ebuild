@@ -32,7 +32,10 @@ RDEPEND="
 	media-libs/giflib
 	alsa? ( media-libs/alsa-lib )
 	pulseaudio? ( media-sound/pulseaudio )
-	sdlsound? ( media-libs/libsdl[sound] )
+	sdlsound? (
+		media-libs/libsdl[sound]
+		media-libs/libsdl2
+	)
 	ethernet? (
 		>=net-libs/libpcap-0.9.8
 		>=net-libs/libnet-1.1.2.1:1.1
