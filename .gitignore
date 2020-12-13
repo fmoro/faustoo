@@ -7,4 +7,5 @@ media-plugins
 media-video
 net-libs
 net-p2p/deluge
+sys-kernel/gentoo-sources
 x11-drivers
