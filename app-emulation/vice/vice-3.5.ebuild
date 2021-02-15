@@ -49,7 +49,10 @@ RDEPEND="
 	png? ( media-libs/libpng:0= )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
-	sdl? ( media-libs/libsdl2[video] )
+	sdl? (
+		media-libs/libsdl2[video]
+		media-libs/sdl2-image
+	)
 	sdlsound? ( media-libs/libsdl2[sound] )
 	zlib? ( sys-libs/zlib )
 "
