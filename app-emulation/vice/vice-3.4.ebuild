@@ -80,7 +80,7 @@ DEPEND="${RDEPEND}
 	x11-apps/mkfontdir
 	x11-base/xorg-proto
 	media-libs/fontconfig
-	app-emulation/xa
+	dev-embedded/xa
 	nls? ( sys-devel/gettext )
 	!sdl? (
 		!gtk? (
