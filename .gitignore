@@ -1,5 +1,8 @@
 app-emulation/c64-debugger-bin
 dev-python/apio
+dev-python/click/
+dev-python/pyjwt/
+dev-python/wheel/
 media-libs/libopenshot
 media-libs/libopenshot-audio
 media-libs/mlt
