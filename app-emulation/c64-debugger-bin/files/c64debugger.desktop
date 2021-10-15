@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=C64 debugger
+Type=Application
+Comment=C64 debugger
+Exec=c64debugger
+TryExec=c64debugger
+Icon=c64debugger
+

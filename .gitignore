@@ -1,15 +1,5 @@
-app-emulation/c64-debugger-bin
-dev-python/apio
-dev-python/click/
-dev-python/pyjwt/
-dev-python/wheel/
 media-libs/libopenshot
 media-libs/libopenshot-audio
-media-libs/mlt
-media-libs/webvfx
-media-plugins
-media-video
+media-video/flowblade
+media-video/openshot
 net-libs
-net-p2p/deluge
-sys-kernel/gentoo-sources
-x11-drivers

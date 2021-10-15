@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=65XE debugger
+Type=Application
+Comment=65XE debugger
+Exec=65xedebugger
+TryExec=65xedebugger
+Icon=65xedebugger
