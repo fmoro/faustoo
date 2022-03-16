@@ -34,6 +34,10 @@ src_unpack() {
 	unpack ${A}
 	cd "${WORKDIR}/${A/.zip/}"
 	#cd "${S}"
+	if use amd64; then
+		ARCH=amd64
+		MY_ARCH=amd64
+	fi
 	if use x86; then
 		ARCH=i586
 		MY_ARCH=i386
