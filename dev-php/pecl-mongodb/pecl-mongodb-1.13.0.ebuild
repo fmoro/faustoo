@@ -5,7 +5,7 @@
 EAPI=6
 
 PHP_EXT_NAME="mongodb"
-USE_PHP="php7-3 php7-4"
+USE_PHP="php7-4 php8-0 php8-1"
 DOCS="README.md"
 
 inherit php-ext-pecl-r3
