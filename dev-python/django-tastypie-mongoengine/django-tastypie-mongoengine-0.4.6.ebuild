@@ -19,7 +19,7 @@ SLOT="0"
 
 RDEPEND=">=dev-python/django-1.5[${PYTHON_USEDEP}]
 	>=dev-python/django-tastypie-0.9.12[${PYTHON_USEDEP}]
-	>=dev-python/mongoengine-0.8.0"
+	>=dev-python/mongoengine-0.8.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"

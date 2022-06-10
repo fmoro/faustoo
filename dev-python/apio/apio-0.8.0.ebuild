@@ -18,13 +18,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 DEPEND="
-	dev-python/pyproject2setuppy
-	dev-python/click
-	dev-python/semantic_version
-	dev-python/requests
-	dev-python/colorama
-	dev-python/pyserial
-	>=dev-python/wheel-0.37.0
+	dev-python/pyproject2setuppy[${PYTHON_USEDEP}]
+	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/semantic_version[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/pyserial[${PYTHON_USEDEP}]
+	>=dev-python/wheel-0.37.0[${PYTHON_USEDEP}]
 	dev-util/scons
 	"
 RDEPEND="${DEPEND}"

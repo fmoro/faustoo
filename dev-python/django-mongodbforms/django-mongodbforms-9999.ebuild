@@ -20,7 +20,7 @@ LICENSE="BSD"
 SLOT="0"
 
 RDEPEND=">=dev-python/django-1.4[${PYTHON_USEDEP}]
-	>=dev-python/mongoengine-0.8.3"
+	>=dev-python/mongoengine-0.8.3[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
