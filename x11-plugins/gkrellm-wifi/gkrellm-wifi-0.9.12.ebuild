@@ -1,6 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-wifi/Attic/gkrellm-wifi-0.9.12.ebuild,v 1.13 2010/02/17 16:00:55 scarabeus dead $
 
 inherit multilib
 

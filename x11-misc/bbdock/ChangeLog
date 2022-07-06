@@ -1,8 +1,0 @@
-# ChangeLog for x11-misc/bbdock
-
-*bbdock-0.2.8 (15 Mar 2010)
-
-  15 Mar 2010; Federico Moro <zayer@frikis.org>
-  +bbdock-0.2.8.ebuild:
-  Version bump.
-

@@ -1,7 +1,0 @@
-# ChangeLog for dev-java/sun-java3d-bin
-
-
-*sun-java3d-bin-1.5.2
-  10 Mar 2010; Federico Moro <zayer@frikis.org>
-  +sun-java3d-bin-1.5.2.ebuild:
-  Version bump.
