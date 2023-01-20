@@ -10,7 +10,7 @@ SRC_URI="https://github.com/upx/upx/releases/download/v${PV}/${P}-src.tar.xz"
 
 LICENSE="GPL-2+ UPX-exception" # Read the exception before applying any patches
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="*"
 
 RDEPEND="!app-arch/upx-bin"
 BDEPEND="app-arch/xz-utils[extra-filters]"

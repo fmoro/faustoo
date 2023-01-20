@@ -8,7 +8,7 @@ SRC_URI="mirror://sourceforge/tass64/source/${P}-src.zip -> ${P}.zip"
 
 LICENSE="GLP-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="*"
 IUSE=""
 
 DEPEND=""

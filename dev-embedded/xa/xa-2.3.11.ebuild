@@ -8,7 +8,7 @@ SRC_URI="https://www.floodgap.com/retrotech/xa/dists/${P}.tar.gz"
 
 LICENSE="GPL-v2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="*"
 IUSE=""
 
 DEPEND=""
