@@ -17,7 +17,7 @@ SLOT="0/7.1"
 IUSE="systemd"
 
 RDEPEND="dev-db/mongodb
-	virtual/jre:1.8"
+	virtual/jre:11"
 
 DEPEND="app-arch/unzip"
 
