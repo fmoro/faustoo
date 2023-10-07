@@ -3,13 +3,14 @@
 EAPI=6
 
 # Set this var for any releases except stable
-RC_SUFFIX="-6ee9e412d1"
+RC_SUFFIX="-3116043f9f"
 
 inherit java-pkg-2 systemd user
 
 DESCRIPTION="A Management Controller for Ubiquiti Networks UniFi APs"
 HOMEPAGE="https://www.ubnt.com"
-SRC_URI="https://dl.ubnt.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
+#SRC_URI="https://dl.ubnt.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
+SRC_URI="https://dl.ui.com/unifi/${PV}/UniFi.unix.zip -> ${P}.zip"
 
 KEYWORDS="~amd64"
 LICENSE="Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-3 MIT ubiquiti"
@@ -36,9 +37,23 @@ pkg_setup() {
 
 src_prepare() {
 	# Remove unneeded files Linux, Mac and Windows
-	rm -r lib/native/Linux/{aarch64,armv7} || die
-	if ! use systemd; then
-		rm lib/native/Linux/x86_64/libubnt_sdnotify_jni.so || die
+	#rm -r lib/native/Linux/{aarch64,armv7} || die
+	if [[ ${CHOST} != aarch64* ]]; then
+		rm -r lib/native/Linux/aarch64 || die
+	fi
+	if [[ ${CHOST} != x86_64* ]]; then
+		rm -r lib/native/Linux/x86_64 || die
+	fi
+
+	if [[ ${CHOST} == aarch64* ]]; then
+		if ! use systemd; then
+			rm lib/native/Linux/aarch64/libubnt_sdnotify_jni.so || die
+		fi
+	fi
+	if [[ ${CHOST} == x86_64* ]]; then
+		if ! use systemd; then
+			rm lib/native/Linux/x86_64/libubnt_sdnotify_jni.so || die
+		fi
 	fi
 
 	default
