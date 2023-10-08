@@ -1,0 +1,14 @@
+diff -Naur vunit_hdl-4.7.0.orig/setup.py vunit_hdl-4.7.0/setup.py
+--- vunit_hdl-4.7.0.orig/setup.py	2023-10-08 20:30:11.133638043 +0200
++++ vunit_hdl-4.7.0/setup.py	2023-10-08 20:30:23.065638445 +0200
+@@ -44,10 +44,6 @@
+     name="vunit_hdl",
+     version=version(),
+     packages=[
+-        "tests",
+-        "tests.lint",
+-        "tests.unit",
+-        "tests.acceptance",
+         "vunit",
+         "vunit.com",
+         "vunit.parsing",
