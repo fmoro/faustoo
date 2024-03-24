@@ -1,0 +1,68 @@
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2024-01-10 07:16:03.000000000 +0100
++++ b/Makefile	2024-03-24 18:53:51.923688185 +0100
+@@ -1,12 +1,12 @@
+ # Unix gcc or DOS go32 cross-compiling gcc
+ #
+ VERS = 2.4.1
+-CC = gcc
+-LD = gcc
++#CC = gcc
++#LD = gcc
+ # for testing. not to be used; build failures in misc/.
+ #CFLAGS = -O2 -W -Wall -pedantic -ansi -g
+-CFLAGS = -O2 -g
+-LDFLAGS = -lc
++#CFLAGS = -O2 -g
++#LDFLAGS = -lc
+ 
+ # for DOS?
+ # CC = gcc-go32
+@@ -29,19 +29,19 @@
+ 
+ TESTS=ALL
+ 
+-all: killxa xa uncpk
++all: xa uncpk
+ 
+ killxa:
+ 	rm -f xa
+ 
+ xa:
+-	(cd src && LD=${LD} CC="${CC} ${CFLAGS}" ${MAKE})
++	(cd src && ${MAKE})
+ 
+ #load:	
+-#	(cd loader && CC="${CC} ${CFLAGS}" ${MAKE})
++#	(cd loader && ${MAKE})
+ 
+ uncpk:
+-	(cd misc && CC="${CC} ${CFLAGS}" ${MAKE})
++	(cd misc && ${MAKE})
+ 
+ dos: clean
+ 	(cd src && LD=gcc-go32 CC=gcc-go32 CFLAGS="-W -Wall -pedantic" ${MAKE})
+diff -Naur a/misc/Makefile b/misc/Makefile
+--- a/misc/Makefile	2023-10-15 20:11:13.000000000 +0200
++++ b/misc/Makefile	2024-03-24 18:54:38.911687456 +0100
+@@ -2,7 +2,7 @@
+ XCBMLIB = ..
+ 
+ # -Wall -ansi et al. cause compile problems.
+-CFLAGS =  -O2 -g
++CFLAGS := $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
+ 
+ LIBS = #-lncurses -ltermcap -lm
+ 
+diff -Naur a/src/Makefile b/src/Makefile
+--- a/src/Makefile	2023-10-16 04:54:42.000000000 +0200
++++ b/src/Makefile	2024-03-24 18:55:19.795686822 +0100
+@@ -9,7 +9,7 @@
+ all: xa
+ 
+ xa: ${OBJ}
+-	${LD} -o ../xa ${OBJ} ${LDFLAGS}
++	${CC} ${LDFLAGS} -o ../xa ${OBJ}
+ 
+ clean: 
+ 	rm -f *.o *.o65
