@@ -1,0 +1,12 @@
+diff -Naur a/MTEngine/Makefile b/MTEngine/Makefile
+--- a/MTEngine/Makefile	2024-03-29 20:45:26.787210327 +0100
++++ b/MTEngine/Makefile	2024-03-29 20:46:08.415209681 +0100
+@@ -7,7 +7,7 @@
+ LIBS                  =
+ BINS		= c64debugger
+ CFLAGS		      = -w
+-CXXFLAGS	      = -w
++CXXFLAGS	      = -w -std=c++14
+ 
+ #LDFLAGS		      = `pkg-config --libs gtk+-3.0 x11 gl libpng portaudio-2.0 xcb-util libjpeg ogg` -pthread
+ LDFLAGS		      = `pkg-config --libs gtk+-3.0 x11 gl xcb-util alsa` -pthread

@@ -19,6 +19,11 @@ app-arch/upx"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
+PATCHES=(
+	"${FILESDIR}"/${P}-make.patch
+)
+
+
 S="${WORKDIR}/${P}"
 
 src_compile() {
