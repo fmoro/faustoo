@@ -11,13 +11,13 @@ DESCRIPTION="A Management Controller for Ubiquiti Networks UniFi APs"
 HOMEPAGE="https://www.ubnt.com"
 SRC_URI="https://dl.ubnt.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 LICENSE="Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-3 MIT ubiquiti"
 SLOT="0/7.1"
 IUSE="systemd"
 
 RDEPEND="dev-db/mongodb
-	virtual/jre:11"
+	virtual/jre:17"
 
 DEPEND="app-arch/unzip"
 
@@ -27,7 +27,8 @@ S="${WORKDIR}/UniFi"
 
 DOCS=( "readme.txt" )
 
-QA_PREBUILT="usr/lib/unifi/lib/native/Linux/x86_64/*.so"
+QA_PREBUILT="usr/lib/unifi/lib/native/Linux/aarch64/*.so
+	usr/lib/unifi/lib/native/Linux/x86_64/*.so"
 
 pkg_setup() {
 	enewgroup unifi
